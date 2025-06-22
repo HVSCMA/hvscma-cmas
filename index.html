@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Value Estimate | Hudson Valley SOLD</title>
+    <meta name="description" content="Get your home value estimate with Hudson Valley SOLD - Your Home Value Specialists">
+    
+    <!-- Follow Up Boss Tracking Pixel -->
+    <script>
+    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function() {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"), (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i; e.parentNode.insertBefore(t,e);}) (window,"https://widgetbe.com/agent",document,"widgetTracker"); window.widgetTracker("create", "WT-FPLWTULQ"); window.widgetTracker("send", "pageview");
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .iframe-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: #ffffff;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background: white;
+        }
+        
+        .loading-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .iframe-container {
+                height: 100vh;
+                height: 100dvh; /* For better mobile viewport handling */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="iframe-container">
+        <div class="loading-screen" id="loadingScreen"></div>
+        <iframe 
+            src="https://hudsonvalleysold.hifello.com/lp/67c718866601e90037323283"
+            allow="camera; microphone; geolocation; fullscreen"
+            scrolling="auto"
+            onload="handleIframeLoad()"
+            onerror="handleIframeError()">
+        </iframe>
+    </div>
+
+    <script>
+        // Track homepage visit with Follow Up Boss
+        window.widgetTracker("send", "event", "Homepage", "visit", "HiFello_Form_Load");
+        
+        function handleIframeLoad() {
+            // Hide loading screen
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 300);
+            }
+            
+            // Track form load success
+            window.widgetTracker("send", "event", "HiFello_Form", "loaded", "Homepage_Success");
+        }
+        
+        function handleIframeError() {
+            // Track form load error
+            window.widgetTracker("send", "event", "HiFello_Form", "error", "Homepage_Failed");
+        }
+        
+        // Track time spent on page
+        let startTime = Date.now();
+        let timeTracked = false;
+        
+        setTimeout(() => {
+            if (!timeTracked) {
+                let timeSpent = Math.round((Date.now() - startTime) / 1000);
+                window.widgetTracker("send", "event", "Engagement", "time_spent", "Homepage_" + timeSpent + "_seconds");
+                timeTracked = true;
+            }
+        }, 30000); // Track after 30 seconds
+        
+        // Track page visibility changes
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                window.widgetTracker("send", "event", "Engagement", "page_hidden", "Homepage_Tab_Switch");
+            } else {
+                window.widgetTracker("send", "event", "Engagement", "page_visible", "Homepage_Tab_Return");
+            }
+        });
+        
+        // Track page unload
+        window.addEventListener('beforeunload', function() {
+            let timeSpent = Math.round((Date.now() - startTime) / 1000);
+            window.widgetTracker("send", "event", "Engagement", "session_end", "Homepage_" + timeSpent + "_seconds_total");
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"953dc439efb10e82","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDiDEB9gysEiXL5aVHuyh4zSLrz%2BDZ2n0HbktNj3rg2DhCGY1A6%2FuQGdAZMFY8G7NdhnWHxNr7kYtdlxFL7gUUIhlKIn1H5c7u4xX2znkiOzeCnbPKNphUtcWSNOYrXC9Ur8LAW9imFtwjOS7Qh9Yu2kjmppeZJ3nWbyE9imoEv07xPphn0pqyQJjvEF5ppPVOD1zMMvhzW0MzG%2BBGWbHVCPGtJFa0l8NWsT7QZrLUQ5qhjrDqoy1APBANEYk0z1q5ffUdYps%2FA9r7Pd4bEYxyOHpn1kbeqC%2Bj%2Ft55u1%2FppWAbSxP3nKR0frbOt2NeAYyvVeScll8GdRWMyqbLyHM7cNSSe8oshxFXAif0zjdzjXj402HGYljR9fFsx8yx0DlryomZ2JDFqmZgpGxVRGwHy7h%2BK3JCezQLNHdQYtA3VVKY8%2FM%2F%2BJMIyKwK%2FFQXbYZNKhWL8kVoc6cBY9%2Fs%2BzJ%2FSakKq0CUYo22bUj%2BCBlhqScYF4%2Bky4ULiz4FbjVGHVE5g%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDiDEB9gysEiXL5aVHuyh4zSLrz+DZ2n0HbktNj3rg2DhCGY1A6/uQGdAZMFY8G7NdhnWHxNr7kYtdlxFL7gUUIhlKIn1H5c7u4xX2znkiOzeCnbPKNphUtcWSNOYrXC9Ur8LAW9imFtwjOS7Qh9Yu2kjmppeZJ3nWbyE9imoEv07xPphn0pqyQJjvEF5ppPVOD1zMMvhzW0MzG+BGWbHVCPGtJFa0l8NWsT7QZrLUQ5qhjrDqoy1APBANEYk0z1q5ffUdYps/A9r7Pd4bEYxyOHpn1kbeqC+j/t55u1/ppWAbSxP3nKR0frbOt2NeAYyvVeScll8GdRWMyqbLyHM7cNSSe8oshxFXAif0zjdzjXj402HGYljR9fFsx8yx0DlryomZ2JDFqmZgpGxVRGwHy7h+K3JCezQLNHdQYtA3VVKY8/M/+JMIyKwK/FQXbYZNKhWL8kVoc6cBY9/s+zJ/SakKq0CUYo22bUj+CBlhqScYF4+ky4ULiz4FbjVGHVE5g==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
