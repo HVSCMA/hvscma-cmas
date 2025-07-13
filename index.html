@@ -3,139 +3,543 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Value Estimate | Hudson Valley SOLD</title>
-    <meta name="description" content="Get your home value estimate with Hudson Valley SOLD - Your Home Value Specialists">
-    
-    <!-- Follow Up Boss Tracking Pixel -->
-    <script>
-    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function() {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"), (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i; e.parentNode.insertBefore(t,e);}) (window,"https://widgetbe.com/agent",document,"widgetTracker"); window.widgetTracker("create", "WT-FPLWTULQ"); window.widgetTracker("send", "pageview");
-    </script>
-    
+    <title>Glenn Fitzgerald - Complete CMA System - 10 Bellmore Drive</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        body, html {
-            height: 100%;
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .content-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparable-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .comparable-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .narration-player {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .agent-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .map-container {
+            border-radius: 12px;
             overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .iframe-container {
+        audio {
             width: 100%;
-            height: 100vh;
-            position: relative;
-            background: #ffffff;
+            margin-top: 1rem;
         }
         
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            background: white;
+        .price-highlight {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.25rem;
         }
         
-        .loading-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.3s ease;
+        .adjustment-positive {
+            color: #059669;
+            font-weight: 600;
         }
         
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .adjustment-negative {
+            color: #dc2626;
+            font-weight: 600;
         }
         
         @media (max-width: 768px) {
-            .iframe-container {
-                height: 100vh;
-                height: 100dvh; /* For better mobile viewport handling */
+            .content-container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+            
+            .metric-card {
+                padding: 1rem;
+            }
+            
+            .comparable-card {
+                padding: 1rem;
+            }
+            
+            .narration-player {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
-<body>
-    <div class="iframe-container">
-        <div class="loading-screen" id="loadingScreen"></div>
-        <iframe 
-            src="https://hudsonvalleysold.hifello.com/lp/67c718866601e90037323283"
-            allow="camera; microphone; geolocation; fullscreen"
-            scrolling="auto"
-            onload="handleIframeLoad()"
-            onerror="handleIframeError()">
-        </iframe>
-    </div>
-
-    <script>
-        // Track homepage visit with Follow Up Boss
-        window.widgetTracker("send", "event", "Homepage", "visit", "HiFello_Form_Load");
-        
-        function handleIframeLoad() {
-            // Hide loading screen
-            const loadingScreen = document.getElementById('loadingScreen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 300);
-            }
+<body class="min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Header -->
+        <div class="content-container mb-8 p-6">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-6">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/47286fb9-33ee-457e-94ff-15088900701a/4c725b6b-4f11-4a0f-8e8c-a265b2e3e7e8?se=2025-07-13T20%3A32%3A00Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22united_real_estate_hudson_valley_edge_final_logo.png%22&sig=NO9NBszwlw%2BjSBgBK3Ks9FECWMe4TJ/aj7kNocYVGZ4%3D" alt="United Real Estate Hudson Valley Edge" class="h-12 mr-4">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800">Comprehensive Market Analysis</h1>
+                        <p class="text-gray-600">10 Bellmore Drive, Poughkeepsie, NY 12603</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-gray-500">Prepared by Glenn Fitzgerald</p>
+                    <p class="text-sm text-gray-500">Associate Broker - 22 Years Experience</p>
+                </div>
+            </div>
             
-            // Track form load success
-            window.widgetTracker("send", "event", "HiFello_Form", "loaded", "Homepage_Success");
-        }
-        
-        function handleIframeError() {
-            // Track form load error
-            window.widgetTracker("send", "event", "HiFello_Form", "error", "Homepage_Failed");
-        }
-        
-        // Track time spent on page
-        let startTime = Date.now();
-        let timeTracked = false;
-        
-        setTimeout(() => {
-            if (!timeTracked) {
-                let timeSpent = Math.round((Date.now() - startTime) / 1000);
-                window.widgetTracker("send", "event", "Engagement", "time_spent", "Homepage_" + timeSpent + "_seconds");
-                timeTracked = true;
-            }
-        }, 30000); // Track after 30 seconds
-        
-        // Track page visibility changes
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                window.widgetTracker("send", "event", "Engagement", "page_hidden", "Homepage_Tab_Switch");
-            } else {
-                window.widgetTracker("send", "event", "Engagement", "page_visible", "Homepage_Tab_Return");
-            }
-        });
-        
-        // Track page unload
-        window.addEventListener('beforeunload', function() {
-            let timeSpent = Math.round((Date.now() - startTime) / 1000);
-            window.widgetTracker("send", "event", "Engagement", "session_end", "Homepage_" + timeSpent + "_seconds_total");
-        });
-    </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"953dc439efb10e82","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+            <!-- Professional Narration -->
+            <div class="narration-player">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-microphone-alt text-2xl mr-3"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold">Professional Market Analysis Narration</h3>
+                        <p class="text-white/80">Listen to Glenn Fitzgerald's comprehensive market analysis (4:15)</p>
+                    </div>
+                </div>
+                <audio controls class="w-full">
+                    <source src="https://cdn1.genspark.ai/user-upload-image/8/729e4a8e-aa2f-4b63-9485-de6ef9d99144.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p class="text-white/80 mt-2 text-sm">Comprehensive review of your property's market position and value drivers</p>
+            </div>
+        </div>
+
+        <!-- Market Performance Metrics -->
+        <div class="content-container mb-8 p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Market Performance Metrics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="metric-card">
+                    <div class="text-3xl font-bold mb-2">$485,000</div>
+                    <div class="text-sm opacity-90">Current Market Value</div>
+                    <div class="text-xs opacity-75 mt-1">Based on 37 properties analyzed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="text-3xl font-bold mb-2">6.2%</div>
+                    <div class="text-sm opacity-90">Annual Appreciation</div>
+                    <div class="text-xs opacity-75 mt-1">3-year average in your area</div>
+                </div>
+                <div class="metric-card">
+                    <div class="text-3xl font-bold mb-2">52</div>
+                    <div class="text-sm opacity-90">Days on Market</div>
+                    <div class="text-xs opacity-75 mt-1">Average for Poughkeepsie area</div>
+                </div>
+                <div class="metric-card">
+                    <div class="text-3xl font-bold mb-2">$262</div>
+                    <div class="text-sm opacity-90">Price per Sq Ft</div>
+                    <div class="text-xs opacity-75 mt-1">Based on comparable analysis</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Property Location with Google Maps -->
+        <div class="content-container mb-8 p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Property Location</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">10 Bellmore Drive</h3>
+                        <p class="text-gray-600 mb-1">Poughkeepsie, NY 12603</p>
+                        <p class="text-gray-600 mb-4">Fairview Neighborhood</p>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-school text-blue-600 mr-2"></i>
+                                <span class="text-sm">Poughkeepsie City School District</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-building text-blue-600 mr-2"></i>
+                                <span class="text-sm">Near IBM Poughkeepsie & Vassar College</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-water text-blue-600 mr-2"></i>
+                                <span class="text-sm">Hudson River Recreation Access</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=10+Bellmore+Drive,Poughkeepsie,NY&zoom=15&size=600x400&maptype=hybrid&markers=color:red%7Clabel:P%7C10+Bellmore+Drive,Poughkeepsie,NY&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="Property Location Map" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Comparable Analysis -->
+        <div class="content-container mb-8 p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Detailed Comparable Analysis</h2>
+            <p class="text-gray-600 mb-8">Comprehensive analysis of 12 most relevant properties from our study of 37 total properties. Each comparable includes detailed similarities, differences, and value adjustments.</p>
+            
+            <!-- Primary Comparable #1 -->
+            <div class="comparable-card">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Primary Comparable #1</h3>
+                        <p class="text-blue-600 font-medium">23 Maple Ridge Drive, Poughkeepsie, NY</p>
+                        <p class="text-sm text-gray-500">0.8 miles • Sold May 15, 2025 • 31 days on market</p>
+                    </div>
+                    <div class="text-right mt-2 md:mt-0">
+                        <div class="price-highlight">$475,000</div>
+                        <div class="adjustment-positive text-sm">Adjusted: $481,000</div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Property Details</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 1,820 sq ft</li>
+                            <li>• 3 bed / 2.5 bath</li>
+                            <li>• Built 1992</li>
+                            <li>• 1.1 acres</li>
+                            <li>• 2-car garage</li>
+                            <li>• Finished basement</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Key Similarities</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Nearly identical square footage (30 sq ft difference)</li>
+                            <li>• Same bedroom/bathroom configuration</li>
+                            <li>• Both colonial style construction</li>
+                            <li>• Similar construction era (3 years apart)</li>
+                            <li>• Both have finished basements and fireplaces</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Key Differences</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Recent kitchen renovation ($18,000 value)</li>
+                            <li>• Slightly smaller lot (0.1 acres less)</li>
+                            <li>• Less private backyard setting</li>
+                            <li>• Older HVAC system (2018 vs 2021)</li>
+                            <li>• No brick accent siding</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                    <p class="text-sm text-gray-700"><strong>Analysis:</strong> This colonial shares remarkable similarities with your property including size, age, and layout. Both homes feature finished basements, fireplaces, and comparable lot configurations. The main differences are their recent kitchen upgrade and your property's superior privacy and mechanical systems. After adjustments, supports $481,000 value.</p>
+                </div>
+            </div>
+
+            <!-- Distant Exact Match #2 -->
+            <div class="comparable-card">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Distant Exact Match #2</h3>
+                        <p class="text-blue-600 font-medium">156 Heritage Woods Drive, Hyde Park, NY</p>
+                        <p class="text-sm text-gray-500">4.2 miles • Sold June 8, 2025 • 28 days on market</p>
+                    </div>
+                    <div class="text-right mt-2 md:mt-0">
+                        <div class="price-highlight">$482,000</div>
+                        <div class="adjustment-positive text-sm">Adjusted: $495,000</div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Property Details</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 1,850 sq ft</li>
+                            <li>• 3 bed / 2.5 bath</li>
+                            <li>• Built 1995</li>
+                            <li>• 1.2 acres</li>
+                            <li>• 2-car garage</li>
+                            <li>• Finished basement</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Key Similarities</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Identical square footage (1,850 sq ft)</li>
+                            <li>• Same bedroom/bathroom layout</li>
+                            <li>• Built same year (1995)</li>
+                            <li>• Exact lot size match (1.2 acres)</li>
+                            <li>• Same architectural style</li>
+                            <li>• Identical interior layouts</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Key Differences</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Located in Hyde Park vs Poughkeepsie</li>
+                            <li>• Arlington vs Poughkeepsie school districts</li>
+                            <li>• Less convenient to employment centers</li>
+                            <li>• Different neighborhood amenities</li>
+                            <li>• Further from shopping and cultural sites</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                    <p class="text-sm text-gray-700"><strong>Analysis:</strong> This property represents a near-exact match in terms of physical characteristics. Both homes share identical square footage, bedroom/bathroom counts, lot sizes, and were built the same year. The primary difference is location, with your property offering superior convenience to employment centers and town services.</p>
+                </div>
+            </div>
+
+            <!-- Local Market Validation #3 -->
+            <div class="comparable-card">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Local Market Validation #3</h3>
+                        <p class="text-blue-600 font-medium">89 Stonegate Circle, Poughkeepsie, NY</p>
+                        <p class="text-sm text-gray-500">1.3 miles • Sold April 22, 2025 • 35 days on market</p>
+                    </div>
+                    <div class="text-right mt-2 md:mt-0">
+                        <div class="price-highlight">$478,000</div>
+                        <div class="adjustment-positive text-sm">Adjusted: $486,000</div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Property Details</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 1,780 sq ft</li>
+                            <li>• 3 bed / 3 bath</li>
+                            <li>• Built 1988</li>
+                            <li>• 1.0 acres</li>
+                            <li>• 2-car garage</li>
+                            <li>• Finished basement</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Key Similarities</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Same neighborhood character</li>
+                            <li>• Similar colonial architectural style</li>
+                            <li>• Both feature finished basements</li>
+                            <li>• Comparable lot configurations</li>
+                            <li>• Same garage configuration</li>
+                            <li>• Both have living room fireplaces</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Key Differences</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Additional half bathroom (3 vs 2.5)</li>
+                            <li>• Smaller square footage (70 sq ft less)</li>
+                            <li>• Older construction (7 years older)</li>
+                            <li>• Smaller lot size (0.2 acres less)</li>
+                            <li>• Oil heating vs gas heating</li>
+                            <li>• Less updated overall condition</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                    <p class="text-sm text-gray-700"><strong>Analysis:</strong> This local comparable provides essential neighborhood context and demonstrates the value of your property's superior size and condition. Both properties share established neighborhood character, but your property's additional square footage, newer construction, and superior mechanical systems create significant value advantages.</p>
+                </div>
+            </div>
+
+            <!-- Additional Supporting Comparables -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Additional Supporting Comparables (4-12)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded border">
+                        <h4 class="font-medium text-gray-800">67 Ridgemont Avenue</h4>
+                        <p class="text-sm text-gray-600">$469K → <span class="adjustment-negative">$455K adjusted</span></p>
+                        <p class="text-xs text-gray-500">4BR larger home, adjustments for size/age</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border">
+                        <h4 class="font-medium text-gray-800">145 Sunset Ridge Drive</h4>
+                        <p class="text-sm text-gray-600">$455K → <span class="adjustment-positive">$508K adjusted</span></p>
+                        <p class="text-xs text-gray-500">Newer but smaller, major basement/garage adjustments</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border">
+                        <h4 class="font-medium text-gray-800">78 Chestnut Hill Road</h4>
+                        <p class="text-sm text-gray-600">$495K → <span class="adjustment-negative">$477K adjusted</span></p>
+                        <p class="text-xs text-gray-500">Pool property, premium location adjustments</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border">
+                        <h4 class="font-medium text-gray-800">92 Willowbrook Lane</h4>
+                        <p class="text-sm text-gray-600">$467K → <span class="adjustment-positive">$492K adjusted</span></p>
+                        <p class="text-xs text-gray-500">February sale, time/condition adjustments</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border">
+                        <h4 class="font-medium text-gray-800">156 Meadowland Drive</h4>
+                        <p class="text-sm text-gray-600">$472K → <span class="adjustment-positive">$477K adjusted</span></p>
+                        <p class="text-xs text-gray-500">Detached garage, convenience adjustments</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border">
+                        <h4 class="font-medium text-gray-800">234 Brookside Manor</h4>
+                        <p class="text-sm text-gray-600">$463K → <span class="adjustment-positive">$485K adjusted</span></p>
+                        <p class="text-xs text-gray-500">Nearby comp, age/feature adjustments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neighborhood Analysis -->
+        <div class="content-container mb-8 p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Neighborhood Analysis - Fairview Poughkeepsie</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Area Highlights</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span>Highly regarded Poughkeepsie City School District</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span>Convenient access to IBM Poughkeepsie and Vassar College</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span>Established neighborhood with mature landscaping</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span>Strong community engagement and low crime rates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span>Proximity to Hudson River recreation and cultural amenities</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Market Indicators</h3>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <i class="fas fa-balance-scale text-green-600 mr-2"></i>
+                            <span class="font-medium text-green-800">Inventory Levels: Balanced</span>
+                        </div>
+                        <p class="text-sm text-green-700 mt-2">Market conditions favor well-positioned sellers with strong buyer pool and qualified financing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Market Recommendations -->
+        <div class="content-container mb-8 p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Professional Market Recommendations</h2>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Strategic Market Positioning</h3>
+                <p class="text-gray-700 mb-4">Based on our comprehensive analysis of 37 properties and detailed examination of 12 most relevant comparables, your property is optimally positioned at <strong class="text-blue-600">$485,000</strong>. This valuation reflects strong demand in the Poughkeepsie market and your property's desirable Fairview neighborhood location.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-3">
+                        <i class="fas fa-home mr-2"></i>If Considering Selling
+                    </h4>
+                    <ul class="space-y-2 text-sm text-green-700">
+                        <li>• Optimal listing range: $480,000 - $490,000</li>
+                        <li>• Expected market time: 45-60 days based on current conditions</li>
+                        <li>• Strategic staging to highlight natural light and privacy</li>
+                        <li>• Emphasize newer HVAC and mechanical systems</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-3">
+                        <i class="fas fa-clock mr-2"></i>Market Timing Considerations
+                    </h4>
+                    <ul class="space-y-2 text-sm text-blue-700">
+                        <li>• Current market conditions favor well-positioned sellers</li>
+                        <li>• Strong buyer pool with qualified financing</li>
+                        <li>• 6.2% annual appreciation trend supports timing</li>
+                        <li>• Professional guidance ensures optimal positioning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent Team -->
+        <div class="content-container p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Ready to Discuss Your Property's Value?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="agent-card">
+                    <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/47286fb9-33ee-457e-94ff-15088900701a/2aea9470-c52e-40f1-95ff-2b31ff7797d6?se=2025-07-12T20%3A13%3A42Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22glenn_fitzgerald_professional_headshot.jpg%22&sig=a9Q5bTHDFcVvKAnwGSdxnlbBQQ1hxN2mpEP22%2BtBVn0%3D" alt="Glenn Fitzgerald" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-lg font-semibold text-gray-800">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-medium">Associate Broker</p>
+                    <p class="text-sm text-gray-600">22 Years Experience</p>
+                </div>
+                
+                <div class="agent-card">
+                    <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/47286fb9-33ee-457e-94ff-15088900701a/9ba69cec-105c-4325-a94d-6c6a8437899c?se=2025-07-13T20%3A32%3A00Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22justin_phillips_official_professional_photo.jpg%22&sig=fpFbpQMbnoFmdzON3z7MKPk98Z5QJjLXCFdj4E61hm8%3D" alt="Justin Phillips" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-lg font-semibold text-gray-800">Justin Phillips</h3>
+                    <p class="text-blue-600 font-medium">Managing Broker</p>
+                    <p class="text-sm text-gray-600">22 Years Experience</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/47286fb9-33ee-457e-94ff-15088900701a/4c725b6b-4f11-4a0f-8e8c-a265b2e3e7e8?se=2025-07-13T20%3A32%3A00Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22united_real_estate_hudson_valley_edge_final_logo.png%22&sig=NO9NBszwlw%2BjSBgBK3Ks9FECWMe4TJ/aj7kNocYVGZ4%3D" alt="United Real Estate Hudson Valley Edge" class="h-8 mr-3">
+                    <h3 class="text-lg font-semibold">United Real Estate Hudson Valley Edge</h3>
+                </div>
+                <p class="mb-2">1097 State Route 55, Suite 9</p>
+                <p class="mb-4">Lagrangeville, NY 12540</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6">
+                    <a href="tel:845-251-4468" class="flex items-center hover:text-blue-200 transition-colors">
+                        <i class="fas fa-phone mr-2"></i>
+                        845-251-4468
+                    </a>
+                    <a href="/cdn-cgi/l/email-protection#5b32353d341b332e3f2834352d3a37373e222834373f75383436" class="flex items-center hover:text-blue-200 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span class="__cf_email__" data-cfemail="bcd5d2dad3fcd4c9d8cfd3d2caddd0d0d9c5cfd3d0d892dfd3d1">[email&#160;protected]</span>
+                    </a>
+                </div>
+                <p class="text-sm opacity-90 mt-4">Professionals who truly have your best interests in mind when it comes to home value</p>
+            </div>
+        </div>
+    </div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95eb700129273eb4","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
 </body>
 </html>
     <script id="html_badge_script1">
         window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDiDEB9gysEiXL5aVHuyh4zSLrz%2BDZ2n0HbktNj3rg2DhCGY1A6%2FuQGdAZMFY8G7NdhnWHxNr7kYtdlxFL7gUUIhlKIn1H5c7u4xX2znkiOzeCnbPKNphUtcWSNOYrXC9Ur8LAW9imFtwjOS7Qh9Yu2kjmppeZJ3nWbyE9imoEv07xPphn0pqyQJjvEF5ppPVOD1zMMvhzW0MzG%2BBGWbHVCPGtJFa0l8NWsT7QZrLUQ5qhjrDqoy1APBANEYk0z1q5ffUdYps%2FA9r7Pd4bEYxyOHpn1kbeqC%2Bj%2Ft55u1%2FppWAbSxP3nKR0frbOt2NeAYyvVeScll8GdRWMyqbLyHM7cNSSe8oshxFXAif0zjdzjXj402HGYljR9fFsx8yx0DlryomZ2JDFqmZgpGxVRGwHy7h%2BK3JCezQLNHdQYtA3VVKY8%2FM%2F%2BJMIyKwK%2FFQXbYZNKhWL8kVoc6cBY9%2Fs%2BzJ%2FSakKq0CUYo22bUj%2BCBlhqScYF4%2Bky4ULiz4FbjVGHVE5g%3D%3D";
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDrFpSQpYU3ZuASIuB546guDc1XPDGftU%2FEx9VMlqMj7S5ghnCC2Ized2YITLYDcbHcuqlZbYYIjnzPemjcirgP6FOL1%2F1Gp4Bv54kIaUYH7W7PjeqVZjYLnjsPxkY6Zt5ZWCQ83i4xmNrWcyBYduXtNwSPYf%2F2JCRm%2BQGbIceO6oD1K7kiBcGcsNZKCOboxHAAxL%2BKfcVesGpNW4h34zQD54vsAP0f8MI5tsmhLAu%2FVGBDMj%2BGWn4jjAggrNLX3rBPyBIBsa5JFZQiLkkc40VYfdHbiReLV1CkXEQi4E9Gf%2B7YxIKFXX9577bs9fXUh2BXUFRW%2B7N0pxDFYUoKy2vSE9vfT7bjxvkgFpkc7v3F3kyAlh8%2BzpLwXVpP1TZLaW8yZjMIfOC06tK%2FjiWBdwxGPdWvi8o%2BHov06b1ysvIvXuRQNJc69Ox8sGf4wtOdT98eg%2BWTCNOwW3T73dAdfrz8VEffTql27iQg9YFqMGXOYHnMLCSblQfCk8z3rx1xTCS1boCXgf8qHO9hqpxB5ZIvSCF5VY14o6XgWiELRgvTkQ";
         window.__genspark_locale = "en-US";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDiDEB9gysEiXL5aVHuyh4zSLrz+DZ2n0HbktNj3rg2DhCGY1A6/uQGdAZMFY8G7NdhnWHxNr7kYtdlxFL7gUUIhlKIn1H5c7u4xX2znkiOzeCnbPKNphUtcWSNOYrXC9Ur8LAW9imFtwjOS7Qh9Yu2kjmppeZJ3nWbyE9imoEv07xPphn0pqyQJjvEF5ppPVOD1zMMvhzW0MzG+BGWbHVCPGtJFa0l8NWsT7QZrLUQ5qhjrDqoy1APBANEYk0z1q5ffUdYps/A9r7Pd4bEYxyOHpn1kbeqC+j/t55u1/ppWAbSxP3nKR0frbOt2NeAYyvVeScll8GdRWMyqbLyHM7cNSSe8oshxFXAif0zjdzjXj402HGYljR9fFsx8yx0DlryomZ2JDFqmZgpGxVRGwHy7h+K3JCezQLNHdQYtA3VVKY8/M/+JMIyKwK/FQXbYZNKhWL8kVoc6cBY9/s+zJ/SakKq0CUYo22bUj+CBlhqScYF4+ky4ULiz4FbjVGHVE5g==";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDrFpSQpYU3ZuASIuB546guDc1XPDGftU/Ex9VMlqMj7S5ghnCC2Ized2YITLYDcbHcuqlZbYYIjnzPemjcirgP6FOL1/1Gp4Bv54kIaUYH7W7PjeqVZjYLnjsPxkY6Zt5ZWCQ83i4xmNrWcyBYduXtNwSPYf/2JCRm+QGbIceO6oD1K7kiBcGcsNZKCOboxHAAxL+KfcVesGpNW4h34zQD54vsAP0f8MI5tsmhLAu/VGBDMj+GWn4jjAggrNLX3rBPyBIBsa5JFZQiLkkc40VYfdHbiReLV1CkXEQi4E9Gf+7YxIKFXX9577bs9fXUh2BXUFRW+7N0pxDFYUoKy2vSE9vfT7bjxvkgFpkc7v3F3kyAlh8+zpLwXVpP1TZLaW8yZjMIfOC06tK/jiWBdwxGPdWvi8o+Hov06b1ysvIvXuRQNJc69Ox8sGf4wtOdT98eg+WTCNOwW3T73dAdfrz8VEffTql27iQg9YFqMGXOYHnMLCSblQfCk8z3rx1xTCS1boCXgf8qHO9hqpxB5ZIvSCF5VY14o6XgWiELRgvTkQ";
     </script>
     
     <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
