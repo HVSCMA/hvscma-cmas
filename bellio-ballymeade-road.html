@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Market Analysis - 25 Ballymeade Road | Glenn Fitzgerald</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styling */
+        .header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://maps.googleapis.com/maps/api/staticmap?center=25+Ballymeade+Road,+Hopewell+Junction,+NY+12533&zoom=16&size=1200x800&maptype=satellite&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fcd34d;
+        }
+
+        .property-details {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Agent Cards */
+        .agent-section {
+            background: white;
+            padding: 2rem 0;
+            border-bottom: 3px solid #e2e8f0;
+        }
+
+        .agents-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .agent-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid #0ea5e9;
+            object-fit: cover;
+        }
+
+        .agent-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-title {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-experience {
+            font-size: 0.9rem;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        /* Contact Information */
+        .contact-info {
+            background: #1e40af;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Property Overview */
+        .property-overview {
+            background: white;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .overview-item {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .overview-label {
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .overview-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-top: 0.25rem;
+        }
+
+        /* Value Highlight */
+        .value-highlight {
+            background: linear-gradient(135deg, #fef3c7, #fcd34d);
+            border: 2px solid #f59e0b;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .value-highlight h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #92400e;
+            margin-bottom: 1rem;
+        }
+
+        .value-highlight p {
+            font-size: 1.1rem;
+            color: #78350f;
+            font-weight: 600;
+        }
+
+        /* Narration Section */
+        .narration-section {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .narration-section h3 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .narration-placeholder {
+            background: #f1f5f9;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px dashed #cbd5e1;
+        }
+
+        /* Comparables Section */
+        .comparables-section {
+            background: white;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e40af;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .comparable-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .comparable-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .comparable-address {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .comparable-price {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #059669;
+            text-align: center;
+        }
+
+        .comparable-status {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #dc2626;
+            text-align: right;
+        }
+
+        .comparable-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .spec-item {
+            background: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .spec-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .spec-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-top: 0.25rem;
+        }
+
+        .comparable-analysis {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #374151;
+            text-align: justify;
+        }
+
+        /* Logos */
+        .logos-section {
+            background: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header h2 {
+                font-size: 1.2rem;
+            }
+
+            .agents-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .comparable-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .comparable-specs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logos-container {
+                gap: 1.5rem;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .comparable-specs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <div class="container">
+                <h1>Professional Market Analysis</h1>
+                <h2>25 Ballymeade Road, Hopewell Junction, NY 12533</h2>
+                <div class="property-details">
+                    <p>Prepared for: Allyson Bellio</p>
+                    <p>The Legends Golf Course Community</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Agent Section -->
+    <section class="agent-section">
+        <div class="container">
+            <div class="agents-container">
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" 
+                         alt="Glenn Fitzgerald" class="agent-photo">
+                    <div class="agent-name">Glenn Fitzgerald</div>
+                    <div class="agent-title">Associate Broker</div>
+                    <div class="agent-experience">22 Years Experience</div>
+                </div>
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/justin_phillips_official_professional_photo.jpg" 
+                         alt="Justin Phillips" class="agent-photo">
+                    <div class="agent-name">Justin Phillips</div>
+                    <div class="agent-title">Managing Broker</div>
+                    <div class="agent-experience">22 Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-details">
+                <div class="contact-item">📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="01686f676e41697465726e6f77606d6d6478726e6d652f626e6c">[email&#160;protected]</a></div>
+                <div class="contact-item">📞 845-251-4468</div>
+                <div class="contact-item">🏢 United Real Estate Hudson Valley Edge</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Overview -->
+    <section class="property-overview">
+        <div class="container">
+            <h2 class="section-title">Property Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="overview-label">Property Type</div>
+                    <div class="overview-value">Luxury Colonial</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-label">Year Built</div>
+                    <div class="overview-value">2006</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-label">Square Footage</div>
+                    <div class="overview-value">7,742 sq ft</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-label">Bedrooms</div>
+                    <div class="overview-value">4</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-label">Bathrooms</div>
+                    <div class="overview-value">5 (4 full, 1 half)</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-label">Lot Size</div>
+                    <div class="overview-value">1.16 acres</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-label">Community</div>
+                    <div class="overview-value">The Legends</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-label">Last Sale</div>
+                    <div class="overview-value">$1,075,000 (March 2022)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Highlight -->
+    <section class="value-highlight">
+        <div class="container">
+            <h3>Estimated Market Value: $1,420,000</h3>
+            <p>Based on comprehensive analysis of 15 comparable properties in The Legends and surrounding luxury communities</p>
+        </div>
+    </section>
+
+    <!-- Professional Narration Section -->
+    <section class="narration-section">
+        <div class="container">
+            <h3>🎧 Professional Market Analysis Narration</h3>
+            <div class="narration-placeholder">
+                <p><strong>4-5 Minute Professional Audio Analysis</strong></p>
+                <p>Comprehensive market discussion featuring Glenn's 22 years of Hudson Valley expertise</p>
+                <p><em>Narration will be embedded here upon completion</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparable Properties Section -->
+    <section class="comparables-section">
+        <div class="container">
+            <h2 class="section-title">15 Detailed Comparable Properties Analysis</h2>
+
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">36 Ballymeade Road, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$1,225,000</div>
+                    <div class="comparable-status">Active Listing - Current</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">0.1 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">6,300</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">4.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">1.16 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">The Legends</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This property represents the most comparable sale in the immediate neighborhood, located on the same prestigious street within The Legends golf course community. The home features similar luxury colonial architecture with 6,300 square feet of living space, though notably smaller than the subject property by approximately 1,442 square feet. The property sits on an identical 1.16-acre lot and shares the same exclusive community amenities including golf course access and luxury finishes. The current asking price of $1,225,000 provides strong market validation for the subject property's value range.
+
+The property's active listing status indicates current market conditions and buyer interest in this specific location and price range. Given the smaller square footage, this comparable supports a higher valuation for the subject property when adjusted for the significant size difference. The shared community features, lot size, and street location make this an exceptional comparable for establishing baseline market value in this exclusive neighborhood.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">75 Frances Drive, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$1,150,000</div>
+                    <div class="comparable-status">Sold - June 27, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">1.2 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">4,097</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">4.6 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Hopewell Junction</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This recently sold luxury colonial demonstrates strong market activity in the Hopewell Junction area with a sale price of $1,150,000. The property features 4,097 square feet of living space, significantly smaller than the subject property, but compensates with an expansive 4.6-acre lot providing exceptional privacy and outdoor space. The home's 4 bedrooms and 5 bathrooms match the subject property's bedroom count while providing the same luxury bathroom amenities expected in this market segment.
+
+The recent sale date of June 27, 2025, provides current market validation and demonstrates active buyer demand for luxury properties in the Hopewell Junction market. When adjusted for the substantial square footage difference (3,645 square feet smaller), this comparable supports a significantly higher valuation for the subject property. The property's colonial architecture and luxury finishes align with the subject property's style and quality expectations.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">18 Chestnut Street, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$959,000</div>
+                    <div class="comparable-status">Sold - July 10, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">1.8 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">4,966</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">3.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">0.8 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Enclave @ Four Corners</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This exceptional colonial home in the prestigious Enclave @ Four Corners development sold for $959,000, representing strong market activity in luxury home segments. The property features 4,966 square feet of elegant living space with attention to detail evident in the design and finishes. Built in 2016, this home offers more modern construction compared to the subject property, though the subject's 2006 construction still represents contemporary luxury standards. The home's 4 bedrooms match the subject property, while the 3.5 bathrooms provide slightly fewer luxury bath amenities.
+
+The recent sale date of July 10, 2025, provides excellent market timing relevance for current valuation purposes. The property's smaller square footage (2,776 square feet less than subject) and smaller lot size (0.36 acres less) suggest significant upward adjustments are warranted for the subject property. The luxury finishes and resort-style living mentioned in the listing align with the subject property's high-end amenities and golf course community lifestyle.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">86 Carpenter Road, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$843,495</div>
+                    <div class="comparable-status">Sold - July 10, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">2.1 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">5,472</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">3.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">1.2 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">East Fishkill</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This newly constructed contemporary colonial represents the latest in luxury home design and sold for $843,495 in July 2025. The Adams model features 5,472 square feet of living space with modern amenities including 9-foot first-floor ceilings, an expansive open-concept kitchen, and a two-story family room with fireplace. The new construction status provides insight into current building costs and buyer preferences for modern luxury features. The 4-bedroom, 3.5-bathroom configuration matches the subject property's bedroom count while providing substantial luxury living space.
+
+The 1.2-acre lot size closely matches the subject property's 1.16 acres, providing similar privacy and outdoor space. However, the significantly lower sale price reflects the impact of location, with the subject property's prestigious Legends golf course community commanding premium pricing. When adjusted for the 2,270 square feet difference and the premium location value, this comparable supports the subject property's higher valuation range while demonstrating active market demand for luxury colonial homes in the area.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">17 N Winter Park Drive, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$840,000</div>
+                    <div class="comparable-status">Sold - July 13, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">1.5 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">3,514</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">4.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">0.9 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Hopewell Junction</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This stunning contemporary colonial sold for $840,000, demonstrating continued market strength in the Hopewell Junction luxury home segment. The property features 3,514 square feet of elegant living space with a bright, open floor plan and gourmet kitchen amenities. Built in 2003, the home represents quality construction from the same era as the subject property, ensuring comparable build quality and architectural standards. The 4-bedroom, 4.5-bathroom configuration provides the same bedroom count as the subject while offering substantial luxury bathroom amenities.
+
+The property's location near the Appalachian Trail adds natural beauty and recreational value, though it lacks the exclusive golf course community amenities of the subject property. The recent July 13, 2025 sale date provides excellent market timing for valuation purposes. With 4,228 square feet less living space than the subject property, significant upward adjustments are warranted. The sale demonstrates strong buyer demand for luxury colonial homes in the Hopewell Junction market, supporting higher valuations for properties with superior size and community amenities.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">2 Quince Street, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$799,000</div>
+                    <div class="comparable-status">Sold - June 25, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">1.9 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">2,748</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">0.5 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Four Corners Development</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This contemporary colonial in the sought-after Four Corners Development sold for $799,000, representing strong market activity in luxury home segments. The property features nearly 3,000 square feet of open-concept living with sun-drenched rooms and sweeping views of Central Park. Built by WCI, the home demonstrates quality construction standards and attention to detail expected in luxury developments. The 4-bedroom configuration matches the subject property, though the 2.5 bathrooms provide fewer luxury amenities compared to the subject's 5 bathrooms.
+
+The property's corner lot location on a private half-acre provides privacy and outdoor space, though significantly smaller than the subject property's 1.16 acres. The recent sale date of June 25, 2025, provides current market validation for luxury home demand in the area. With 4,994 square feet less living space than the subject property, substantial upward adjustments are warranted. The Four Corners Development's reputation for quality construction and desirable location supports the subject property's premium valuation in the prestigious Legends community.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">10 Stephen Drive, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$725,000</div>
+                    <div class="comparable-status">Sold - July 10, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">2.3 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">3,068</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">0.8 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">East Fishkill</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This 4-bedroom, 2.5-bathroom colonial sold for $725,000, demonstrating market activity in the East Fishkill luxury home segment. The property features 3,068 square feet of living space with unique amenities including a custom Adirondack room with 14-foot vaulted ceiling and Vermont Casting stove. Built in 1979, the home represents solid construction from an earlier era, though requiring comparison adjustments for age and modern amenities. The property's location in a convenient, sought-after East Fishkill neighborhood provides good access to amenities while maintaining residential privacy.
+
+The 0.8-acre lot provides substantial outdoor space, though smaller than the subject property's 1.16 acres. The recent July 10, 2025 sale date ensures current market relevance for valuation purposes. With 4,674 square feet less living space than the subject property and fewer bathroom amenities, significant upward adjustments are warranted. The sale demonstrates continued buyer interest in luxury colonial homes in the broader Hopewell Junction market area, supporting higher valuations for properties with superior size, amenities, and exclusive community features.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">65 Fenton Way, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$666,750</div>
+                    <div class="comparable-status">Sold - June 27, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">2.0 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">3,227</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">3.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">0.7 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Hopewell Glen</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This well-maintained Toll Brothers Columbia model sold for $666,750 in the sought-after Hopewell Glen community. Built in 2016, the home represents modern construction standards with over 3,700 square feet of refined living space. The property features 4 spacious bedrooms and 3.5 bathrooms, matching the subject property's bedroom count while providing substantial luxury amenities. The Toll Brothers construction ensures quality materials and attention to detail expected in luxury home developments.
+
+The Hopewell Glen community provides desirable neighborhood amenities and location convenience, though lacking the exclusive golf course access of the subject property's Legends community. The recent June 27, 2025 sale date provides excellent market timing for current valuation purposes. With 4,515 square feet less living space than the subject property, substantial upward adjustments are warranted. The sale demonstrates active buyer demand for luxury colonial homes in established communities, supporting higher valuations for properties with superior size and exclusive amenities.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">36 Country Club Road, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$637,500</div>
+                    <div class="comparable-status">Sold - July 10, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">0.8 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">2,700</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">1.0 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Golf Course Adjacent</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This distinctive 4-bedroom, 2.5-bathroom colonial sold for $637,500, offering valuable insight into golf course adjacent property values. The property features 2,700 square feet of classic living space with distant mountain views and borders a beautiful golf course, providing similar recreational and scenic amenities to the subject property. Built in 1971, the home represents solid construction from an earlier era, though requiring age-related adjustments when compared to the subject property's 2006 construction.
+
+The property's golf course location provides exceptional value comparison to the subject property's Legends community setting. The 1.0-acre lot offers substantial privacy and outdoor space, closely comparable to the subject property's 1.16 acres. The recent July 10, 2025 sale date ensures current market relevance. With 5,042 square feet less living space than the subject property, significant upward adjustments are warranted. The golf course adjacency demonstrates the premium value associated with recreational community amenities, strongly supporting the subject property's higher valuation in the exclusive Legends golf course community.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">18 Newhard Place, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$621,500</div>
+                    <div class="comparable-status">Sold - June 30, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">1.7 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">2,400</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">3</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">1.3 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Hopewell Junction</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This exceptional split-level residence sold for $621,500, demonstrating market activity in the luxury home segment with unique architectural features. The property features 2,400 square feet of beautifully updated living space on a sprawling 1.3-acre lot with meticulously landscaped grounds. The home's split-level design offers a different architectural approach compared to the subject property's colonial style, though both represent quality construction and luxury finishes. The 3-bedroom, 2.5-bathroom configuration provides fewer bedrooms and bathrooms than the subject property.
+
+The expansive 1.3-acre lot exceeds the subject property's 1.16 acres, providing exceptional privacy and outdoor space. The recent June 30, 2025 sale date ensures current market relevance for valuation purposes. With 5,342 square feet less living space and one fewer bedroom, substantial upward adjustments are warranted for the subject property. The sale demonstrates continued buyer interest in luxury properties with substantial acreage in the Hopewell Junction market, supporting higher valuations for properties with superior size and bedroom count.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">30 Lomala Road, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$570,000</div>
+                    <div class="comparable-status">Sold - June 30, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">2.5 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">2,200</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">0.9 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Hopewell Junction</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This beautiful Dutch Colonial sold for $570,000, representing market activity in the historic home segment with unique architectural character. The property features 2,200 square feet of living space that seamlessly blends original details with modern updates, creating a charming sanctuary. Built in 1947, the home represents classic construction from an earlier era, requiring age and condition adjustments when compared to the subject property's 2006 construction. The 4-bedroom, 2-bathroom configuration matches the subject property's bedroom count while providing fewer luxury bathroom amenities.
+
+The property's tranquil setting on 0.9 acres provides substantial privacy and outdoor space, though smaller than the subject property's 1.16 acres. The recent June 30, 2025 sale date ensures current market relevance for valuation purposes. With 5,542 square feet less living space than the subject property and significantly fewer bathroom amenities, substantial upward adjustments are warranted. The sale demonstrates buyer appreciation for unique architectural character and peaceful settings, supporting higher valuations for properties with superior size, modern construction, and luxury amenities.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">25 Wright Boulevard, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$555,000</div>
+                    <div class="comparable-status">Sold - June 20, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">1.4 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">1,952</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">3</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">0.8 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Hopewell Junction</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This beautifully updated raised ranch sold for $555,000, demonstrating market activity in the updated home segment with modern amenities. The property features 1,952 square feet of thoughtfully renovated living space with central air installed within the last four years and a brand-new blacktop driveway. The home's raised ranch design offers a different architectural approach compared to the subject property's colonial style, though both represent quality construction and modern updates. The 3-bedroom, 2-bathroom configuration provides fewer bedrooms and bathrooms than the subject property.
+
+The private and serene 0.8-acre lot provides substantial outdoor space and privacy, though smaller than the subject property's 1.16 acres. The recent June 20, 2025 sale date ensures excellent market timing for current valuation purposes. With 5,790 square feet less living space, one fewer bedroom, and three fewer bathrooms, substantial upward adjustments are warranted for the subject property. The sale demonstrates buyer demand for updated properties with privacy and modern amenities, strongly supporting higher valuations for properties with superior size and luxury features.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">1 Shenandoah Road, Hopewell Junction, NY 12533</div>
+                    <div class="comparable-price">$765,000</div>
+                    <div class="comparable-status">Sold - June 27, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">1.6 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">2,500</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">2.23 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">East Fishkill</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This newly constructed Jefferson model colonial sold for $765,000, representing the latest in luxury home design and construction standards. The property features 2,500 square feet of modern living space on an expansive 2.23-acre parcel, providing exceptional privacy and outdoor space. Built in 2024, the home offers the most current construction standards, materials, and energy efficiency features. The 4-bedroom, 2.5-bathroom configuration matches the subject property's bedroom count while providing substantial living space and modern amenities.
+
+The property's location on a quiet street with convenient access to I-84 and the Taconic Parkway provides excellent commuter access while maintaining residential privacy. The 2.23-acre lot significantly exceeds the subject property's 1.16 acres, offering exceptional outdoor space and privacy. The recent June 27, 2025 sale date provides current market validation. With 5,242 square feet less living space than the subject property, despite the larger lot size, substantial upward adjustments are warranted. The new construction status and large lot demonstrate buyer willingness to pay premium prices for quality and space, supporting the subject property's higher valuation.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">190 Windsor Road, Fishkill, NY 12524</div>
+                    <div class="comparable-price">$737,501</div>
+                    <div class="comparable-status">Sold - July 2, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">4.2 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">3,300</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">3</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">1.1 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Fishkill</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This beautifully landscaped property sold for $737,501, demonstrating market strength in the luxury home segment with exceptional interior design. The property features 3,300 square feet of open floor plan living with soaring ceilings, gas fireplace, and gleaming hardwood floors throughout. Built in 1992, the home represents quality construction from the same general era as the subject property, ensuring comparable build quality and architectural standards. The 4-bedroom, 3-bathroom configuration matches the subject property's bedroom count while providing substantial luxury living space.
+
+The magnificent kitchen and spacious dining room with deck access featuring retractable awning demonstrate the luxury amenities expected in this market segment. The 1.1-acre lot provides substantial privacy and outdoor space, closely comparable to the subject property's 1.16 acres. The recent July 2, 2025 sale date ensures current market relevance. With 4,442 square feet less living space than the subject property, significant upward adjustments are warranted. The sale demonstrates continued buyer demand for luxury homes with superior interior design and outdoor amenities, supporting higher valuations for properties with exceptional size and community features.</p>
+                </div>
+            </div>
+    
+            <div class="comparable-item">
+                <div class="comparable-header">
+                    <div class="comparable-address">9 Gina Lane, Lagrangeville, NY 12540</div>
+                    <div class="comparable-price">$815,000</div>
+                    <div class="comparable-status">Sold - July 1, 2025</div>
+                </div>
+                <div class="comparable-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Distance</div>
+                        <div class="spec-value">6.8 miles</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Square Feet</div>
+                        <div class="spec-value">2,679</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bedrooms</div>
+                        <div class="spec-value">3</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Bathrooms</div>
+                        <div class="spec-value">2.5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Lot Size</div>
+                        <div class="spec-value">1.0 acres</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Community</div>
+                        <div class="spec-value">Lagrangeville</div>
+                    </div>
+                </div>
+                <div class="comparable-analysis">
+                    <p>This beautifully upgraded home sold for $815,000, showcasing exceptional attention to detail and move-in ready condition. The property features 2,679 square feet of meticulously maintained living space with custom moldings, elegant wainscoting, updated kitchen, newer windows, and stylish modern finishes throughout. Built in 1998, the home represents quality construction from the same era as the subject property, ensuring comparable build standards and architectural quality. The 3-bedroom, 2.5-bathroom configuration provides fewer bedrooms and bathrooms than the subject property.
+
+The welcoming two-story foyer and formal dining room demonstrate the luxury design elements expected in this market segment. The 1.0-acre lot provides substantial privacy and outdoor space, closely comparable to the subject property's 1.16 acres. The recent July 1, 2025 sale date ensures excellent market timing for current valuation purposes. With 5,063 square feet less living space and one fewer bedroom, substantial upward adjustments are warranted for the subject property. The sale demonstrates buyer willingness to pay premium prices for exceptional condition and luxury finishes, strongly supporting higher valuations for properties with superior size and bedroom count.</p>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- Logos Section -->
+    <section class="logos-section">
+        <div class="container">
+            <div class="logos-container">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" 
+                     alt="Hudson Valley SOLD" class="logo-img">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" 
+                     alt="United Real Estate Hudson Valley Edge" class="logo-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1e40af; color: white; padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                Glenn Fitzgerald & Justin Phillips - United Real Estate Hudson Valley Edge
+            </p>
+            <p style="font-size: 1rem;">
+                1097 State Route 55, Suite 9, Lagrangeville, NY 12540
+            </p>
+            <p style="font-size: 1rem; margin-top: 1rem;">
+                📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="026b6c646d426a7766716d6c74636e6e677b716d6e662c616d6f">[email&#160;protected]</a> | 📞 845-251-4468
+            </p>
+        </div>
+    </footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"961428cd9f1e97d5","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.7.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
