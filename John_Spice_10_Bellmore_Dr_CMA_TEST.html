@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparative Market Analysis - John Spice</title>
+    <style>
+      body {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 32px 80px;
+        position: relative;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', serif;
+        line-height: 1.6;
+        color: #000;
+        background: #fff;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 20px;
+      }
+      .company-name {
+        font-size: 28px;
+        font-weight: bold;
+        color: #2c5282;
+        margin-bottom: 8px;
+      }
+      .tagline {
+        font-size: 14px;
+        color: #666;
+        font-style: italic;
+      }
+      .client-info {
+        background: #f8f9fa;
+        padding: 20px;
+        border-left: 4px solid #2c5282;
+        margin: 30px 0;
+      }
+      .property-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin: 30px 0 20px 0;
+        color: #2c5282;
+      }
+      .target-value {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #38a169;
+        margin: 20px 0;
+      }
+      .pricing-matrix {
+        display: table;
+        width: 100%;
+        margin: 30px 0;
+      }
+      .pricing-option {
+        display: table-cell;
+        width: 33.33%;
+        padding: 20px;
+        text-align: center;
+        vertical-align: top;
+      }
+      .conservative {
+        border: 2px solid #e53e3e;
+        background: #fed7d7;
+      }
+      .recommended {
+        border: 2px solid #38a169;
+        background: #c6f6d5;
+      }
+      .optimistic {
+        border: 2px solid #d69e2e;
+        background: #faf089;
+      }
+      .price-large {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+      .market-stats {
+        display: table;
+        width: 100%;
+        margin: 30px 0;
+        text-align: center;
+      }
+      .stat-item {
+        display: table-cell;
+        width: 25%;
+        padding: 15px;
+        vertical-align: top;
+      }
+      .stat-number {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2c5282;
+        margin-bottom: 5px;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: #666;
+      }
+      .comparable-sales {
+        margin: 30px 0;
+      }
+      .comp-property {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 10px 0;
+        background: #f8f9fa;
+      }
+      .comp-address {
+        font-weight: bold;
+        color: #2c5282;
+        margin-bottom: 5px;
+      }
+      .comp-details {
+        display: table;
+        width: 100%;
+      }
+      .comp-detail {
+        display: table-cell;
+        width: 20%;
+        padding: 5px;
+        font-size: 14px;
+      }
+      .comp-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #38a169;
+        text-align: right;
+      }
+      .contact-section {
+        background: #2c5282;
+        color: white;
+        padding: 30px;
+        text-align: center;
+        margin: 40px 0 0 0;
+      }
+      .contact-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .contact-info {
+        display: table;
+        width: 100%;
+      }
+      .contact-item {
+        display: table-cell;
+        width: 33.33%;
+        text-align: center;
+        vertical-align: top;
+      }
+      .contact-label {
+        font-size: 12px;
+        color: #a0aec0;
+        margin-bottom: 5px;
+      }
+      .contact-value {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .cta-button {
+        background: #e53e3e;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="company-name">HUDSON VALLEY SOLD</div>
+      <div class="tagline">Professional Real Estate Excellence</div>
+    </div>
+
+    <div class="client-info">
+      <strong>Prepared for:</strong> John Spice<br />
+      <strong>Property:</strong> 10 Bellmore Dr, Poughkeepsie, NY 12601<br />
+      <strong>Date:</strong> July 12, 2025<br />
+      <strong>Analysis Type:</strong> WILLOW v31.3 Enhanced Comparative Market Analysis
+    </div>
+
+    <div class="property-title">10 Bellmore Dr, Poughkeepsie, NY 12601</div>
+
+    <div class="target-value">Target Value: $485,000</div>
+
+    <h2 style="text-align: center; margin: 30px 0 20px 0">Strategic Pricing Matrix</h2>
+
+    <div class="pricing-matrix">
+      <div class="pricing-option conservative">
+        <div style="font-weight: bold; color: #e53e3e; margin-bottom: 10px">CONSERVATIVE</div>
+        <div class="price-large">$465,000</div>
+        <div style="font-size: 12px; color: #666">
+          Safe pricing strategy for quick sale. Accounts for market fluctuations and ensures competitive positioning.
+        </div>
+      </div>
+      <div class="pricing-option recommended">
+        <div style="font-weight: bold; color: #38a169; margin-bottom: 10px">RECOMMENDED</div>
+        <div class="price-large">$485,000</div>
+        <div style="font-size: 12px; color: #666">
+          Optimal market positioning based on comprehensive analysis. Balances maximum value with market reality.
+        </div>
+      </div>
+      <div class="pricing-option optimistic">
+        <div style="font-weight: bold; color: #d69e2e; margin-bottom: 10px">OPTIMISTIC</div>
+        <div class="price-large">$510,000</div>
+        <div style="font-size: 12px; color: #666">
+          Premium positioning for unique properties. Requires exceptional marketing and perfect market conditions.
+        </div>
+      </div>
+    </div>
+
+    <h2 style="text-align: center; margin: 30px 0 20px 0">Poughkeepsie, NY Market Analysis</h2>
+
+    <p style="text-align: center; margin-bottom: 30px">
+      Comprehensive analysis of the Poughkeepsie real estate market based on recent sales data, market trends, and local
+      economic factors.
+    </p>
+
+    <div class="market-stats">
+      <div class="stat-item">
+        <div class="stat-number">18</div>
+        <div class="stat-label">Average Days on Market</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">97.2%</div>
+        <div class="stat-label">Sale Price to List Price Ratio</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">22</div>
+        <div class="stat-label">Recent Comparable Sales</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">+6.8%</div>
+        <div class="stat-label">Year-over-Year Appreciation</div>
+      </div>
+    </div>
+
+    <div style="background: #667eea; color: white; padding: 30px; margin: 30px 0; text-align: center">
+      <h2 style="margin: 0 0 20px 0">Market Insights & Trends</h2>
+      <div style="display: table; width: 100%">
+        <div style="display: table-cell; width: 25%; padding: 10px; vertical-align: top">
+          <h3 style="margin: 0 0 10px 0; font-size: 16px">Market Velocity</h3>
+          <p style="margin: 0; font-size: 14px">
+            Poughkeepsie market showing steady activity with properties selling within 3 weeks of listing.
+          </p>
+        </div>
+        <div style="display: table-cell; width: 25%; padding: 10px; vertical-align: top">
+          <h3 style="margin: 0 0 10px 0; font-size: 16px">Price Trends</h3>
+          <p style="margin: 0; font-size: 14px">
+            Consistent appreciation driven by proximity to NYC and strong local economy.
+          </p>
+        </div>
+        <div style="display: table-cell; width: 25%; padding: 10px; vertical-align: top">
+          <h3 style="margin: 0 0 10px 0; font-size: 16px">Buyer Profile</h3>
+          <p style="margin: 0; font-size: 14px">
+            Mix of local families and commuters seeking suburban lifestyle with city access.
+          </p>
+        </div>
+        <div style="display: table-cell; width: 25%; padding: 10px; vertical-align: top">
+          <h3 style="margin: 0 0 10px 0; font-size: 16px">Seasonal Factors</h3>
+          <p style="margin: 0; font-size: 14px">
+            Spring and summer show peak activity with steady momentum through fall months.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparable-sales">
+      <h2 style="text-align: center; margin: 30px 0 20px 0">Recent Comparable Sales</h2>
+
+      <div class="comp-property">
+        <div class="comp-address">15 Bellmore Dr, Poughkeepsie, NY</div>
+        <div class="comp-details">
+          <div class="comp-detail"><strong>Beds:</strong> 3</div>
+          <div class="comp-detail"><strong>Baths:</strong> 2</div>
+          <div class="comp-detail"><strong>Sq Ft:</strong> 1,920</div>
+          <div class="comp-detail"><strong>Sold:</strong> June 2025</div>
+          <div class="comp-price">$472,000</div>
+        </div>
+      </div>
+
+      <div class="comp-property">
+        <div class="comp-address">28 Woodside Ave, Poughkeepsie, NY</div>
+        <div class="comp-details">
+          <div class="comp-detail"><strong>Beds:</strong> 4</div>
+          <div class="comp-detail"><strong>Baths:</strong> 2.5</div>
+          <div class="comp-detail"><strong>Sq Ft:</strong> 2,150</div>
+          <div class="comp-detail"><strong>Sold:</strong> May 2025</div>
+          <div class="comp-price">$498,000</div>
+        </div>
+      </div>
+
+      <div class="comp-property">
+        <div class="comp-address">42 Maple Glen Dr, Poughkeepsie, NY</div>
+        <div class="comp-details">
+          <div class="comp-detail"><strong>Beds:</strong> 3</div>
+          <div class="comp-detail"><strong>Baths:</strong> 2</div>
+          <div class="comp-detail"><strong>Sq Ft:</strong> 1,850</div>
+          <div class="comp-detail"><strong>Sold:</strong> June 2025</div>
+          <div class="comp-price">$465,000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section">
+      <div class="contact-title">Ready to Move Forward?</div>
+      <p style="margin: 0 0 20px 0; font-size: 16px">
+        Let's discuss your real estate goals and create a winning strategy for your property.
+      </p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-label">Direct Phone</div>
+          <div class="contact-value">(845) 393-0777</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">johnspice@gmail.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Response Time</div>
+          <div class="contact-value">Within 1 Hour</div>
+        </div>
+      </div>
+
+      <div class="cta-button">Call Now for Consultation</div>
+    </div>
+
+    <div class="footer">
+      Â© 2025 Hudson Valley SOLD | WILLOW v31.3 Enhanced CMA System<br />
+      Professional Real Estate Services | Licensed in New York State
+    </div>
+  </body>
+</html>
+
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDqQlVdGJLUFkZIeGbrxWCM4lz6KaULllkSICVACKU3E2fRASMClqH6sQuQfI%2BjE6rih4txoN8l700wdAn4K19r2%2BSL2o7XzwnuA6M034XmU6197hrQep97foMMcRH5%2F5YuMcrRZNBfwPHDmDzD1NUCxuS2sZMksSQ9yewTFuTTiiYmEWcFu6h026MPet36%2FKHeMnG8xx8%2BH%2FZylCgbhcbapaTZBPXdG84KZLrZ4KMFSd1zElLKdqXysBv9EFzQs9950KVc54RbyhcTJKV0y6MUvA5UhJ%2Be%2BHv%2BKDFoxO%2BdNI9qcrS7ulIQc7MG4pgfB%2BZkdXzvX76ZmaL5zpNBr8FzEKCCm0qGVdhzCqba3thQMhIPhNw15Ec%2BsHCb0PIPG0SM4OwvOKCJyWCDPfxUMrkQulWYhWF4wMIBDtLptrZkkqBJa3B3aCSRQcqUwqNL%2FUPoCYiPtnKumWLw3Wg5z1k352sPrbpofkeUUWn9cyL8ih3OF869Ql6kj5SyuLxq334kEAemRPFvM8mOsXxANy8%2F0%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDqQlVdGJLUFkZIeGbrxWCM4lz6KaULllkSICVACKU3E2fRASMClqH6sQuQfI+jE6rih4txoN8l700wdAn4K19r2+SL2o7XzwnuA6M034XmU6197hrQep97foMMcRH5/5YuMcrRZNBfwPHDmDzD1NUCxuS2sZMksSQ9yewTFuTTiiYmEWcFu6h026MPet36/KHeMnG8xx8+H/ZylCgbhcbapaTZBPXdG84KZLrZ4KMFSd1zElLKdqXysBv9EFzQs9950KVc54RbyhcTJKV0y6MUvA5UhJ+e+Hv+KDFoxO+dNI9qcrS7ulIQc7MG4pgfB+ZkdXzvX76ZmaL5zpNBr8FzEKCCm0qGVdhzCqba3thQMhIPhNw15Ec+sHCb0PIPG0SM4OwvOKCJyWCDPfxUMrkQulWYhWF4wMIBDtLptrZkkqBJa3B3aCSRQcqUwqNL/UPoCYiPtnKumWLw3Wg5z1k352sPrbpofkeUUWn9cyL8ih3OF869Ql6kj5SyuLxq334kEAemRPFvM8mOsXxANy8/0=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
