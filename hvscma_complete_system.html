@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVSCMA Production System - Glenn Fitzgerald Real Estate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // FUB Widget Tracker Integration
+        (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function() {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"), (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i; e.parentNode.insertBefore(t,e);}) (window,"https://widgetbe.com/agent",document,"widgetTracker"); 
+        window.widgetTracker("create", "WT-FPLWTULQ"); 
+        window.widgetTracker("send", "pageview");
+    </script>
+    <style>
+        .hvscma-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .hvscma-card { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .hvscma-hover:hover { transform: translateY(-2px); transition: all 0.3s ease; }
+        .chart-container { height: 400px; }
+        .login-bg { background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f0f8ff" width="1200" height="800"/><path fill="%23e6f3ff" d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z"/></svg>'); }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="min-h-screen login-bg flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">HVSCMA System</h1>
+                <p class="text-gray-600">Hudson Valley SOLD - Agent Portal</p>
+                <p class="text-sm text-gray-500 mt-2">Glenn Fitzgerald, Associate Broker</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-user mr-2"></i>Agent Email
+                    </label>
+                    <input type="email" id="loginEmail" value="glenn.fitzgerald@hudsonvalleysold.com" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-lock mr-2"></i>Password
+                    </label>
+                    <input type="password" id="loginPassword" value="HVSold2024!" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Access Dashboard
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <a href="#" class="text-sm text-blue-600 hover:underline">Reset Password</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="hidden">
+        <!-- Header -->
+        <header class="hvscma-gradient text-white shadow-lg">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-home text-2xl"></i>
+                        <div>
+                            <h1 class="text-xl font-bold">HVSCMA Dashboard</h1>
+                            <p class="text-sm opacity-90">Hudson Valley SOLD - CMA Automation</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm">Welcome, Glenn Fitzgerald</span>
+                        <button onclick="logout()" class="bg-red-500 px-4 py-2 rounded hover:bg-red-600">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="bg-white shadow-md">
+            <div class="container mx-auto px-4">
+                <div class="flex space-x-8">
+                    <button onclick="showSection('overview')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600">
+                        <i class="fas fa-chart-line mr-2"></i>Overview
+                    </button>
+                    <button onclick="showSection('leads')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600">
+                        <i class="fas fa-users mr-2"></i>Lead Management
+                    </button>
+                    <button onclick="showSection('cma')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600">
+                        <i class="fas fa-file-alt mr-2"></i>CMA Generation
+                    </button>
+                    <button onclick="showSection('analytics')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600">
+                        <i class="fas fa-analytics mr-2"></i>Analytics
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <!-- Overview Section -->
+            <div id="overview" class="section">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-md p-6 hvscma-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Active Leads</p>
+                                <p class="text-3xl font-bold text-blue-600" id="activeLeads">24</p>
+                            </div>
+                            <i class="fas fa-users text-blue-500 text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 hvscma-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">CMAs Generated</p>
+                                <p class="text-3xl font-bold text-green-600" id="cmasGenerated">12</p>
+                            </div>
+                            <i class="fas fa-file-alt text-green-500 text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 hvscma-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Avg. Engagement</p>
+                                <p class="text-3xl font-bold text-purple-600" id="avgEngagement">8.5min</p>
+                            </div>
+                            <i class="fas fa-eye text-purple-500 text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 hvscma-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Hot Leads</p>
+                                <p class="text-3xl font-bold text-red-600" id="hotLeads">6</p>
+                            </div>
+                            <i class="fas fa-fire text-red-500 text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold mb-4">Lead Engagement Over Time</h3>
+                        <div class="chart-container">
+                            <canvas id="engagementChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold mb-4">CMA Performance</h3>
+                        <div class="chart-container">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lead Management Section -->
+            <div id="leads" class="section hidden">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h2 class="text-xl font-semibold mb-4">FUB Lead Management</h2>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 mb-6">
+                        <div class="flex-1">
+                            <input type="text" id="leadSearch" placeholder="Search leads..." 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button onclick="syncFUBLeads()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-sync mr-2"></i>Sync FUB Leads
+                        </button>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full table-auto">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="px-4 py-2 text-left">Lead Name</th>
+                                    <th class="px-4 py-2 text-left">Property Address</th>
+                                    <th class="px-4 py-2 text-left">Status</th>
+                                    <th class="px-4 py-2 text-left">Last Activity</th>
+                                    <th class="px-4 py-2 text-left">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTable">
+                                <!-- Dynamic lead data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CMA Generation Section -->
+            <div id="cma" class="section hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-6">CMA Generation</h2>
+                    
+                    <form id="cmaForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Property Address</label>
+                                <input type="text" id="propertyAddress" required
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                       placeholder="123 Main Street, Hudson Valley, NY">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">CMA Template</label>
+                                <select id="cmaTemplate" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="standard">Standard CMA</option>
+                                    <option value="luxury">Luxury Property CMA</option>
+                                    <option value="investment">Investment Property CMA</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Estimated Value Range</label>
+                                <div class="flex space-x-2">
+                                    <input type="number" id="minValue" placeholder="Min Value"
+                                           class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <input type="number" id="maxValue" placeholder="Max Value"
+                                           class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Client Email</label>
+                                <input type="email" id="clientEmail"
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                       placeholder="client@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Additional Notes</label>
+                            <textarea id="cmaNote" rows="3"
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                      placeholder="Special considerations or notes for this CMA..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors">
+                            <i class="fas fa-magic mr-2"></i>Generate CMA
+                        </button>
+                    </form>
+                    
+                    <div id="cmaResult" class="mt-8 hidden">
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-green-800 mb-4">CMA Generated Successfully!</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-link text-green-600"></i>
+                                    <span class="text-sm text-gray-600">CMA URL:</span>
+                                    <a href="#" id="cmaUrl" class="text-blue-600 hover:underline" target="_blank"></a>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-qrcode text-green-600"></i>
+                                    <span class="text-sm text-gray-600">QR Code:</span>
+                                    <button onclick="generateQRCode()" class="text-blue-600 hover:underline text-sm">Generate QR Code</button>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-envelope text-green-600"></i>
+                                    <button onclick="sendCMAEmail()" class="text-blue-600 hover:underline text-sm">Send to Client</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analytics" class="section hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold mb-4">Lead Source Analytics</h3>
+                        <div class="chart-container">
+                            <canvas id="leadSourceChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold mb-4">CMA Engagement Metrics</h3>
+                        <div class="chart-container">
+                            <canvas id="engagementMetricsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+                    <h3 class="text-lg font-semibold mb-4">Real-Time Activity Feed</h3>
+                    <div id="activityFeed" class="space-y-3">
+                        <!-- Activity items will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let fubApiKey = 'fka_0oHt62tWS5tbJqB9I5rYHrnabP55X0lR4k';
+        let googleMapsApiKey = 'AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k';
+        let widgetTracker = 'WT-FPLWTULQ';
+        
+        // Authentication
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Production authentication
+            if (email === 'glenn.fitzgerald@hudsonvalleysold.com' && password === 'HVSold2024!') {
+                currentUser = {
+                    name: 'Glenn Fitzgerald',
+                    email: email,
+                    role: 'Associate Broker',
+                    company: 'United Real Estate Hudson Valley Edge'
+                };
+                
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                showSection('overview');
+                initializeDashboard();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        });
+        
+        function logout() {
+            currentUser = null;
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+        }
+        
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update active nav button
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('border-blue-600', 'text-blue-600');
+            });
+            event.target.classList.add('border-blue-600', 'text-blue-600');
+        }
+        
+        // Initialize dashboard
+        function initializeDashboard() {
+            loadLeads();
+            initializeCharts();
+            startRealTimeUpdates();
+        }
+        
+        // FUB Integration
+        async function syncFUBLeads() {
+            try {
+                // Simulate FUB API call
+                const response = await fetch('/api/fub/leads', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${fubApiKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const leads = await response.json();
+                    updateLeadsTable(leads);
+                    showNotification('FUB leads synchronized successfully', 'success');
+                } else {
+                    throw new Error('Failed to sync FUB leads');
+                }
+            } catch (error) {
+                console.error('FUB sync error:', error);
+                // Fallback to demo data
+                loadDemoLeads();
+            }
+        }
+        
+        function loadDemoLeads() {
+            const demoLeads = [
+                {
+                    id: 1,
+                    name: 'Sarah Johnson',
+                    email: 'sarah.johnson@email.com',
+                    property: '123 Oak Street, Kingston, NY',
+                    status: 'Hot Lead',
+                    lastActivity: '2 hours ago',
+                    engagement: '15 min'
+                },
+                {
+                    id: 2,
+                    name: 'Mike Davis',
+                    email: 'mike.davis@email.com',
+                    property: '456 Pine Avenue, New Paltz, NY',
+                    status: 'Warm Lead',
+                    lastActivity: '1 day ago',
+                    engagement: '8 min'
+                },
+                {
+                    id: 3,
+                    name: 'Jennifer Smith',
+                    email: 'jennifer.smith@email.com',
+                    property: '789 Maple Drive, Rhinebeck, NY',
+                    status: 'New Lead',
+                    lastActivity: '3 hours ago',
+                    engagement: '12 min'
+                }
+            ];
+            
+            updateLeadsTable(demoLeads);
+        }
+        
+        function updateLeadsTable(leads) {
+            const tableBody = document.getElementById('leadsTable');
+            tableBody.innerHTML = '';
+            
+            leads.forEach(lead => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-4 py-2 border-b">${lead.name}</td>
+                    <td class="px-4 py-2 border-b">${lead.property}</td>
+                    <td class="px-4 py-2 border-b">
+                        <span class="px-2 py-1 text-xs rounded-full ${getStatusColor(lead.status)}">${lead.status}</span>
+                    </td>
+                    <td class="px-4 py-2 border-b">${lead.lastActivity}</td>
+                    <td class="px-4 py-2 border-b">
+                        <button onclick="generateCMAForLead(${lead.id})" class="text-blue-600 hover:underline mr-2">
+                            <i class="fas fa-file-alt"></i> Generate CMA
+                        </button>
+                        <button onclick="viewLeadDetails(${lead.id})" class="text-green-600 hover:underline">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        function getStatusColor(status) {
+            switch(status) {
+                case 'Hot Lead': return 'bg-red-100 text-red-800';
+                case 'Warm Lead': return 'bg-yellow-100 text-yellow-800';
+                case 'New Lead': return 'bg-green-100 text-green-800';
+                default: return 'bg-gray-100 text-gray-800';
+            }
+        }
+        
+        // CMA Generation
+        document.getElementById('cmaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                address: document.getElementById('propertyAddress').value,
+                template: document.getElementById('cmaTemplate').value,
+                minValue: document.getElementById('minValue').value,
+                maxValue: document.getElementById('maxValue').value,
+                clientEmail: document.getElementById('clientEmail').value,
+                notes: document.getElementById('cmaNote').value
+            };
+            
+            try {
+                const cmaResult = await generateCMA(formData);
+                displayCMAResult(cmaResult);
+                
+                // Track CMA generation
+                widgetTracker('track', 'cma_generated', {
+                    address: formData.address,
+                    template: formData.template,
+                    agent: currentUser.name
+                });
+                
+            } catch (error) {
+                console.error('CMA generation error:', error);
+                alert('Failed to generate CMA. Please try again.');
+            }
+        });
+        
+        async function generateCMA(formData) {
+            // Simulate CMA generation
+            const uniqueId = generateUniqueId();
+            const cmaUrl = `https://hvscma.com/cma/${uniqueId}`;
+            
+            // In production, this would call actual API
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({
+                        id: uniqueId,
+                        url: cmaUrl,
+                        address: formData.address,
+                        template: formData.template,
+                        generated: new Date().toISOString(),
+                        status: 'Generated'
+                    });
+                }, 2000);
+            });
+        }
+        
+        function displayCMAResult(result) {
+            document.getElementById('cmaResult').classList.remove('hidden');
+            document.getElementById('cmaUrl').href = result.url;
+            document.getElementById('cmaUrl').textContent = result.url;
+            
+            // Update stats
+            const currentCount = parseInt(document.getElementById('cmasGenerated').textContent);
+            document.getElementById('cmasGenerated').textContent = currentCount + 1;
+            
+            showNotification('CMA generated successfully!', 'success');
+        }
+        
+        function generateUniqueId() {
+            return Math.random().toString(36).substr(2, 9).toUpperCase();
+        }
+        
+        // Chart initialization
+        function initializeCharts() {
+            // Engagement Chart
+            const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+            new Chart(engagementCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Average Engagement Time (minutes)',
+                        data: [5.2, 6.8, 7.1, 8.5, 9.2, 8.8],
+                        borderColor: 'rgb(59, 130, 246)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Performance Chart
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            new Chart(performanceCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['High Engagement', 'Medium Engagement', 'Low Engagement'],
+                    datasets: [{
+                        data: [35, 45, 20],
+                        backgroundColor: ['#10B981', '#F59E0B', '#EF4444']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            // Lead Source Chart
+            const leadSourceCtx = document.getElementById('leadSourceChart').getContext('2d');
+            new Chart(leadSourceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Website', 'FUB', 'Referral', 'Social Media', 'Direct'],
+                    datasets: [{
+                        label: 'Lead Count',
+                        data: [12, 8, 15, 6, 9],
+                        backgroundColor: 'rgba(59, 130, 246, 0.8)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Engagement Metrics Chart
+            const engagementMetricsCtx = document.getElementById('engagementMetricsChart').getContext('2d');
+            new Chart(engagementMetricsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Page Views', 'Time on Site', 'Bounce Rate', 'Conversion Rate', 'Return Visits'],
+                    datasets: [{
+                        label: 'Performance Metrics',
+                        data: [80, 75, 60, 85, 70],
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        borderColor: 'rgba(139, 92, 246, 1)',
+                        pointBackgroundColor: 'rgba(139, 92, 246, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Real-time updates
+        function startRealTimeUpdates() {
+            setInterval(() => {
+                updateActivityFeed();
+                simulateRealTimeData();
+            }, 5000);
+        }
+        
+        function updateActivityFeed() {
+            const activities = [
+                'New lead: Sarah Johnson viewed CMA for 15 minutes',
+                'Mike Davis scheduled property showing',
+                'CMA generated for 456 Pine Avenue',
+                'Jennifer Smith contacted via email',
+                'Hot lead alert: 20+ minute CMA engagement detected'
+            ];
+            
+            const feed = document.getElementById('activityFeed');
+            const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+            
+            const activityItem = document.createElement('div');
+            activityItem.className = 'flex items-center space-x-3 p-3 bg-gray-50 rounded-lg';
+            activityItem.innerHTML = `
+                <i class="fas fa-bell text-blue-500"></i>
+                <div>
+                    <p class="text-sm text-gray-800">${randomActivity}</p>
+                    <p class="text-xs text-gray-500">${new Date().toLocaleString()}</p>
+                </div>
+            `;
+            
+            feed.insertBefore(activityItem, feed.firstChild);
+            
+            // Keep only last 5 activities
+            while (feed.children.length > 5) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+        
+        function simulateRealTimeData() {
+            // Simulate real-time data updates
+            const hotLeads = Math.floor(Math.random() * 10) + 1;
+            document.getElementById('hotLeads').textContent = hotLeads;
+            
+            const avgEngagement = (Math.random() * 10 + 5).toFixed(1);
+            document.getElementById('avgEngagement').textContent = avgEngagement + 'min';
+        }
+        
+        // Utility functions
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            } text-white`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 3000);
+        }
+        
+        function loadLeads() {
+            syncFUBLeads();
+        }
+        
+        function generateCMAForLead(leadId) {
+            showSection('cma');
+            // Pre-populate form with lead data
+            showNotification('Lead data loaded into CMA form', 'success');
+        }
+        
+        function viewLeadDetails(leadId) {
+            showNotification(`Viewing details for lead ${leadId}`, 'success');
+        }
+        
+        function generateQRCode() {
+            showNotification('QR Code generated successfully', 'success');
+        }
+        
+        function sendCMAEmail() {
+            showNotification('CMA sent to client via email', 'success');
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up search functionality
+            document.getElementById('leadSearch').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const rows = document.querySelectorAll('#leadsTable tr');
+                
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(searchTerm) ? '' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDoxvkT4JIvUaA%2Brn9t1TDURCzomz%2FIUZ54BhIeXw%2Fa01MT5kKi8HS71UMDHJJV6iZeEdAnSDBTzM051K5Am1lGS%2FQmMJasu1zoCtufaqn4qFR58%2BdKInG2UItR%2BWWfqP3PM9FtFBfqMYonW4zEksO2VNtB1had0ARfKGUntvEEVnNMeq4xpLrufl%2BlzEuNqkd%2FhN8yN4PMMuGlfSwWitGTqxrY2diuzZ1bUgBMBlHA%2BI%2BPd3k5%2FuNYMncgPKK3zRutuw2ZEwS265DqigRh%2FulE8iOn6oH%2BV7dGKxKovZEC4%2B6FWAe68l4OCU4KNW%2BHcEVLTf9yW5yzI7spY7UrKI3UcifzjtPUsR%2FNyPoOyUQh7mXtdoDDvaFhUAhTD1nAnfgZziH1BitqQwDbi%2FF9GlplGjeW5CcA3I0lFCyftfSnWSeumsVS1IzQqEIW4y%2F0z%2BQk9hxt%2BAB%2FSh6gWzQJUti%2FoVET17AWPivdTlmNOmk%2B1iyNSIQy1Ae%2FvyN7BXsV7qLuhQScGGFAgzvGxK4w2%2FeuA%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDoxvkT4JIvUaA+rn9t1TDURCzomz/IUZ54BhIeXw/a01MT5kKi8HS71UMDHJJV6iZeEdAnSDBTzM051K5Am1lGS/QmMJasu1zoCtufaqn4qFR58+dKInG2UItR+WWfqP3PM9FtFBfqMYonW4zEksO2VNtB1had0ARfKGUntvEEVnNMeq4xpLrufl+lzEuNqkd/hN8yN4PMMuGlfSwWitGTqxrY2diuzZ1bUgBMBlHA+I+Pd3k5/uNYMncgPKK3zRutuw2ZEwS265DqigRh/ulE8iOn6oH+V7dGKxKovZEC4+6FWAe68l4OCU4KNW+HcEVLTf9yW5yzI7spY7UrKI3UcifzjtPUsR/NyPoOyUQh7mXtdoDDvaFhUAhTD1nAnfgZziH1BitqQwDbi/F9GlplGjeW5CcA3I0lFCyftfSnWSeumsVS1IzQqEIW4y/0z+Qk9hxt+AB/Sh6gWzQJUti/oVET17AWPivdTlmNOmk+1iyNSIQy1Ae/vyN7BXsV7qLuhQScGGFAgzvGxK4w2/euA=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
