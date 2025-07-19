@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVSCMA Logging System Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .header { background: linear-gradient(135deg, #2c3e50, #34495e); color: white; padding: 20px; }
+        .content { padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>HVSCMA Logging System Validation</h1>
+        <p>Deployment Test - 2025-07-19 01:20:54</p>
+    </div>
+
+    <div class="content">
+        <h2>System Components Validated:</h2>
+        <ul>
+            <li>✅ GitHub API Integration</li>
+            <li>✅ Live URL Deployment</li>
+            <li>✅ Comprehensive Logging</li>
+            <li>✅ FUB Widget Integration</li>
+            <li>✅ Google Maps Static Integration</li>
+        </ul>
+
+        <h3>Property: Test Address for Logging Validation</h3>
+        <p><strong>Purpose:</strong> Validate comprehensive logging system captures all deployment data</p>
+
+        <!-- Google Maps Static Integration -->
+        <h3>Location Map:</h3>
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Red+Hook+NY&zoom=16&size=1200x800&maptype=satellite&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+             alt="Property Location Map" style="max-width: 100%; height: auto;">
+
+        <!-- FUB Widget Integration -->
+        <script>
+            (function(){
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = 'https://widgetbe.com/agent';
+                s.setAttribute('data-wt', 'WT-FPLWTULQ');
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            })();
+        </script>
+    </div>
+</body>
+</html>
