@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVSCMA Professional Market Analysis Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+        
+        .cma-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+        }
+        
+        .section-header {
+            background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border: 1px solid #f59e0b;
+        }
+        
+        .price-box {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border: 2px solid #10b981;
+        }
+        
+        .fillable-input {
+            border: 1px dashed #6b7280;
+            background: #f9fafb;
+            padding: 4px 8px;
+            border-radius: 4px;
+            min-width: 100px;
+            display: inline-block;
+        }
+        
+        .fillable-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+        }
+        
+        .chart-container {
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        
+        .print-friendly {
+            page-break-inside: avoid;
+        }
+        
+         {
+            .no-print {
+                display: none;
+            }
+            
+            body {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+            
+            .cma-header {
+                background: #1e3a8a !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-8xl mx-auto bg-white shadow-lg">
+        <!-- Header -->
+        <div class="cma-header p-8 text-center">
+            <h1 class="text-4xl font-bold mb-2">COMPREHENSIVE MARKET ANALYSIS</h1>
+            <div class="text-xl mb-4">
+                <input type="text" class="fillable-input bg-blue-700 text-white placeholder-blue-200 border-blue-300" placeholder="Property Address" style="width: 400px;">
+            </div>
+            <div class="grid grid-cols-2 gap-8 mt-6">
+                <div>
+                    <p class="text-lg">Prepared for</p>
+                    <p class="text-2xl font-semibold">
+                        <input type="text" class="fillable-input bg-blue-700 text-white placeholder-blue-200 border-blue-300" placeholder="Client Name" style="width: 200px;">
+                    </p>
+                </div>
+                <div>
+                    <p class="text-lg">
+                        <input type="text" class="fillable-input bg-blue-700 text-white placeholder-blue-200 border-blue-300" placeholder="Agent Name" style="width: 200px;">
+                    </p>
+                    <p class="text-sm">Licensed Real Estate Broker</p>
+                    <p class="text-sm">Hudson Valley SOLD Specialist</p>
+                    <p class="text-sm mt-2">Generated: 
+                        <input type="date" class="fillable-input bg-blue-700 text-white border-blue-300" style="width: 150px;">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Executive Summary -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-chart-line mr-3"></i>
+                    1. Executive Summary
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="price-box p-6 text-center">
+                    <h3 class="text-lg font-semibold mb-2">Estimated Market Value</h3>
+                    <p class="text-3xl font-bold text-green-700">$<input type="text" class="fillable-input text-center" placeholder="000,000" style="width: 120px;"></p>
+                    <p class="text-sm text-gray-600 mt-2">Based on recent comparable sales</p>
+                </div>
+                
+                <div class="highlight-box p-6 text-center">
+                    <h3 class="text-lg font-semibold mb-2">Market Conditions</h3>
+                    <p class="text-2xl font-bold text-orange-700">
+                        <input type="text" class="fillable-input text-center" placeholder="Balanced" style="width: 120px;">
+                    </p>
+                    <p class="text-sm text-gray-600 mt-2">Favorable for both buyers and sellers</p>
+                </div>
+                
+                <div class="bg-blue-50 border border-blue-200 p-6 text-center">
+                    <h3 class="text-lg font-semibold mb-2">Days on Market</h3>
+                    <p class="text-2xl font-bold text-blue-700">
+                        <input type="text" class="fillable-input text-center" placeholder="45-65" style="width: 80px;"> Days
+                    </p>
+                    <p class="text-sm text-gray-600 mt-2">Average for this price range</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Property Details -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-home mr-3"></i>
+                    2. Property Details
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Property Information</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="font-medium">Address:</span>
+                            <input type="text" class="fillable-input" placeholder="Full Address" style="width: 250px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Property Type:</span>
+                            <input type="text" class="fillable-input" placeholder="Single Family Residential" style="width: 200px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Year Built:</span>
+                            <input type="text" class="fillable-input" placeholder="1985" style="width: 100px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Lot Size:</span>
+                            <input type="text" class="fillable-input" placeholder="1.2 acres" style="width: 100px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">School District:</span>
+                            <input type="text" class="fillable-input" placeholder="School District" style="width: 150px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Features & Specifications</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="font-medium">Square Footage:</span>
+                            <input type="text" class="fillable-input" placeholder="2,100 sq ft" style="width: 100px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Bedrooms:</span>
+                            <input type="text" class="fillable-input" placeholder="3" style="width: 50px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Bathrooms:</span>
+                            <input type="text" class="fillable-input" placeholder="2.5" style="width: 50px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Garage:</span>
+                            <input type="text" class="fillable-input" placeholder="2-car attached" style="width: 120px;">
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium">Heating:</span>
+                            <input type="text" class="fillable-input" placeholder="Oil/Forced Air" style="width: 120px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Market Overview -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-chart-bar mr-3"></i>
+                    3. Market Overview - <input type="text" class="fillable-input" placeholder="City, State" style="width: 150px;">
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 text-center border border-gray-200">
+                    <p class="text-3xl font-bold text-blue-600">
+                        <input type="text" class="fillable-input text-center" placeholder="156" style="width: 60px;">
+                    </p>
+                    <p class="text-sm text-gray-600 mt-2">Properties Sold (12 months)</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 text-center border border-gray-200">
+                    <p class="text-3xl font-bold text-green-600">
+                        <input type="text" class="fillable-input text-center" placeholder="58" style="width: 60px;">
+                    </p>
+                    <p class="text-sm text-gray-600 mt-2">Average Days on Market</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 text-center border border-gray-200">
+                    <p class="text-3xl font-bold text-orange-600">
+                        +<input type="text" class="fillable-input text-center" placeholder="3.2" style="width: 60px;">%
+                    </p>
+                    <p class="text-sm text-gray-600 mt-2">Price Appreciation (YoY)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Recent Comparable Sales -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-balance-scale mr-3"></i>
+                    4. Recent Comparable Sales
+                </h2>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>Address</th>
+                            <th>Sale Date</th>
+                            <th>Sale Price</th>
+                            <th>Sq Ft</th>
+                            <th>Price/Sq Ft</th>
+                            <th>Days on Market</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="fillable-input w-full" placeholder="Address 1"></td>
+                            <td><input type="date" class="fillable-input w-full"></td>
+                            <td>$<input type="text" class="fillable-input w-full" placeholder="000,000"></td>
+                            <td><input type="text" class="fillable-input w-full" placeholder="0,000"> sq ft</td>
+                            <td>$<input type="text" class="fillable-input w-full" placeholder="000"></td>
+                            <td><input type="text" class="fillable-input w-full" placeholder="00"> days</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="fillable-input w-full" placeholder="Address 2"></td>
+                            <td><input type="date" class="fillable-input w-full"></td>
+                            <td>$<input type="text" class="fillable-input w-full" placeholder="000,000"></td>
+                            <td><input type="text" class="fillable-input w-full" placeholder="0,000"> sq ft</td>
+                            <td>$<input type="text" class="fillable-input w-full" placeholder="000"></td>
+                            <td><input type="text" class="fillable-input w-full" placeholder="00"> days</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="fillable-input w-full" placeholder="Address 3"></td>
+                            <td><input type="date" class="fillable-input w-full"></td>
+                            <td>$<input type="text" class="fillable-input w-full" placeholder="000,000"></td>
+                            <td><input type="text" class="fillable-input w-full" placeholder="0,000"> sq ft</td>
+                            <td>$<input type="text" class="fillable-input w-full" placeholder="000"></td>
+                            <td><input type="text" class="fillable-input w-full" placeholder="00"> days</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 5: Current Active Listings -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-tags mr-3"></i>
+                    5. Current Active Listings
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 border border-gray-200">
+                    <h3 class="font-semibold mb-2">
+                        <input type="text" class="fillable-input w-full" placeholder="Property Address 1">
+                    </h3>
+                    <p class="text-2xl font-bold text-green-600 mb-2">
+                        $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;">
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        <input type="text" class="fillable-input" placeholder="0,000" style="width: 80px;"> sq ft
+                        <input type="text" class="fillable-input" placeholder="0" style="width: 30px;"> bed,
+                        <input type="text" class="fillable-input" placeholder="0" style="width: 30px;"> bath
+                    </p>
+                    <p class="text-sm text-gray-600 mt-1">
+                        On market: <input type="text" class="fillable-input" placeholder="00" style="width: 40px;"> days
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 border border-gray-200">
+                    <h3 class="font-semibold mb-2">
+                        <input type="text" class="fillable-input w-full" placeholder="Property Address 2">
+                    </h3>
+                    <p class="text-2xl font-bold text-green-600 mb-2">
+                        $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;">
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        <input type="text" class="fillable-input" placeholder="0,000" style="width: 80px;"> sq ft
+                        <input type="text" class="fillable-input" placeholder="0" style="width: 30px;"> bed,
+                        <input type="text" class="fillable-input" placeholder="0" style="width: 30px;"> bath
+                    </p>
+                    <p class="text-sm text-gray-600 mt-1">
+                        On market: <input type="text" class="fillable-input" placeholder="00" style="width: 40px;"> days
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 border border-gray-200">
+                    <h3 class="font-semibold mb-2">
+                        <input type="text" class="fillable-input w-full" placeholder="Property Address 3">
+                    </h3>
+                    <p class="text-2xl font-bold text-green-600 mb-2">
+                        $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;">
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        <input type="text" class="fillable-input" placeholder="0,000" style="width: 80px;"> sq ft
+                        <input type="text" class="fillable-input" placeholder="0" style="width: 30px;"> bed,
+                        <input type="text" class="fillable-input" placeholder="0" style="width: 30px;"> bath
+                    </p>
+                    <p class="text-sm text-gray-600 mt-1">
+                        On market: <input type="text" class="fillable-input" placeholder="00" style="width: 40px;"> days
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Price Per Square Foot Analysis -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-calculator mr-3"></i>
+                    6. Price Per Square Foot Analysis
+                </h2>
+            </div>
+            
+            <div class="bg-blue-50 p-6 border border-blue-200">
+                <p class="text-lg">
+                    <strong>Analysis:</strong> Based on recent sales, the average price per square foot in 
+                    <input type="text" class="fillable-input" placeholder="City" style="width: 100px;"> is 
+                    $<input type="text" class="fillable-input" placeholder="000" style="width: 60px;">. 
+                    Your property at <input type="text" class="fillable-input" placeholder="0,000" style="width: 80px;"> sq ft 
+                    suggests a market value range of 
+                    $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;"> - 
+                    $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;">.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 7: Market Trends -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-trending-up mr-3"></i>
+                    7. Market Trends (12 Month Analysis)
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Price Trends</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 mr-2"></i>
+                            Median price increased <input type="text" class="fillable-input" placeholder="0.0" style="width: 50px;">% year-over-year
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-up text-green-500 mr-2"></i>
+                            Q2 2025 saw <input type="text" class="fillable-input" placeholder="0" style="width: 50px;">% increase from Q1
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-minus text-gray-500 mr-2"></i>
+                            Inventory levels remain <input type="text" class="fillable-input" placeholder="stable" style="width: 80px;">
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Market Activity</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-blue-500 mr-2"></i>
+                            Days on market decreased by <input type="text" class="fillable-input" placeholder="0" style="width: 50px;"> days
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-home text-green-500 mr-2"></i>
+                            Number of sales increased <input type="text" class="fillable-input" placeholder="00" style="width: 50px;">%
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-users text-orange-500 mr-2"></i>
+                            Buyer activity remains <input type="text" class="fillable-input" placeholder="strong" style="width: 80px;">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Days on Market Analysis -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-calendar-alt mr-3"></i>
+                    8. Days on Market Analysis
+                </h2>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="daysOnMarketChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Section 9: Pricing Strategy Recommendations -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-bullseye mr-3"></i>
+                    9. Pricing Strategy Recommendations
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-red-50 border border-red-200 p-6">
+                    <h3 class="text-lg font-semibold mb-2 text-red-700">Aggressive Pricing</h3>
+                    <p class="text-2xl font-bold text-red-600 mb-2">
+                        $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;">
+                    </p>
+                    <p class="text-sm text-gray-600">Higher risk, longer market time expected</p>
+                </div>
+                
+                <div class="bg-green-50 border border-green-200 p-6">
+                    <h3 class="text-lg font-semibold mb-2 text-green-700">Market Pricing</h3>
+                    <p class="text-2xl font-bold text-green-600 mb-2">
+                        $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;">
+                    </p>
+                    <p class="text-sm text-gray-600">Recommended - aligns with recent sales</p>
+                </div>
+                
+                <div class="bg-blue-50 border border-blue-200 p-6">
+                    <h3 class="text-lg font-semibold mb-2 text-blue-700">Quick Sale Pricing</h3>
+                    <p class="text-2xl font-bold text-blue-600 mb-2">
+                        $<input type="text" class="fillable-input" placeholder="000,000" style="width: 100px;">
+                    </p>
+                    <p class="text-sm text-gray-600">Fast sale expected, 15-30 days</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 10: Property Features Assessment -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-list-check mr-3"></i>
+                    10. Property Features Assessment
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-green-700">Positive Features</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Feature 1">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Feature 2">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Feature 3">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Feature 4">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Feature 5">
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-orange-700">Considerations</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-orange-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Consideration 1">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-orange-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Consideration 2">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-orange-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Consideration 3">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 11: Neighborhood Analysis -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-map-marker-alt mr-3"></i>
+                    11. Neighborhood Analysis - <input type="text" class="fillable-input" placeholder="City Name" style="width: 150px;">
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Location Advantages</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Location advantage 1">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Location advantage 2">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Location advantage 3">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Location advantage 4">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-star text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Location advantage 5">
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Local Amenities</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-graduation-cap text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="School district">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-tree text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Parks and recreation">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-shopping-cart text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Shopping and dining">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-apple-alt text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Local markets">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Community events">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 12: Current Market Conditions -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-chart-pie mr-3"></i>
+                    12. Current Market Conditions
+                </h2>
+            </div>
+            
+            <div class="bg-gray-50 p-6 border border-gray-200">
+                <h3 class="text-2xl font-semibold mb-4">
+                    <input type="text" class="fillable-input" placeholder="Balanced" style="width: 150px;"> Market
+                </h3>
+                
+                <p class="text-lg mb-4">
+                    The <input type="text" class="fillable-input" placeholder="City Name" style="width: 100px;"> market is currently experiencing 
+                    <input type="text" class="fillable-input" placeholder="balanced" style="width: 100px;"> conditions, meaning there's 
+                    <input type="text" class="fillable-input" placeholder="relative equilibrium" style="width: 150px;"> between buyer demand and seller supply.
+                </p>
+                
+                <div class="grid grid-cols-3 gap-6 mt-6">
+                    <div>
+                        <h4 class="font-semibold mb-2">For Sellers:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="Reasonable pricing is key" style="width: 200px;"></li>
+                            <li>â¢ Expect <input type="text" class="fillable-input" placeholder="45-65" style="width: 60px;"> days on market</li>
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="Professional staging helpful" style="width: 200px;"></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-2">For Buyers:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="More selection available" style="width: 200px;"></li>
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="Less bidding war pressure" style="width: 200px;"></li>
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="Time for due diligence" style="width: 200px;"></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-2">Market Outlook:</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="Stable price appreciation" style="width: 200px;"></li>
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="Continued buyer interest" style="width: 200px;"></li>
+                            <li>â¢ <input type="text" class="fillable-input" placeholder="Seasonal patterns normal" style="width: 200px;"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 13: Recommended Listing Price -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-dollar-sign mr-3"></i>
+                    13. Recommended Listing Price
+                </h2>
+            </div>
+            
+            <div class="price-box p-8 text-center mb-6">
+                <h3 class="text-3xl font-bold text-green-700 mb-2">
+                    $<input type="text" class="fillable-input text-center text-3xl" placeholder="000,000" style="width: 200px;">
+                </h3>
+                <p class="text-lg text-gray-600">Based on comprehensive market analysis</p>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-blue-50 p-6 border border-blue-200 text-center">
+                    <h4 class="font-semibold mb-2">Comparable Sales</h4>
+                    <p class="text-xl font-bold text-blue-600">
+                        $<input type="text" class="fillable-input text-center" placeholder="000K" style="width: 60px;"> - 
+                        $<input type="text" class="fillable-input text-center" placeholder="000K" style="width: 60px;"> range
+                    </p>
+                </div>
+                
+                <div class="bg-green-50 p-6 border border-green-200 text-center">
+                    <h4 class="font-semibold mb-2">Price Per Sq Ft</h4>
+                    <p class="text-xl font-bold text-green-600">
+                        $<input type="text" class="fillable-input text-center" placeholder="000" style="width: 60px;"> per sq ft
+                    </p>
+                </div>
+                
+                <div class="bg-orange-50 p-6 border border-orange-200 text-center">
+                    <h4 class="font-semibold mb-2">Market Position</h4>
+                    <p class="text-xl font-bold text-orange-600">
+                        <input type="text" class="fillable-input text-center" placeholder="Competitive" style="width: 120px;"> pricing
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 14: Marketing Recommendations -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-bullhorn mr-3"></i>
+                    14. Marketing Recommendations
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Marketing Strategy</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-camera text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Professional photography">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-globe text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="MLS and online listing portals">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-share-alt text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Social media marketing">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-handshake text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Broker open house">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-door-open text-blue-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Public open houses">
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Staging Suggestions</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-broom text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Deep clean and declutter">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-palette text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Neutral paint colors">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-sun text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Maximize natural light">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-couch text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Consider professional staging">
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-seedling text-green-500 mr-2 mt-1"></i>
+                            <input type="text" class="fillable-input w-full" placeholder="Enhance curb appeal">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 15: Next Steps -->
+        <div class="p-8 print-friendly">
+            <div class="section-header p-4 mb-6">
+                <h2 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-road mr-3"></i>
+                    15. Next Steps
+                </h2>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-red-50 p-6 border border-red-200">
+                    <h3 class="text-xl font-semibold mb-4 text-red-700">Immediate Actions (This Week)</h3>
+                    <ol class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="font-bold text-red-600 mr-2">1.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Review and discuss this CMA analysis">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-red-600 mr-2">2.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Schedule property walkthrough for final pricing confirmation">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-red-600 mr-2">3.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Discuss marketing timeline and strategy">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-red-600 mr-2">4.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Begin preparation for listing photography">
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="bg-orange-50 p-6 border border-orange-200">
+                    <h3 class="text-xl font-semibold mb-4 text-orange-700">Preparation Phase (Next 2 Weeks)</h3>
+                    <ol class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="font-bold text-orange-600 mr-2">1.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Complete any recommended staging improvements">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-orange-600 mr-2">2.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Schedule professional photography session">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-orange-600 mr-2">3.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Prepare listing materials and disclosures">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-orange-600 mr-2">4.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Finalize listing agreement and pricing strategy">
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="bg-green-50 p-6 border border-green-200">
+                    <h3 class="text-xl font-semibold mb-4 text-green-700">Launch Phase (Week 3+)</h3>
+                    <ol class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="font-bold text-green-600 mr-2">1.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="List property on MLS and major real estate portals">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-green-600 mr-2">2.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Begin marketing campaign and social media promotion">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-green-600 mr-2">3.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Schedule and conduct open houses">
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold text-green-600 mr-2">4.</span>
+                            <input type="text" class="fillable-input w-full" placeholder="Regular market feedback and strategy adjustments">
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="cma-header p-6 text-center">
+            <p class="text-lg">
+                For questions about this analysis or to schedule a consultation, contact:
+            </p>
+            <p class="text-xl font-semibold mt-2">
+                <input type="text" class="fillable-input bg-blue-700 text-white placeholder-blue-200 border-blue-300" placeholder="Agent Name" style="width: 200px;">
+            </p>
+            <p class="text-sm mt-2">
+                <input type="text" class="fillable-input bg-blue-700 text-white placeholder-blue-200 border-blue-300" placeholder="Phone Number" style="width: 150px;"> | 
+                <input type="text" class="fillable-input bg-blue-700 text-white placeholder-blue-200 border-blue-300" placeholder="Email Address" style="width: 200px;">
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Days on Market Chart
+        const ctx = document.getElementById('daysOnMarketChart').getContext('2d');
+        const daysOnMarketChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['0-30 Days', '31-60 Days', '61-90 Days', '91+ Days'],
+                datasets: [{
+                    label: 'Number of Properties',
+                    data: [25, 35, 20, 15],
+                    backgroundColor: [
+                        '#22c55e',
+                        '#3b82f6',
+                        '#f59e0b',
+                        '#ef4444'
+                    ],
+                    borderColor: [
+                        '#16a34a',
+                        '#2563eb',
+                        '#d97706',
+                        '#dc2626'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Properties'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Days on Market'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Days on Market Distribution - Last 12 Months'
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Print functionality
+        function printCMA() {
+            window.print();
+        }
+
+        // Auto-save functionality (optional)
+        function autoSave() {
+            const inputs = document.querySelectorAll('.fillable-input');
+            const data = {};
+            inputs.forEach((input, index) => {
+                data[`input_${index}`] = input.value;
+            });
+            localStorage.setItem('cma_data', JSON.stringify(data));
+        }
+
+        // Load saved data
+        function loadSavedData() {
+            const savedData = localStorage.getItem('cma_data');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                const inputs = document.querySelectorAll('.fillable-input');
+                inputs.forEach((input, index) => {
+                    if (data[`input_${index}`]) {
+                        input.value = data[`input_${index}`];
+                    }
+                });
+            }
+        }
+
+        // Auto-save on input changes
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('fillable-input')) {
+                autoSave();
+            }
+        });
+
+        // Load saved data on page load
+        window.addEventListener('load', loadSavedData);
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDlnvxvj0KWyzT%2FnHlnVziAiQufIa5QLDAwuoMphh%2Fo0DoJCs%2BleHlcp7he3dY778Rf9ap5RO6%2BvqZq4ok4JS1LwNQNED9sbPlssfPlQAiV7zqKBqmCYDd7eH7aR%2BDAEMp3QshIAnHknUNSJxGq8KtA%2F%2BKFvSg5MMtdEvjLrMyPdPbHVDo2NmyGPqgFKBKVycbUDMvmj4g%2BQ%2BEfHAlD8oR8sDmc3lnydsNBFQhP997rNMNY%2FDMGgMT0%2BMFAEFsp88GTdSBnLboq3%2F3l6BLo%2B5bUbB6Zm3ttkkQSbBF1iFA72WrEyHCWCnOKYUSTRy3JzCyfXebRWFb2Vz0d13uCwiYTb9cmXLhrd2pskwGVH25CytcyTsrm%2FQwHoSL03vpe3AHuhUmDWowZxMkoh98ZqyrjM%2BPjoGiSZNxRdaxe%2FDnAgxaHy8B%2FQHCjjTTEydRh2zJYDNzoiKc64a%2FyxUY4m3BHujOPoHxBrCKvlbvMedZepVET2pOpmtTox0boYnkLub%2BPDV50djWRAJ7h2IvyhLPLU%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDlnvxvj0KWyzT/nHlnVziAiQufIa5QLDAwuoMphh/o0DoJCs+leHlcp7he3dY778Rf9ap5RO6+vqZq4ok4JS1LwNQNED9sbPlssfPlQAiV7zqKBqmCYDd7eH7aR+DAEMp3QshIAnHknUNSJxGq8KtA/+KFvSg5MMtdEvjLrMyPdPbHVDo2NmyGPqgFKBKVycbUDMvmj4g+Q+EfHAlD8oR8sDmc3lnydsNBFQhP997rNMNY/DMGgMT0+MFAEFsp88GTdSBnLboq3/3l6BLo+5bUbB6Zm3ttkkQSbBF1iFA72WrEyHCWCnOKYUSTRy3JzCyfXebRWFb2Vz0d13uCwiYTb9cmXLhrd2pskwGVH25CytcyTsrm/QwHoSL03vpe3AHuhUmDWowZxMkoh98ZqyrjM+PjoGiSZNxRdaxe/DnAgxaHy8B/QHCjjTTEydRh2zJYDNzoiKc64a/yxUY4m3BHujOPoHxBrCKvlbvMedZepVET2pOpmtTox0boYnkLub+PDV50djWRAJ7h2IvyhLPLU=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
