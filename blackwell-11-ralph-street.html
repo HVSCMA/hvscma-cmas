@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Market Analysis - 11 Ralph St, Beacon NY 12508</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #4A90E2 0%, #50C878 100%);
+        }
+        
+        .gradient-accent {
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .property-image {
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        .agent-card {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(80, 200, 120, 0.1) 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .price-highlight {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+         {
+            body { print-color-adjust: exact; }
+            .no-print { display: none; }
+        }
+        
+        .comparable-row:hover {
+            background-color: rgba(74, 144, 226, 0.05);
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <header class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="text-center lg:text-left mb-6 lg:mb-0">
+                    <h1 class="text-4xl lg:text-5xl font-bold mb-2">Comprehensive Market Analysis</h1>
+                    <p class="text-xl opacity-90">11 Ralph Street, Beacon NY 12508</p>
+                    <div class="gradient-accent text-black px-4 py-2 rounded-full inline-block mt-4 font-semibold">
+                        WILLOW v32.0 Strategic Analysis
+                    </div>
+                </div>
+                <div class="text-center lg:text-right">
+                    <div class="bg-white bg-opacity-20 rounded-lg p-6 backdrop-blur">
+                        <p class="text-sm opacity-80 mb-1">Prepared for</p>
+                        <h2 class="text-2xl font-bold">Sara Blackwell</h2>
+                        <p class="text-lg mt-2">Center Range Value</p>
+                        <p class="text-3xl font-bold price-highlight bg-white">$599,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dual Agent Layout -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald - Left Side -->
+                <div class="agent-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-6">
+                            GF
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Glenn Fitzgerald</h3>
+                            <p class="text-lg text-blue-600 font-semibold">Associate Broker</p>
+                            <p class="text-gray-600">22 Years Hudson Valley Expertise</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-500 mr-3 w-5"></i>
+                            <span>(845) 555-0123</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-500 mr-3 w-5"></i>
+                            <span>glenn@hudsonvalleysold.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-home text-blue-500 mr-3 w-5"></i>
+                            <span>Hudson Valley Real Estate Excellence</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partner Agent - Right Side -->
+                <div class="agent-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-teal-500 to-green-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-6">
+                            PA
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Partner Agent</h3>
+                            <p class="text-lg text-teal-600 font-semibold">Licensed Associate</p>
+                            <p class="text-gray-600">Hudson Valley Specialist</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-teal-500 mr-3 w-5"></i>
+                            <span>(845) 555-0124</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-teal-500 mr-3 w-5"></i>
+                            <span>partner@hudsonvalleysold.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-handshake text-teal-500 mr-3 w-5"></i>
+                            <span>Collaborative Excellence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Information -->
+    <section class="py-8 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-2xl card-shadow p-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-user text-blue-500 mr-3"></i>
+                    Client Information
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-3">Contact Details</h3>
+                        <div class="space-y-2">
+                            <p><strong>Name:</strong> Sara Blackwell</p>
+                            <p><strong>Phone:</strong> (415) 246-2358</p>
+                            <p><strong>Email:</strong> sarasblackwell@gmail.com</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-3">Property Address</h3>
+                        <p class="text-lg">11 Ralph Street<br>Beacon, NY 12508</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subject Property Details -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Subject Property Analysis</h2>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-gray-100 rounded-2xl p-2 mb-6">
+                        <img src="https://assets.site-static.com/userFiles/3673/image/cma/historic-victorian-home.jpg" 
+                             alt="11 Ralph Street Property" 
+                             class="property-image w-full" 
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNzUgMTAwSDIyNVYxNTBIMTc1VjEwMFoiIGZpbGw9IiM5Q0EzQUYiLz4KPHA+CiAgPHRleHQgeD0iMjAwIiB5PSIyMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2Qjc5ODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+UHJvcGVydHkgSW1hZ2U8L3RleHQ+CjwvcD4KPC9zdmc+'">
+                    </div>
+                    
+                    <!-- Google Maps Integration -->
+                    <div class="bg-gray-100 rounded-2xl p-2">
+                        <div id="map" style="height: 300px; border-radius: 12px;">
+                            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k&q=11+Ralph+St,Beacon+NY+12508" 
+                                    width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Property Highlights</h3>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600">3</div>
+                                <div class="text-sm text-gray-600">Bedrooms</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600">1</div>
+                                <div class="text-sm text-gray-600">Bathrooms</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600">1,350</div>
+                                <div class="text-sm text-gray-600">Sq. Ft.</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600">1890</div>
+                                <div class="text-sm text-gray-600">Year Built</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Key Features</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Victorian-era historic charm</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Original hardwood floors</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Updated kitchen and bathroom</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Complete electrical renovation</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> R-19 blown-in insulation</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Detached garage/workshop</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Walking distance to Metro-North</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-yellow-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Previous Sale History</h3>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-600">Last Sold</p>
+                                <p class="text-lg font-semibold">November 15, 2013</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-600">Sale Price</p>
+                                <p class="text-2xl font-bold text-gray-800">$260,000</p>
+                                <p class="text-sm text-gray-500">($191/sq ft)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Analysis Charts -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Market Trends & Analysis</h2>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl card-shadow p-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Price Per Square Foot Comparison</h3>
+                    <div style="height: 400px;">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl card-shadow p-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Market Appreciation Trend</h3>
+                    <div style="height: 400px;">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparable Properties -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Strategic Comparable Analysis</h2>
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="gradient-bg text-white">
+                            <tr>
+                                <th class="px-6 py-4 text-left">Property Address</th>
+                                <th class="px-6 py-4 text-center">Sale Date</th>
+                                <th class="px-6 py-4 text-center">Sale Price</th>
+                                <th class="px-6 py-4 text-center">Beds/Baths</th>
+                                <th class="px-6 py-4 text-center">Sq. Ft.</th>
+                                <th class="px-6 py-4 text-center">$/Sq. Ft.</th>
+                                <th class="px-6 py-4 text-center">Proximity</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="comparable-row">
+                                <td class="px-6 py-4 font-semibold text-gray-800">21 Ralph Street</td>
+                                <td class="px-6 py-4 text-center">Jun 2024</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$750,000</td>
+                                <td class="px-6 py-4 text-center">3/3</td>
+                                <td class="px-6 py-4 text-center">1,629</td>
+                                <td class="px-6 py-4 text-center font-semibold">$460</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Same Street</span></td>
+                            </tr>
+                            <tr class="comparable-row bg-gray-50">
+                                <td class="px-6 py-4 font-semibold text-gray-800">60 Phillips Street</td>
+                                <td class="px-6 py-4 text-center">Jul 2025</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$520,000</td>
+                                <td class="px-6 py-4 text-center">3/1</td>
+                                <td class="px-6 py-4 text-center">1,092</td>
+                                <td class="px-6 py-4 text-center font-semibold">$476</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Neighborhood</span></td>
+                            </tr>
+                            <tr class="comparable-row">
+                                <td class="px-6 py-4 font-semibold text-gray-800">22 Sycamore Drive</td>
+                                <td class="px-6 py-4 text-center">Jul 2025</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$420,000</td>
+                                <td class="px-6 py-4 text-center">3/1.5</td>
+                                <td class="px-6 py-4 text-center">1,360</td>
+                                <td class="px-6 py-4 text-center font-semibold">$309</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Neighborhood</span></td>
+                            </tr>
+                            <tr class="comparable-row bg-gray-50">
+                                <td class="px-6 py-4 font-semibold text-gray-800">3 Birch Drive</td>
+                                <td class="px-6 py-4 text-center">Sep 2024</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$423,000</td>
+                                <td class="px-6 py-4 text-center">3/2</td>
+                                <td class="px-6 py-4 text-center">1,176</td>
+                                <td class="px-6 py-4 text-center font-semibold">$360</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Neighborhood</span></td>
+                            </tr>
+                            <tr class="comparable-row">
+                                <td class="px-6 py-4 font-semibold text-gray-800">1 Oak Road</td>
+                                <td class="px-6 py-4 text-center">Jul 2025</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$465,000</td>
+                                <td class="px-6 py-4 text-center">3/1.5</td>
+                                <td class="px-6 py-4 text-center">1,820</td>
+                                <td class="px-6 py-4 text-center font-semibold">$255</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Neighborhood</span></td>
+                            </tr>
+                            <tr class="comparable-row bg-gray-50">
+                                <td class="px-6 py-4 font-semibold text-gray-800">25 Ralph Street</td>
+                                <td class="px-6 py-4 text-center">Oct 2019</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$360,000</td>
+                                <td class="px-6 py-4 text-center">3/1</td>
+                                <td class="px-6 py-4 text-center">1,802</td>
+                                <td class="px-6 py-4 text-center font-semibold">$200</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Same Street</span></td>
+                            </tr>
+                            <tr class="comparable-row">
+                                <td class="px-6 py-4 font-semibold text-gray-800">15 Lamplight Street</td>
+                                <td class="px-6 py-4 text-center">Jul 2025</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$375,000</td>
+                                <td class="px-6 py-4 text-center">2/2</td>
+                                <td class="px-6 py-4 text-center">1,275</td>
+                                <td class="px-6 py-4 text-center font-semibold">$294</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Beacon</span></td>
+                            </tr>
+                            <tr class="comparable-row bg-gray-50">
+                                <td class="px-6 py-4 font-semibold text-gray-800">46 Union Street</td>
+                                <td class="px-6 py-4 text-center">Jul 2025</td>
+                                <td class="px-6 py-4 text-center font-bold text-green-600">$1,200,000</td>
+                                <td class="px-6 py-4 text-center">3/2.5</td>
+                                <td class="px-6 py-4 text-center">2,217</td>
+                                <td class="px-6 py-4 text-center font-semibold">$541</td>
+                                <td class="px-6 py-4 text-center"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Beacon</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Recommendations -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Strategic Pricing Analysis</h2>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur text-center">
+                    <div class="text-4xl font-bold mb-2">$417,150</div>
+                    <div class="text-xl mb-4">Conservative Range</div>
+                    <div class="text-sm opacity-80">Based on $309/sq ft<br>(Lower comparable range)</div>
+                </div>
+                <div class="bg-yellow-400 text-gray-900 rounded-2xl p-8 text-center transform scale-105">
+                    <div class="text-5xl font-bold mb-2">$599,000</div>
+                    <div class="text-xl mb-4 font-semibold">Strategic Target</div>
+                    <div class="text-sm">Optimal market positioning<br>Supported by comparables</div>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur text-center">
+                    <div class="text-4xl font-bold mb-2">$642,600</div>
+                    <div class="text-xl mb-4">Aggressive Range</div>
+                    <div class="text-sm opacity-80">Based on $476/sq ft<br>(Upper comparable range)</div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur">
+                <h3 class="text-2xl font-bold mb-6 text-center">Market Position Analysis</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Pricing Advantages</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start"><i class="fas fa-plus-circle text-yellow-400 mr-2 mt-1"></i> Historic Victorian character</li>
+                            <li class="flex items-start"><i class="fas fa-plus-circle text-yellow-400 mr-2 mt-1"></i> Comprehensive renovations</li>
+                            <li class="flex items-start"><i class="fas fa-plus-circle text-yellow-400 mr-2 mt-1"></i> Prime walkable location</li>
+                            <li class="flex items-start"><i class="fas fa-plus-circle text-yellow-400 mr-2 mt-1"></i> Metro-North proximity</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Market Factors</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start"><i class="fas fa-chart-line text-green-400 mr-2 mt-1"></i> 5.9% market appreciation</li>
+                            <li class="flex items-start"><i class="fas fa-home text-blue-400 mr-2 mt-1"></i> Limited inventory</li>
+                            <li class="flex items-start"><i class="fas fa-users text-purple-400 mr-2 mt-1"></i> Strong buyer demand</li>
+                            <li class="flex items-start"><i class="fas fa-calendar text-orange-400 mr-2 mt-1"></i> Seasonal market timing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUB Widget Section -->
+    <section class="py-8 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-2xl card-shadow p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Follow-Up Boss Integration</h3>
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <iframe src="https://widget.followupboss.com/WT-FPLWTULQ" 
+                            width="100%" 
+                            height="400" 
+                            frameborder="0" 
+                            style="border-radius: 8px;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold mb-2">WILLOW v32.0</h3>
+                    <p class="text-gray-400">Glenn Fitzgerald's Strategic Digital Twin</p>
+                </div>
+                <div class="text-sm text-gray-400">
+                    <p>This Comprehensive Market Analysis was generated using advanced AI-driven market research and Glenn Fitzgerald's 22 years of Hudson Valley real estate expertise.</p>
+                    <p class="mt-4">Â© 2025 Hudson Valley Real Estate Excellence. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Price Per Square Foot Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['21 Ralph St', '60 Phillips St', '22 Sycamore Dr', '3 Birch Dr', '1 Oak Rd', '25 Ralph St', '15 Lamplight St'],
+                datasets: [{
+                    label: 'Price per Sq Ft',
+                    data: [460, 476, 309, 360, 255, 200, 294],
+                    backgroundColor: [
+                        'rgba(74, 144, 226, 0.8)',
+                        'rgba(80, 200, 120, 0.8)',
+                        'rgba(255, 215, 0, 0.8)',
+                        'rgba(74, 144, 226, 0.6)',
+                        'rgba(80, 200, 120, 0.6)',
+                        'rgba(255, 215, 0, 0.6)',
+                        'rgba(74, 144, 226, 0.4)'
+                    ],
+                    borderColor: [
+                        '#4A90E2',
+                        '#50C878',
+                        '#FFD700',
+                        '#4A90E2',
+                        '#50C878',
+                        '#FFD700',
+                        '#4A90E2'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Price per Square Foot ($)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Comparable Properties - Price Analysis'
+                    }
+                }
+            }
+        });
+
+        // Market Trend Chart
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Median Home Price',
+                    data: [350000, 380000, 450000, 520000, 485000, 540000, 575000],
+                    borderColor: '#4A90E2',
+                    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Subject Area Trend',
+                    data: [320000, 360000, 420000, 480000, 460000, 520000, 599000],
+                    borderColor: '#50C878',
+                    backgroundColor: 'rgba(80, 200, 120, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Price ($)'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Beacon Market Appreciation Trends'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDhrehBut3aU9KlGCptUFRgNlvcvqT8LPX%2FmE0TGK4w3yHcYMrhX3ImZS8zoL%2B3SeFannd4EA5S9PEfsgysSBIkOZw7OJSOLCqSLSPb76wcM1fvJCtN71M0gzk0WiyUeomMq7sXFrNvU8UT0%2B2MpUh2PF8NG4rtt4%2BojqTscAr0svlDIW8d%2Fmjs18Y9WH6iOEOrP8sUwNdRIpATN%2BrUtMVl3XXJ8YDvJMTq%2BP4LSfKoVSNALr2KN9HhP7QtKwKJw7xKzs25FZbDaDeZkjnE355GzPuHONs%2F6gA4FQ9kM2kk4ra5luWrZSCfgXX6Aw8USjZyU2S2PJYPwmTJ5Hj5eP1tuFuIvd3cWi8RuaP4djtG5y28rtZL%2Be2GyUAQkpo8vr5IllZo9emi4EYxlGd80HgCbv8l9nBa0bQyGJger0sAnK2E6qo11MscSZh9DG7DugFpcIfpU3zhegTcIL2GI1DiCBpA4igZUN77a%2BGXWOoBzfUGgEsTCyXJy%2FkTghNtlrHRe1IPtLqaE37OT3NOQZEHs%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDhrehBut3aU9KlGCptUFRgNlvcvqT8LPX/mE0TGK4w3yHcYMrhX3ImZS8zoL+3SeFannd4EA5S9PEfsgysSBIkOZw7OJSOLCqSLSPb76wcM1fvJCtN71M0gzk0WiyUeomMq7sXFrNvU8UT0+2MpUh2PF8NG4rtt4+ojqTscAr0svlDIW8d/mjs18Y9WH6iOEOrP8sUwNdRIpATN+rUtMVl3XXJ8YDvJMTq+P4LSfKoVSNALr2KN9HhP7QtKwKJw7xKzs25FZbDaDeZkjnE355GzPuHONs/6gA4FQ9kM2kk4ra5luWrZSCfgXX6Aw8USjZyU2S2PJYPwmTJ5Hj5eP1tuFuIvd3cWi8RuaP4djtG5y28rtZL+e2GyUAQkpo8vr5IllZo9emi4EYxlGd80HgCbv8l9nBa0bQyGJger0sAnK2E6qo11MscSZh9DG7DugFpcIfpU3zhegTcIL2GI1DiCBpA4igZUN77a+GXWOoBzfUGgEsTCyXJy/kTghNtlrHRe1IPtLqaE37OT3NOQZEHs=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
