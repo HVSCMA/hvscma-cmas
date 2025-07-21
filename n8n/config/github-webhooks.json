@@ -1,0 +1,32 @@
+{
+  "name": "GitHub Webhook Configuration",
+  "webhooks": [
+    {
+      "repository": "HVSCMA/hvscma-cmas",
+      "events": [
+        "push"
+      ],
+      "config": {
+        "url": "YOUR_N8N_WEBHOOK_URL_HERE",
+        "content_type": "json",
+        "secret": "optional_webhook_secret"
+      },
+      "filters": {
+        "branches": [
+          "main"
+        ],
+        "file_patterns": [
+          "*.html"
+        ]
+      }
+    }
+  ],
+  "setup_instructions": [
+    "1. Go to repository Settings \u2192 Webhooks",
+    "2. Click 'Add webhook'",
+    "3. Enter your N8N webhook URL",
+    "4. Select 'application/json' content type",
+    "5. Choose 'Just the push event'",
+    "6. Ensure webhook is Active"
+  ]
+}
