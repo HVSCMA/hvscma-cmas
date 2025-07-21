@@ -1,0 +1,29 @@
+# N8N Workflows - Ignore patterns
+
+# Sensitive files
+*.env
+*.key
+*secret*
+*password*
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (if any)
+node_modules/
+
+# N8N specific
+.n8n/
+executions/
