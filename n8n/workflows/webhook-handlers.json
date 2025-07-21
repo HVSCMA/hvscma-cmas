@@ -1,0 +1,24 @@
+{
+  "name": "WILLOW v32.0 - Webhook Handlers",
+  "description": "GitHub webhook processing for CMA deployments",
+  "handlers": {
+    "github_push": {
+      "endpoint": "/webhook/github-push",
+      "method": "POST",
+      "filters": {
+        "repository": "HVSCMA/hvscma-cmas",
+        "file_pattern": "*.html",
+        "branch": "main"
+      }
+    },
+    "cma_deployment": {
+      "endpoint": "/webhook/cma-deployed",
+      "method": "POST",
+      "required_fields": [
+        "property_address",
+        "client_name",
+        "cma_url"
+      ]
+    }
+  }
+}
