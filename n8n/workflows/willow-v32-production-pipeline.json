@@ -1,0 +1,239 @@
+{
+  "name": "WILLOW v32.0 - CMA-FUB Production Pipeline",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "push"
+        ],
+        "repository": {
+          "name": "hvscma-cmas",
+          "owner": {
+            "name": "HVSCMA"
+          }
+        },
+        "authentication": "accessToken"
+      },
+      "id": "github-trigger",
+      "name": "GitHub CMA Trigger",
+      "type": "n8n-nodes-base.githubTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "\n// WILLOW v32.0 - CMA Data Extraction Engine\nconst payload = $input.first().json;\nconst commits = payload.commits || [];\n\n// Find HTML files (CMAs) in commits\nlet cmaFiles = [];\ncommits.forEach(commit => {\n    const files = [...(commit.added || []), ...(commit.modified || [])];\n    const htmlFiles = files.filter(f => f.endsWith('.html') && !f.includes('test'));\n    cmaFiles = [...cmaFiles, ...htmlFiles];\n});\n\nif (cmaFiles.length === 0) {\n    return [{ json: { status: 'no_cma_files', message: 'No CMA deployments detected' } }];\n}\n\n// Process each CMA file\nreturn cmaFiles.map(file => {\n    const basename = file.replace('.html', '').split('/').pop();\n    const parts = basename.split('-');\n\n    let clientName = 'Unknown Client';\n    let propertyAddress = 'Unknown Property';\n\n    if (parts.length >= 3) {\n        clientName = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);\n        const houseNumber = parts[1];\n        const streetParts = parts.slice(2).join(' ');\n        propertyAddress = `${houseNumber} ${streetParts.charAt(0).toUpperCase() + streetParts.slice(1)}`;\n    }\n\n    return {\n        json: {\n            clientName,\n            propertyAddress,\n            cmaUrl: `https://hvscma.com/${basename}`,\n            filename: basename,\n            deploymentDate: new Date().toISOString().split('T')[0],\n            dueDate: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString().split('T')[0],\n            taskTitle: `CMA Delivered - ${propertyAddress}`,\n            activityNote: `\ud83c\udfe0 CMA DELIVERY - ${propertyAddress}\\nClient: ${clientName}\\nURL: https://hvscma.com/${basename}\\nDeployed: ${new Date().toLocaleString()}\\n\\n\u2705 WILLOW v32.0 - 24/7 FUB Butler System`\n        }\n    };\n});\n"
+      },
+      "id": "extract-cma-data",
+      "name": "Extract CMA Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "operation": "notEqual",
+              "value2": "no_cma_files"
+            }
+          ]
+        }
+      },
+      "id": "filter-valid-cmas",
+      "name": "Filter Valid CMAs",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "\n// Prepare data for FUB integration\nconst cmaData = $input.first().json;\n\n// Default person ID (Sara Blackwell for testing)\nlet personId = 1903;\n\n// Determine agent assignment based on property location\nlet assignedAgent = 1; // Default Glenn Fitzgerald\nconst address = cmaData.propertyAddress.toLowerCase();\n\nif (address.includes('beacon') || address.includes('fishkill')) {\n    assignedAgent = 6; // Justin Phillips\n} else if (address.includes('cold spring') || address.includes('garrison')) {\n    assignedAgent = 2; // Heather Martin\n} else if (address.includes('poughkeepsie') || address.includes('hyde park')) {\n    assignedAgent = 3; // Lloyd Gray\n}\n\nreturn {\n    json: {\n        ...cmaData,\n        personId,\n        assignedAgent,\n        ready: true\n    }\n};\n"
+      },
+      "id": "prepare-fub-data",
+      "name": "Prepare FUB Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "requestMethod": "POST",
+        "url": "https://api.followupboss.com/v1/tasks",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={\\n  \"name\": \"{{ $json.taskTitle }}\",\\n  \"personId\": {{ $json.personId }},\\n  \"dueDate\": \"{{ $json.dueDate }}\"\\n}"
+      },
+      "id": "create-fub-task",
+      "name": "Create FUB Task",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1120,
+        240
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "fub-basic-auth",
+          "name": "FUB Basic Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "requestMethod": "POST",
+        "url": "https://api.followupboss.com/v1/notes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={\\n  \"personId\": {{ $json.personId }},\\n  \"subject\": \"CMA Deployment - {{ $json.propertyAddress }}\",\\n  \"body\": \"{{ $json.activityNote }}\",\\n  \"type\": \"Note\"\\n}"
+      },
+      "id": "create-fub-activity",
+      "name": "Create FUB Activity",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1120,
+        360
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "fub-basic-auth",
+          "name": "FUB Basic Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "\n// WILLOW v32.0 - Success Logger\nconst taskResult = $('Create FUB Task').first().json;\nconst activityResult = $('Create FUB Activity').first().json;\nconst cmaData = $('Prepare FUB Data').first().json;\n\nconsole.log('\ud83e\udde0 WILLOW v32.0 - CMA-FUB Sync SUCCESS:', {\n    property: cmaData.propertyAddress,\n    client: cmaData.clientName,\n    taskId: taskResult.id,\n    activityId: activityResult.id,\n    cmaUrl: cmaData.cmaUrl\n});\n\nreturn {\n    json: {\n        status: 'success',\n        property: cmaData.propertyAddress,\n        client: cmaData.clientName,\n        taskId: taskResult.id,\n        activityId: activityResult.id,\n        cmaUrl: cmaData.cmaUrl,\n        completedAt: new Date().toISOString(),\n        workflow: 'WILLOW v32.0 Production Pipeline'\n    }\n};\n"
+      },
+      "id": "completion-handler",
+      "name": "Success Logger",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "GitHub CMA Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract CMA Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract CMA Data": {
+      "main": [
+        [
+          {
+            "node": "Filter Valid CMAs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Valid CMAs": {
+      "main": [
+        [
+          {
+            "node": "Prepare FUB Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare FUB Data": {
+      "main": [
+        [
+          {
+            "node": "Create FUB Task",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create FUB Activity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create FUB Task": {
+      "main": [
+        [
+          {
+            "node": "Success Logger",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create FUB Activity": {
+      "main": [
+        [
+          {
+            "node": "Success Logger",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    "willow-v32",
+    "production",
+    "cma-automation"
+  ],
+  "updatedAt": "2025-07-21T16:03:08.294009",
+  "versionId": "willow-v32-production"
+}
