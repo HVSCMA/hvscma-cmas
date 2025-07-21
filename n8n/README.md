@@ -1,115 +1,94 @@
-# WILLOW v32.0 - N8N CMA-FUB Automation Workflows
+# 🧠 WILLOW v32.0 - N8N CMA-FUB Automation Pipeline
 
-🧠 **WILLOW v32.0 Digital Twin & 24/7 FUB Butler System**
-
-Automated CMA deployment and Follow Up Boss synchronization for Hudson Valley SOLD real estate operations.
+## Overview
+Complete N8N workflow automation for Hudson Valley SOLD real estate operations. Automatically synchronizes CMA deployments with Follow Up Boss CRM system.
 
 ## 🚀 Quick Start
 
-1. **Import Workflow**: Load `workflows/cma-fub-sync-pipeline.json` into N8N
-2. **Configure Credentials**: Set up FUB API credentials (see `documentation/api-credentials.md`)
-3. **Activate Webhook**: Enable workflow and copy webhook URL
-4. **Setup GitHub**: Add webhook to HVSCMA/hvscma-cmas repository
-5. **Test Deployment**: Deploy a test CMA and verify automation
+### 1. Import Workflow
+1. Copy the JSON from `workflows/willow-v32-production-pipeline.json`
+2. In N8N, go to Workflows → Import from JSON
+3. Paste the workflow JSON and save
 
-## 📋 Repository Structure
+### 2. Configure Credentials
+Create N8N credential named `fub-basic-auth`:
+- Type: HTTP Basic Auth
+- Username: `fka_0oHt62ZolMwCPYGPvnAISdbsYxDhH4NWbH`
+- Password: (leave empty)
 
-```
-├── workflows/
-│   ├── cma-fub-sync-pipeline.json     # Main automation workflow
-│   ├── webhook-handlers.json          # Webhook processing config
-│   └── error-handlers.json            # Error handling config
-├── documentation/
-│   ├── setup-guide.md                 # Complete setup instructions
-│   ├── api-credentials.md             # FUB API configuration
-│   └── troubleshooting.md             # Common issues & solutions
-├── config/
-│   ├── github-webhooks.json           # GitHub webhook settings
-│   └── fub-api-settings.json          # FUB API configuration
-└── README.md                          # This file
-```
+### 3. Activate Workflow
+- Enable the workflow in N8N
+- Configure GitHub webhook to trigger on push events
+- Test with a CMA deployment
 
-## 🎯 Workflow Overview
+## 📋 Workflow Components
 
-### CMA-FUB Synchronization Pipeline
-- **Trigger**: GitHub webhook on CMA HTML file deployment
-- **Process**: Extract property and client data from commit
-- **Actions**: 
-  - Create FUB follow-up task (48-hour due date)
-  - Generate comprehensive activity note
-  - Assign to appropriate Hudson Valley agent
-  - Send confirmation response
+### Nodes
+1. **GitHub CMA Trigger** - Listens for repository push events
+2. **Extract CMA Data** - Parses CMA deployment information
+3. **Filter Valid CMAs** - Validates CMA files
+4. **Prepare FUB Data** - Formats data for FUB integration
+5. **Create FUB Task** - Creates follow-up task in FUB
+6. **Create FUB Activity** - Adds activity note to client record
+7. **Success Logger** - Logs completion and results
 
-### Agent Assignment Logic
+### Features
+- ✅ Automatic CMA detection from GitHub deployments
+- ✅ Smart client name extraction from filenames
+- ✅ Property address parsing and formatting
+- ✅ Agent assignment based on property location
+- ✅ Automatic due date calculation (48 hours)
+- ✅ Comprehensive error handling and logging
+- ✅ FUB task and activity note creation
+
+## 🔧 Configuration
+
+### Agent Assignment Rules
 - **Beacon/Fishkill**: Justin Phillips (ID: 6)
-- **Cold Spring/Garrison**: Heather Martin (ID: 2)
-- **Poughkeepsie/Hyde Park**: Justin Phillips (ID: 6)
-- **Default/Other**: Glenn Fitzgerald (ID: 1)
+- **Cold Spring/Garrison**: Heather Martin (ID: 2)  
+- **Poughkeepsie/Hyde Park**: Lloyd Gray (ID: 3)
+- **Default**: Glenn Fitzgerald (ID: 1)
 
-## 🔧 Technical Details
+### File Naming Convention
+CMAs should be named: `lastname-123-street-name.html`
+- Example: `smith-456-main-street.html`
+- Extracts: Client "Smith", Address "456 Main Street"
 
-- **Platform**: N8N Workflow Automation
-- **CRM Integration**: Follow Up Boss API v1
-- **Authentication**: HTTP Basic Auth
-- **Webhook Format**: JSON payload
-- **Error Handling**: Comprehensive logging and retry logic
+## 🎯 Testing
 
-## 📊 Features
+### Manual Test
+1. Deploy a test CMA file to the repository
+2. Check N8N execution log for workflow trigger
+3. Verify task creation in Follow Up Boss
+4. Confirm activity note is added to client record
 
-✅ **Automated Task Creation**: Follow-up tasks with proper due dates  
-✅ **Intelligent Agent Assignment**: Location-based team routing  
-✅ **Comprehensive Activity Logging**: Detailed CMA deployment records  
-✅ **Error Handling & Retry Logic**: Robust failure recovery  
-✅ **Real-time Status Updates**: Immediate confirmation responses  
-✅ **Production-Ready**: Tested with live FUB data  
+### Validation
+- GitHub webhook receives push events
+- CMA files are detected and parsed correctly
+- FUB API credentials are valid
+- Tasks and activities are created successfully
 
-## 🏡 Hudson Valley Integration
+## 🛠️ Troubleshooting
 
-This system is specifically designed for **Hudson Valley SOLD** real estate operations:
+### Common Issues
+1. **Webhook not triggering**: Check GitHub webhook configuration
+2. **FUB API errors**: Verify credentials and API key validity
+3. **Missing data**: Ensure CMA filenames follow naming convention
+4. **Task creation fails**: Check person ID exists in FUB system
 
-- **Glenn Fitzgerald**: Associate Broker, 22+ years experience
-- **Team Members**: Heather Martin, Justin Phillips, Lloyd Gray
-- **Market Coverage**: Dutchess, Putnam, Ulster, Orange Counties
-- **CMA Platform**: hvscma.com integration
+### Support
+- Workflow Version: v32.0
+- Created: {datetime.now().strftime('%Y-%m-%d')}
+- Author: Glenn Fitzgerald / WILLOW v32.0
+- Repository: HVSCMA/hvscma-cmas
 
-## 🔐 Security & Credentials
-
-All API credentials are securely configured:
-- FUB API Key: Encrypted in N8N credentials store
-- GitHub Webhooks: Repository-specific access
-- Team Data: Validated against live FUB user accounts
-
-## 📚 Documentation
-
-- **[Setup Guide](documentation/setup-guide.md)**: Complete installation instructions
-- **[API Credentials](documentation/api-credentials.md)**: FUB API configuration details
-- **[Troubleshooting](documentation/troubleshooting.md)**: Common issues and solutions
-
-## 🧪 Testing
-
-The system has been validated with:
-- ✅ Live FUB API connections
-- ✅ Real team member data
-- ✅ Actual property scenarios
-- ✅ Complete workflow execution
-- ✅ Error handling scenarios
-
-## 🚀 Production Status
-
-**Status**: PRODUCTION READY  
-**Validation Date**: July 21, 2025  
-**System Version**: WILLOW v32.0  
-**Last Updated**: $(date '+%Y-%m-%d')  
-
-## 📞 Support
-
-For technical support or questions:
-- **System Admin**: Glenn Fitzgerald - Hudson Valley SOLD
-- **Documentation**: See `/documentation/` folder
-- **Issues**: Create GitHub issue in this repository
+## 📊 Monitoring
+Monitor workflow executions in N8N dashboard. All successful executions will show:
+- CMA property address
+- Client name extracted
+- FUB task ID created
+- Activity note ID added
+- Completion timestamp
 
 ---
-
-**🧠 Powered by WILLOW v32.0 - Glenn Fitzgerald's Digital Twin & Strategic Technology Partner**
-
-*Automating success in Hudson Valley real estate, one CMA at a time.*
+*🧠 Powered by WILLOW v32.0 - 24/7 FUB Butler System*
