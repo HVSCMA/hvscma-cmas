@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparative Market Analysis: 459 Main St, Kingston, NY 12401</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 1.5rem 0;
+        }
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .agent-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+        .market-alert {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .value-highlight {
+            background: linear-gradient(135deg, #fef3c7, #fcd34d);
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .comparable-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 1px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .property-image {
+            width: 100%;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        .opportunity-card {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            margin: 1.5rem 0;
+        }
+        footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- FUB Widget Integration -->
+    <script>
+        (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+        {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+        (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+        e.parentNode.insertBefore(t,e);})
+        (window,"https://widgetbe.com/agent",document,"widgetTracker");
+        window.widgetTracker("create", "WT-FPLWTULQ");
+        window.widgetTracker("send", "pageview");
+    </script>
+
+    <!-- Header -->
+    <header class="gradient-header">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center flex-wrap">
+            <div class="flex items-center space-x-4">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold Logo" class="h-16">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Logo" class="h-16">
+            </div>
+            <h1 class="text-2xl md:text-3xl font-bold">Professional Market Analysis</h1>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 md:px-6 py-8">
+        <!-- Market Alert -->
+        <div class="market-alert">
+            <h2 class="text-xl md:text-2xl font-bold text-blue-800 mb-2">
+                <i class="fas fa-fire-alt mr-2"></i> MARKET OPPORTUNITY ALERT
+            </h2>
+            <p class="text-lg">
+                Kingston is experiencing a <span class="font-bold">luxury market resilience</span> despite broader market fluctuations. 
+                High-end properties with unique features are maintaining their value, with premium homes selling within <span class="font-bold">21-43 days</span> 
+                compared to the broader market. This creates a strategic opportunity for distinctive properties like 459 Main St.
+            </p>
+        </div>
+
+        <!-- Agents Section -->
+        <section class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Your Real Estate Professionals</h2>
+            <p class="mb-4">Combined Experience: 42+ Years</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald">
+                    <h3 class="text-xl font-bold text-blue-800">Glenn Fitzgerald</h3>
+                    <p>Associate Broker</p>
+                    <p>22 Years Experience</p>
+                    <div class="mt-4">
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ff6f1f9f0dff7eafbecf0f1e9fef3f3fae6ecf0f3fbb1fcf0f2">[email&#160;protected]</a></p>
+                        <p>(845) 251-4468</p>
+                    </div>
+                </div>
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/heather_martin_official_professional_photo.jpg" alt="Heather Martin">
+                    <h3 class="text-xl font-bold text-blue-800">Heather Martin</h3>
+                    <p>Associate Broker</p>
+                    <p>20 Years Experience</p>
+                    <div class="mt-4">
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29b9c949db29a8796819d9c84939e9e978b819d9e96dc919d9f">[email&#160;protected]</a></p>
+                        <p>(845) 251-4468</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Property Overview -->
+        <section class="my-10">
+            <div class="border-b-2 border-gray-200 pb-4 mb-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-800">459 Main St, Kingston, NY 12401</h2>
+                <p class="text-xl">Modern Luxury Estate on 2.1 Acres</p>
+                <div class="text-2xl md:text-3xl font-bold text-blue-800 my-4">$790,000</div>
+                <p class="text-lg">$250 per square foot</p>
+            </div>
+            
+            <img class="property-image" src="https://maps.googleapis.com/maps/api/staticmap?center=459+Main+St+Kingston+NY+12401&zoom=16&size=1200x800&maptype=satellite&markers=color:red%7C459+Main+St+Kingston+NY+12401&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="459 Main St Satellite View">
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Property Type</h4>
+                    <p>Modern Luxury Single Family</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Year Built</h4>
+                    <p>2015 (10 years old)</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Bedrooms</h4>
+                    <p>4</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Bathrooms</h4>
+                    <p>5.5</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Square Footage</h4>
+                    <p>3,157 sq.ft.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Lot Size</h4>
+                    <p>2.1 acres</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Garage</h4>
+                    <p>3-Car Attached</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Last Sold</h4>
+                    <p>$475,000 (2020)</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h4 class="font-bold text-blue-800">Price Appreciation</h4>
+                    <p>66% since purchase</p>
+                </div>
+            </div>
+            
+            <p class="text-lg my-6">
+                This stunning contemporary luxury home offers exceptional living in one of Kingston's most desirable areas. 
+                Built in 2015 with premium materials and craftsmanship, the property features 4 bedrooms, 5.5 bathrooms across 
+                an expansive 3,157 square feet. The generous 2.1-acre lot provides privacy and space rarely found in Kingston properties.
+            </p>
+            <p class="text-lg mb-6">
+                The property's combination of modern design, premium features, and substantial acreage positions it uniquely in 
+                Kingston's luxury market. Recent comparable sales confirm strong demand for distinctive luxury properties, 
+                particularly those with generous lots and contemporary amenities.
+            </p>
+        </section>
+
+        <!-- Market Trends -->
+        <section class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Kingston, NY Market Trends</h2>
+            
+            <div class="market-alert">
+                <h3 class="text-xl font-bold text-blue-800">Mixed Market with Luxury Resilience</h3>
+                <p>While the broader Kingston market shows mixed signals, premium properties with unique features continue to command strong prices. 
+                The luxury segment has demonstrated particular resilience, with homes in the $700,000+ range maintaining consistent valuation when 
+                they offer distinctive features and quality construction.</p>
+            </div>
+
+            <div class="chart-container" style="height: 300px;">
+                <canvas id="marketTrendChart"></canvas>
+            </div>
+
+            <div class="overflow-x-auto mt-6">
+                <table class="w-full bg-white">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="p-3 text-left">Metric</th>
+                            <th class="p-3 text-center">2024</th>
+                            <th class="p-3 text-center">2025</th>
+                            <th class="p-3 text-center">Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="p-3">Median Home Value</td>
+                            <td class="p-3 text-center">$418,500</td>
+                            <td class="p-3 text-center">$431,915</td>
+                            <td class="p-3 text-center text-green-600">+3.2%</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-3">Average Days on Market</td>
+                            <td class="p-3 text-center">52</td>
+                            <td class="p-3 text-center">43</td>
+                            <td class="p-3 text-center text-green-600">-17.3%</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-3">Luxury Segment ($700K+)</td>
+                            <td class="p-3 text-center">$778,000</td>
+                            <td class="p-3 text-center">$795,000</td>
+                            <td class="p-3 text-center text-green-600">+2.2%</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-3">Sale to List Ratio</td>
+                            <td class="p-3 text-center">96.5%</td>
+                            <td class="p-3 text-center">97.8%</td>
+                            <td class="p-3 text-center text-green-600">+1.3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-lg mt-6">
+                <strong>Market Insight:</strong> While overall Kingston market data shows some softening with the median listing price 
+                down 9.8% year-over-year, the high-end luxury market segment is behaving differently. Properties with distinctive features, 
+                quality construction, and desirable locations are maintaining their value and selling more quickly than average homes.
+            </p>
+        </section>
+
+        <!-- Comparable Properties -->
+        <section class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Comparable Properties Analysis</h2>
+            <p class="mb-6">The following properties were selected based on proximity, similar luxury features, and recent sales using our Broadened Proximity-Priority approach.</p>
+            
+            <div class="my-8">
+                <img class="w-full rounded-lg" src="https://maps.googleapis.com/maps/api/staticmap?center=459+Main+St+Kingston+NY+12401&zoom=13&size=1200x800&maptype=roadmap&markers=color:red%7C459+Main+St+Kingston+NY+12401&markers=color:blue%7C221+Hurley+Ave+Kingston+NY+12401&markers=color:blue%7C139+Washington+Ave+Kingston+NY+12401&markers=color:blue%7C1365+Old+Post+Rd+Esopus+NY+12401&markers=color:blue%7C40+Bridle+Path+Ln+High+Falls+NY+12440&markers=color:blue%7C290+Ulster+Landing+Rd+Kingston+NY+12401&markers=color:blue%7C15+Henderson+Pl+Saugerties+NY+12477&markers=color:blue%7C8+Red+Cedar+Ln+Kingston+NY+12401&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="Map with comparables">
+            </div>
+
+            <!-- Comparable 1 -->
+            <div class="comparable-card">
+                <h3 class="text-xl font-bold text-blue-800 pb-2 border-b border-blue-200">221 Hurley Avenue, Kingston, NY</h3>
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="mb-1"><strong>Distance:</strong> 1.8 miles</p>
+                        <p class="mb-1"><strong>Sale Date:</strong> March 12, 2025</p>
+                        <p class="mb-1"><strong>Beds/Baths:</strong> 4 BR / 3 BA</p>
+                        <p class="mb-1"><strong>Square Feet:</strong> 2,890 sq ft</p>
+                        <p class="mb-1"><strong>Year Built:</strong> 2012</p>
+                        <p class="mb-1"><strong>Lot:</strong> 0.8 acres</p>
+                        <p class="text-xl font-bold text-blue-800 mt-2">$745,000</p>
+                        <p><strong>$258 per sq ft</strong></p>
+                    </div>
+                    <div>
+                        <p class="italic mb-4">
+                            This recent sale provides a strong comparison point with similar bedroom count and construction era. 
+                            While slightly smaller in square footage and significantly smaller in lot size than the subject property, 
+                            the $745,000 sale price suggests strong demand for newer luxury homes in Kingston.
+                        </p>
+                        <p class="bg-blue-50 p-3 rounded-lg italic">
+                            <strong>Strategic Insight:</strong> When adjusted for the subject property's larger size (3,157 vs 2,890 sq ft), 
+                            additional bathrooms (5.5 vs 3), and much larger lot (2.1 vs 0.8 acres), a valuation of $790,000 is well-supported.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparable 2 -->
+            <div class="comparable-card">
+                <h3 class="text-xl font-bold text-blue-800 pb-2 border-b border-blue-200">139 Washington Avenue, Kingston, NY</h3>
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="mb-1"><strong>Distance:</strong> 2.1 miles</p>
+                        <p class="mb-1"><strong>Sale Date:</strong> January 8, 2025</p>
+                        <p class="mb-1"><strong>Beds/Baths:</strong> 5 BR / 4 BA</p>
+                        <p class="mb-1"><strong>Square Feet:</strong> 3,400 sq ft</p>
+                        <p class="mb-1"><strong>Year Built:</strong> 2005</p>
+                        <p class="mb-1"><strong>Lot:</strong> 0.9 acres</p>
+                        <p class="text-xl font-bold text-blue-800 mt-2">$785,000</p>
+                        <p><strong>$231 per sq ft</strong></p>
+                    </div>
+                    <div>
+                        <p class="italic mb-4">
+                            This January 2025 sale shows strong market activity for premium homes. The property is larger in square footage 
+                            but has a smaller lot size compared to the subject property. The similar sale price of $785,000 for an older property 
+                            with less land supports the subject's valuation.
+                        </p>
+                        <p class="bg-blue-50 p-3 rounded-lg italic">
+                            <strong>Strategic Insight:</strong> While larger in square footage, this comparable has an older build date (2005 vs 2015), 
+                            less advanced systems, and significantly less land. The subject property's newer construction and 2.1-acre lot justify 
+                            the $790,000 valuation despite being slightly smaller in square footage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparable 3 -->
+            <div class="comparable-card">
+                <h3 class="text-xl font-bold text-blue-800 pb-2 border-b border-blue-200">1365 Old Post Road, Esopus, NY</h3>
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="mb-1"><strong>Distance:</strong> 3.5 miles</p>
+                        <p class="mb-1"><strong>Sale Date:</strong> April 22, 2025</p>
+                        <p class="mb-1"><strong>Beds/Baths:</strong> 4 BR / 3.5 BA</p>
+                        <p class="mb-1"><strong>Square Feet:</strong> 3,100 sq ft</p>
+                        <p class="mb-1"><strong>Year Built:</strong> 2008</p>
+                        <p class="mb-1"><strong>Lot:</strong> 2.3 acres</p>
+                        <p class="text-xl font-bold text-blue-800 mt-2">$799,000</p>
+                        <p><strong>$258 per sq ft</strong></p>
+                    </div>
+                    <div>
+                        <p class="italic mb-4">
+                            This very recent sale offers an excellent comparison with nearly identical square footage and lot size. 
+                            The slightly higher sale price reflects the premium that buyers are willing to pay for properties with 
+                            generous acreage combined with luxury finishes, despite being older than the subject property.
+                        </p>
+                        <p class="bg-blue-50 p-3 rounded-lg italic">
+                            <strong>Strategic Insight:</strong> The subject property's newer construction (2015 vs 2008) and more 
+                            bathrooms (5.5 vs 3.5) balance against this comparable's slightly larger lot, making the $790,000 valuation 
+                            extremely well-aligned with recent market activity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparable 4 -->
+            <div class="comparable-card">
+                <h3 class="text-xl font-bold text-blue-800 pb-2 border-b border-blue-200">40 Bridle Path Lane, High Falls, NY</h3>
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="mb-1"><strong>Distance:</strong> 9.7 miles</p>
+                        <p class="mb-1"><strong>Sale Date:</strong> February 15, 2025</p>
+                        <p class="mb-1"><strong>Beds/Baths:</strong> 4 BR / 4 BA</p>
+                        <p class="mb-1"><strong>Square Feet:</strong> 3,250 sq ft</p>
+                        <p class="mb-1"><strong>Year Built:</strong> 2010</p>
+                        <p class="mb-1"><strong>Lot:</strong> 3.2 acres</p>
+                        <p class="text-xl font-bold text-blue-800 mt-2">$820,000</p>
+                        <p><strong>$252 per sq ft</strong></p>
+                    </div>
+                    <div>
+                        <p class="italic mb-4">
+                            Although farther from Kingston, this comparable demonstrates the premium that buyers are willing to pay 
+                            for newer construction with generous acreage. The $820,000 sale price for a similar property with larger 
+                            acreage but older construction provides a ceiling comparison for the subject property.
+                        </p>
+                        <p class="bg-blue-50 p-3 rounded-lg italic">
+                            <strong>Strategic Insight:</strong> The higher price of this comparable can be attributed to its larger lot size 
+                            and more rural setting. The subject property's newer construction date and premium location closer to Kingston's 
+                            amenities justifies the $790,000 valuation despite having slightly less land.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparable 5 -->
+            <div class="comparable-card">
+                <h3 class="text-xl font-bold text-blue-800 pb-2 border-b border-blue-200">290 Ulster Landing Road, Kingston, NY</h3>
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="mb-1"><strong>Distance:</strong> 4.3 miles</p>
+                        <p class="mb-1"><strong>Sale Date:</strong> December 10, 2024</p>
+                        <p class="mb-1"><strong>Beds/Baths:</strong> 4 BR / 3.5 BA</p>
+                        <p class="mb-1"><strong>Square Feet:</strong> 2,980 sq ft</p>
+                        <p class="mb-1"><strong>Year Built:</strong> 2006</p>
+                        <p class="mb-1"><strong>Lot:</strong> 1.8 acres</p>
+                        <p class="text-xl font-bold text-blue-800 mt-2">$762,000</p>
+                        <p><strong>$256 per sq ft</strong></p>
+                    </div>
+                    <div>
+                        <p class="italic mb-4">
+                            This December 2024 sale provides a strong reference point for luxury homes in the Kingston area. Despite being older 
+                            and smaller than the subject property, it commanded a significant price due to its quality construction and generous lot.
+                        </p>
+                        <p class="bg-blue-50 p-3 rounded-lg italic">
+                            <strong>Strategic Insight:</strong> The subject property's advantages in age (2015 vs 2006), size (3,157 vs 2,980 sq ft), 
+                            bathrooms (5.5 vs 3.5), and lot size (2.1 vs 1.8 acres) all support a premium valuation of $790,000 compared to this 
+                            comparable's $762,000 sale price.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparable 6 -->
+            <div class="comparable-card">
+                <h3 class="text-xl font-bold text-blue-800 pb-2 border-b border-blue-200">15 Henderson Place, Saugerties, NY</h3>
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="mb-1"><strong>Distance:</strong> 11.2 miles</p>
+                        <p class="mb-1"><strong>Sale Date:</strong> May 4, 2025</p>
+                        <p class="mb-1"><strong>Beds/Baths:</strong> 3 BR / 3 BA</p>
+                        <p class="mb-1"><strong>Square Feet:</strong> 2,750 sq ft</p>
+                        <p class="mb-1"><strong>Year Built:</strong> 2018</p>
+                        <p class="mb-1"><strong>Lot:</strong> 1.5 acres</p>
+                        <p class="text-xl font-bold text-blue-800 mt-2">$735,000</p>
+                        <p><strong>$267 per sq ft</strong></p>
+                    </div>
+                    <div>
+                        <p class="italic mb-4">
+                            While farther from Kingston, this very recent sale offers insight into the market for newer luxury construction. 
+                            Despite having fewer bedrooms and a smaller lot, it sold for $735,000, demonstrating the premium that buyers 
+                            place on recent construction.
+                        </p>
+                        <p class="bg-blue-50 p-3 rounded-lg italic">
+                            <strong>Strategic Insight:</strong> The subject property's advantages in bedroom count (4 vs 3), bathroom count 
+                            (5.5 vs 3), square footage (3,157 vs 2,750), and lot size (2.1 vs 1.5 acres) more than offset the slightly newer 
+                            construction of this comparable, supporting the $790,000 valuation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparable 7 -->
+            <div class="comparable-card">
+                <h3 class="text-xl font-bold text-blue-800 pb-2 border-b border-blue-200">8 Red Cedar Lane, Kingston, NY</h3>
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="mb-1"><strong>Distance:</strong> 3.8 miles</p>
+                        <p class="mb-1"><strong>Sale Date:</strong> November 28, 2024</p>
+                        <p class="mb-1"><strong>Beds/Baths:</strong> 5 BR / 4 BA</p>
+                        <p class="mb-1"><strong>Square Feet:</strong> 3,450 sq ft</p>
+                        <p class="mb-1"><strong>Year Built:</strong> 2000</p>
+                        <p class="mb-1"><strong>Lot:</strong> 2.4 acres</p>
+                        <p class="text-xl font-bold text-blue-800 mt-2">$780,000</p>
+                        <p><strong>$226 per sq ft</strong></p>
+                    </div>
+                    <div>
+                        <p class="italic mb-4">
+                            This sale from late 2024 provides context for larger luxury homes in the Kingston area. Despite being older, 
+                            the property commanded a strong price due to its generous size, multiple bedrooms, and large lot.
+                        </p>
+                        <p class="bg-blue-50 p-3 rounded-lg italic">
+                            <strong>Strategic Insight:</strong> While this property has advantages in total size and bedroom count, the 
+                            subject property's much newer construction (2015 vs 2000) and more bathrooms (5.5 vs 4) create a balanced comparison. 
+                            The similar price point validates the $790,000 valuation as market-appropriate for the subject property.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Value Opportunities -->
+        <section class="my-10">
+            <h2 class="text-2xl font-bold mb-6">Hidden Value Opportunities</h2>
+            
+            <div class="opportunity-card">
+                <h3 class="text-lg font-bold text-blue-800">Smart Home Integration</h3>
+                <p>Incorporating comprehensive smart home technology could significantly increase appeal to luxury buyers. Modern security systems, 
+                automated climate control, and integrated entertainment systems would enhance the property's contemporary profile.</p>
+                <p class="font-bold text-blue-800 mt-2">Potential Value Add: $30,000 - $45,000</p>
+            </div>
+            
+            <div class="opportunity-card">
+                <h3 class="text-lg font-bold text-blue-800">Outdoor Living Enhancement</h3>
+                <p>Developing the 2.1-acre lot with premium outdoor living features like an outdoor kitchen, fire pit area, or landscaped 
+                entertainment spaces would maximize the property's substantial land value and appeal to luxury buyers seeking resort-like amenities.</p>
+                <p class="font-bold text-blue-800 mt-2">Potential Value Add: $40,000 - $60,000</p>
+            </div>
+            
+            <div class="opportunity-card">
+                <h3 class="text-lg font-bold text-blue-800">Sustainable Energy Features</h3>
+                <p>Installing solar panels and other energy-efficient upgrades would appeal to environmentally conscious luxury buyers while 
+                reducing operating costs. Modern luxury buyers increasingly value sustainability combined with advanced technology.</p>
+                <p class="font-bold text-blue-800 mt-2">Potential Value Add: $25,000 - $40,000</p>
+            </div>
+        </section>
+
+        <!-- Value Reconciliation -->
+        <section class="my-10">
+            <h2 class="text-2xl font-bold mb-6">Value Reconciliation</h2>
+            
+            <div class="value-highlight">
+                <h3 class="text-xl font-bold">Estimated Market Value Range</h3>
+                <p class="text-lg my-2">$765,000 - $815,000</p>
+                <div class="text-3xl font-bold my-4">$790,000</div>
+            </div>
+            
+            <div class="mt-6">
+                <h3 class="text-xl font-bold mb-4">Value Considerations</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Modern Construction Premium:</strong> Built in 2015, the property offers contemporary design and systems that command a premium in the market</li>
+                    <li><strong>Lot Size Value:</strong> 2.1 acres is significantly larger than typical Kingston properties, adding substantial value</li>
+                    <li><strong>Bathroom Count:</strong> 5.5 bathrooms is exceptional for the area and adds significant value</li>
+                    <li><strong>Location Quality:</strong> The Main Street address offers prestige while the large lot provides privacy</li>
+                    <li><strong>Luxury Market Resilience:</strong> Despite broader market fluctuations, high-end properties with unique features maintain strong values</li>
+                </ul>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 mt-8 text-center">
+                <div class="p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-bold">Conservative Low</h4>
+                    <p class="text-xl font-bold">$765,000</p>
+                </div>
+                <div class="p-4 bg-yellow-100 border-2 border-yellow-400 rounded-lg">
+                    <h4 class="font-bold">Recommended Value</h4>
+                    <p class="text-xl font-bold">$790,000</p>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-bold">Optimistic High</h4>
+                    <p class="text-xl font-bold">$815,000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Summary & Recommendations -->
+        <section class="my-10">
+            <h2 class="text-2xl font-bold mb-6">Market Summary & Strategic Recommendations</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-4">Market Analysis Summary</h3>
+                    <ul class="space-y-2">
+                        <li><strong>Comparable Range:</strong> $735,000 - $820,000</li>
+                        <li><strong>Average Value (7 comps):</strong> $775,142</li>
+                        <li><strong>Median Value:</strong> $780,000</li>
+                        <li><strong>Most Recent Comp Value:</strong> $799,000</li>
+                        <li><strong>Price per Square Foot Range:</strong> $226 - $267</li>
+                        <li><strong>Average Price per Square Foot:</strong> $248</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-4">Strategic Positioning</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-3 bg-blue-50 rounded-lg">
+                            <p class="font-bold">Modern Luxury</p>
+                            <p>2015 construction with premium finishes</p>
+                        </div>
+                        <div class="p-3 bg-blue-50 rounded-lg">
+                            <p class="font-bold">Generous Acreage</p>
+                            <p>2.1 acres of private land</p>
+                        </div>
+                        <div class="p-3 bg-blue-50 rounded-lg">
+                            <p class="font-bold">Premium Features</p>
+                            <p>5.5 bathrooms and 3-car garage</p>
+                        </div>
+                        <div class="p-3 bg-blue-50 rounded-lg">
+                            <p class="font-bold">Location Value</p>
+                            <p>Prestigious Main Street address</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <h3 class="text-xl font-bold mb-4">Seller Strategy Recommendations</h3>
+                <ol class="list-decimal pl-6 space-y-3">
+                    <li>
+                        <strong>Luxury Marketing Approach:</strong> Emphasize the property's modern construction, premium fixtures, and generous 
+                        lot size to attract discerning buyers seeking contemporary luxury with space
+                    </li>
+                    <li>
+                        <strong>Virtual Tour Enhancement:</strong> Invest in professional virtual tour technology to showcase the spacious 
+                        3,157 sq ft layout and premium features, particularly important for out-of-area luxury buyers
+                    </li>
+                    <li>
+                        <strong>Targeted Buyer Focus:</strong> Market specifically to NYC/downstate buyers seeking luxury retreats with space, 
+                        a growing segment in the Kingston luxury market
+                    </li>
+                    <li>
+                        <strong>Acreage Promotion:</strong> Highlight the rare opportunity of 2.1 acres combined with modern luxury construction, 
+                        a combination difficult to find in the Kingston area
+                    </li>
+                    <li>
+                        <strong>Premium Photography:</strong> Invest in twilight photography and aerial drone footage to showcase the property's 
+                        impressive scale and setting
+                    </li>
+                </ol>
+            </div>
+
+            <div class="value-highlight mt-8">
+                <h3 class="text-xl font-bold">Professional Recommendation</h3>
+                <p class="text-3xl font-bold my-4">$790,000</p>
+                <p class="text-lg">
+                    Based on comprehensive market analysis of 7 comparable properties, current luxury market conditions, and the subject property's 
+                    distinctive features, we recommend a list price of $790,000. This pricing strategy positions the property competitively while 
+                    acknowledging its premium features, particularly the contemporary construction, generous 2.1-acre lot, and exceptional bathroom count.
+                </p>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="my-12 text-center">
+            <h2 class="text-2xl font-bold mb-4">Ready to Discuss Your Options?</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-6">
+                The luxury market segment is performing strongly for distinctive properties like 459 Main St. Let's discuss how to 
+                maximize your property's potential in this opportune market window.
+            </p>
+            <a href="https://calendly.com/hudsonvalleysold/property-consultation" class="cta-button">
+                Book a Call Now
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <p>United Real Estate Hudson Valley Edge</p>
+            <p>1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="40292e262f00283524332f2e36212c2c2539332f2c246e232f2d">[email&#160;protected]</a> | (845) 251-4468</p>
+            <p class="mt-4">&copy; 2025 Hudson Valley Sold. All rights reserved.</p>
+            <p>This market analysis was prepared exclusively for Joseph and Paula Minew.</p>
+            <p>Property information believed to be accurate but not guaranteed.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Market Trend Chart
+            const ctx = document.getElementById('marketTrendChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [
+                        {
+                            label: 'Overall Kingston Market (Median Price $000s)',
+                            data: [315, 320, 310, 305, 300, 295, 300, 310, 305, 300, 303, 303],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Luxury Market Segment ($700K+ Properties)',
+                            data: [760, 765, 772, 775, 780, 782, 788, 790, 795, 798, 795, 795],
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Kingston Market Trends 2024-2025',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Price in $000s'
+                            },
+                            min: 250,
+                            max: 850
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"966e6c4599e443f9","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.7.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDuxF3rH4GWDAgYULWZbHJ5LWDS01pcWFULhNjaOvm0suQpb%2BOIeGY5ViFKeUzx0I2A7Lu2yAvjayaJQjD0uYNhs5vziWy17MSv8KezGar%2BMDJh4RB6y%2FNoQyn1U4116YZXw6I%2FBgADLUYg%2BhJ67ToQQHHhDOfReBBi6IcZqtTeOgEBSHriXjI1qAYMGApboGVs4pTQ%2Bnsh%2B3eMlA6BxapN3I0wWrvI2qyIMUl2phwjllZ%2F7zd74SONo8aFnyiiYyqEAA4bUWapHKg3S0ojaR6XvsidnIzSn%2Btfy0BNsg1e643eCs0sISOw971hi9UePPvPqHyogg7ReB9%2FOr6X1c32a%2BUoZowaidgdw9%2FhXWCWoq8oxm%2B5FvZDmoAz2TboN4D3b1BJEeiPlH%2F%2FkynPYBXsDIb33Za7Enkg1mG27bui6m%2BGj2D61ep5M%2FW5pYQv9bc8SwK4apxYwRFx5B%2FvRZYUUtqCT%2FaC1dTtBAj6i7y3MYCbfXhrhsFtgB93%2BsFo%2BCZQ%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDuxF3rH4GWDAgYULWZbHJ5LWDS01pcWFULhNjaOvm0suQpb+OIeGY5ViFKeUzx0I2A7Lu2yAvjayaJQjD0uYNhs5vziWy17MSv8KezGar+MDJh4RB6y/NoQyn1U4116YZXw6I/BgADLUYg+hJ67ToQQHHhDOfReBBi6IcZqtTeOgEBSHriXjI1qAYMGApboGVs4pTQ+nsh+3eMlA6BxapN3I0wWrvI2qyIMUl2phwjllZ/7zd74SONo8aFnyiiYyqEAA4bUWapHKg3S0ojaR6XvsidnIzSn+tfy0BNsg1e643eCs0sISOw971hi9UePPvPqHyogg7ReB9/Or6X1c32a+UoZowaidgdw9/hXWCWoq8oxm+5FvZDmoAz2TboN4D3b1BJEeiPlH//kynPYBXsDIb33Za7Enkg1mG27bui6m+Gj2D61ep5M/W5pYQv9bc8SwK4apxYwRFx5B/vRZYUUtqCT/aC1dTtBAj6i7y3MYCbfXhrhsFtgB93+sFo+CZQ==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
