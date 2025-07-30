@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparative Market Analysis - 34 Montfort Rd, Wappingers Falls, NY</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        .value-highlight {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .market-alert {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        .property-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 1px solid #0ea5e9;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .property-detail {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .strategic-insight {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+        .recommendation-box {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .opportunity-card {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #e2e8f0;
+            text-align: left;
+        }
+        .trend-indicator {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #0f766e;
+        }
+        .footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            border-radius: 0.5rem;
+        }
+        .chart-container {
+            height: 300px;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="max-w-6xl mx-auto px-4 py-6">
+    <header>
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex items-center">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold Logo" class="h-16 mr-4">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Logo" class="h-16">
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">Comparative Market Analysis</h1>
+        </div>
+    </header>
+
+    <section class="market-alert">
+        <h2 class="text-xl font-bold text-blue-800 flex items-center mb-2">
+            <i class="fas fa-fire-alt mr-2"></i> MARKET OPPORTUNITY ALERT
+        </h2>
+        <p class="mb-2">Wappingers Falls is experiencing strong market growth with a <span class="trend-indicator">9.2% INCREASE</span> in home values year-over-year. Properties are selling <span class="trend-indicator">FASTER</span> than last year (26 days vs. 35+ days). This creates an excellent selling window for Colonial homes in this sought-after area.</p>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Your Real Estate Professionals</h2>
+        <p class="mb-4">Combined Experience: 35+ Years</p>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="agent-card text-center">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="w-40 h-40 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold text-blue-800">Glenn Fitzgerald</h3>
+                <p>Associate Broker</p>
+                <p class="mb-2">22 Years Experience</p>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2940474f4669415c4d5a46475f4845454c505a46454d074a4644">[email&#160;protected]</a></p>
+                <p>(845) 251-4468</p>
+            </div>
+            
+            <div class="agent-card text-center">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/heather_martin_official_professional_photo.jpg" alt="Heather Martin" class="w-40 h-40 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold text-blue-800">Heather Martin</h3>
+                <p>Licensed Salesperson</p>
+                <p class="mb-2">13 Years Experience</p>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b72757d745b736e7f6874756d7a77777e626874777f35787476">[email&#160;protected]</a></p>
+                <p>(845) 251-4468</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <p>United Real Estate Hudson Valley Edge</p>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-800 mb-2">34 Montfort Rd, Wappingers Falls, NY 12590</h2>
+        <h3 class="text-xl italic mb-4">Well-Maintained Colonial on Generous 0.68-Acre Lot</h3>
+        
+        <div class="mb-6 text-center">
+            <div class="text-3xl font-bold text-blue-800 mb-2">$485,000</div>
+            <p>$268 per square foot</p>
+        </div>
+        
+        <div class="mb-8">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=34+Montfort+Rd+Wappingers+Falls+NY+12590&zoom=16&size=1200x800&maptype=satellite&markers=color:red%7C34+Montfort+Rd+Wappingers+Falls+NY+12590&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="34 Montfort Rd Satellite View" class="w-full rounded-lg shadow-lg">
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Property Type</h4>
+                <p>Single Family Colonial</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Year Built</h4>
+                <p>1965 (59 years old)</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Square Footage</h4>
+                <p>1,812 sq.ft.</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Bedrooms</h4>
+                <p>3</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Bathrooms</h4>
+                <p>2</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Lot Size</h4>
+                <p>0.68 acres</p>
+            </div>
+        </div>
+        
+        <p class="mb-4">This well-positioned 3-bedroom, 2-bathroom Colonial represents excellent value in today's competitive Hudson Valley market. Built in 1965, the home sits on a generous 0.68-acre lot on the desirable Montfort Road, which has established itself as one of Wappingers Falls' premier residential streets.</p>
+        <p>The substantial lot size provides privacy and space that today's buyers are seeking, while the location in the highly-regarded Wappingers Central School District adds significant appeal. Recent market data shows properties on Montfort Road average $513,733, positioning this home favorably within the street's value range.</p>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Wappingers Falls, NY Market Trends</h2>
+        
+        <div class="value-highlight mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Strong Seller's Market With Rising Values</h3>
+            <p>Wappingers Falls is currently experiencing exceptional market conditions with strong buyer demand and limited inventory. These conditions create a highly favorable environment for sellers of Colonial homes, especially those with substantial lot sizes like 34 Montfort Road.</p>
+        </div>
+        
+        <table class="bg-white">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>June 2024</th>
+                    <th>June 2025</th>
+                    <th>Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Median Sale Price</td>
+                    <td>$456,900</td>
+                    <td>$499,000</td>
+                    <td class="text-green-600">+9.2%</td>
+                </tr>
+                <tr>
+                    <td>Median Price/Sq.Ft.</td>
+                    <td>$252</td>
+                    <td>$277</td>
+                    <td class="text-green-600">+9.9%</td>
+                </tr>
+                <tr>
+                    <td>Days on Market</td>
+                    <td>35</td>
+                    <td>26</td>
+                    <td class="text-green-600">-25.7%</td>
+                </tr>
+                <tr>
+                    <td>Sale to List Ratio</td>
+                    <td>98.5%</td>
+                    <td>101.78%</td>
+                    <td class="text-green-600">+3.3%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p class="mt-4"><strong>Market Insight:</strong> The combination of 9.2% price growth, reduced days on market, and above-asking sale prices (101.78% sale-to-list ratio) indicates exceptional seller conditions. With 86% of homes selling within 30 days and record low inventory levels throughout the Hudson Valley, this represents an optimal selling window for quality properties like 34 Montfort Road.</p>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Comparable Properties Analysis</h2>
+        <p class="mb-6">The following properties were selected based on proximity, recent sales, and similar characteristics using our Broadened Proximity-Priority approach.</p>
+        
+        <div class="mb-8">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=34+Montfort+Rd+Wappingers+Falls+NY&zoom=13&size=1200x800&maptype=roadmap&markers=color:red%7C34+Montfort+Rd+Wappingers+Falls+NY&markers=color:blue%7C29+Montfort+Rd+Wappingers+Falls+NY&markers=color:blue%7C31+Montfort+Rd+Wappingers+Falls+NY&markers=color:blue%7C156+Middlebush+Rd+Wappingers+Falls+NY&markers=color:blue%7C42+Stone+Ridge+Dr+Wappingers+Falls+NY&markers=color:blue%7C78+Carnwath+Rd+Wappingers+Falls+NY&markers=color:blue%7C215+Myers+Corners+Rd+Wappingers+Falls+NY&markers=color:blue%7C89+Sunset+Dr+Wappingers+Falls+NY&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="Map with comparables" class="w-full rounded-lg shadow-lg">
+        </div>
+
+        <!-- COMPARABLE 1 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">29 Montfort Rd, Wappingers Falls, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 0.1 miles</p>
+                    <p><strong>Sale Date:</strong> March 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 1,800 sq ft</p>
+                    <p><strong>Year Built:</strong> 1968</p>
+                    <p><strong>Lot:</strong> 0.52 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$465,000</div>
+                    <p class="font-bold mb-4">$258 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Strategic Insight:</strong> Same street location with similar vintage and layout. Subject property's larger lot size (0.68 vs 0.52 acres) and additional 12 sq ft justify premium positioning. Recent sale demonstrates strong demand for Montfort Road properties.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 2 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">31 Montfort Rd, Wappingers Falls, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 0.2 miles</p>
+                    <p><strong>Sale Date:</strong> April 2025</p>
+                    <p><strong>Beds/Baths:</strong> 4 BR / 2.5 BA</p>
+                    <p><strong>Square Feet:</strong> 2,368 sq ft</p>
+                    <p><strong>Year Built:</strong> 1975</p>
+                    <p><strong>Lot:</strong> 0.75 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$526,040</div>
+                    <p class="font-bold mb-4">$222 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Strategic Insight:</strong> Same street with larger square footage and additional bedroom/bath. Lower price per square foot due to size efficiency. Supports Montfort Road premium and validates street desirability.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 3 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">156 Middlebush Rd, Wappingers Falls, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 1.2 miles</p>
+                    <p><strong>Sale Date:</strong> February 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 1,750 sq ft</p>
+                    <p><strong>Year Built:</strong> 1962</p>
+                    <p><strong>Lot:</strong> 0.61 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$445,000</div>
+                    <p class="font-bold mb-4">$254 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Strategic Insight:</strong> Similar bedroom/bath configuration and vintage. Subject property's Montfort Road location and larger square footage (1,812 vs 1,750) support higher valuation. Demonstrates broader neighborhood demand.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 4 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">42 Stone Ridge Dr, Wappingers Falls, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 1.8 miles</p>
+                    <p><strong>Sale Date:</strong> January 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 1,825 sq ft</p>
+                    <p><strong>Year Built:</strong> 1971</p>
+                    <p><strong>Lot:</strong> 0.45 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$475,000</div>
+                    <p class="font-bold mb-4">$260 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Strategic Insight:</strong> Nearly identical square footage and layout. Subject property's superior lot size (0.68 vs 0.45 acres) and established Montfort Road location justify competitive positioning. Shows market depth at this price point.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 5 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">78 Carnwath Rd, Wappingers Falls, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 2.1 miles</p>
+                    <p><strong>Sale Date:</strong> March 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 1.5 BA</p>
+                    <p><strong>Square Feet:</strong> 1,695 sq ft</p>
+                    <p><strong>Year Built:</strong> 1960</p>
+                    <p><strong>Lot:</strong> 0.72 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$459,000</div>
+                    <p class="font-bold mb-4">$271 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Strategic Insight:</strong> Similar lot size but smaller square footage and only 1.5 baths vs. 2 full baths. Higher price per square foot due to premium lot size. Supports subject property's value proposition with superior bathroom count.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 6 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">215 Myers Corners Rd, Wappingers Falls, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 2.4 miles</p>
+                    <p><strong>Sale Date:</strong> April 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 1,890 sq ft</p>
+                    <p><strong>Year Built:</strong> 1969</p>
+                    <p><strong>Lot:</strong> 0.58 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$495,000</div>
+                    <p class="font-bold mb-4">$262 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Strategic Insight:</strong> Slightly larger square footage but smaller lot size. Myers Corners Road location commands premium pricing. Subject property's Montfort Road location and superior lot size position it competitively within this range.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 7 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">89 Sunset Dr, Wappingers Falls, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 1.7 miles</p>
+                    <p><strong>Sale Date:</strong> May 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 1,765 sq ft</p>
+                    <p><strong>Year Built:</strong> 1963</p>
+                    <p><strong>Lot:</strong> 0.63 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$468,000</div>
+                    <p class="font-bold mb-4">$265 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Strategic Insight:</strong> Most recent comparable with similar configuration. Subject property's additional 47 square feet and slightly larger lot size support premium positioning. Recent sale timing provides current market validation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Hidden Value Opportunities</h2>
+        
+        <div class="opportunity-card">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Landscape Enhancement & Curb Appeal</h3>
+            <p>With 0.68 acres, professional landscaping and improved curb appeal could significantly enhance first impressions and market appeal. Consider front yard plantings, defined walkways, and seasonal color enhancements.</p>
+            <p class="font-bold text-blue-800 mt-2">Potential Value Add: $5,000 - $12,000</p>
+        </div>
+        
+        <div class="opportunity-card">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Kitchen & Bath Updates</h3>
+            <p>Strategic updates to kitchen countertops, cabinet hardware, and bathroom fixtures can provide significant return on investment. Focus on cost-effective improvements that enhance functionality and visual appeal.</p>
+            <p class="font-bold text-blue-800 mt-2">Potential Value Add: $8,000 - $18,000</p>
+        </div>
+        
+        <div class="opportunity-card">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Energy Efficiency Improvements</h3>
+            <p>With rising energy costs, improvements such as updated windows, insulation, or HVAC efficiency can appeal to environmentally conscious buyers and reduce carrying costs.</p>
+            <p class="font-bold text-blue-800 mt-2">Potential Value Add: $6,000 - $15,000</p>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Value Reconciliation</h2>
+        
+        <div class="recommendation-box">
+            <h3 class="text-xl font-bold mb-2">Estimated Market Value Range</h3>
+            <p class="mb-2">$465,000 - $505,000</p>
+            <div class="text-3xl font-bold text-blue-800 my-4">$485,000</div>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-2">Value Considerations</h3>
+        <ul class="list-disc pl-6 mb-6">
+            <li><strong>Street Premium:</strong> Montfort Road commands higher values with average sales of $513,733</li>
+            <li><strong>Lot Size Advantage:</strong> 0.68 acres provides privacy and space that buyers pay premiums for in current market</li>
+            <li><strong>School District Value:</strong> Wappingers Central School District with recent top credit rating enhances desirability</li>
+            <li><strong>Market Timing:</strong> Current seller's market with 101.78% sale-to-list ratio supports strong pricing</li>
+            <li><strong>Competitive Position:</strong> Price per square foot of $268 aligns with comparable sales range of $254-$271</li>
+        </ul>
+        
+        <div class="grid md:grid-cols-2 gap-6 text-center">
+            <div>
+                <h4 class="font-bold mb-2">Conservative Low</h4>
+                <p class="text-2xl font-bold text-blue-800">$465,000</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Recommended Value</h4>
+                <p class="text-2xl font-bold text-blue-800">$485,000</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Market Summary & Strategic Recommendations</h2>
+        
+        <h3 class="text-xl font-bold mb-4">Market Analysis Summary</h3>
+        <ul class="list-disc pl-6 mb-6">
+            <li><strong>Comparable Range:</strong> $445,000 - $526,040</li>
+            <li><strong>Average Value (7 comps):</strong> $476,291</li>
+            <li><strong>Median Value:</strong> $468,000</li>
+            <li><strong>Most Recent Comp Value:</strong> $468,000 (May 2025)</li>
+            <li><strong>Price per Square Foot Range:</strong> $222 - $271</li>
+            <li><strong>Average Price per Square Foot:</strong> $256</li>
+        </ul>
+        
+        <h3 class="text-xl font-bold mb-4">Strategic Positioning</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">Premium Street Location</h4>
+                <p>Montfort Road commands higher values than surrounding streets, with established desirability and consistent sales performance supporting premium positioning.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">Lot Size Competitive Advantage</h4>
+                <p>0.68-acre lot provides substantial space and privacy that current market conditions favor, with buyers paying premiums for properties offering room to grow.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">School District Appeal</h4>
+                <p>Wappingers Central School District location with recent top credit rating enhances long-term value stability and buyer appeal for families.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">Market Timing Advantage</h4>
+                <p>Current seller's market with above-asking sales, reduced days on market, and record low inventory creates optimal selling conditions.</p>
+            </div>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-4 mt-6">Seller Strategy Recommendations</h3>
+        <ol class="list-decimal pl-6 mb-6">
+            <li><strong>Optimal Pricing Strategy:</strong> List at $485,000 to capture competitive market conditions while positioning for multiple offers</li>
+            <li><strong>Pre-Marketing Preparation:</strong> Focus on curb appeal and interior staging to maximize first impressions and online presentation</li>
+            <li><strong>Strategic Timing:</strong> List during peak spring/early summer season when buyer activity and school district appeal are highest</li>
+            <li><strong>Marketing Emphasis:</strong> Highlight lot size, Montfort Road location, and school district benefits in all marketing materials</li>
+            <li><strong>Offer Evaluation:</strong> Be prepared for multiple offers and quick decision timelines given current market pace</li>
+        </ol>
+        
+        <p class="mb-6"><strong>Strategic Recommendation:</strong> Given the combination of strong market conditions (9.2% value growth, 101.78% sale-to-list ratio), premium street location, and desirable property characteristics, this represents an excellent opportunity to achieve top-of-market pricing. The property's unique advantages position it to potentially exceed asking price in the current competitive environment.</p>
+        
+        <div class="recommendation-box">
+            <h3 class="text-xl font-bold mb-4">Professional Recommendation</h3>
+            <div class="text-4xl font-bold text-blue-800">$485,000</div>
+            <p class="mt-4">This valuation reflects the property's competitive positioning within current market conditions, accounting for Montfort Road's premium location, the substantial lot size advantage, and strong buyer demand in the Wappingers Falls market. The price per square foot of $268 aligns with recent comparable sales while positioning for potential upside given current market momentum.</p>
+        </div>
+    </section>
+
+    <section class="text-center mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Ready to Discuss Your Options?</h2>
+        <p class="mb-6">Market conditions are exceptionally favorable right now with values up 9.2% and properties selling faster than last year. Let's discuss how to maximize your property's potential in this unique market window.</p>
+        <a href="https://calendly.com/hudsonvalleysold/property-consultation" class="cta-button">
+            <i class="far fa-calendar-alt mr-2"></i> Book a Call Now
+        </a>
+    </section>
+
+    <footer class="footer">
+        <div class="mb-4">
+            <p>United Real Estate Hudson Valley Edge</p>
+            <p>1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f666169604f677a6b7c6061796e63636a767c60636b216c6062">[email&#160;protected]</a> | (845) 251-4468</p>
+        </div>
+        <p>&copy; 2025 Hudson Valley Sold. All rights reserved.</p>
+        <p>This market analysis was prepared exclusively for James C Seckler.</p>
+        <p>Property information believed to be accurate but not guaranteed.</p>
+    </footer>
+
+    <!-- FUB Widget Integration -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+        {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+        (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+        e.parentNode.insertBefore(t,e);})
+        (window,"https://widgetbe.com/agent",document,"widgetTracker");
+        window.widgetTracker("create", "WT-FPLWTULQ");
+        window.widgetTracker("send", "pageview");
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDqkTNyQUBWTxTxgajbX9epgdESt0ly5VOZJPvDz2NW8BSkHxdy3dWt36112aN%2FQZ8lXb6zKK5M9UnRNbGnYpfMCVVUMTIOPtkUv1Sq81BL%2B3lH89vagh3SlR%2B9wNLj7NB6oEYExfr%2BZkipaiym3WXWiUosAJ6FzOcPXAp63Peprr6UWz0HFTpcsGgXlIkW%2BIYGu3ko1zjEcAo4OnpbawU59Fj%2FYaV87sv3WmXMeoUJ4uN%2BYvoZnEX7oDQND4b0liTy%2Fl5B5Cb2YdCQX%2BjiPkEwLMxnNdO2Yp2XAUA%2Fqa14KlgCv6VQSIXBvbn1NmnBpspM9UoDPnftLN5kIZ3YsYqv5KNcCn5HQ1CODBz5rJ7c55leB0wQok8GtxpkqxdhN4BUc2c%2FJWXPrus8UZkp8nGImI6dcxhCc6p6AqD%2BouCr57mNl2xwSQ9H5qa4ajyeJhSfguxARbhenXxlCAKZ3OE2N7ThYGVoJWlFnZNu1cG9PFEKXk%2FiqYcQwiEOwmzMzUBdTWhlOWjXA%2FQPRieKOWOSaFR4Do0nu1zUinC5MoajHz";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDqkTNyQUBWTxTxgajbX9epgdESt0ly5VOZJPvDz2NW8BSkHxdy3dWt36112aN/QZ8lXb6zKK5M9UnRNbGnYpfMCVVUMTIOPtkUv1Sq81BL+3lH89vagh3SlR+9wNLj7NB6oEYExfr+Zkipaiym3WXWiUosAJ6FzOcPXAp63Peprr6UWz0HFTpcsGgXlIkW
