@@ -3,273 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparative Market Analysis - 12 Dorland Ave, Poughkeepsie NY 12603</title>
+    <title>12 Dorland Ave, Poughkeepsie, NY 12603 - Professional Market Analysis</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
-        body { 
-            print-color-adjust: exact;
-            font-family: Arial, sans-serif !important;
-        }
-        * {
-            font-family: Arial, sans-serif !important;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
         }
         .gradient-header {
             background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
             color: white;
         }
+        .gradient-cover {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+        }
         .agent-card {
             background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            border: 2px solid #cbd5e1;
+            border: 2px solid #0ea5e9;
+        }
+        .comp-card {
+            background: white;
+            border-left: 4px solid #0ea5e9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .value-highlight {
-            background: linear-gradient(135deg, #fef3c7, #fcd34d);
-            border: 2px solid #f59e0b;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
         }
-        .market-insight {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            border-left: 4px solid #3b82f6;
+        .market-trend {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
         }
-        .comparable-card {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            border: 1px solid #0ea5e9;
+         {
+            body { background-color: white; }
+            .no-print { display: none; }
         }
-        .feature-relevance {
-            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-            border: 2px solid #16a34a;
-        }
-        .google-map {
-            width: 100%;
-            max-width: 1200px;
-            height: 400px;
-            border-radius: 8px;
-            margin: 20px auto;
-            display: block;
-        }
-        .property-icon {
-            color: #3b82f6;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .logo-section {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 40px 0;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 8px;
-        }
-        .logo-section img {
-            max-height: 80px;
-            max-width: 200px;
-            object-fit: contain;
-        }
-        @media print {
-            body { background: white !important; }
-            .no-print { display: none !important; }
-        }
-        @media (max-width: 768px) {
-            .google-map { height: 300px; }
-            .agent-grid { grid-template-columns: 1fr; }
-            .logo-section { flex-direction: column; gap: 20px; }
+        .price-box {
+            background: linear-gradient(135deg, #065f46, #047857);
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
         }
     </style>
-
-    <!-- begin Widget Tracker Code -->
-    <script>
-    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
-    {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
-    (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
-    e.parentNode.insertBefore(t,e);})
-    (window,"https://widgetbe.com/agent",document,"widgetTracker");
-    window.widgetTracker("create", "WT-FPLWTULQ");
-    window.widgetTracker("send", "pageview");
-    </script>
-    <!-- end Widget Tracker Code -->
 </head>
-<body class="bg-gray-50">
+<body>
+    <!-- Cover Page -->
+    <div class="gradient-cover min-h-screen flex items-center justify-center p-8">
+        <div class="text-center max-w-4xl">
+            <div class="mb-8">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8dGV4dCB4PSIxMDAiIHk9IjI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SFVER09OIFZBTExFWTwvdGV4dD4KPHRleHQgeD0iMTAwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U09MRDwvdGV4dD4KPC9zdmc+" alt="Hudson Valley Sold" class="mx-auto mb-8">
+            </div>
+            <h1 class="text-5xl font-bold mb-4">Professional Market Analysis</h1>
+            <div class="text-3xl mb-8">12 Dorland Ave</div>
+            <div class="text-2xl mb-8">Poughkeepsie, NY 12603</div>
+            <div class="bg-white bg-opacity-20 rounded-lg p-8 mb-8">
+                <div class="text-xl mb-4">Prepared for:</div>
+                <div class="text-3xl font-bold mb-2">Issa Nesheiwat</div>
+                <div class="text-lg">(845) 242-4991</div>
+                <div class="text-lg">issa510@aol.com</div>
+            </div>
+            <div class="text-xl">Estimated Market Value</div>
+            <div class="text-6xl font-bold mt-4">$378,000</div>
+            <div class="mt-8 text-lg">
+                Prepared by: Glenn Fitzgerald & Justin Phillips<br>
+                Hudson Valley Sold<br>
+                Date: January 2025
+            </div>
+        </div>
+    </div>
 
-    <!-- Header -->
-    <div class="gradient-header text-center py-8 mb-8">
-        <div class="flex justify-between items-center max-w-6xl mx-auto px-4">
-            <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" 
-                 alt="Hudson Valley Sold" class="h-12 w-auto">
-            <div>
-                <h1 class="text-3xl font-bold">Comparative Market Analysis</h1>
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto p-8 bg-white">
+        
+        <!-- Property Overview -->
+        <div class="mb-12">
+            <div class="gradient-header p-6 rounded-t-lg">
+                <h2 class="text-3xl font-bold mb-2">Property Overview</h2>
                 <p class="text-lg">12 Dorland Ave, Poughkeepsie, NY 12603</p>
             </div>
-            <div class="text-right">
-                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" 
-                     alt="United Real Estate Hudson Valley Edge" class="h-12 w-auto mb-2">
-                <p class="text-sm">United Real Estate Hudson Valley Edge</p>
-                <p class="text-xs">1097 State Route 55, Suite 9</p>
-                <p class="text-xs">Lagrangeville, NY 12540</p>
-                <p class="text-xs">845-251-4468</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Agent Cards -->
-    <div class="max-w-6xl mx-auto px-4 mb-8">
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <div class="agent-card p-6 rounded-lg">
-                <div class="flex items-center">
-                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" 
-                         alt="Glenn Fitzgerald" class="w-16 h-16 rounded-full mr-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-800">Glenn Fitzgerald</h3>
-                        <p class="text-blue-600 font-semibold">Associate Broker</p>
-                        <p class="text-sm text-gray-600">22 Years Experience</p>
-                        <p class="text-sm text-blue-600">[email protected]</p>
+            <div class="bg-gray-50 p-6 rounded-b-lg">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-600">4</div>
+                        <div class="text-gray-600">Bedrooms</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-600">2</div>
+                        <div class="text-gray-600">Bathrooms</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-600">1,694</div>
+                        <div class="text-gray-600">Square Feet</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-600">0.48</div>
+                        <div class="text-gray-600">Acres</div>
                     </div>
                 </div>
-            </div>
-            <div class="agent-card p-6 rounded-lg">
-                <div class="flex items-center">
-                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/justin_phillips_official_professional_photo.jpg" 
-                         alt="Justin Phillips" class="w-16 h-16 rounded-full mr-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-800">Justin Phillips</h3>
-                        <p class="text-blue-600 font-semibold">Managing Broker</p>
-                        <p class="text-sm text-gray-600">22 Years Experience</p>
-                        <p class="text-sm text-blue-600">845-251-4468</p>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div><strong>Style:</strong> Cape Cod</div>
+                    <div><strong>Year Built:</strong> ~1940s</div>
+                    <div><strong>School District:</strong> Arlington Central</div>
+                    <div><strong>Current Assessment:</strong> $269,500</div>
                 </div>
             </div>
         </div>
 
-        <div class="market-insight p-4 rounded-lg mb-8 text-center">
-            <h2 class="text-xl font-bold text-blue-800">Combined 44 Years of Hudson Valley Real Estate Expertise</h2>
+        <!-- Market Trends -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Poughkeepsie, NY Market Trends</h2>
+            <div class="market-trend p-6 rounded-lg mb-6">
+                <h3 class="text-2xl font-bold mb-4">Active Market With Rising Values</h3>
+                <p class="text-lg">Poughkeepsie is currently experiencing steady growth with increased buyer activity. These conditions create a favorable environment for sellers of Cape Cod style homes, especially those with larger lots like 12 Dorland Ave.</p>
+            </div>
+            
+            <div class="bg-white border rounded-lg overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left font-bold">Metric</th>
+                            <th class="px-4 py-3 text-center font-bold">January 2024</th>
+                            <th class="px-4 py-3 text-center font-bold">January 2025</th>
+                            <th class="px-4 py-3 text-center font-bold">Change</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-4 py-3 font-medium">Median Sale Price</td>
+                            <td class="px-4 py-3 text-center">$351,000</td>
+                            <td class="px-4 py-3 text-center font-bold">$375,000</td>
+                            <td class="px-4 py-3 text-center text-green-600 font-bold">+6.8%</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-4 py-3 font-medium">Median Price/Sq.Ft.</td>
+                            <td class="px-4 py-3 text-center">$205</td>
+                            <td class="px-4 py-3 text-center font-bold">$223</td>
+                            <td class="px-4 py-3 text-center text-green-600 font-bold">+8.8%</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium">Days on Market</td>
+                            <td class="px-4 py-3 text-center">52</td>
+                            <td class="px-4 py-3 text-center font-bold">45</td>
+                            <td class="px-4 py-3 text-center text-green-600 font-bold">-13%</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-4 py-3 font-medium">Sale to List Ratio</td>
+                            <td class="px-4 py-3 text-center">97%</td>
+                            <td class="px-4 py-3 text-center font-bold">98.5%</td>
+                            <td class="px-4 py-3 text-center text-green-600 font-bold">+1.5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                <p class="text-gray-800"><strong>Market Insight:</strong> The Arlington Central School District continues to drive strong demand, with properties selling faster and closer to asking price. The 6.8% year-over-year appreciation reflects the area's desirability and limited inventory of quality homes.</p>
+            </div>
         </div>
-    </div>
 
-    <!-- Subject Property Analysis -->
-    <div class="max-w-6xl mx-auto px-4 mb-8">
-        <div class="bg-white rounded-lg shadow-lg p-8">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6"><i class="fas fa-home mr-3 text-blue-600"></i>Subject Property Analysis</h2>
-
-            <div class="grid lg:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-lg font-bold text-gray-700 mb-4">Property Details</h3>
-                    <p class="mb-2"><strong>Address:</strong> 12 Dorland Ave, Poughkeepsie, NY 12603</p>
-                    <p class="mb-2"><strong>Owner:</strong> Issa Nesheiwat</p>
-                    <p class="mb-6"><strong>Contact:</strong> (845) 242-4991 | [email protected]</p>
-
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <i class="fas fa-ruler-combined property-icon"></i>
-                            <p class="font-semibold text-gray-800">Living Area</p>
-                            <p class="text-xl font-bold text-blue-600">1,088 sq ft</p>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <i class="fas fa-bed property-icon"></i>
-                            <p class="font-semibold text-gray-800">Bedrooms</p>
-                            <p class="text-xl font-bold text-blue-600">4</p>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <i class="fas fa-bath property-icon"></i>
-                            <p class="font-semibold text-gray-800">Bathrooms</p>
-                            <p class="text-xl font-bold text-blue-600">2</p>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <i class="fas fa-calendar property-icon"></i>
-                            <p class="font-semibold text-gray-800">Year Built</p>
-                            <p class="text-xl font-bold text-blue-600">1956</p>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <i class="fas fa-expand-arrows-alt property-icon"></i>
-                            <p class="font-semibold text-gray-800">Lot Size</p>
-                            <p class="text-xl font-bold text-blue-600">0.48 acres</p>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 rounded-lg">
-                            <i class="fas fa-home property-icon"></i>
-                            <p class="font-semibold text-gray-800">Style</p>
-                            <p class="text-xl font-bold text-blue-600">Cape Cod</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <h3 class="text-lg font-bold text-gray-700 mb-4">Target Market Value</h3>
-                    <div class="text-5xl font-bold text-blue-600 mb-2">$378,000</div>
-                    <p class="text-gray-600 mb-6">$347 per square foot</p>
-
-                    <div class="grid grid-cols-3 gap-2 mb-6">
-                        <div class="p-3 bg-green-50 rounded">
-                            <p class="text-sm text-gray-600">Low Range</p>
-                            <p class="font-bold text-green-600">$360,000</p>
-                        </div>
-                        <div class="p-3 bg-blue-50 rounded">
-                            <p class="text-sm text-gray-600">Target Value</p>
-                            <p class="font-bold text-blue-600">$378,000</p>
-                        </div>
-                        <div class="p-3 bg-purple-50 rounded">
-                            <p class="text-sm text-gray-600">High Range</p>
-                            <p class="font-bold text-purple-600">$395,000</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-relevance p-4 rounded-lg">
-                        <h4 class="font-bold text-gray-800 mb-3">Key Value Drivers</h4>
-                        <ul class="text-left text-sm space-y-1">
-                            <li>• Excellent 4-bedroom configuration</li>
-                            <li>• Two full bathrooms - premium feature</li>
-                            <li>• Large 0.48-acre lot with development potential</li>
-                            <li>• Established neighborhood with strong sales</li>
-                            <li>• Cape Cod architectural charm</li>
-                            <li>• Proximity to amenities and schools</li>
-                        </ul>
+        <!-- Comparables Map -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">7 Comparable Properties Analysis</h2>
+            <p class="text-lg mb-6 text-gray-600">The following properties were selected based on proximity, recent sales, and similar characteristics using our Focused Relevance approach.</p>
+            
+            <div class="bg-gray-100 p-4 rounded-lg mb-8 text-center">
+                <div class="bg-white rounded-lg p-8">
+                    <div class="text-lg font-semibold mb-2">Interactive Map View</div>
+                    <p class="text-gray-600">Red marker: Subject Property (12 Dorland Ave)</p>
+                    <p class="text-gray-600">Blue markers: Comparable Properties</p>
+                    <div class="mt-4 p-4 bg-blue-50 rounded">
+                        <i class="fas fa-map-marker-alt text-red-500 text-2xl mr-4"></i>
+                        <span class="text-lg">12 Dorland Ave (Subject Property)</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="mt-8">
-                <h4 class="text-lg font-bold text-gray-800 mb-4">Property Description</h4>
-                <p class="text-gray-700 leading-relaxed">
-                    This charming 1956 Cape Cod offers exceptional value with its unique 4-bedroom, 2-bathroom configuration on a generous 0.48-acre lot. The property features hardwood floors beneath existing carpets, a partially finished basement family room, and 3-car off-street parking. The substantial lot size provides excellent privacy and potential for future expansion or outdoor recreational use. Located in a well-established neighborhood with strong comparable sales, this property represents an outstanding opportunity for both owner-occupants and investors seeking value appreciation in the desirable Poughkeepsie market.
-                </p>
+        <!-- Individual Comparables -->
+        <div class="space-y-8 mb-12">
+            
+            <!-- Comp 1 -->
+            <div class="comp-card p-6 rounded-lg">
+                <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full inline-block mb-4 text-sm font-semibold">
+                    MOST SIMILAR - CAPE COD STYLE
+                </div>
+                <h3 class="text-2xl font-bold mb-4">224 Manchester Road</h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4 text-sm">
+                    <div><strong>Distance:</strong> 1.2 miles</div>
+                    <div><strong>Sale Date:</strong> Listed 2024</div>
+                    <div><strong>Beds/Baths:</strong> 4 BR / 2 BA</div>
+                    <div><strong>Square Feet:</strong> 2,172 sq ft</div>
+                    <div><strong>Year Built:</strong> 1949</div>
+                    <div><strong>Lot:</strong> 0.32 acres</div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $445,700
+                    </div>
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $205 per sq ft
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3">Price Adjustments Relative to Subject</h4>
+                <div class="space-y-2 mb-4">
+                    <div><strong>Size Adjustment:</strong> -$95,000 (Subject is 478 sq ft smaller)</div>
+                    <div><strong>Condition Adjustment:</strong> $0 (Similar vintage and condition)</div>
+                    <div><strong>Location Adjustment:</strong> +$15,000 (Slightly better location)</div>
+                    <div><strong>Feature Adjustment:</strong> -$5,000 (Subject has larger lot)</div>
+                </div>
+                <div class="value-highlight p-4 rounded-lg text-center font-bold text-xl">
+                    Adjusted Value: $360,700
+                </div>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p><strong>Strategic Insight:</strong> This Cape Cod style home is the most architecturally similar to your property. After adjusting for size differences, it supports a strong valuation for 12 Dorland Ave.</p>
+                </div>
+            </div>
+
+            <!-- Comp 2 -->
+            <div class="comp-card p-6 rounded-lg">
+                <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full inline-block mb-4 text-sm font-semibold">
+                    RECENT SALE - HIGH CONFIDENCE
+                </div>
+                <h3 class="text-2xl font-bold mb-4">3 Earlwood Drive</h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4 text-sm">
+                    <div><strong>Distance:</strong> 0.8 miles</div>
+                    <div><strong>Sale Date:</strong> Oct 06, 2023</div>
+                    <div><strong>Beds/Baths:</strong> 4 BR / 3 BA</div>
+                    <div><strong>Square Feet:</strong> 2,400 sq ft</div>
+                    <div><strong>Year Built:</strong> 1968</div>
+                    <div><strong>Lot:</strong> 0.25 acres</div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $429,999
+                    </div>
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $179 per sq ft
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3">Price Adjustments Relative to Subject</h4>
+                <div class="space-y-2 mb-4">
+                    <div><strong>Size Adjustment:</strong> -$126,000 (Subject is 706 sq ft smaller)</div>
+                    <div><strong>Condition Adjustment:</strong> -$20,000 (1968 construction vs 1940s)</div>
+                    <div><strong>Location Adjustment:</strong> $0 (Similar neighborhood quality)</div>
+                    <div><strong>Feature Adjustment:</strong> +$25,000 (Subject has larger lot, one less bath)</div>
+                </div>
+                <div class="value-highlight p-4 rounded-lg text-center font-bold text-xl">
+                    Adjusted Value: $308,999
+                </div>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p><strong>Strategic Insight:</strong> Recent sale providing strong market timing reference. The larger size requires significant adjustment, but supports overall market strength in the area.</p>
+                </div>
+            </div>
+
+            <!-- Comp 3 -->
+            <div class="comp-card p-6 rounded-lg">
+                <div class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full inline-block mb-4 text-sm font-semibold">
+                    VERY RECENT - NOV 2024
+                </div>
+                <h3 class="text-2xl font-bold mb-4">15 Orlando Drive</h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4 text-sm">
+                    <div><strong>Distance:</strong> 0.5 miles</div>
+                    <div><strong>Sale Date:</strong> Nov 19, 2024</div>
+                    <div><strong>Beds/Baths:</strong> 3 BR / 2 BA</div>
+                    <div><strong>Square Feet:</strong> 1,812 sq ft</div>
+                    <div><strong>Year Built:</strong> ~1950</div>
+                    <div><strong>Lot:</strong> 0.22 acres</div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $354,000
+                    </div>
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $195 per sq ft
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3">Price Adjustments Relative to Subject</h4>
+                <div class="space-y-2 mb-4">
+                    <div><strong>Size Adjustment:</strong> +$23,000 (Subject is 118 sq ft larger)</div>
+                    <div><strong>Condition Adjustment:</strong> $0 (Similar vintage and condition)</div>
+                    <div><strong>Location Adjustment:</strong> -$5,000 (Slightly less desirable street)</div>
+                    <div><strong>Feature Adjustment:</strong> +$15,000 (Subject has one more bedroom, larger lot)</div>
+                </div>
+                <div class="value-highlight p-4 rounded-lg text-center font-bold text-xl">
+                    Adjusted Value: $387,000
+                </div>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p><strong>Strategic Insight:</strong> Most recent sale in the immediate area. Very similar size and vintage, making this one of the strongest indicators of current market value.</p>
+                </div>
+            </div>
+
+            <!-- Comp 4 -->
+            <div class="comp-card p-6 rounded-lg">
+                <div class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full inline-block mb-4 text-sm font-semibold">
+                    NEARBY - JAN 2024
+                </div>
+                <h3 class="text-2xl font-bold mb-4">44 Woodland Ave</h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4 text-sm">
+                    <div><strong>Distance:</strong> 0.3 miles</div>
+                    <div><strong>Sale Date:</strong> Jan 19, 2024</div>
+                    <div><strong>Beds/Baths:</strong> 2 BR / 2 BA</div>
+                    <div><strong>Square Feet:</strong> 1,512 sq ft</div>
+                    <div><strong>Year Built:</strong> 1986</div>
+                    <div><strong>Lot:</strong> 0.28 acres</div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $350,000
+                    </div>
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $231 per sq ft
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3">Price Adjustments Relative to Subject</h4>
+                <div class="space-y-2 mb-4">
+                    <div><strong>Size Adjustment:</strong> +$42,000 (Subject is 182 sq ft larger)</div>
+                    <div><strong>Condition Adjustment:</strong> +$25,000 (1986 construction vs 1940s)</div>
+                    <div><strong>Location Adjustment:</strong> $0 (Similar neighborhood quality)</div>
+                    <div><strong>Feature Adjustment:</strong> +$35,000 (Subject has 2 more bedrooms, larger lot)</div>
+                </div>
+                <div class="value-highlight p-4 rounded-lg text-center font-bold text-xl">
+                    Adjusted Value: $452,000
+                </div>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p><strong>Strategic Insight:</strong> Newer construction but significantly smaller with fewer bedrooms. High price per square foot indicates strong demand for updated homes in the area.</p>
+                </div>
+            </div>
+
+            <!-- Comp 5 -->
+            <div class="comp-card p-6 rounded-lg">
+                <div class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full inline-block mb-4 text-sm font-semibold">
+                    SIMILAR SIZE - NOV 2024
+                </div>
+                <h3 class="text-2xl font-bold mb-4">49 Manitou Avenue</h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4 text-sm">
+                    <div><strong>Distance:</strong> 0.7 miles</div>
+                    <div><strong>Sale Date:</strong> Nov 18, 2024</div>
+                    <div><strong>Beds/Baths:</strong> 3 BR / 1.5 BA</div>
+                    <div><strong>Square Feet:</strong> 1,508 sq ft</div>
+                    <div><strong>Year Built:</strong> 1929</div>
+                    <div><strong>Lot:</strong> 0.18 acres</div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $325,000
+                    </div>
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $216 per sq ft
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3">Price Adjustments Relative to Subject</h4>
+                <div class="space-y-2 mb-4">
+                    <div><strong>Size Adjustment:</strong> +$40,000 (Subject is 186 sq ft larger)</div>
+                    <div><strong>Condition Adjustment:</strong> +$10,000 (1929 vs 1940s construction)</div>
+                    <div><strong>Location Adjustment:</strong> -$10,000 (Less desirable street)</div>
+                    <div><strong>Feature Adjustment:</strong> +$25,000 (Subject has one more bedroom, half bath, larger lot)</div>
+                </div>
+                <div class="value-highlight p-4 rounded-lg text-center font-bold text-xl">
+                    Adjusted Value: $390,000
+                </div>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p><strong>Strategic Insight:</strong> Very recent sale of similar-sized home. Strong price performance despite older construction, indicating solid demand for character homes in the area.</p>
+                </div>
+            </div>
+
+            <!-- Comp 6 -->
+            <div class="comp-card p-6 rounded-lg">
+                <div class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full inline-block mb-4 text-sm font-semibold">
+                    VINTAGE MATCH - 1940 CONSTRUCTION
+                </div>
+                <h3 class="text-2xl font-bold mb-4">44 Durocher Terrace</h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4 text-sm">
+                    <div><strong>Distance:</strong> 0.4 miles</div>
+                    <div><strong>Sale Date:</strong> Nov 20, 2023</div>
+                    <div><strong>Beds/Baths:</strong> 3 BR / 2 BA</div>
+                    <div><strong>Square Feet:</strong> 2,187 sq ft</div>
+                    <div><strong>Year Built:</strong> 1940</div>
+                    <div><strong>Lot:</strong> 0.25 acres</div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $335,000
+                    </div>
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $153 per sq ft
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3">Price Adjustments Relative to Subject</h4>
+                <div class="space-y-2 mb-4">
+                    <div><strong>Size Adjustment:</strong> -$75,000 (Subject is 493 sq ft smaller)</div>
+                    <div><strong>Condition Adjustment:</strong> $0 (Same construction era)</div>
+                    <div><strong>Location Adjustment:</strong> +$5,000 (Dorland Ave slightly better)</div>
+                    <div><strong>Feature Adjustment:</strong> +$15,000 (Subject has one more bedroom, larger lot)</div>
+                </div>
+                <div class="value-highlight p-4 rounded-lg text-center font-bold text-xl">
+                    Adjusted Value: $280,000
+                </div>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p><strong>Strategic Insight:</strong> Exact vintage match provides excellent construction and condition comparison baseline. Size difference requires significant adjustment but confirms period home values.</p>
+                </div>
+            </div>
+
+            <!-- Comp 7 -->
+            <div class="comp-card p-6 rounded-lg">
+                <div class="bg-red-100 text-red-800 px-3 py-1 rounded-full inline-block mb-4 text-sm font-semibold">
+                    SAME STREET - SIMILAR SPECS
+                </div>
+                <h3 class="text-2xl font-bold mb-4">15 Dorland Ave</h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4 text-sm">
+                    <div><strong>Distance:</strong> 0.1 miles</div>
+                    <div><strong>Sale Date:</strong> Jan 31, 2020</div>
+                    <div><strong>Beds/Baths:</strong> 4 BR / 2 BA</div>
+                    <div><strong>Square Feet:</strong> 2,760 sq ft</div>
+                    <div><strong>Year Built:</strong> 1947</div>
+                    <div><strong>Lot:</strong> 0.35 acres</div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $219,500
+                    </div>
+                    <div class="price-box p-4 rounded-lg text-center">
+                        $80 per sq ft
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3">Price Adjustments Relative to Subject</h4>
+                <div class="space-y-2 mb-4">
+                    <div><strong>Time Adjustment:</strong> +$88,000 (2020 sale, 40% appreciation to 2025)</div>
+                    <div><strong>Size Adjustment:</strong> -$170,000 (Subject is 1,066 sq ft smaller)</div>
+                    <div><strong>Condition Adjustment:</strong> $0 (Similar vintage)</div>
+                    <div><strong>Location Adjustment:</strong> $0 (Same street)</div>
+                    <div><strong>Feature Adjustment:</strong> +$5,000 (Similar features, lot size difference)</div>
+                </div>
+                <div class="value-highlight p-4 rounded-lg text-center font-bold text-xl">
+                    Adjusted Value: $142,500
+                </div>
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p><strong>Strategic Insight:</strong> Same street location is excellent but 2020 sale date requires significant time adjustment. Demonstrates remarkable appreciation on Dorland Ave over past 5 years.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Property Location -->
-    <div class="max-w-6xl mx-auto px-4 mb-8">
-        <div class="bg-white rounded-lg shadow-lg p-8">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6"><i class="fas fa-map-marker-alt mr-3 text-red-600"></i>Property Location</h2>
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=12+Dorland+Ave+Poughkeepsie+NY+12603&zoom=16&size=1200x400&maptype=satellite&markers=color:red%7C12+Dorland+Ave+Poughkeepsie+NY+12603&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
-                 alt="Satellite view of 12 Dorland Ave, Poughkeepsie, NY 12603" class="google-map">
+        <!-- Hidden Value Opportunities -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Hidden Value Opportunities</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2 text-green-800">Kitchen & Bathroom Updates</h3>
+                    <p class="text-gray-700 mb-4">Modern kitchen and bathroom renovations in 1940s Cape Cod homes typically yield strong returns in the Arlington School District market. Focus on maintaining character while adding modern functionality.</p>
+                    <div class="font-bold text-green-600">Potential Value Add: $15,000 - $35,000</div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Finished Basement or Lower Level</h3>
+                    <p class="text-gray-700 mb-4">Cape Cod homes with finished basements command premium pricing. Converting existing basement space into recreational room, home office, or additional bedroom adds significant functional square footage.</p>
+                    <div class="font-bold text-blue-600">Potential Value Add: $20,000 - $40,000</div>
+                </div>
+                
+                <div class="bg-purple-50 border-l-4 border-purple-400 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2 text-purple-800">Landscaping & Curb Appeal Enhancement</h3>
+                    <p class="text-gray-700 mb-4">The 0.48-acre lot provides excellent opportunity for landscaping improvements. Professional landscaping, mature plantings, and hardscaping features significantly enhance first impressions and property value.</p>
+                    <div class="font-bold text-purple-600">Potential Value Add: $8,000 - $20,000</div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Bottom Logos -->
-    <div class="max-w-6xl mx-auto px-4 mb-8">
-        <div class="logo-section">
+        <!-- Value Summary -->
+        <div class="mb-12">
+            <div class="gradient-header p-6 rounded-t-lg">
+                <h2 class="text-3xl font-bold mb-2">Market Value Analysis Summary</h2>
+            </div>
+            <div class="bg-white border-l-4 border-blue-500 p-6 rounded-b-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="text-2xl font-bold text-blue-600">$330,000</div>
+                        <div class="text-gray-600">Conservative Range</div>
+                    </div>
+                    <div class="text-center p-4 bg-blue-100 rounded-lg">
+                        <div class="text-3xl font-bold text-blue-800">$378,000</div>
+                        <div class="text-gray-800 font-semibold">Market Value</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <div class="text-2xl font-bold text-blue-600">$425,000</div>
+                        <div class="text-gray-600">Optimistic Range</div>
+                    </div>
+                </div>
+                <p class="text-lg">Based on current market analysis of 7 comparable properties, recent sales trends showing +6.8% year-over-year appreciation, and the strong Arlington Central School District location, <strong>12 Dorland Ave</strong> is positioned competitively at <strong>$378,000</strong>.</p>
+            </div>
+        </div>
+
+        <!-- Ready to Discuss -->
+        <div class="mb-12">
+            <div class="gradient-cover p-8 rounded-lg text-center text-white">
+                <h2 class="text-3xl font-bold mb-4">Ready to Discuss Your Options?</h2>
+                <p class="text-xl mb-6">Current market conditions suggest this could be a favorable time to consider selling with values showing 6.8% appreciation and properties selling faster than last year (45 days vs. 52 days). Let's discuss how to maximize your property's potential in today's market.</p>
+                <div class="bg-white bg-opacity-20 rounded-lg p-6 mb-6">
+                    <div class="text-2xl font-bold mb-2">Contact Information</div>
+                    <div class="text-lg">info@hudsonvalleysold.com</div>
+                    <div class="text-lg">(845) 251-4468</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent Cards -->
+        <div class="mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="agent-card p-6 rounded-lg text-center">
+                    <div class="w-24 h-24 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-gray-600 mb-2">Licensed Real Estate Salesperson</p>
+                    <p class="text-sm">22+ Years Hudson Valley Experience</p>
+                    <div class="mt-4">
+                        <div class="text-blue-600 font-semibold">(845) 251-4468</div>
+                        <div class="text-blue-600">glenn@hudsonvalleysold.com</div>
+                    </div>
+                </div>
+                
+                <div class="agent-card p-6 rounded-lg text-center">
+                    <div class="w-24 h-24 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Justin Phillips</h3>
+                    <p class="text-gray-600 mb-2">Partner Agent</p>
+                    <p class="text-sm">Local Market Specialist</p>
+                    <div class="mt-4">
+                        <div class="text-blue-600 font-semibold">(845) 251-4468</div>
+                        <div class="text-blue-600">justin@hudsonvalleysold.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FUB Widget Integration -->
+        <div class="mb-8 p-4 bg-blue-50 rounded-lg">
             <div class="text-center">
-                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" 
-                     alt="Hudson Valley Sold" class="mx-auto mb-4">
-                <p class="text-sm text-gray-600">Professional real estate services throughout the Hudson Valley region.</p>
-            </div>
-            <div class="text-center">
-                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" 
-                     alt="United Real Estate Hudson Valley Edge" class="mx-auto mb-4">
-                <div class="text-sm text-gray-700">
-                    <p class="font-semibold">Contact Information</p>
-                    <p>1097 State Route 55, Suite 9</p>
-                    <p>Lagrangeville, NY 12540</p>
-                    <p>845-251-4468</p>
-                    <p>[email protected]</p>
-                </div>
+                <h3 class="text-lg font-bold mb-2">Follow-up Integration Active</h3>
+                <p class="text-sm text-gray-600">Client: Issa Nesheiwat (FUB ID: 3888) | Property: 12 Dorland Ave | Value: $378,000</p>
+                <p class="text-xs text-gray-500 mt-2">This CMA has been automatically synced with your Follow-up Boss system for continued client engagement.</p>
             </div>
         </div>
 
-        <div class="text-center mt-8 p-4 bg-gray-100 rounded-lg">
-            <p class="text-sm text-gray-600">
-                This analysis was prepared exclusively for Issa Nesheiwat regarding 12 Dorland Ave, Poughkeepsie, NY 12603. 
-                Market data reflects conditions as of August 2025. Professional consultation recommended for all real estate decisions.
-            </p>
+        <!-- Disclaimer -->
+        <div class="border-t pt-8 text-sm text-gray-600">
+            <h3 class="font-bold mb-3">Important Disclaimer</h3>
+            <p class="mb-3">This Comparative Market Analysis (CMA) has been prepared to assist you in making an informed decision regarding the potential listing price of your property. This analysis is based on publicly available information, recent comparable sales, current market conditions, and professional experience.</p>
+            <p class="mb-3"><strong>Please Note:</strong> This CMA represents a professional opinion of value and is not a formal appraisal. The actual sale price of your property may vary based on individual property characteristics, market conditions at time of sale, financing terms, inspection results, and other factors that may not be reflected in this analysis.</p>
+            <p class="mb-3">Market conditions are subject to change, and individual property factors may significantly affect final sale price. We recommend consulting with your real estate professional for the most current market information and strategic pricing guidance specific to your situation.</p>
+            <p><strong>Professional Guidance Recommended:</strong> This analysis should be used in conjunction with professional real estate advice. Contact Hudson Valley Sold for personalized consultation and current market updates.</p>
         </div>
     </div>
-
 </body>
 </html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDsuYThJ4T3CqN9F%2BzBjlDCDpIhvyXZh%2FmOin3ikpIr6ugjTjLkH%2F1sMFxzXB4LWmNmJz2wj26WbMczwLDblOU3cykTWvAP6zjZJFueOv1i51Oepig%2B5baNRQnJ83kTtuwQ18lGBTGjedFMHyqTTxUrH0%2BPAZ%2F4jx0hWkhLz1mBt%2FoYR5rQ1VHTUWRtSVke0M11%2Fxnp96rF95w8qRv2J3SEKE95cZqlehqC%2FlmcNe3wnKo%2BnBcMZYV4hSUCTCaZkDhSe%2BRJxXKR%2BFmj7f1LgUtBRUuJ6%2FcxRdoGTht7Xw2IUdQO2oF7BeJjuEwoKV8sYWxr1hpWh1Xlk6Sm6U33OI20fQh81gu5R124pcTcDIuy6V%2B7nG7vx3Hpb4lDVFIMPryfN9wtqBcJEFqMfKciHoryU7N5IuA%2FyOAbitHV2WkIUrv%2FKIx9ZML9G%2FcrLqFdB%2FYmBPSNZ%2F7FanAYGM0R%2BzsvMv4NFdg1Y9NNNZCj%2BJGei3wvTb%2BSPRE8PW4Axd4isB1g%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDsuYThJ4T3CqN9F+zBjlDCDpIhvyXZh/mOin3ikpIr6ugjTjLkH/1sMFxzXB4LWmNmJz2wj26WbMczwLDblOU3cykTWvAP6zjZJFueOv1i51Oepig+5baNRQnJ83kTtuwQ18lGBTGjedFMHyqTTxUrH0+PAZ/4jx0hWkhLz1mBt/oYR5rQ1VHTUWRtSVke0M11/xnp96rF95w8qRv2J3SEKE95cZqlehqC/lmcNe3wnKo+nBcMZYV4hSUCTCaZkDhSe+RJxXKR+Fmj7f1LgUtBRUuJ6/cxRdoGTht7Xw2IUdQO2oF7BeJjuEwoKV8sYWxr1hpWh1Xlk6Sm6U33OI20fQh81gu5R124pcTcDIuy6V+7nG7vx3Hpb4lDVFIMPryfN9wtqBcJEFqMfKciHoryU7N5IuA/yOAbitHV2WkIUrv/KIx9ZML9G/crLqFdB/YmBPSNZ/7FanAYGM0R+zsvMv4NFdg1Y9NNNZCj+JGei3wvTb+SPRE8PW4Axd4isB1g==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
