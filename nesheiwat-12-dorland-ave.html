@@ -6,6 +6,7 @@
     <title>12 Dorland Ave, Poughkeepsie, NY 12603 - Professional Market Analysis</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,534 +24,777 @@
         }
         .agent-card {
             background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            border-left: 5px solid #0ea5e9;
-        }
-        .comp-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .comp-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .price-card {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             border: 2px solid #0ea5e9;
+            transition: all 0.3s ease;
         }
-        .price-card.recommended {
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            border: 3px solid #1e40af;
-            position: relative;
+        .agent-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
         }
-        .recommended-badge {
-            background: linear-gradient(135deg, #1e40af, #0ea5e9);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .metric-card {
+        .comparable-card {
             background: white;
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        .comparable-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .price-highlight {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        .market-card {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            border-left: 4px solid #0ea5e9;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: white;
         }
         .section-divider {
-            height: 4px;
-            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
-            border-radius: 2px;
-            margin: 40px 0;
+            height: 3px;
+            background: linear-gradient(90deg, #1e40af, #0ea5e9, #06b6d4);
+            margin: 2rem 0;
+        }
+         {
+            body { font-size: 12px; }
+            .no-print { display: none; }
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+        .property-image {
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+        }
+        .hvs-brand {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
-    <div class="gradient-cover text-center py-16">
-        <div class="container mx-auto px-4">
-            <h1 class="text-5xl font-bold mb-4">12 Dorland Ave</h1>
-            <h2 class="text-3xl font-light mb-6">Poughkeepsie, NY 12603</h2>
-            <p class="text-xl opacity-90 max-w-3xl mx-auto">Professional Market Analysis & Strategic Pricing Report</p>
-        </div>
-    </div>
-
-    <!-- Agent Information Cards -->
-    <div class="container mx-auto px-4 py-8">
-        <div class="grid md:grid-cols-2 gap-6 -mt-16 relative z-10">
-            <div class="agent-card p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold text-blue-800 mb-4">
-                    <i class="fas fa-user mr-2"></i>Property Owner
-                </h3>
-                <div class="space-y-2">
-                    <p><strong>Name:</strong> Issa Nesheiwat</p>
-                    <p><strong>Phone:</strong> (845) 242-4991</p>
-                    <p><strong>Email:</strong> issa510@aol.com</p>
-                </div>
-            </div>
-            <div class="agent-card p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold text-blue-800 mb-4">
-                    <i class="fas fa-home mr-2"></i>Real Estate Team
-                </h3>
-                <div class="space-y-2">
-                    <p><strong>Lead Agent:</strong> Glenn Fitzgerald</p>
-                    <p><strong>Partner Agent:</strong> Justin Phillips</p>
-                    <p><strong>Report Date:</strong> August 2025</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- Executive Summary -->
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Executive Summary</h2>
-        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <div class="metric-card">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">$380,000</div>
-                    <div class="text-gray-600">Recommended List Price</div>
-                </div>
-                <div class="metric-card">
-                    <div class="text-3xl font-bold text-green-600 mb-2">$349/sq ft</div>
-                    <div class="text-gray-600">Price Per Square Foot</div>
-                </div>
-                <div class="metric-card">
-                    <div class="text-3xl font-bold text-purple-600 mb-2">60-90</div>
-                    <div class="text-gray-600">Expected Days on Market</div>
-                </div>
-            </div>
-            <p class="text-lg text-gray-700 leading-relaxed">
-                Based on comprehensive analysis of 30 comparable properties and current market conditions, 
-                <strong>12 Dorland Ave represents excellent value positioning at $380,000</strong>. The property 
-                sits in the optimal pricing tier with strong comparable support and favorable market dynamics 
-                supporting strategic pricing between $365,000 - $390,000.
-            </p>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- Property Profile -->
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Subject Property Profile</h2>
-        <div class="bg-white rounded-lg shadow-lg p-8">
-            <div class="grid md:grid-cols-4 gap-6 mb-8">
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">4</div>
-                    <div class="text-gray-600">Bedrooms</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">2</div>
-                    <div class="text-gray-600">Bathrooms</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">1,088</div>
-                    <div class="text-gray-600">Square Feet</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">0.48</div>
-                    <div class="text-gray-600">Acres</div>
-                </div>
+    <div class="gradient-cover min-h-screen relative overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="relative z-10 container mx-auto px-4 py-12">
+            <!-- Logo and Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-5xl font-bold mb-4">
+                    <span class="hvs-brand text-white">HUDSON VALLEY SOLD</span>
+                </h1>
+                <p class="text-xl text-blue-100">Professional Real Estate Market Analysis</p>
             </div>
 
-            <!-- Google Maps Satellite View -->
-            <div class="mb-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Property Location</h3>
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=12+Dorland+Ave,+Poughkeepsie,+NY+12603&zoom=16&size=1200x800&maptype=satellite&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
-                     alt="12 Dorland Ave Satellite View" class="w-full rounded-lg shadow-lg">
-            </div>
-
-            <div class="space-y-4">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Property Features & Market Position</h3>
-                <p class="text-gray-700">
-                    This attractive 1956 single-family home represents excellent value in Poughkeepsie's established 
-                    South area residential market. The property showcases mid-century character with practical 
-                    4-bedroom, 2-bathroom configuration that appeals to modern families. The substantial 0.48-acre 
-                    lot provides exceptional outdoor space and privacy - a significant advantage over many comparable properties.
-                </p>
-                <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Current Market Value Proposition</h4>
-                <p class="text-gray-700">
-                    In Poughkeepsie's current real estate environment with a median sale price of $410,000, this property 
-                    is positioned in the sweet spot for families seeking space and value. The combination of 4 bedrooms, 
-                    2 full bathrooms, and generous lot size creates compelling value at the $380,000 price point, 
-                    offering immediate habitability while providing opportunity for value-added improvements.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- Market Analysis -->
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Market Analysis</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="metric-card">
-                <div class="text-2xl font-bold text-green-600 mb-2">$410,000</div>
-                <div class="text-sm text-gray-600 mb-1">Median Home Price</div>
-                <div class="text-xs text-green-500">↑ 6.5% YoY</div>
-            </div>
-            <div class="metric-card">
-                <div class="text-2xl font-bold text-blue-600 mb-2">43 days</div>
-                <div class="text-sm text-gray-600">Avg Days on Market</div>
-            </div>
-            <div class="metric-card">
-                <div class="text-2xl font-bold text-purple-600 mb-2">100.25%</div>
-                <div class="text-sm text-gray-600">Sale-to-List Ratio</div>
-            </div>
-            <div class="metric-card">
-                <div class="text-2xl font-bold text-orange-600 mb-2">325</div>
-                <div class="text-sm text-gray-600">Homes for Sale</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- Comparable Properties -->
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Selected Comparable Properties</h2>
-        <p class="text-center text-gray-600 mb-8">15 most relevant comparables selected using proximity hierarchy and similarity criteria</p>
-
-        <!-- Tier 1: Immediate Area -->
-        <h3 class="text-2xl font-bold text-blue-700 mb-6">
-            <i class="fas fa-map-marker-alt mr-2"></i>Tier 1: Immediate Area (Under 0.5 Miles)
-        </h3>
-
-        <div class="grid md:grid-cols-1 gap-6 mb-8">
-            <!-- Perfect Match Comparable -->
-            <div class="comp-card p-6">
-                <div class="flex justify-between items-start mb-4">
+            <!-- Property Hero Section -->
+            <div class="bg-white bg-opacity-95 rounded-2xl p-8 mb-12 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
-                        <h4 class="text-xl font-bold text-blue-800">19 Dublin Ln - PERFECT MATCH</h4>
-                        <p class="text-gray-600">0.41 miles • SOLD 9/9/2024</p>
+                        <div class="property-image rounded-lg mb-6">
+                            <div class="text-center text-gray-500">
+                                <i class="fas fa-home text-6xl mb-4"></i>
+                                <p class="text-lg">Professional Property Photography</p>
+                                <p class="text-sm">12 Dorland Ave, Poughkeepsie, NY 12603</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-right">
-                        <div class="text-2xl font-bold text-green-600">$375,000</div>
-                        <div class="text-sm text-gray-500">$372/sq ft</div>
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-4xl font-bold text-gray-800 mb-2">12 Dorland Ave</h2>
+                            <p class="text-xl text-gray-600 mb-6">Poughkeepsie, NY 12603</p>
+                            <div class="price-highlight text-center mb-6">
+                                Market Value: $378,000
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="stat-card rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold">4</div>
+                                <div class="text-sm">Bedrooms</div>
+                            </div>
+                            <div class="stat-card rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold">2</div>
+                                <div class="text-sm">Bathrooms</div>
+                            </div>
+                            <div class="stat-card rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold">1,088</div>
+                                <div class="text-sm">Square Feet</div>
+                            </div>
+                            <div class="stat-card rounded-lg p-4 text-center">
+                                <div class="text-2xl font-bold">0.48</div>
+                                <div class="text-sm">Acres</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">Property Highlights</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Cape Cod Style Home (1956)</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Large 0.48-Acre Lot</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>4-Bedroom Family Layout</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Hardwood Floors Under Carpet</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Finished Basement Space</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>3+ Car Off-Street Parking</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-4 gap-4 mb-4">
-                    <div class="text-center p-3 bg-blue-50 rounded">
-                        <div class="font-bold text-blue-600">1,008</div>
-                        <div class="text-xs text-gray-600">Sq Ft</div>
-                    </div>
-                    <div class="text-center p-3 bg-blue-50 rounded">
-                        <div class="font-bold text-blue-600">4/2</div>
-                        <div class="text-xs text-gray-600">Bed/Bath</div>
-                    </div>
-                    <div class="text-center p-3 bg-blue-50 rounded">
-                        <div class="font-bold text-blue-600">1965</div>
-                        <div class="text-xs text-gray-600">Built</div>
-                    </div>
-                    <div class="text-center p-3 bg-green-50 rounded">
-                        <div class="font-bold text-green-600">★★★</div>
-                        <div class="text-xs text-gray-600">Match</div>
-                    </div>
-                </div>
-                <p class="text-gray-700">
-                    <strong>Analysis:</strong> Exceptional comparable - identical bedroom/bathroom configuration, 
-                    nearly identical square footage, same immediate neighborhood. Strong support for $375,000+ pricing.
-                </p>
             </div>
 
-            <!-- Premium Reference -->
-            <div class="comp-card p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h4 class="text-xl font-bold text-blue-800">21 Ireland Dr - PREMIUM REFERENCE</h4>
-                        <p class="text-gray-600">0.37 miles • SOLD 3/19/2025 (Recent)</p>
+            <!-- Dual Agent Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="agent-card rounded-xl p-6 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user text-white text-3xl"></i>
                     </div>
-                    <div class="text-right">
-                        <div class="text-2xl font-bold text-green-600">$389,000</div>
-                        <div class="text-sm text-gray-500">$386/sq ft</div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-4 gap-4 mb-4">
-                    <div class="text-center p-3 bg-blue-50 rounded">
-                        <div class="font-bold text-blue-600">1,008</div>
-                        <div class="text-xs text-gray-600">Sq Ft</div>
-                    </div>
-                    <div class="text-center p-3 bg-blue-50 rounded">
-                        <div class="font-bold text-blue-600">3/2</div>
-                        <div class="text-xs text-gray-600">Bed/Bath</div>
-                    </div>
-                    <div class="text-center p-3 bg-blue-50 rounded">
-                        <div class="font-bold text-blue-600">1960</div>
-                        <div class="text-xs text-gray-600">Built</div>
-                    </div>
-                    <div class="text-center p-3 bg-orange-50 rounded">
-                        <div class="font-bold text-orange-600">133</div>
-                        <div class="text-xs text-gray-600">DOM</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-semibold mb-4">Lead Market Analyst</p>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <p><i class="fas fa-phone mr-2"></i>(845) 251-4468</p>
+                        <p><i class="fas fa-envelope mr-2"></i>glenn@hudsonvalleysold.com</p>
+                        <p><i class="fas fa-certificate mr-2"></i>NYS Licensed Real Estate Broker</p>
                     </div>
                 </div>
-                <p class="text-gray-700">
-                    <strong>Analysis:</strong> Recent sale in immediate area, same size but one less bedroom. 
-                    Premium pricing achieved despite 4+ months marketing time.
-                </p>
-            </div>
-        </div>
 
-        <!-- Additional Comparable Highlights -->
-        <h3 class="text-2xl font-bold text-blue-700 mb-6 mt-12">
-            <i class="fas fa-chart-line mr-2"></i>Key Market Comparables Summary
-        </h3>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500">
-                <h5 class="font-bold text-gray-800">152 Overlook Rd</h5>
-                <p class="text-sm text-gray-600">1.07 mi • $455,500 • $395/sq ft</p>
-                <p class="text-xs text-gray-500">Premium location/condition</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500">
-                <h5 class="font-bold text-gray-800">5 Mapleview Rd</h5>
-                <p class="text-sm text-gray-600">1.16 mi • $369,200 • $343/sq ft</p>
-                <p class="text-xs text-gray-500">Similar size, 2 baths</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
-                <h5 class="font-bold text-gray-800">67 Glenwood Ave</h5>
-                <p class="text-sm text-gray-600">1.76 mi • $377,500 • $302/sq ft</p>
-                <p class="text-xs text-gray-500">4 bed/2 bath, newer (1974)</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-red-500">
-                <h5 class="font-bold text-gray-800">17 Henmond Blvd</h5>
-                <p class="text-sm text-gray-600">1.14 mi • $299,999 • ACTIVE</p>
-                <p class="text-xs text-gray-500">Current competition</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500">
-                <h5 class="font-bold text-gray-800">31 Whittier Blvd</h5>
-                <p class="text-sm text-gray-600">1.96 mi • $395,000 • $293/sq ft</p>
-                <p class="text-xs text-gray-500">Recent August sale</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-orange-500">
-                <h5 class="font-bold text-gray-800">7 Wilson Blvd</h5>
-                <p class="text-sm text-gray-600">1.89 mi • $380,000 • $294/sq ft</p>
-                <p class="text-xs text-gray-500">Very recent July sale</p>
+                <div class="agent-card rounded-xl p-6 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-user text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Justin Phillips</h3>
+                    <p class="text-green-600 font-semibold mb-4">Partner Agent</p>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <p><i class="fas fa-phone mr-2"></i>(845) 242-4991</p>
+                        <p><i class="fas fa-envelope mr-2"></i>justin@hudsonvalleysold.com</p>
+                        <p><i class="fas fa-handshake mr-2"></i>Assigned CMA Partner</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="section-divider"></div>
+    <!-- Market Analysis Section -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="section-divider"></div>
+        
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+            <i class="fas fa-chart-line mr-4 text-blue-500"></i>Comprehensive Market Analysis
+        </h2>
 
-    <!-- Strategic Pricing -->
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Strategic Pricing Recommendations</h2>
-
-        <div class="grid md:grid-cols-3 gap-8 mb-12">
-            <!-- Aggressive Entry -->
-            <div class="price-card p-6 rounded-lg">
-                <h3 class="text-xl font-bold text-center text-blue-700 mb-4">Market Entry Strategy</h3>
-                <div class="text-center mb-6">
-                    <div class="text-3xl font-bold text-green-600">$365,000</div>
-                    <div class="text-gray-600">$335/sq ft</div>
+        <!-- Market Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="market-card rounded-xl p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-home text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Market Position</h3>
+                        <p class="text-sm text-gray-600">Competitive Pricing</p>
+                    </div>
                 </div>
-                <ul class="space-y-2 text-sm">
-                    <li><i class="fas fa-check text-green-500 mr-2"></i>Quick sale potential</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i>Multiple offers likely</li>
-                    <li><i class="fas fa-times text-red-500 mr-2"></i>May leave money on table</li>
-                </ul>
-                <div class="text-center mt-4 text-sm text-gray-600">45-60 days expected</div>
+                <p class="text-gray-700">Property positioned strategically within market range of $340,000-$416,000, offering excellent value for buyers seeking 4-bedroom homes with large lots.</p>
             </div>
 
-            <!-- Recommended Pricing -->
-            <div class="price-card recommended p-6 rounded-lg">
-                <div class="recommended-badge">RECOMMENDED</div>
-                <h3 class="text-xl font-bold text-center text-blue-700 mb-4">Value Positioning</h3>
-                <div class="text-center mb-6">
-                    <div class="text-3xl font-bold text-blue-600">$380,000</div>
-                    <div class="text-gray-600">$349/sq ft</div>
+            <div class="market-card rounded-xl p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-trending-up text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Price Trends</h3>
+                        <p class="text-sm text-gray-600">Market Stability</p>
+                    </div>
                 </div>
-                <ul class="space-y-2 text-sm">
-                    <li><i class="fas fa-check text-green-500 mr-2"></i>Balanced approach</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i>Broad buyer appeal</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i>Negotiation room</li>
-                </ul>
-                <div class="text-center mt-4 text-sm text-gray-600">60-90 days expected</div>
+                <p class="text-gray-700">Poughkeepsie median home price $343,000-$375,000. Recent comparable sales show consistent value in the $335K-$455K range for similar properties.</p>
             </div>
 
-            <!-- Premium Position -->
-            <div class="price-card p-6 rounded-lg">
-                <h3 class="text-xl font-bold text-center text-blue-700 mb-4">Premium Positioning</h3>
-                <div class="text-center mb-6">
-                    <div class="text-3xl font-bold text-purple-600">$389,000</div>
-                    <div class="text-gray-600">$357/sq ft</div>
+            <div class="market-card rounded-xl p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-clock text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">Market Timing</h3>
+                        <p class="text-sm text-gray-600">Days on Market</p>
+                    </div>
                 </div>
-                <ul class="space-y-2 text-sm">
-                    <li><i class="fas fa-check text-green-500 mr-2"></i>Maximizes return</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i>Tests market ceiling</li>
-                    <li><i class="fas fa-times text-red-500 mr-2"></i>Longer marketing time</li>
-                </ul>
-                <div class="text-center mt-4 text-sm text-gray-600">90-120 days expected</div>
+                <p class="text-gray-700">Average 21-45 days on market for similar properties. Quick sale potential with competitive pricing and proper staging.</p>
             </div>
         </div>
 
-        <!-- Optimal Strategy -->
-        <div class="bg-white rounded-lg shadow-lg p-8">
-            <h3 class="text-2xl font-bold text-blue-800 mb-6 text-center">
-                <i class="fas fa-bullseye mr-2"></i>Optimal Strategy: $380,000
+        <!-- Price Analysis Chart -->
+        <div class="bg-white rounded-xl p-8 shadow-lg mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">Comparable Sales Price Analysis</h3>
+            <div class="chart-container">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Comparable Properties Grid -->
+        <div class="bg-white rounded-xl p-8 shadow-lg mb-12">
+            <h3 class="text-2xl font-bold mb-8 text-gray-800 text-center">
+                <i class="fas fa-balance-scale mr-3 text-blue-500"></i>Comparable Properties Analysis
             </h3>
-            <div class="grid md:grid-cols-2 gap-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Comparable 1 -->
+                <div class="comparable-card rounded-lg p-6 shadow-md">
+                    <div class="property-image rounded mb-4" style="height: 150px;">
+                        <div class="text-center text-gray-500 h-full flex flex-col justify-center">
+                            <i class="fas fa-home text-3xl mb-2"></i>
+                            <p class="text-sm">21 Ireland Dr</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">21 Ireland Dr</h4>
+                    <p class="text-sm text-gray-600 mb-3">Poughkeepsie, NY 12603</p>
+                    <div class="price-highlight text-center mb-4 text-base">$389,000</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Beds/Baths:</span>
+                            <span class="font-semibold">3/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Square Feet:</span>
+                            <span class="font-semibold">1,008</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Year Built:</span>
+                            <span class="font-semibold">1960</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Price/Sq Ft:</span>
+                            <span class="font-semibold">$386</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Distance:</span>
+                            <span class="font-semibold">0.37 mi</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sale Date:</span>
+                            <span class="font-semibold">Mar 2025</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-green-50 rounded">
+                        <p class="text-xs text-green-700">Recently renovated with open concept layout. Premium pricing due to updates.</p>
+                    </div>
+                </div>
+
+                <!-- Comparable 2 -->
+                <div class="comparable-card rounded-lg p-6 shadow-md">
+                    <div class="property-image rounded mb-4" style="height: 150px;">
+                        <div class="text-center text-gray-500 h-full flex flex-col justify-center">
+                            <i class="fas fa-home text-3xl mb-2"></i>
+                            <p class="text-sm">19 Dublin Ln</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">19 Dublin Ln</h4>
+                    <p class="text-sm text-gray-600 mb-3">Poughkeepsie, NY 12603</p>
+                    <div class="price-highlight text-center mb-4 text-base">$375,000</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Beds/Baths:</span>
+                            <span class="font-semibold">4/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Square Feet:</span>
+                            <span class="font-semibold">1,008</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Year Built:</span>
+                            <span class="font-semibold">1965</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Price/Sq Ft:</span>
+                            <span class="font-semibold">$372</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Distance:</span>
+                            <span class="font-semibold">0.41 mi</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sale Date:</span>
+                            <span class="font-semibold">Sep 2024</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-blue-50 rounded">
+                        <p class="text-xs text-blue-700">Excellent comparable with matching 4BR/2BA configuration and similar vintage.</p>
+                    </div>
+                </div>
+
+                <!-- Comparable 3 -->
+                <div class="comparable-card rounded-lg p-6 shadow-md">
+                    <div class="property-image rounded mb-4" style="height: 150px;">
+                        <div class="text-center text-gray-500 h-full flex flex-col justify-center">
+                            <i class="fas fa-home text-3xl mb-2"></i>
+                            <p class="text-sm">152 Overlook Rd</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">152 Overlook Rd</h4>
+                    <p class="text-sm text-gray-600 mb-3">Poughkeepsie, NY 12603</p>
+                    <div class="price-highlight text-center mb-4 text-base">$455,500</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Beds/Baths:</span>
+                            <span class="font-semibold">3/1</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Square Feet:</span>
+                            <span class="font-semibold">1,152</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Year Built:</span>
+                            <span class="font-semibold">1956</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Price/Sq Ft:</span>
+                            <span class="font-semibold">$395</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Distance:</span>
+                            <span class="font-semibold">1.07 mi</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sale Date:</span>
+                            <span class="font-semibant">Aug 2024</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-purple-50 rounded">
+                        <p class="text-xs text-purple-700">Fully renovated Cape Cod with in-ground pool. Premium pricing reflects extensive updates.</p>
+                    </div>
+                </div>
+
+                <!-- Comparable 4 -->
+                <div class="comparable-card rounded-lg p-6 shadow-md">
+                    <div class="property-image rounded mb-4" style="height: 150px;">
+                        <div class="text-center text-gray-500 h-full flex flex-col justify-center">
+                            <i class="fas fa-home text-3xl mb-2"></i>
+                            <p class="text-sm">17 Dorliss Dr</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">17 Dorliss Dr</h4>
+                    <p class="text-sm text-gray-600 mb-3">Poughkeepsie, NY 12603</p>
+                    <div class="price-highlight text-center mb-4 text-base">$375,000</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Beds/Baths:</span>
+                            <span class="font-semibold">4/1</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Square Feet:</span>
+                            <span class="font-semibold">1,365</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Year Built:</span>
+                            <span class="font-semibold">1952</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Price/Sq Ft:</span>
+                            <span class="font-semibold">$275</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Distance:</span>
+                            <span class="font-semibold">1.07 mi</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sale Date:</span>
+                            <span class="font-semibold">Jun 2025</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-green-50 rounded">
+                        <p class="text-xs text-green-700">Similar vintage with 4-bedroom layout and larger square footage. Good comparable for bedroom count.</p>
+                    </div>
+                </div>
+
+                <!-- Comparable 5 -->
+                <div class="comparable-card rounded-lg p-6 shadow-md">
+                    <div class="property-image rounded mb-4" style="height: 150px;">
+                        <div class="text-center text-gray-500 h-full flex flex-col justify-center">
+                            <i class="fas fa-home text-3xl mb-2"></i>
+                            <p class="text-sm">86 Overocker Rd</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">86 Overocker Rd</h4>
+                    <p class="text-sm text-gray-600 mb-3">Poughkeepsie, NY 12603</p>
+                    <div class="price-highlight text-center mb-4 text-base">$335,000</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Beds/Baths:</span>
+                            <span class="font-semibold">3/1</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Square Feet:</span>
+                            <span class="font-semibold">1,278</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Year Built:</span>
+                            <span class="font-semibold">1945</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Price/Sq Ft:</span>
+                            <span class="font-semibold">$262</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Distance:</span>
+                            <span class="font-semibold">0.41 mi</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sale Date:</span>
+                            <span class="font-semibold">Sep 2024</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-yellow-50 rounded">
+                        <p class="text-xs text-yellow-700">Lower end of comparable range, larger square footage but older vintage and fewer bedrooms.</p>
+                    </div>
+                </div>
+
+                <!-- Comparable 6 -->
+                <div class="comparable-card rounded-lg p-6 shadow-md">
+                    <div class="property-image rounded mb-4" style="height: 150px;">
+                        <div class="text-center text-gray-500 h-full flex flex-col justify-center">
+                            <i class="fas fa-home text-3xl mb-2"></i>
+                            <p class="text-sm">5 Mapleview Rd</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">5 Mapleview Rd</h4>
+                    <p class="text-sm text-gray-600 mb-3">Poughkeepsie, NY 12603</p>
+                    <div class="price-highlight text-center mb-4 text-base">$369,200</div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Beds/Baths:</span>
+                            <span class="font-semibold">3/2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Square Feet:</span>
+                            <span class="font-semibold">1,075</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Year Built:</span>
+                            <span class="font-semibold">1953</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Price/Sq Ft:</span>
+                            <span class="font-semibold">$343</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Distance:</span>
+                            <span class="font-semibold">1.16 mi</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sale Date:</span>
+                            <span class="font-semibold">Sep 2024</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-blue-50 rounded">
+                        <p class="text-xs text-blue-700">Close vintage match (1953 vs 1956) with similar square footage. Good baseline comparable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neighborhood Analysis -->
+        <div class="bg-white rounded-xl p-8 shadow-lg mb-12">
+            <h3 class="text-2xl font-bold mb-8 text-gray-800 text-center">
+                <i class="fas fa-map-marker-alt mr-3 text-green-500"></i>Neighborhood & Location Analysis
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Strategic Rationale:</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Positions between perfect match (19 Dublin Ln at $375,000) and recent premium (21 Ireland Dr at $389,000)</li>
-                        <li>• Accounts for 4 bed/2 bath configuration advantage</li>
-                        <li>• Allows negotiation room to $370,000-$375,000 final range</li>
-                        <li>• Competitive against current active listings</li>
+                    <h4 class="text-lg font-semibold mb-4 text-gray-800">Location Advantages</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-train text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Metro-North Access:</strong>
+                                <p class="text-sm text-gray-600">Poughkeepsie station 10 minutes - direct NYC service (1.5-2 hours)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-road text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Highway Access:</strong>
+                                <p class="text-sm text-gray-600">Route 44, Route 55, Taconic State Parkway nearby</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-shopping-cart text-purple-500 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Shopping & Amenities:</strong>
+                                <p class="text-sm text-gray-600">Mall access, health club, medical facilities nearby</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-tree text-green-600 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Suburban Character:</strong>
+                                <p class="text-sm text-gray-600">Large lots, quiet residential streets, family-friendly</p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
+                
                 <div>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Expected Outcomes:</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• <strong>Timeline:</strong> 60-90 days to contract</li>
-                        <li>• <strong>Final sale range:</strong> $370,000-$380,000</li>
-                        <li>• <strong>Target outcome:</strong> $375,000</li>
-                        <li>• <strong>Success probability:</strong> 80%+ within 90 days</li>
+                    <h4 class="text-lg font-semibold mb-4 text-gray-800">Market Insights</h4>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-blue-800 mb-2">School District</h5>
+                            <p class="text-sm text-blue-700">Poughkeepsie City School District - Improving resources with higher per-pupil spending ($28,109 vs. national average $17,834)</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-800 mb-2">Investment Potential</h5>
+                            <p class="text-sm text-green-700">Strong rental demand due to NYC migration patterns. Estimated 6-8% rental yield with $2,000-$2,500 monthly potential.</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-800 mb-2">Value-Add Opportunities</h5>
+                            <p class="text-sm text-yellow-700">Kitchen renovation, hardwood floor reveal, and bathroom updates could add $25,000-$50,000 in value.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategic Pricing Recommendations -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8 shadow-lg mb-12">
+            <h3 class="text-2xl font-bold mb-8 text-gray-800 text-center">
+                <i class="fas fa-bullseye mr-3 text-red-500"></i>Strategic Pricing Recommendations
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-rocket text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800">Quick Sale Strategy</h4>
+                        <div class="text-2xl font-bold text-green-600 mt-2">$340,000-$360,000</div>
+                    </div>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>15-25 days on market</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Attracts multiple offers</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Accounts for needed updates</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Strong buyer interest</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md border-2 border-blue-500">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-balance-scale text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800">Recommended Strategy</h4>
+                        <div class="text-2xl font-bold text-blue-600 mt-2">$365,000-$385,000</div>
+                    </div>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>30-45 days expected timeline</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>Balanced market approach</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>Room for negotiation</li>
+                        <li><i class="fas fa-star text-blue-500 mr-2"></i>Best overall value position</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-gem text-white text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800">Premium Positioning</h4>
+                        <div class="text-2xl font-bold text-purple-600 mt-2">$390,000-$416,000</div>
+                    </div>
+                    <ul class="text-sm space-y-2 text-gray-700">
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>45-60 days marketing time</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Requires staging/improvements</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Targets lot size premium</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Maximum value extraction</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="section-divider"></div>
-
-    <!-- Market Strengths & Risks -->
-    <div class="container mx-auto px-4 py-8">
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Strengths -->
-            <div class="bg-green-50 p-6 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold text-green-800 mb-6">
-                    <i class="fas fa-thumbs-up mr-2"></i>Market Strengths
-                </h3>
-                <div class="space-y-4">
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h4 class="font-semibold text-green-700">Strong Comparable Support</h4>
-                        <p class="text-sm text-gray-600">Multiple recent sales $350K-$395K range</p>
-                    </div>
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h4 class="font-semibold text-green-700">Configuration Advantage</h4>
-                        <p class="text-sm text-gray-600">4 bed/2 bath appeals to families</p>
-                    </div>
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h4 class="font-semibold text-green-700">NYC Commuter Appeal</h4>
-                        <p class="text-sm text-gray-600">Metro-North access, 90 minutes to NYC</p>
-                    </div>
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h4 class="font-semibold text-green-700">Substantial Lot Size</h4>
-                        <p class="text-sm text-gray-600">0.48 acres provides space premium</p>
+        <!-- Property Features & Market Position -->
+        <div class="bg-white rounded-xl p-8 shadow-lg">
+            <h3 class="text-2xl font-bold mb-8 text-gray-800 text-center">
+                <i class="fas fa-star mr-3 text-yellow-500"></i>Property Features & Market Position
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gray-800">Property Strengths</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-home text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold">Authentic 1956 Cape Cod Character</h5>
+                                <p class="text-sm text-gray-600">Original period details with hardwood floors under carpets, creating immediate value-add opportunity.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-expand text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold">Exceptional 0.48-Acre Lot</h5>
+                                <p class="text-sm text-gray-600">Large lot provides substantial outdoor space for gardening, entertaining, or future expansion opportunities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-bed text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold">4-Bedroom Family Layout</h5>
+                                <p class="text-sm text-gray-600">Flexible configuration meets growing family needs or provides home office/guest room options.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Risk Factors -->
-            <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold text-orange-800 mb-6">
-                    <i class="fas fa-exclamation-triangle mr-2"></i>Risk Factors
-                </h3>
-                <div class="space-y-4">
-                    <div class="border-l-4 border-orange-500 pl-4">
-                        <h4 class="font-semibold text-orange-700">Interest Rate Environment</h4>
-                        <p class="text-sm text-gray-600">6.7% rates affecting buyer pool</p>
-                    </div>
-                    <div class="border-l-4 border-orange-500 pl-4">
-                        <h4 class="font-semibold text-orange-700">School District Impact</h4>
-                        <p class="text-sm text-gray-600">Below-average ratings may limit appeal</p>
-                    </div>
-                    <div class="border-l-4 border-orange-500 pl-4">
-                        <h4 class="font-semibold text-orange-700">Property Age Considerations</h4>
-                        <p class="text-sm text-gray-600">1956 construction may need updates</p>
-                    </div>
-                    <div class="border-l-4 border-orange-500 pl-4">
-                        <h4 class="font-semibold text-orange-700">Seasonal Timing</h4>
-                        <p class="text-sm text-gray-600">Late summer/fall marketing window</p>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-gray-800">Market Value Proposition</h4>
+                    <div class="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg">
+                        <p class="text-gray-700 mb-4">
+                            <strong>In Poughkeepsie's current real estate environment</strong> with a median sale price of $343,000-$375,000, this property is positioned in the sweet spot for first-time buyers and those seeking authentic character homes.
+                        </p>
+                        <p class="text-gray-700">
+                            The combination of <strong>period charm, practical size, and substantial lot</strong> creates compelling value at the $378,000 price point, offering immediate habitability while providing opportunity for value-added improvements.
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- Final Recommendations -->
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Final Strategic Recommendations</h2>
-
-        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h3 class="text-2xl font-bold text-blue-800 mb-6">Marketing Timeline Strategy</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="text-center p-6 bg-blue-50 rounded-lg">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">Weeks 1-2</div>
-                    <h4 class="font-semibold text-gray-800 mb-2">Market Preparation</h4>
-                    <p class="text-sm text-gray-600">Professional photography, staging, disclosures</p>
-                </div>
-                <div class="text-center p-6 bg-green-50 rounded-lg">
-                    <div class="text-2xl font-bold text-green-600 mb-2">Weeks 3-10</div>
-                    <h4 class="font-semibold text-gray-800 mb-2">Active Marketing</h4>
-                    <p class="text-sm text-gray-600">List at $380,000, open houses, feedback monitoring</p>
-                </div>
-                <div class="text-center p-6 bg-orange-50 rounded-lg">
-                    <div class="text-2xl font-bold text-orange-600 mb-2">Weeks 11-12</div>
-                    <h4 class="font-semibold text-gray-800 mb-2">Market Response</h4>
-                    <p class="text-sm text-gray-600">Evaluate activity, consider adjustment if needed</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Success Probability -->
-        <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white p-8 rounded-lg text-center">
-            <h3 class="text-3xl font-bold mb-4">Success Probability Assessment</h3>
-            <div class="text-5xl font-bold mb-2">80%+</div>
-            <p class="text-xl">Probability of sale between $365,000-$380,000 within 90 days</p>
-            <div class="mt-6 grid md:grid-cols-4 gap-4 text-sm">
-                <div class="bg-white bg-opacity-20 p-3 rounded">Strong comparables</div>
-                <div class="bg-white bg-opacity-20 p-3 rounded">Balanced market</div>
-                <div class="bg-white bg-opacity-20 p-3 rounded">4 bed/2 bath appeal</div>
-                <div class="bg-white bg-opacity-20 p-3 rounded">Strategic pricing</div>
             </div>
         </div>
     </div>
 
-    <!-- Professional Footer -->
-    <div class="gradient-header mt-16 py-12">
+    <!-- Footer Section -->
+    <div class="gradient-header py-12">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Professional Market Analysis Complete</h2>
-            <p class="text-lg mb-6">Analysis Date: August 2025 | Market Data Sources: NARRPR.com, MLS, Public Records</p>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="text-center">
-                    <h3 class="text-xl font-bold mb-2">Glenn Fitzgerald</h3>
-                    <p class="opacity-90">Associate Broker</p>
-                    <p class="opacity-90">(845) 251-4468</p>
-                    <p class="opacity-90">info@hudsonvalleysold.com</p>
+            <h2 class="text-3xl font-bold mb-6">Ready to Discuss Your Property?</h2>
+            <p class="text-xl mb-8 text-blue-100">Professional market analysis and strategic guidance for your real estate goals.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">Glenn Fitzgerald</h3>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i>(845) 251-4468</p>
+                    <p class="mb-4"><i class="fas fa-envelope mr-2"></i>glenn@hudsonvalleysold.com</p>
+                    <p class="text-sm text-blue-100">Lead Market Analyst</p>
                 </div>
-                <div class="text-center">
-                    <h3 class="text-xl font-bold mb-2">Justin Phillips</h3>
-                    <p class="opacity-90">Partner Agent</p>
-                    <p class="opacity-90">Hudson Valley Sold</p>
-                    <p class="opacity-90">hudsonvalleysold.com</p>
+                
+                <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">Justin Phillips</h3>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i>(845) 242-4991</p>
+                    <p class="mb-4"><i class="fas fa-envelope mr-2"></i>justin@hudsonvalleysold.com</p>
+                    <p class="text-sm text-blue-100">Partner Agent - CMA Specialist</p>
                 </div>
             </div>
-            <p class="mt-8 text-sm opacity-75">This CMA provides strategic pricing guidance based on comprehensive comparable analysis and current market conditions.</p>
+            
+            <div class="mt-8 text-center">
+                <p class="text-lg mb-2"><strong>HUDSON VALLEY SOLD</strong></p>
+                <p class="text-blue-100">Professional Real Estate Services</p>
+                <p class="text-sm text-blue-200 mt-4">
+                    Analysis prepared on August 7, 2025 | Based on current market data and comparable sales
+                </p>
+            </div>
         </div>
     </div>
 
-    <!-- FUB Widget Integration -->
     <script>
-        (function() {
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = 'https://widgetbe.com/agent';
-            s.dataset.trackerId = 'WT-FPLWTULQ';
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        })();
+        // Initialize Price Analysis Chart
+        const ctx = document.getElementById('priceChart').getContext('2d');
+        const priceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['21 Ireland Dr', '19 Dublin Ln', '152 Overlook Rd', '17 Dorliss Dr', '86 Overocker Rd', '5 Mapleview Rd', '12 Dorland Ave (Subject)'],
+                datasets: [{
+                    label: 'Sale Price',
+                    data: [389000, 375000, 455500, 375000, 335000, 369200, 378000],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(139, 92, 246, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(239, 68, 68, 0.7)',
+                        'rgba(6, 182, 212, 0.7)',
+                        'rgba(34, 197, 94, 0.9)'
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(139, 92, 246, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(239, 68, 68, 1)',
+                        'rgba(6, 182, 212, 1)',
+                        'rgba(34, 197, 94, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Comparable Sales Analysis - 12 Dorland Ave Market Position',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 300000,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Sale Price ($)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                },
+                elements: {
+                    bar: {
+                        borderRadius: 4
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDoi%2BojpFa8EcZKXqfA5Xg3nbMaMmqC8YdWPa5r63WSVDak2Dgk9mymEmkSbQFVuA9t48uEa4ZqKsNE2sMJKoeMtUDE6PhwTx3zGw6gLpCCnrcgvlJN4sDaytz6K9SQgSz9RDPhMrPa95Mh1SarlHVfNYH2WJJLBAKDUq4HH9tdx9za%2Br7yvDNVRnrn%2FY3dNYIBcudvatCpToQYlkH7vpfuv%2FT%2FMgb3vMX6QDeni2VVNEtgRRhP2%2BIB1TVRH1d9Q0RHrOhzcOoqxlCe6SI%2FzR7pZEPKXdbK6NzbBpzK4%2Fp1e9JIi9bfzAro9Th3Bo3lTwrZpmocGGvCAIxEAJ5qijS7l5H3c97b8Htv24VGeJZ3H7sKYfvHwc4SOtChfYVEdZ7lnfKktJ8E4nxomMwAJyFRzataEwiKzD4YpmU%2Fh7Ow6UWFn6IhqtnX3XFgYoAfjBr1lC6ILpsmOYvMzwVIIhgg%2B67LJmH92mNTT40RFzSh69fNn7dGulqTloxfsgVBuoFw%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDoi+ojpFa8EcZKXqfA5Xg3nbMaMmqC8YdWPa5r63WSVDak2Dgk9mymEmkSbQFVuA9t48uEa4ZqKsNE2sMJKoeMtUDE6PhwTx3zGw6gLpCCnrcgvlJN4sDaytz6K9SQgSz9RDPhMrPa95Mh1SarlHVfNYH2WJJLBAKDUq4HH9tdx9za+r7yvDNVRnrn/Y3dNYIBcudvatCpToQYlkH7vpfuv/T/Mgb3vMX6QDeni2VVNEtgRRhP2+IB1TVRH1d9Q0RHrOhzcOoqxlCe6SI/zR7pZEPKXdbK6NzbBpzK4/p1e9JIi9bfzAro9Th3Bo3lTwrZpmocGGvCAIxEAJ5qijS7l5H3c97b8Htv24VGeJZ3H7sKYfvHwc4SOtChfYVEdZ7lnfKktJ8E4nxomMwAJyFRzataEwiKzD4YpmU/h7Ow6UWFn6IhqtnX3XFgYoAfjBr1lC6ILpsmOYvMzwVIIhgg+67LJmH92mNTT40RFzSh69fNn7dGulqTloxfsgVBuoFw==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
