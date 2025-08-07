@@ -3,664 +3,540 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparative Market Analysis - 12 Dorland Ave, Poughkeepsie, NY 12603</title>
+    <title>12 Dorland Ave, Poughkeepsie, NY 12603 - Professional Market Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
-            background-color: #ffffff;
+            line-height: 1.6;
+            background-color: #f8fafc;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #327c88, #4a9aa8);
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
             color: white;
-            padding: 40px 20px;
-            text-align: center;
-            margin-bottom: 40px;
-            border-radius: 10px;
         }
-
-        .header h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
+        .gradient-cover {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
         }
-
-        .header .subtitle {
-            font-size: 24px;
-            opacity: 0.9;
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-left: 5px solid #0ea5e9;
         }
-
-        .agent-info {
-            background: #f9f9f9;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .agent-section {
-            flex: 1;
-            min-width: 250px;
-            margin: 10px;
-        }
-
-        .agent-section h3 {
-            color: #327c88;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .executive-summary {
-            background: #e9f5f7;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            border-left: 5px solid #327c88;
-        }
-
-        .key-metrics {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-
-        .metric {
-            text-align: center;
-            margin: 15px;
+        .comp-card {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            min-width: 200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-
-        .metric-value {
-            font-size: 32px;
-            font-weight: bold;
-            color: #327c88;
-            display: block;
+        .comp-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-
-        .metric-label {
-            font-size: 16px;
-            color: #666;
-            margin-top: 5px;
+        .price-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
         }
-
-        .property-profile {
-            background: #f9f9f9;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-        }
-
-        .property-specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .spec-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .spec-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #327c88;
-        }
-
-        .spec-label {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .comparables-section {
-            margin-bottom: 40px;
-        }
-
-        .comparable-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .comparable-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .comparable-address {
-            font-size: 18px;
-            font-weight: bold;
-            color: #327c88;
-        }
-
-        .comparable-price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2c5530;
-        }
-
-        .comparable-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .detail-item {
-            text-align: center;
-            padding: 10px;
-            background: #f9f9f9;
-            border-radius: 5px;
-        }
-
-        .pricing-section {
-            background: #e9f5f7;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-        }
-
-        .pricing-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .pricing-card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .pricing-card.recommended {
-            border: 3px solid #327c88;
+        .price-card.recommended {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 3px solid #1e40af;
             position: relative;
         }
-
         .recommended-badge {
-            background: #327c88;
+            background: linear-gradient(135deg, #1e40af, #0ea5e9);
             color: white;
-            padding: 5px 15px;
+            padding: 6px 16px;
             border-radius: 20px;
             position: absolute;
             top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 20px;
             font-size: 14px;
+            font-weight: 600;
         }
-
-        .price-amount {
-            font-size: 36px;
-            font-weight: bold;
-            color: #327c88;
-            margin: 15px 0;
-        }
-
-        .section-title {
-            font-size: 32px;
-            color: #327c88;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #327c88;
-        }
-
-        .market-insights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .insight-card {
+        .metric-card {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 5px solid #327c88;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .insight-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #327c88;
-        }
-
-        .footer {
-            background: #327c88;
-            color: white;
-            padding: 30px;
+            border-radius: 12px;
+            padding: 24px;
             text-align: center;
-            border-radius: 10px;
-            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-
-        .contact-info {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .contact-item {
-            margin: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 36px;
-            }
-
-            .agent-info {
-                flex-direction: column;
-            }
-
-            .key-metrics {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .comparable-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .comparable-details {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            border-radius: 2px;
+            margin: 40px 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>12 Dorland Ave, Poughkeepsie, NY 12603</h1>
-            <div class="subtitle">Professional Market Valuation & Strategic Pricing Analysis</div>
+    <!-- Header Section -->
+    <div class="gradient-cover text-center py-16">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl font-bold mb-4">12 Dorland Ave</h1>
+            <h2 class="text-3xl font-light mb-6">Poughkeepsie, NY 12603</h2>
+            <p class="text-xl opacity-90 max-w-3xl mx-auto">Professional Market Analysis & Strategic Pricing Report</p>
         </div>
+    </div>
 
-        <div class="agent-info">
-            <div class="agent-section">
-                <h3>Property Owner</h3>
-                <p><strong>Name:</strong> Issa Nesheiwat</p>
-                <p><strong>Phone:</strong> (845) 242-4991</p>
-                <p><strong>Email:</strong> issa510@aol.com</p>
-            </div>
-            <div class="agent-section">
-                <h3>Partner Agent</h3>
-                <p><strong>Agent:</strong> Justin Phillips</p>
-                <p><strong>Analysis Date:</strong> August 2025</p>
-                <p><strong>Report Type:</strong> Comprehensive CMA</p>
-            </div>
-        </div>
-
-        <div class="executive-summary">
-            <h2 class="section-title">Executive Summary</h2>
-            <div class="key-metrics">
-                <div class="metric">
-                    <span class="metric-value">$380,000</span>
-                    <div class="metric-label">Recommended List Price</div>
-                </div>
-                <div class="metric">
-                    <span class="metric-value">$349/sq ft</span>
-                    <div class="metric-label">Price Per Square Foot</div>
-                </div>
-                <div class="metric">
-                    <span class="metric-value">60-90</span>
-                    <div class="metric-label">Expected Days on Market</div>
+    <!-- Agent Information Cards -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid md:grid-cols-2 gap-6 -mt-16 relative z-10">
+            <div class="agent-card p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold text-blue-800 mb-4">
+                    <i class="fas fa-user mr-2"></i>Property Owner
+                </h3>
+                <div class="space-y-2">
+                    <p><strong>Name:</strong> Issa Nesheiwat</p>
+                    <p><strong>Phone:</strong> (845) 242-4991</p>
+                    <p><strong>Email:</strong> issa510@aol.com</p>
                 </div>
             </div>
-            <p>Based on comprehensive analysis of 30 comparable properties, current market conditions, and deep research into the Poughkeepsie 12603 market, <strong>12 Dorland Ave represents excellent value positioning at $380,000</strong>. The property sits in the optimal pricing tier for the current market, with strong comparable support and favorable market dynamics supporting strategic pricing between $365,000 - $390,000.</p>
-        </div>
-
-        <div class="property-profile">
-            <h2 class="section-title">Subject Property Profile</h2>
-            <h3>Property Specifications</h3>
-            <div class="property-specs">
-                <div class="spec-item">
-                    <div class="spec-value">12 Dorland Ave, Poughkeepsie, NY 12603</div>
-                    <div class="spec-label">Address</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-value">4</div>
-                    <div class="spec-label">Bedrooms</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-value">2</div>
-                    <div class="spec-label">Bathrooms</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-value">1,088 sq ft</div>
-                    <div class="spec-label">Living Area</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-value">0.48 acres</div>
-                    <div class="spec-label">Lot Size</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-value">1956</div>
-                    <div class="spec-label">Year Built</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-value">$378,000</div>
-                    <div class="spec-label">Current Est. Value</div>
-                </div>
-            </div>
-            <h3>Neighborhood Context</h3>
-            <p>Located in South Poughkeepsie, an established suburban neighborhood with predominantly owner-occupied homes built between 1940-1999.</p>
-            <ul>
-                <li>Upper-middle-income demographics (80.6%ile nationally)</li>
-                <li>Zero childhood poverty rate</li>
-                <li>Short commute times (41.7% under 15 minutes)</li>
-                <li>Metro-North railroad access to NYC</li>
-            </ul>
-        </div>
-
-        <div class="market-insights">
-            <h2 class="section-title" style="grid-column: 1/-1;">Market Analysis</h2>
-            <div class="insight-card">
-                <h3>Price Per Square Foot Analysis</h3>
-                <div class="insight-value">$302-$372/sq ft</div>
-                <p>Market range for similar properties</p>
-            </div>
-            <div class="insight-card">
-                <h3>Days on Market Comparison</h3>
-                <div class="insight-value">43-168 days</div>
-                <p>Range based on pricing and condition</p>
-            </div>
-            <div class="insight-card">
-                <div class="insight-value">$410,000</div>
-                <div>Median Home Price (12603)</div>
-                <div style="font-size: 16px; color: #2c5530;">↑ 6.5% YoY</div>
-            </div>
-            <div class="insight-card">
-                <div class="insight-value">43 days</div>
-                <div>Average Days on Market</div>
-            </div>
-            <div class="insight-card">
-                <div class="insight-value">100.25%</div>
-                <div>Sale-to-List Ratio</div>
-            </div>
-        </div>
-
-        <div class="comparables-section">
-            <h2 class="section-title">Selected Comparable Properties</h2>
-            <p style="margin-bottom: 30px; font-style: italic;">15 most relevant comparables selected using proximity hierarchy and similarity criteria</p>
-
-            <h3 style="color: #327c88; margin-bottom: 20px;">Tier 1: Immediate Area (Under 0.5 Miles)</h3>
-
-            <div class="comparable-card">
-                <div class="comparable-header">
-                    <div class="comparable-address">21 Ireland Dr</div>
-                    <div class="comparable-price">$389,000</div>
-                </div>
-                <div class="comparable-details">
-                    <div class="detail-item">0.37 miles</div>
-                    <div class="detail-item">SOLD 3/19/2025</div>
-                    <div class="detail-item">1,008 sq ft</div>
-                    <div class="detail-item">3 bed/2 bath</div>
-                    <div class="detail-item">Built 1960</div>
-                    <div class="detail-item">$386/sq ft</div>
-                </div>
-                <p><strong>Analysis:</strong> Nearly identical size, excellent comparable, premium location adjustment. DOM: 133 days.</p>
-            </div>
-
-            <div class="comparable-card">
-                <div class="comparable-header">
-                    <div class="comparable-address">19 Dublin Ln</div>
-                    <div class="comparable-price">$375,000</div>
-                </div>
-                <div class="comparable-details">
-                    <div class="detail-item">0.41 miles</div>
-                    <div class="detail-item">SOLD 9/9/2024</div>
-                    <div class="detail-item">1,008 sq ft</div>
-                    <div class="detail-item">4 bed/2 bath</div>
-                    <div class="detail-item">Built 1965</div>
-                    <div class="detail-item">$372/sq ft</div>
-                </div>
-                <p><strong>Analysis:</strong> Perfect match - same bed/bath configuration, nearly identical square footage.</p>
-            </div>
-
-            <div class="comparable-card">
-                <div class="comparable-header">
-                    <div class="comparable-address">86 Overocker Rd</div>
-                    <div class="comparable-price">$335,000</div>
-                </div>
-                <div class="comparable-details">
-                    <div class="detail-item">0.41 miles</div>
-                    <div class="detail-item">SOLD 9/26/2024</div>
-                    <div class="detail-item">1,278 sq ft</div>
-                    <div class="detail-item">3 bed/1 bath</div>
-                    <div class="detail-item">Built 1945</div>
-                    <div class="detail-item">$262/sq ft</div>
-                </div>
-                <p><strong>Analysis:</strong> Larger but older, bathroom deficiency affects value. DOM: 168 days.</p>
-            </div>
-
-            <h3 style="color: #327c88; margin: 30px 0 20px 0;">Key Comparable Highlights (Remaining 12 Properties)</h3>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
-                <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #327c88;">
-                    <strong>152 Overlook Rd</strong><br>
-                    1.07 mi • $455,500 • $395/sq ft<br>
-                    <em>Premium location/condition</em>
-                </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #327c88;">
-                    <strong>5 Mapleview Rd</strong><br>
-                    1.16 mi • $369,200 • $343/sq ft<br>
-                    <em>Similar size, 2 baths</em>
-                </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #327c88;">
-                    <strong>67 Glenwood Ave</strong><br>
-                    1.76 mi • $377,500 • $302/sq ft<br>
-                    <em>4 bed/2 bath, newer (1974)</em>
-                </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #327c88;">
-                    <strong>31 Whittier Blvd</strong><br>
-                    1.96 mi • $395,000 • $293/sq ft<br>
-                    <em>Recent sale, larger/newer</em>
-                </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #f39c12;">
-                    <strong>17 Henmond Blvd</strong><br>
-                    1.14 mi • $299,999 • ACTIVE<br>
-                    <em>Current competition</em>
-                </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #e67e22;">
-                    <strong>43 S Grand Ave</strong><br>
-                    1.46 mi • $350,000 • PENDING<br>
-                    <em>Market activity indicator</em>
+            <div class="agent-card p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold text-blue-800 mb-4">
+                    <i class="fas fa-home mr-2"></i>Real Estate Team
+                </h3>
+                <div class="space-y-2">
+                    <p><strong>Lead Agent:</strong> Glenn Fitzgerald</p>
+                    <p><strong>Partner Agent:</strong> Justin Phillips</p>
+                    <p><strong>Report Date:</strong> August 2025</p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="pricing-section">
-            <h2 class="section-title">Strategic Pricing Recommendations</h2>
-            <div class="pricing-options">
-                <div class="pricing-card">
-                    <h3>Aggressive Entry</h3>
-                    <div class="price-amount">$365,000</div>
-                    <div class="metric-label">$335/sq ft</div>
-                    <ul style="text-align: left; margin-top: 15px;">
-                        <li>Quick sale potential</li>
-                        <li>Multiple offers likely</li>
-                        <li>May leave money on table</li>
-                    </ul>
+    <div class="section-divider"></div>
+
+    <!-- Executive Summary -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Executive Summary</h2>
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="metric-card">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">$380,000</div>
+                    <div class="text-gray-600">Recommended List Price</div>
                 </div>
-                <div class="pricing-card recommended">
-                    <div class="recommended-badge">RECOMMENDED</div>
-                    <h3>Market Value</h3>
-                    <div class="price-amount">$380,000</div>
-                    <div class="metric-label">$349/sq ft</div>
-                    <ul style="text-align: left; margin-top: 15px;">
-                        <li>Balanced approach</li>
-                        <li>Broad buyer appeal</li>
-                        <li>Negotiation room</li>
-                    </ul>
+                <div class="metric-card">
+                    <div class="text-3xl font-bold text-green-600 mb-2">$349/sq ft</div>
+                    <div class="text-gray-600">Price Per Square Foot</div>
                 </div>
-                <div class="pricing-card">
-                    <h3>Premium Position</h3>
-                    <div class="price-amount">$389,000</div>
-                    <div class="metric-label">$357/sq ft</div>
-                    <ul style="text-align: left; margin-top: 15px;">
-                        <li>Maximizes return</li>
-                        <li>Tests market ceiling</li>
-                        <li>Longer marketing time</li>
-                    </ul>
+                <div class="metric-card">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">60-90</div>
+                    <div class="text-gray-600">Expected Days on Market</div>
+                </div>
+            </div>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Based on comprehensive analysis of 30 comparable properties and current market conditions, 
+                <strong>12 Dorland Ave represents excellent value positioning at $380,000</strong>. The property 
+                sits in the optimal pricing tier with strong comparable support and favorable market dynamics 
+                supporting strategic pricing between $365,000 - $390,000.
+            </p>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Property Profile -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Subject Property Profile</h2>
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">4</div>
+                    <div class="text-gray-600">Bedrooms</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">2</div>
+                    <div class="text-gray-600">Bathrooms</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">1,088</div>
+                    <div class="text-gray-600">Square Feet</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">0.48</div>
+                    <div class="text-gray-600">Acres</div>
                 </div>
             </div>
 
-            <div style="background: white; padding: 25px; border-radius: 8px; margin-top: 30px;">
-                <h3 style="color: #327c88; margin-bottom: 15px;">Optimal Strategy: $380,000</h3>
-                <h4>Strategic Rationale:</h4>
-                <ul style="margin: 15px 0;">
-                    <li>Aligns with superior comparables (19 Dublin Ln at $375,000)</li>
-                    <li>Positions competitively against 21 Ireland Dr premium</li>
-                    <li>Accounts for 4 bed/2 bath configuration advantage</li>
-                    <li>Allows negotiation room to $370,000-$375,000 range</li>
+            <!-- Google Maps Satellite View -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Property Location</h3>
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=12+Dorland+Ave,+Poughkeepsie,+NY+12603&zoom=16&size=1200x800&maptype=satellite&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                     alt="12 Dorland Ave Satellite View" class="w-full rounded-lg shadow-lg">
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Property Features & Market Position</h3>
+                <p class="text-gray-700">
+                    This attractive 1956 single-family home represents excellent value in Poughkeepsie's established 
+                    South area residential market. The property showcases mid-century character with practical 
+                    4-bedroom, 2-bathroom configuration that appeals to modern families. The substantial 0.48-acre 
+                    lot provides exceptional outdoor space and privacy - a significant advantage over many comparable properties.
+                </p>
+                <h4 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Current Market Value Proposition</h4>
+                <p class="text-gray-700">
+                    In Poughkeepsie's current real estate environment with a median sale price of $410,000, this property 
+                    is positioned in the sweet spot for families seeking space and value. The combination of 4 bedrooms, 
+                    2 full bathrooms, and generous lot size creates compelling value at the $380,000 price point, 
+                    offering immediate habitability while providing opportunity for value-added improvements.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Market Analysis -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Market Analysis</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-green-600 mb-2">$410,000</div>
+                <div class="text-sm text-gray-600 mb-1">Median Home Price</div>
+                <div class="text-xs text-green-500">↑ 6.5% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-blue-600 mb-2">43 days</div>
+                <div class="text-sm text-gray-600">Avg Days on Market</div>
+            </div>
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-purple-600 mb-2">100.25%</div>
+                <div class="text-sm text-gray-600">Sale-to-List Ratio</div>
+            </div>
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-orange-600 mb-2">325</div>
+                <div class="text-sm text-gray-600">Homes for Sale</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Comparable Properties -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Selected Comparable Properties</h2>
+        <p class="text-center text-gray-600 mb-8">15 most relevant comparables selected using proximity hierarchy and similarity criteria</p>
+
+        <!-- Tier 1: Immediate Area -->
+        <h3 class="text-2xl font-bold text-blue-700 mb-6">
+            <i class="fas fa-map-marker-alt mr-2"></i>Tier 1: Immediate Area (Under 0.5 Miles)
+        </h3>
+
+        <div class="grid md:grid-cols-1 gap-6 mb-8">
+            <!-- Perfect Match Comparable -->
+            <div class="comp-card p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h4 class="text-xl font-bold text-blue-800">19 Dublin Ln - PERFECT MATCH</h4>
+                        <p class="text-gray-600">0.41 miles • SOLD 9/9/2024</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-green-600">$375,000</div>
+                        <div class="text-sm text-gray-500">$372/sq ft</div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-4 mb-4">
+                    <div class="text-center p-3 bg-blue-50 rounded">
+                        <div class="font-bold text-blue-600">1,008</div>
+                        <div class="text-xs text-gray-600">Sq Ft</div>
+                    </div>
+                    <div class="text-center p-3 bg-blue-50 rounded">
+                        <div class="font-bold text-blue-600">4/2</div>
+                        <div class="text-xs text-gray-600">Bed/Bath</div>
+                    </div>
+                    <div class="text-center p-3 bg-blue-50 rounded">
+                        <div class="font-bold text-blue-600">1965</div>
+                        <div class="text-xs text-gray-600">Built</div>
+                    </div>
+                    <div class="text-center p-3 bg-green-50 rounded">
+                        <div class="font-bold text-green-600">★★★</div>
+                        <div class="text-xs text-gray-600">Match</div>
+                    </div>
+                </div>
+                <p class="text-gray-700">
+                    <strong>Analysis:</strong> Exceptional comparable - identical bedroom/bathroom configuration, 
+                    nearly identical square footage, same immediate neighborhood. Strong support for $375,000+ pricing.
+                </p>
+            </div>
+
+            <!-- Premium Reference -->
+            <div class="comp-card p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h4 class="text-xl font-bold text-blue-800">21 Ireland Dr - PREMIUM REFERENCE</h4>
+                        <p class="text-gray-600">0.37 miles • SOLD 3/19/2025 (Recent)</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-green-600">$389,000</div>
+                        <div class="text-sm text-gray-500">$386/sq ft</div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-4 mb-4">
+                    <div class="text-center p-3 bg-blue-50 rounded">
+                        <div class="font-bold text-blue-600">1,008</div>
+                        <div class="text-xs text-gray-600">Sq Ft</div>
+                    </div>
+                    <div class="text-center p-3 bg-blue-50 rounded">
+                        <div class="font-bold text-blue-600">3/2</div>
+                        <div class="text-xs text-gray-600">Bed/Bath</div>
+                    </div>
+                    <div class="text-center p-3 bg-blue-50 rounded">
+                        <div class="font-bold text-blue-600">1960</div>
+                        <div class="text-xs text-gray-600">Built</div>
+                    </div>
+                    <div class="text-center p-3 bg-orange-50 rounded">
+                        <div class="font-bold text-orange-600">133</div>
+                        <div class="text-xs text-gray-600">DOM</div>
+                    </div>
+                </div>
+                <p class="text-gray-700">
+                    <strong>Analysis:</strong> Recent sale in immediate area, same size but one less bedroom. 
+                    Premium pricing achieved despite 4+ months marketing time.
+                </p>
+            </div>
+        </div>
+
+        <!-- Additional Comparable Highlights -->
+        <h3 class="text-2xl font-bold text-blue-700 mb-6 mt-12">
+            <i class="fas fa-chart-line mr-2"></i>Key Market Comparables Summary
+        </h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500">
+                <h5 class="font-bold text-gray-800">152 Overlook Rd</h5>
+                <p class="text-sm text-gray-600">1.07 mi • $455,500 • $395/sq ft</p>
+                <p class="text-xs text-gray-500">Premium location/condition</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500">
+                <h5 class="font-bold text-gray-800">5 Mapleview Rd</h5>
+                <p class="text-sm text-gray-600">1.16 mi • $369,200 • $343/sq ft</p>
+                <p class="text-xs text-gray-500">Similar size, 2 baths</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500">
+                <h5 class="font-bold text-gray-800">67 Glenwood Ave</h5>
+                <p class="text-sm text-gray-600">1.76 mi • $377,500 • $302/sq ft</p>
+                <p class="text-xs text-gray-500">4 bed/2 bath, newer (1974)</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-red-500">
+                <h5 class="font-bold text-gray-800">17 Henmond Blvd</h5>
+                <p class="text-sm text-gray-600">1.14 mi • $299,999 • ACTIVE</p>
+                <p class="text-xs text-gray-500">Current competition</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500">
+                <h5 class="font-bold text-gray-800">31 Whittier Blvd</h5>
+                <p class="text-sm text-gray-600">1.96 mi • $395,000 • $293/sq ft</p>
+                <p class="text-xs text-gray-500">Recent August sale</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-orange-500">
+                <h5 class="font-bold text-gray-800">7 Wilson Blvd</h5>
+                <p class="text-sm text-gray-600">1.89 mi • $380,000 • $294/sq ft</p>
+                <p class="text-xs text-gray-500">Very recent July sale</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Strategic Pricing -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Strategic Pricing Recommendations</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <!-- Aggressive Entry -->
+            <div class="price-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-center text-blue-700 mb-4">Market Entry Strategy</h3>
+                <div class="text-center mb-6">
+                    <div class="text-3xl font-bold text-green-600">$365,000</div>
+                    <div class="text-gray-600">$335/sq ft</div>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Quick sale potential</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Multiple offers likely</li>
+                    <li><i class="fas fa-times text-red-500 mr-2"></i>May leave money on table</li>
                 </ul>
-                <h4>Expected Outcomes:</h4>
-                <ul>
-                    <li>Timeline: 60-90 days to contract</li>
-                    <li>Final sale range: $365,000-$380,000</li>
-                    <li>Target outcome: $375,000</li>
-                    <li>Success probability: 80%+</li>
+                <div class="text-center mt-4 text-sm text-gray-600">45-60 days expected</div>
+            </div>
+
+            <!-- Recommended Pricing -->
+            <div class="price-card recommended p-6 rounded-lg">
+                <div class="recommended-badge">RECOMMENDED</div>
+                <h3 class="text-xl font-bold text-center text-blue-700 mb-4">Value Positioning</h3>
+                <div class="text-center mb-6">
+                    <div class="text-3xl font-bold text-blue-600">$380,000</div>
+                    <div class="text-gray-600">$349/sq ft</div>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Balanced approach</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Broad buyer appeal</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Negotiation room</li>
                 </ul>
+                <div class="text-center mt-4 text-sm text-gray-600">60-90 days expected</div>
+            </div>
+
+            <!-- Premium Position -->
+            <div class="price-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-center text-blue-700 mb-4">Premium Positioning</h3>
+                <div class="text-center mb-6">
+                    <div class="text-3xl font-bold text-purple-600">$389,000</div>
+                    <div class="text-gray-600">$357/sq ft</div>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Maximizes return</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Tests market ceiling</li>
+                    <li><i class="fas fa-times text-red-500 mr-2"></i>Longer marketing time</li>
+                </ul>
+                <div class="text-center mt-4 text-sm text-gray-600">90-120 days expected</div>
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0;">
-            <div style="background: #e8f5e8; padding: 20px; border-radius: 8px;">
-                <h3 style="color: #2c5530; margin-bottom: 15px;">Market Strengths</h3>
-                <div style="margin-bottom: 10px;">
-                    <strong>Strong Comparable Support</strong><br>
-                    <small>Multiple recent sales $350K-$395K range</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <strong>Seller's Market Conditions</strong><br>
-                    <small>3.04 months inventory (strong demand)</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <strong>NYC Commuter Appeal</strong><br>
-                    <small>Metro-North access, 90 minutes to NYC</small>
+        <!-- Optimal Strategy -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-blue-800 mb-6 text-center">
+                <i class="fas fa-bullseye mr-2"></i>Optimal Strategy: $380,000
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Strategic Rationale:</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>• Positions between perfect match (19 Dublin Ln at $375,000) and recent premium (21 Ireland Dr at $389,000)</li>
+                        <li>• Accounts for 4 bed/2 bath configuration advantage</li>
+                        <li>• Allows negotiation room to $370,000-$375,000 final range</li>
+                        <li>• Competitive against current active listings</li>
+                    </ul>
                 </div>
                 <div>
-                    <strong>Property Configuration</strong><br>
-                    <small>4 bed/2 bath advantage over many comparables</small>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Expected Outcomes:</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>• <strong>Timeline:</strong> 60-90 days to contract</li>
+                        <li>• <strong>Final sale range:</strong> $370,000-$380,000</li>
+                        <li>• <strong>Target outcome:</strong> $375,000</li>
+                        <li>• <strong>Success probability:</strong> 80%+ within 90 days</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Market Strengths & Risks -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Strengths -->
+            <div class="bg-green-50 p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold text-green-800 mb-6">
+                    <i class="fas fa-thumbs-up mr-2"></i>Market Strengths
+                </h3>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-green-700">Strong Comparable Support</h4>
+                        <p class="text-sm text-gray-600">Multiple recent sales $350K-$395K range</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-green-700">Configuration Advantage</h4>
+                        <p class="text-sm text-gray-600">4 bed/2 bath appeals to families</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-green-700">NYC Commuter Appeal</h4>
+                        <p class="text-sm text-gray-600">Metro-North access, 90 minutes to NYC</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-semibold text-green-700">Substantial Lot Size</h4>
+                        <p class="text-sm text-gray-600">0.48 acres provides space premium</p>
+                    </div>
                 </div>
             </div>
 
-            <div style="background: #fdf2e8; padding: 20px; border-radius: 8px;">
-                <h3 style="color: #d68910; margin-bottom: 15px;">Risk Factors</h3>
-                <div style="margin-bottom: 10px;">
-                    <strong>Interest Rate Sensitivity</strong><br>
-                    <small>6.7% rates affecting affordability</small>
+            <!-- Risk Factors -->
+            <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold text-orange-800 mb-6">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>Risk Factors
+                </h3>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-orange-500 pl-4">
+                        <h4 class="font-semibold text-orange-700">Interest Rate Environment</h4>
+                        <p class="text-sm text-gray-600">6.7% rates affecting buyer pool</p>
+                    </div>
+                    <div class="border-l-4 border-orange-500 pl-4">
+                        <h4 class="font-semibold text-orange-700">School District Impact</h4>
+                        <p class="text-sm text-gray-600">Below-average ratings may limit appeal</p>
+                    </div>
+                    <div class="border-l-4 border-orange-500 pl-4">
+                        <h4 class="font-semibold text-orange-700">Property Age Considerations</h4>
+                        <p class="text-sm text-gray-600">1956 construction may need updates</p>
+                    </div>
+                    <div class="border-l-4 border-orange-500 pl-4">
+                        <h4 class="font-semibold text-orange-700">Seasonal Timing</h4>
+                        <p class="text-sm text-gray-600">Late summer/fall marketing window</p>
+                    </div>
                 </div>
-                <div style="margin-bottom: 10px;">
-                    <strong>School District Impact</strong><br>
-                    <small>Below-average ratings may limit family appeal</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Final Recommendations -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Final Strategic Recommendations</h2>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 class="text-2xl font-bold text-blue-800 mb-6">Marketing Timeline Strategy</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-blue-50 rounded-lg">
+                    <div class="text-2xl font-bold text-blue-600 mb-2">Weeks 1-2</div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Market Preparation</h4>
+                    <p class="text-sm text-gray-600">Professional photography, staging, disclosures</p>
                 </div>
-                <div style="margin-bottom: 10px;">
-                    <strong>Seasonal Timing</strong><br>
-                    <small>Late summer/fall marketing considerations</small>
+                <div class="text-center p-6 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600 mb-2">Weeks 3-10</div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Active Marketing</h4>
+                    <p class="text-sm text-gray-600">List at $380,000, open houses, feedback monitoring</p>
                 </div>
-                <div>
-                    <strong>Property Age</strong><br>
-                    <small>1956 construction may need updates</small>
+                <div class="text-center p-6 bg-orange-50 rounded-lg">
+                    <div class="text-2xl font-bold text-orange-600 mb-2">Weeks 11-12</div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Market Response</h4>
+                    <p class="text-sm text-gray-600">Evaluate activity, consider adjustment if needed</p>
                 </div>
             </div>
         </div>
 
-        <div style="background: #e9f5f7; padding: 30px; border-radius: 10px; margin-bottom: 40px;">
-            <h2 class="section-title">Final Strategic Recommendations</h2>
-
-            <h3 style="color: #327c88; margin-bottom: 15px;">Marketing Timeline Strategy</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
-                <div style="background: white; padding: 20px; border-radius: 8px;">
-                    <h4>Phase 1: Market Preparation (Weeks 1-2)</h4>
-                    <p>Professional photography, staging, property disclosures</p>
-                </div>
-                <div style="background: white; padding: 20px; border-radius: 8px;">
-                    <h4>Phase 2: Active Marketing (Weeks 3-8)</h4>
-                    <p>List at $380,000, open houses, monitor feedback</p>
-                </div>
-                <div style="background: white; padding: 20px; border-radius: 8px;">
-                    <h4>Phase 3: Adjustment (Weeks 9-12, if needed)</h4>
-                    <p>Consider reduction to $370,000-$375,000 range</p>
-                </div>
-            </div>
-
-            <h3 style="color: #327c88; margin: 25px 0 15px 0;">Success Factors</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                <div style="text-align: center; background: white; padding: 15px; border-radius: 8px;">
-                    <strong>Competitive Pricing</strong><br>
-                    <small>Price within supported range $365K-$390K</small>
-                </div>
-                <div style="text-align: center; background: white; padding: 15px; border-radius: 8px;">
-                    <strong>Professional Presentation</strong><br>
-                    <small>Staging, photography, marketing materials</small>
-                </div>
-                <div style="text-align: center; background: white; padding: 15px; border-radius: 8px;">
-                    <strong>Market Responsiveness</strong><br>
-                    <small>Quick showings, prompt offer responses</small>
-                </div>
-            </div>
-
-            <div style="background: white; padding: 20px; border-radius: 8px; margin-top: 25px; text-align: center;">
-                <h3 style="color: #2c5530;">Success Probability Assessment</h3>
-                <div style="font-size: 24px; font-weight: bold; color: #2c5530; margin: 10px 0;">80%+ probability</div>
-                <p>of sale between $365,000-$380,000 within 90 days</p>
+        <!-- Success Probability -->
+        <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white p-8 rounded-lg text-center">
+            <h3 class="text-3xl font-bold mb-4">Success Probability Assessment</h3>
+            <div class="text-5xl font-bold mb-2">80%+</div>
+            <p class="text-xl">Probability of sale between $365,000-$380,000 within 90 days</p>
+            <div class="mt-6 grid md:grid-cols-4 gap-4 text-sm">
+                <div class="bg-white bg-opacity-20 p-3 rounded">Strong comparables</div>
+                <div class="bg-white bg-opacity-20 p-3 rounded">Balanced market</div>
+                <div class="bg-white bg-opacity-20 p-3 rounded">4 bed/2 bath appeal</div>
+                <div class="bg-white bg-opacity-20 p-3 rounded">Strategic pricing</div>
             </div>
         </div>
+    </div>
 
-        <div class="footer">
-            <h2>Professional Market Analysis Completed</h2>
-            <p><strong>Analysis Date:</strong> August 2025 | <strong>Market Data Sources:</strong> NARRPR.com, MLS, Public Records</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <strong>Glenn Fitzgerald</strong><br>
-                    Associate Broker<br>
-                    (845) 251-4468<br>
-                    info@hudsonvalleysold.com
+    <!-- Professional Footer -->
+    <div class="gradient-header mt-16 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Professional Market Analysis Complete</h2>
+            <p class="text-lg mb-6">Analysis Date: August 2025 | Market Data Sources: NARRPR.com, MLS, Public Records</p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <h3 class="text-xl font-bold mb-2">Glenn Fitzgerald</h3>
+                    <p class="opacity-90">Associate Broker</p>
+                    <p class="opacity-90">(845) 251-4468</p>
+                    <p class="opacity-90">info@hudsonvalleysold.com</p>
                 </div>
-                <div class="contact-item">
-                    <strong>Justin Phillips</strong><br>
-                    Partner Agent<br>
-                    Hudson Valley Sold<br>
-                    hudsonvalleysold.com
+                <div class="text-center">
+                    <h3 class="text-xl font-bold mb-2">Justin Phillips</h3>
+                    <p class="opacity-90">Partner Agent</p>
+                    <p class="opacity-90">Hudson Valley Sold</p>
+                    <p class="opacity-90">hudsonvalleysold.com</p>
                 </div>
             </div>
-            <p style="margin-top: 20px; font-style: italic;">This CMA provides strategic pricing guidance based on comprehensive comparable analysis and current market conditions.</p>
+            <p class="mt-8 text-sm opacity-75">This CMA provides strategic pricing guidance based on comprehensive comparable analysis and current market conditions.</p>
         </div>
     </div>
 
