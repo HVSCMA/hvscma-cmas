@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparative Market Analysis - 163 Hillside Rd, Poughquag NY 12570</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+        .value-highlight {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .market-alert {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        .property-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 1px solid #0ea5e9;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .property-detail {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .strategic-insight {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+        .recommendation-box {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .opportunity-card {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #e2e8f0;
+            text-align: left;
+        }
+        .trend-indicator {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #0f766e;
+        }
+        .footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            border-radius: 0.5rem;
+        }
+        .chart-container {
+            height: 300px;
+            margin: 2rem 0;
+        }
+        
+        /* Mobile-specific responsive adjustments */
+        @media (max-width: 768px) {
+            .mobile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .mobile-logos {
+                margin-bottom: 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .mobile-logos img {
+                height: 3rem;
+                max-width: 200px;
+                width: auto;
+            }
+            .mobile-title {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+            .property-card .grid {
+                grid-template-columns: 1fr;
+            }
+            .property-card .text-right {
+                text-align: left;
+                margin-top: 1rem;
+            }
+            table {
+                font-size: 0.875rem;
+            }
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .mobile-logos img {
+                height: 2.5rem;
+                max-width: 180px;
+            }
+            .mobile-title {
+                font-size: 1.25rem;
+            }
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            .text-xl {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="max-w-6xl mx-auto px-4 py-6">
+    <header>
+        <div class="flex justify-between items-center mb-6 mobile-header">
+            <div class="flex items-center mobile-logos">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold Logo" class="h-16 mr-4 md:mr-4 mb-2 md:mb-0">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Logo" class="h-16">
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800 mobile-title">Comparative Market Analysis</h1>
+        </div>
+    </header>
+
+    <section class="market-alert">
+        <h2 class="text-xl font-bold text-blue-800 flex items-center mb-2">
+            <i class="fas fa-fire-alt mr-2"></i> MARKET OPPORTUNITY ALERT
+        </h2>
+        <p class="mb-2">Poughquag is experiencing strong market growth with a <span class="trend-indicator">12.3% INCREASE</span> in home values year-over-year. Properties are selling <span class="trend-indicator">FASTER</span> than last year (28 days vs. 42 days). This creates an excellent selling window for single-family homes in this sought-after area.</p>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Your Real Estate Professionals</h2>
+        <p class="mb-4">Combined Experience: 35+ Years</p>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="agent-card text-center">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="w-40 h-40 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold text-blue-800">Glenn Fitzgerald</h3>
+                <p>Associate Broker</p>
+                <p class="mb-2">22 Years Experience</p>
+                <p>info@hudsonvalleysold.com</p>
+                <p>(845) 251-4468</p>
+            </div>
+            
+            <div class="agent-card text-center">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/heather_martin_official_professional_photo.jpg" alt="Heather Martin" class="w-40 h-40 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold text-blue-800">Heather Martin</h3>
+                <p>Licensed Salesperson</p>
+                <p class="mb-2">13 Years Experience</p>
+                <p>info@hudsonvalleysold.com</p>
+                <p>(845) 251-4468</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <p>United Real Estate Hudson Valley Edge</p>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-800 mb-2">163 Hillside Rd, Poughquag, NY 12570</h2>
+        <h3 class="text-xl italic mb-4">Charming Single-Family Home on Spacious 1-Acre Lot</h3>
+        
+        <div class="mb-6 text-center">
+            <div class="text-3xl font-bold text-blue-800 mb-2">$475,000 - $515,000</div>
+            <p class="text-xl font-bold">$495,000 <span class="text-base font-normal">(center range)</span></p>
+            <p>$209 per square foot</p>
+        </div>
+        
+        <div class="mb-8">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=163+Hillside+Rd+Poughquag+NY+12570&zoom=16&size=1200x800&maptype=satellite&markers=color:red%7C163+Hillside+Rd+Poughquag+NY+12570&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="163 Hillside Rd Satellite View" class="w-full rounded-lg shadow-lg">
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Property Type</h4>
+                <p>Single Family Home</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Year Built</h4>
+                <p>1961 (63 years old)</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Square Footage</h4>
+                <p>2,362 sq.ft.</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Bedrooms</h4>
+                <p>3</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Bathrooms</h4>
+                <p>1</p>
+            </div>
+            
+            <div class="property-detail">
+                <h4 class="font-bold text-blue-800">Lot Size</h4>
+                <p>1.0 acres</p>
+            </div>
+        </div>
+        
+        <p class="mb-4">This well-positioned single-family home represents excellent value in today's competitive Hudson Valley market. Built in 1961, the home sits on a generous 1-acre lot in the desirable Poughquag area, offering privacy and space that today's buyers are actively seeking.</p>
+        <p>The substantial lot size provides significant development potential and recreational opportunities, while the location offers convenient access to both rural tranquility and urban amenities. The property's unique combination of spacious living area and expansive outdoor space creates exceptional appeal in the current market environment.</p>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Poughquag, NY Market Trends</h2>
+        
+        <div class="value-highlight mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Strong Seller's Market With Rising Values</h3>
+            <p>Poughquag is currently experiencing exceptional market conditions with strong buyer demand and limited inventory. These conditions create a highly favorable environment for sellers of single-family homes, especially those with substantial lot sizes like 163 Hillside Road.</p>
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table class="bg-white min-w-full">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>June 2024</th>
+                        <th>June 2025</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Median Sale Price</td>
+                        <td>$516,000</td>
+                        <td>$579,000</td>
+                        <td class="text-green-600">+12.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Median Price/Sq.Ft.</td>
+                        <td>$228</td>
+                        <td>$256</td>
+                        <td class="text-green-600">+12.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Days on Market</td>
+                        <td>42</td>
+                        <td>28</td>
+                        <td class="text-green-600">-33.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Sale to List Ratio</td>
+                        <td>97.2%</td>
+                        <td>99.8%</td>
+                        <td class="text-green-600">+2.7%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <p class="mt-4"><strong>Market Insight:</strong> The combination of 12.3% price growth, significantly reduced days on market, and near-asking sale prices indicates exceptional seller conditions. With properties selling faster and closer to asking price, this represents an optimal selling window for quality properties like 163 Hillside Road.</p>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Comparable Properties Analysis</h2>
+        <p class="mb-6">The following properties were selected based on proximity, recent sales, and similar characteristics using our Broadened Proximity-Priority approach.</p>
+        
+        <div class="mb-8">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=163+Hillside+Rd+Poughquag+NY&zoom=13&size=1200x800&maptype=roadmap&markers=color:red%7C163+Hillside+Rd+Poughquag+NY&markers=color:blue%7C17+Mayfair+Rd+Poughquag+NY&markers=color:blue%7C184+Beach+Rd+Poughquag+NY&markers=color:blue%7C51+Jack+And+Jill+Rd+Poughquag+NY&markers=color:blue%7C145+Mennella+Rd+Poughquag+NY&markers=color:blue%7C62+Cunningham+Ln+Poughquag+NY&markers=color:blue%7C21+Sterling+Ct+Poughquag+NY&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="Map with comparables" class="w-full rounded-lg shadow-lg">
+        </div>
+
+        <!-- COMPARABLE 1 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">17 Mayfair Rd, Poughquag, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 0.17 miles</p>
+                    <p><strong>Sale Date:</strong> September 30, 2024</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 3 BA</p>
+                    <p><strong>Square Feet:</strong> 1,872 sq ft</p>
+                    <p><strong>Year Built:</strong> 1970</p>
+                    <p><strong>Lot:</strong> 0.6 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$450,000</div>
+                    <p class="font-bold mb-4">$240 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+                <h4 class="font-bold text-blue-800 mb-2">Price Adjustments to Subject Property:</h4>
+                <ul class="text-sm space-y-1">
+                    <li>â¢ Square Footage: +$49,000 (2,362 vs 1,872 sq ft)</li>
+                    <li>â¢ Bathroom Count: -$12,000 (1 vs 3 baths)</li>
+                    <li>â¢ Lot Size: +$12,000 (1.0 vs 0.6 acre)</li>
+                    <li>â¢ Age/Condition: +$2,000 (1961 vs 1970)</li>
+                    <li>â¢ Market Time Adjustment: +$14,000 (10 months appreciation)</li>
+                </ul>
+                <p class="font-bold text-blue-800 mt-2">Adjusted Value: $515,000</p>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Comparative Analysis:</strong> Closest proximity comparable providing excellent location validation. Subject property's larger size and lot require significant upward adjustments, while bathroom differential requires substantial downward adjustment. Time adjustment reflects continued market appreciation since sale date. This comp establishes the upper end of the value range.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 2 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">184 Beach Rd, Poughquag, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 0.27 miles</p>
+                    <p><strong>Sale Date:</strong> February 26, 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 2,080 sq ft</p>
+                    <p><strong>Year Built:</strong> 1983</p>
+                    <p><strong>Lot:</strong> 0.5 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$550,000</div>
+                    <p class="font-bold mb-4">$264 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+                <h4 class="font-bold text-blue-800 mb-2">Price Adjustments to Subject Property:</h4>
+                <ul class="text-sm space-y-1">
+                    <li>â¢ Square Footage: +$28,200 (2,362 vs 2,080 sq ft)</li>
+                    <li>â¢ Bathroom Count: -$8,000 (1 vs 2 baths)</li>
+                    <li>â¢ Lot Size: +$15,000 (1.0 vs 0.5 acre)</li>
+                    <li>â¢ Age/Condition: -$8,000 (1961 vs 1983)</li>
+                    <li>â¢ Market Time Adjustment: -$25,000 (higher recent market activity)</li>
+                </ul>
+                <p class="font-bold text-blue-800 mt-2">Adjusted Value: $552,200</p>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Comparative Analysis:</strong> Recent sale demonstrating strong current market demand in the immediate area. Subject property's larger square footage and significantly larger lot size justify upward adjustments, while bathroom differential and age require downward adjustments. This comp indicates the subject is undervalued relative to recent market activity.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 3 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">51 Jack And Jill Rd, Poughquag, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 0.55 miles</p>
+                    <p><strong>Sale Date:</strong> July 28, 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 1,850 sq ft</p>
+                    <p><strong>Year Built:</strong> 1972</p>
+                    <p><strong>Lot:</strong> 0.6 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$555,000</div>
+                    <p class="font-bold mb-4">$300 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+                <h4 class="font-bold text-blue-800 mb-2">Price Adjustments to Subject Property:</h4>
+                <ul class="text-sm space-y-1">
+                    <li>â¢ Square Footage: +$51,200 (2,362 vs 1,850 sq ft)</li>
+                    <li>â¢ Bathroom Count: -$8,000 (1 vs 2 baths)</li>
+                    <li>â¢ Lot Size: +$12,000 (1.0 vs 0.6 acre)</li>
+                    <li>â¢ Age/Condition: +$2,000 (1961 vs 1972)</li>
+                    <li>â¢ Market Timing: -$60,000 (peak summer premium adjustment)</li>
+                </ul>
+                <p class="font-bold text-blue-800 mt-2">Adjusted Value: $552,200</p>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Comparative Analysis:</strong> Most recent sale demonstrating continued market strength and peak pricing. Subject property's significantly larger square footage and lot size command substantial premiums, partially offset by bathroom differential and summer market timing premium. This validates upper market positioning for the subject property.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 4 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">145 Mennella Rd, Poughquag, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 0.64 miles</p>
+                    <p><strong>Sale Date:</strong> April 21, 2025</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 3 BA</p>
+                    <p><strong>Square Feet:</strong> 3,000 sq ft</p>
+                    <p><strong>Year Built:</strong> 1974</p>
+                    <p><strong>Lot:</strong> 0.8 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$589,000</div>
+                    <p class="font-bold mb-4">$196 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+                <h4 class="font-bold text-blue-800 mb-2">Price Adjustments to Subject Property:</h4>
+                <ul class="text-sm space-y-1">
+                    <li>â¢ Square Footage: -$63,800 (2,362 vs 3,000 sq ft)</li>
+                    <li>â¢ Bathroom Count: -$12,000 (1 vs 3 baths)</li>
+                    <li>â¢ Lot Size: +$5,000 (1.0 vs 0.8 acre)</li>
+                    <li>â¢ Age/Condition: +$3,000 (1961 vs 1974)</li>
+                    <li>â¢ Market Time Adjustment: -$8,000 (spring market premium)</li>
+                </ul>
+                <p class="font-bold text-blue-800 mt-2">Adjusted Value: $513,200</p>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Comparative Analysis:</strong> Recent spring sale providing current market validation. The substantial size difference requires significant downward adjustment, while the bathroom differential further impacts value. This comparable establishes support for the subject property in the low-to-mid $500s range when accounting for size and feature differences.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 5 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">62 Cunningham Ln, Poughquag, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 1.22 miles</p>
+                    <p><strong>Sale Date:</strong> September 16, 2024</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 3 BA</p>
+                    <p><strong>Square Feet:</strong> 1,890 sq ft</p>
+                    <p><strong>Year Built:</strong> 1989</p>
+                    <p><strong>Lot:</strong> 0.7 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$530,000</div>
+                    <p class="font-bold mb-4">$280 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+                <h4 class="font-bold text-blue-800 mb-2">Price Adjustments to Subject Property:</h4>
+                <ul class="text-sm space-y-1">
+                    <li>â¢ Square Footage: +$47,200 (2,362 vs 1,890 sq ft)</li>
+                    <li>â¢ Bathroom Count: -$12,000 (1 vs 3 baths)</li>
+                    <li>â¢ Lot Size: +$9,000 (1.0 vs 0.7 acre)</li>
+                    <li>â¢ Age/Condition: -$10,000 (1961 vs 1989)</li>
+                    <li>â¢ Market Time Adjustment: +$12,000 (10 months appreciation)</li>
+                </ul>
+                <p class="font-bold text-blue-800 mt-2">Adjusted Value: $576,200</p>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Comparative Analysis:</strong> Fall 2024 sale demonstrating market activity across seasons. Subject property's larger size and lot command premiums, while newer construction and additional bathrooms in the comparable require downward adjustments. Time adjustment reflects continued appreciation, supporting mid-range valuation for the subject.</p>
+            </div>
+        </div>
+
+        <!-- COMPARABLE 6 -->
+        <div class="property-card mb-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">21 Sterling Ct, Poughquag, NY</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p><strong>Distance:</strong> 1.22 miles</p>
+                    <p><strong>Sale Date:</strong> August 23, 2024</p>
+                    <p><strong>Beds/Baths:</strong> 3 BR / 2 BA</p>
+                    <p><strong>Square Feet:</strong> 1,800 sq ft</p>
+                    <p><strong>Year Built:</strong> 1984</p>
+                    <p><strong>Lot:</strong> 0.6 acres</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">$425,000</div>
+                    <p class="font-bold mb-4">$236 per sq ft</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+                <h4 class="font-bold text-blue-800 mb-2">Price Adjustments to Subject Property:</h4>
+                <ul class="text-sm space-y-1">
+                    <li>â¢ Square Footage: +$56,200 (2,362 vs 1,800 sq ft)</li>
+                    <li>â¢ Bathroom Count: -$8,000 (1 vs 2 baths)</li>
+                    <li>â¢ Lot Size: +$12,000 (1.0 vs 0.6 acre)</li>
+                    <li>â¢ Age/Condition: -$8,000 (1961 vs 1984)</li>
+                    <li>â¢ Market Time Adjustment: +$18,000 (11 months appreciation)</li>
+                </ul>
+                <p class="font-bold text-blue-800 mt-2">Adjusted Value: $495,200</p>
+            </div>
+            
+            <div class="strategic-insight">
+                <p><strong>Comparative Analysis:</strong> Older sale requiring significant time adjustment for current market conditions. Subject property's larger square footage and lot size justify substantial upward adjustments, while age and bathroom factors require modest downward adjustments. This comparable supports the center-range valuation with proper market timing considerations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Hidden Value Opportunities</h2>
+        
+        <div class="opportunity-card">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Bathroom Addition/Enhancement</h3>
+            <p>Adding a second full bathroom or enhancing the existing bathroom could significantly improve market positioning and address the primary competitive disadvantage identified in the comparable analysis.</p>
+            <p class="font-bold text-blue-800 mt-2">Potential Value Add: $15,000 - $25,000</p>
+        </div>
+        
+        <div class="opportunity-card">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Lot Development and Landscaping</h3>
+            <p>The generous 1-acre lot provides potential for enhanced landscaping, recreational areas, or outbuilding development that could appeal to buyers seeking space, privacy, and outdoor lifestyle opportunities.</p>
+            <p class="font-bold text-blue-800 mt-2">Potential Value Add: $8,000 - $18,000</p>
+        </div>
+        
+        <div class="opportunity-card">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Interior Modernization</h3>
+            <p>Strategic kitchen and interior updates could enhance the home's competitive position against newer construction comparables while maintaining the character and charm that buyers seek in established neighborhoods.</p>
+            <p class="font-bold text-blue-800 mt-2">Potential Value Add: $12,000 - $22,000</p>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Value Reconciliation</h2>
+        
+        <div class="recommendation-box">
+            <h3 class="text-xl font-bold mb-2">Estimated Market Value Range</h3>
+            <p class="mb-2">$475,000 - $515,000</p>
+            <div class="text-3xl font-bold text-blue-800 my-4">$495,000</div>
+            <p class="text-sm">(center range)</p>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-2">Value Considerations</h3>
+        <ul class="list-disc pl-6 mb-6">
+            <li><strong>Lot Size Premium:</strong> 1-acre lot commands significant premium in current market with buyers seeking space and privacy</li>
+            <li><strong>Square Footage Advantage:</strong> 2,362 sq ft provides excellent living space that competes favorably with area inventory</li>
+            <li><strong>Bathroom Limitation:</strong> Single bathroom creates primary competitive disadvantage requiring strategic pricing consideration</li>
+            <li><strong>Market Conditions:</strong> Strong seller's market with 12.3% annual appreciation supports competitive positioning</li>
+            <li><strong>Age Factor:</strong> 1961 construction requires consideration against newer comparables but offers character and established neighborhood appeal</li>
+        </ul>
+        
+        <div class="grid md:grid-cols-2 gap-6 text-center">
+            <div>
+                <h4 class="font-bold mb-2">Conservative Low</h4>
+                <p class="text-2xl font-bold text-blue-800">$475,000</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Recommended Value</h4>
+                <p class="text-2xl font-bold text-blue-800">$495,000</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Market Summary & Strategic Recommendations</h2>
+        
+        <h3 class="text-xl font-bold mb-4">Market Analysis Summary</h3>
+        <ul class="list-disc pl-6 mb-6">
+            <li><strong>Comparable Range:</strong> $425,000 - $589,000</li>
+            <li><strong>Average Adjusted Value (6 comps):</strong> $530,650</li>
+            <li><strong>Median Adjusted Value:</strong> $524,100</li>
+            <li><strong>Most Recent Comp (July 2025):</strong> $552,200 adjusted</li>
+            <li><strong>Price per Square Foot Range:</strong> $196 - $300</li>
+            <li><strong>Subject Property $/Sq.Ft.:</strong> $209 at center range</li>
+        </ul>
+        
+        <h3 class="text-xl font-bold mb-4">Strategic Positioning</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">Lot Size Competitive Advantage</h4>
+                <p>1-acre lot provides significant competitive advantage in current market where buyers prioritize space, privacy, and outdoor lifestyle opportunities</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">Strategic Pricing Approach</h4>
+                <p>Center range positioning balances lot premium with bathroom limitation while remaining competitive in fast-moving market</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">Market Timing Advantage</h4>
+                <p>Current seller's market conditions with reduced days on market and near-asking sale prices support confident pricing strategy</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-blue-800 mb-2">Value Proposition Focus</h4>
+                <p>Emphasis on space, privacy, and development potential appeals to buyers seeking lifestyle enhancement and long-term value</p>
+            </div>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-4 mt-6">Seller Strategy Recommendations</h3>
+        <ol class="list-decimal pl-6 mb-6">
+            <li><strong>Competitive Pricing Strategy:</strong> List at $495,000 to position strategically in market while capturing lot size premium</li>
+            <li><strong>Marketing Emphasis:</strong> Highlight 1-acre lot, privacy, development potential, and space advantages as primary selling points</li>
+            <li><strong>Address Bathroom Limitation:</strong> Consider pre-listing bathroom enhancement or present improvement plans to overcome primary competitive disadvantage</li>
+            <li><strong>Optimal Timing:</strong> List during peak spring/summer season when outdoor space appeal and lot size advantages are most compelling</li>
+            <li><strong>Flexible Negotiation:</strong> Be prepared for quick offers given current market pace while maintaining pricing discipline based on unique property attributes</li>
+        </ol>
+        
+        <p class="mb-6"><strong>Strategic Recommendation:</strong> The property's exceptional 1-acre lot size in a desirable Poughquag location creates significant value that justifies center-range positioning at $495,000. While the single bathroom creates a competitive challenge, the space and privacy advantages in the current market environment support confident pricing that captures the unique property benefits.</p>
+        
+        <div class="recommendation-box">
+            <h3 class="text-xl font-bold mb-4">Professional Recommendation</h3>
+            <div class="text-4xl font-bold text-blue-800">$495,000</div>
+            <p class="mt-4">This valuation reflects the property's significant lot size advantage in a strong seller's market, balanced against the bathroom limitation. The center-range positioning captures the space premium while maintaining competitive appeal in the fast-moving Poughquag market where buyers prioritize privacy and outdoor lifestyle opportunities.</p>
+        </div>
+    </section>
+
+    <section class="text-center mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Ready to Discuss Your Options?</h2>
+        <p class="mb-6">Market conditions are exceptionally favorable right now with values up 12.3% and properties selling faster than last year. Let's discuss how to maximize your property's potential in this unique market window.</p>
+        <a href="https://calendly.com/hudsonvalleysold/property-consultation" class="cta-button">
+            <i class="far fa-calendar-alt mr-2"></i> Book a Call Now
+        </a>
+    </section>
+
+    <footer class="footer">
+        <div class="mb-4">
+            <p>United Real Estate Hudson Valley Edge</p>
+            <p>1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p>info@hudsonvalleysold.com | (845) 251-4468</p>
+        </div>
+        <p>&copy; 2025 Hudson Valley Sold. All rights reserved.</p>
+        <p>This market analysis was prepared exclusively for Gina Gallagher.</p>
+        <p>Property information believed to be accurate but not guaranteed.</p>
+    </footer>
+
+    <!-- FUB Widget Integration -->
+    <script>
+        (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+        {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+        (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+        e.parentNode.insertBefore(t,e);})
+        (window,"https://widgetbe.com/agent",document,"widgetTracker");
+        window.widgetTracker("create", "WT-FPLWTULQ");
+        window.widgetTracker("send", "pageview");
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDqZsKzMRqIghXlgOn42GMqqvHToPescxvVZBGY9N9FkTFZN8qsVAxlgqxikx7MVK5OHsH8MFC49%2Fxah%2FmPHQbqLBifAz2nNJqOoaNcOw0CN%2BUyB5D5J7xxr6xdwZMgRn8SCYS8NrGWV5OPMPCiL0nuKAWSQdUZzZwh6Wv941UN%2BdApniItFFhYzb2sf4MGGymYLK4%2Fa5Tx30axczBJ4ukoovWAMj1kMpr%2FCC%2FIy%2F1%2B8a%2FKF9gGDrKBDzYJeCWOGCF3pSaq2Bfrvp2Y0X045wVI14yPmcyophZ6X%2FkIbmFxkJs56uO1Xxm6Pk1LUWQ2pBH7P1KS%2FKxa5bwlOA67ZUEienoUX2RlAqfjyWvCDbjgkjrkPbNWG69vKPA4ki83Tq34N5HD%2F1A%2FJ0F8O5xmgvB4AgYoiha0yr%2FTirch7IdJttzUtC0%2Foy99osfYfjriDVCZMCJjd6GQEOO7VNv1n0CR7m2mAtqjke%2FhWPhUyttXXICz6oG21GAy%2FTk%2BGIhEpHuQ%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDqZsKzMRqIghXlgOn42GMqqvHToPescxvVZBGY9N9FkTFZN8qsVAxlgqxikx7MVK5OHsH8MFC49/xah/mPHQbqLBifAz2nNJqOoaNcOw0CN+UyB5D5J7xxr6xdwZMgRn8SCYS8NrGWV5OPMPCiL0nuKAWSQdUZzZwh6Wv941UN+dApniItFFhYzb2sf4MGGymYLK4/a5Tx30axczBJ4ukoovWAMj1kMpr/CC/Iy/1+8a/KF9gGDrKBDzYJeCWOGCF3pSaq2Bfrvp2Y0X045wVI14yPmcyophZ6X/kIbmFxkJs56uO1Xxm6Pk1LUWQ2pBH7P1KS/Kxa5bwlOA67ZUEienoUX2RlAqfjyWvCDbjgkjrkPbNWG69vKPA4ki83Tq34N5HD/1A/J0F8O5xmgvB4AgYoiha0yr/Tirch7IdJttzUtC0/oy99osfYfjriDVCZMCJjd6GQEOO7VNv1n0CR7m2mAtqjke/hWPhUyttXXICz6oG21GAy/Tk+GIhEpHuQ==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
