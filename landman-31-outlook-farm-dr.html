@@ -3,607 +3,1126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparative Market Analysis - 31 Outlook Farm Dr, New Paltz NY</title>
+    <title>31 Outlook Farm Dr, New Paltz, NY 12561 - Comparative Market Analysis</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
             line-height: 1.6;
-            color: #374151;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
         .gradient-header {
             background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
         }
+        
+        .gradient-footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+            margin: 0 15px 15px 15px;
+            max-width: 200px;
+        }
+        
+        .agent-photo {
+            width: 144px;
+            height: 144px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1rem;
+        }
+        
         .agent-card {
             background: linear-gradient(135deg, #f8fafc, #e2e8f0);
             border: 2px solid #cbd5e1;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        .value-highlight {
-            background: linear-gradient(135deg, #fef3c7, #fcd34d);
-            border: 2px solid #f59e0b;
-        }
-        .market-insights {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            border-left: 4px solid #3b82f6;
-        }
+        
         .comparable-card {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            border: 1px solid #0ea5e9;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
+        
+        .comparable-title {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .value-highlight {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .hidden-value-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+        }
+        
         .google-map {
             width: 100%;
+            max-width: 100%;
             height: auto;
-            max-width: 1200px;
-            border-radius: 8px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid #e2e8f0;
         }
-         {
-            body { print-color-adjust: exact; }
-            .no-print { display: none; }
+        
+        .market-table {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .market-table th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .market-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            word-wrap: break-word;
+        }
+        
+        .market-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-1px);
+            color: white;
+        }
+        
+        .property-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .property-specs div {
+            background: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .adjustment-positive {
+            color: #059669;
+            background: #d1fae5;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-negative {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-neutral {
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .gradient-header {
+                padding: 1.5rem 0;
+            }
+            
+            .logo {
+                height: 45px;
+                margin: 0 10px 10px 10px;
+                max-width: 150px;
+            }
+            
+            .agent-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .agent-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .comparable-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .market-table {
+                font-size: 0.875rem;
+            }
+            
+            .market-table th,
+            .market-table td {
+                padding: 0.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+                margin: 0 5px 8px 5px;
+            }
+            
+            .agent-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gradient-header {
+                padding: 1rem 0;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        .w-full {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        td, th {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
     </style>
-    <!-- FUB Widget Integration -->
-    <script>
-        (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),(t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;e.parentNode.insertBefore(t,e);})
-        (window,"https://widgetbe.com/agent",document,"widgetTracker");
-        window.widgetTracker("create", "WT-FPLWTULQ");
-        window.widgetTracker("send", "pageview");
-    </script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="gradient-header text-white p-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold mb-2">Comparative Market Analysis</h1>
-            <h2 class="text-2xl mb-4">31 Outlook Farm Dr, New Paltz, NY 12561</h2>
-            <p class="text-lg">Prepared for Gary Landman</p>
-            <p class="text-sm mt-2">Professional Market Analysis â¢ August 2025</p>
+    <!-- Blue Gradient Header -->
+    <header class="gradient-header">
+        <div class="container">
+            <!-- Logos positioned above title -->
+            <div class="text-center mb-6">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold" class="logo">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Hudson Valley Edge" class="logo">
+            </div>
+            
+            <!-- Title and Subject Property Address -->
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">COMPARATIVE MARKET ANALYSIS</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2">31 Outlook Farm Dr</h2>
+                <p class="text-xl opacity-95">New Paltz, NY 12561</p>
+            </div>
         </div>
     </header>
 
-    <!-- Agent Information -->
-    <section class="max-w-6xl mx-auto p-6">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold mb-4 gradient-header text-white p-4 rounded-lg">Your Real Estate Professionals</h2>
-            <p class="text-xl font-semibold text-gray-700 mb-6">Combined Experience: 44+ Years</p>
-        </div>
+    <!-- Main Content -->
+    <div class="container py-8">
         
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-            <!-- Glenn Fitzgerald -->
-            <div class="agent-card p-6 rounded-lg text-center">
-                <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" 
-                     alt="Glenn Fitzgerald" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                <h3 class="text-2xl font-bold mb-2">Glenn Fitzgerald</h3>
-                <p class="text-lg text-blue-600 font-semibold mb-2">Associate Broker</p>
-                <p class="text-gray-600 mb-2">22 Years Experience</p>
-                <p class="text-sm text-gray-600">info@hudsonvalleysold.com</p>
-                <p class="text-sm text-gray-600">(845) 251-4468</p>
+        <!-- Agent Details Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Real Estate Professionals</h2>
+            <p class="text-xl text-center text-gray-600 mb-8">Combined Experience: 44+ Years</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald (Left Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="375e595158775f425344585941565b5b524e44585b531954585a">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+                
+                <!-- Partner Agent (Right Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/justin_phillips_official_professional_photo.jpg" alt="Justin Phillips" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Justin Phillips</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Managing Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0861666e6748607d6c7b67667e6964646d717b67646c266b6765">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
             </div>
             
-            <!-- Justin Phillips -->
-            <div class="agent-card p-6 rounded-lg text-center">
-                <img src="https://assets.site-static.com/userFiles/3673/image/cma/justin_phillips_official_professional_photo.jpg" 
-                     alt="Justin Phillips" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                <h3 class="text-2xl font-bold mb-2">Justin Phillips</h3>
-                <p class="text-lg text-blue-600 font-semibold mb-2">Managing Broker</p>
-                <p class="text-gray-600 mb-2">22 Years Experience</p>
-                <p class="text-sm text-gray-600">info@hudsonvalleysold.com</p>
-                <p class="text-sm text-gray-600">(845) 251-4468</p>
-            </div>
-        </div>
-        
-        <div class="text-center">
-            <div class="flex justify-center items-center gap-4 mb-4">
-                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" 
-                     alt="Hudson Valley Sold" class="h-12">
-                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" 
-                     alt="United Real Estate Hudson Valley Edge" class="h-12">
-            </div>
-            <p class="font-semibold">United Real Estate Hudson Valley Edge</p>
-            <p class="text-sm text-gray-600">1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
-        </div>
-    </section>
+            <p class="text-center text-lg font-semibold text-gray-700 mt-6">United Real Estate Hudson Valley Edge</p>
+        </section>
 
-    <!-- Property Overview -->
-    <section class="max-w-6xl mx-auto p-6">
-        <h2 class="gradient-header text-white p-4 rounded-lg text-3xl font-bold mb-6">31 Outlook Farm Dr Colonial Home</h2>
-        
-        <div class="grid lg:grid-cols-2 gap-8 mb-8">
-            <div>
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold mb-4 text-center">Estimated Market Value</h3>
-                    <div class="text-center">
-                        <p class="text-4xl font-bold text-blue-600 mb-2">$677,000</p>
-                        <p class="text-lg text-gray-600">$354 per square foot</p>
+        <!-- Subject Property Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Elegant Colonial Home in Prestigious Outlook Farm</h2>
+                
+                <div class="value-highlight mb-8">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-2">Estimated Market Value</h3>
+                    <p class="text-3xl font-bold text-blue-600">$677,000</p>
+                    <p class="text-lg text-gray-700">$354 per square foot</p>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="text-center mb-8">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=31+Outlook+Farm+Dr+New+Paltz+NY+12561&zoom=16&size=1200x600&scale=2&maptype=satellite&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C31+Outlook+Farm+Dr+New+Paltz+NY+12561&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                         alt="31 Outlook Farm Dr, New Paltz, NY 12561 Satellite View" 
+                         class="google-map">
+                </div>
+                
+                <div class="property-specs">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Property Type</h4>
+                        <p class="text-gray-800">Single Family Colonial</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1987 (37 years old)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bedrooms</h4>
+                        <p class="text-gray-800">4</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bathrooms</h4>
+                        <p class="text-gray-800">2.5</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Footage</h4>
+                        <p class="text-gray-800">1,910 sq.ft.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Approx. 1+ Acre</p>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="bg-gray-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-gray-700">Property Type</h4>
-                        <p class="text-lg">Single Family</p>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-gray-700">Year Built</h4>
-                        <p class="text-lg">1987 (37 years old)</p>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-gray-700">Bedrooms</h4>
-                        <p class="text-lg">4</p>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-gray-700">Bathrooms</h4>
-                        <p class="text-lg">2.5</p>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-gray-700">Square Footage</h4>
-                        <p class="text-lg">1,910 sq ft</p>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-gray-700">Lot Size</h4>
-                        <p class="text-lg">2.1 acres</p>
-                    </div>
+                <div class="mt-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">This beautifully maintained Colonial home sits on a private lot in the desirable Outlook Farm neighborhood, offering both tranquility and convenience. The 1,910 square foot home features a thoughtful layout with four bedrooms and two and a half bathrooms, making it ideal for families seeking space and comfort in one of New Paltz's most sought-after residential enclaves.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">Built in 1987, this home combines classic Colonial architecture with modern updates, featuring an attached garage for convenience and a fireplace for cozy evenings. The property's location on Outlook Farm Drive places it within easy reach of New Paltz Village, SUNY New Paltz, and major commuter routes while maintaining a peaceful, suburban atmosphere perfect for family living.</p>
                 </div>
             </div>
-            
-            <div>
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=31+Outlook+Farm+Dr+New+Paltz+NY+12561&zoom=16&size=1200x800&scale=2&maptype=satellite&markers=color:red%7C31+Outlook+Farm+Dr+New+Paltz+NY+12561&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
-                     alt="Satellite view of 31 Outlook Farm Dr" class="google-map shadow-lg">
-            </div>
-        </div>
-        
-        <div class="mb-8">
-            <p class="text-lg mb-4">This distinguished Colonial home sits on a premium 2.1-acre lot in the highly desirable Outlook Farm Drive neighborhood of New Paltz. Built in 1987, this property offers 1,910 square feet of well-designed living space with 4 bedrooms and 2.5 bathrooms, providing excellent functionality for modern family living.</p>
-            <p class="text-lg">The property's location within the coveted Outlook Farm enclave offers both privacy and convenience, with easy access to New Paltz village amenities while maintaining a serene, rural atmosphere. The substantial lot size provides significant outdoor space and potential for expansion or enhancement, making this property particularly attractive in today's market where larger lots command premium pricing.</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Market Trends -->
-    <section class="max-w-6xl mx-auto p-6">
-        <div class="market-insights p-6 rounded-lg mb-8">
-            <h2 class="text-3xl font-bold mb-6">New Paltz, NY Market Trends</h2>
+        <!-- Market Trends Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">New Paltz, NY Market Trends</h2>
             
-            <h3 class="text-2xl font-semibold mb-4">Strong Seller's Market Conditions</h3>
-            <p class="text-lg mb-6">The New Paltz real estate market continues to demonstrate robust activity with strong demand for quality properties in desirable neighborhoods like Outlook Farm Drive.</p>
+            <div class="value-highlight mb-6">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Strong Seller's Market with Rising Values</h3>
+                <p class="text-lg text-blue-700">The New Paltz housing market is experiencing robust growth with median home values increasing and inventory remaining competitive, creating favorable conditions for sellers.</p>
+            </div>
             
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white rounded-lg shadow">
-                    <thead class="bg-blue-50">
+            <div class="market-table">
+                <table>
+                    <thead>
                         <tr>
-                            <th class="px-6 py-3 text-left font-semibold">Metric</th>
-                            <th class="px-6 py-3 text-left font-semibold">Previous Year</th>
-                            <th class="px-6 py-3 text-left font-semibold">Current Period</th>
-                            <th class="px-6 py-3 text-left font-semibold">Change</th>
+                            <th>Metric</th>
+                            <th>2024</th>
+                            <th>2025</th>
+                            <th>Change</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b">
-                            <td class="px-6 py-4">Median Sale Price</td>
-                            <td class="px-6 py-4">$549,000</td>
-                            <td class="px-6 py-4">$597,000</td>
-                            <td class="px-6 py-4 text-green-600">+8.7%</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="px-6 py-4">Median Price/Sq.Ft.</td>
-                            <td class="px-6 py-4">$322</td>
-                            <td class="px-6 py-4">$344</td>
-                            <td class="px-6 py-4 text-green-600">+6.8%</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="px-6 py-4">Days on Market</td>
-                            <td class="px-6 py-4">45</td>
-                            <td class="px-6 py-4">30</td>
-                            <td class="px-6 py-4 text-green-600">-33%</td>
+                        <tr>
+                            <td class="font-semibold">Median Sale Price</td>
+                            <td>$575,000</td>
+                            <td>$597,000</td>
+                            <td class="adjustment-positive">+3.8%</td>
                         </tr>
                         <tr>
-                            <td class="px-6 py-4">Sale to List Ratio</td>
-                            <td class="px-6 py-4">96.5%</td>
-                            <td class="px-6 py-4">98.2%</td>
-                            <td class="px-6 py-4 text-green-600">+1.7%</td>
+                            <td class="font-semibold">Median Price/Sq.Ft.</td>
+                            <td>$320</td>
+                            <td>$354</td>
+                            <td class="adjustment-positive">+10.6%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Days on Market</td>
+                            <td>85 days</td>
+                            <td>68 days</td>
+                            <td class="adjustment-positive">-20%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Sale to List Ratio</td>
+                            <td>96.2%</td>
+                            <td>98.1%</td>
+                            <td class="adjustment-positive">+2.0%</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
-            <p class="text-lg mt-6">Market conditions favor sellers with low inventory levels and strong buyer demand. Properties in prime locations like Outlook Farm Drive are experiencing multiple offer situations and quick sales at or above asking price.</p>
-        </div>
-    </section>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                <p class="font-semibold text-blue-800 mb-2">Market Insight:</p>
+                <p class="text-blue-700">The New Paltz market is showing exceptional strength with homes selling faster and for higher prices than last year. With inventory remaining limited and buyer demand strong, particularly in desirable neighborhoods like Outlook Farm, well-positioned properties are commanding premium prices and receiving multiple offers.</p>
+            </div>
+        </section>
 
-    <!-- Comparable Properties Analysis -->
-    <section class="max-w-6xl mx-auto p-6">
-        <h2 class="gradient-header text-white p-4 rounded-lg text-3xl font-bold mb-6">Comparable Properties Analysis</h2>
-        
-        <p class="text-lg mb-6">Our comprehensive analysis includes 20 recently sold properties and 4 active/pending listings within a 4-mile radius, with priority given to properties closest to the subject. All comparables were selected based on similar property characteristics, lot size, and neighborhood desirability.</p>
-        
-        <!-- Comparable Property Map -->
-        <div class="mb-8">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=31+Outlook+Farm+Dr+New+Paltz+NY+12561&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=color:red%7Csize:large%7C31+Outlook+Farm+Dr+New+Paltz+NY+12561&markers=color:blue%7Csize:small%7C16+Autumn+Knl+New+Paltz+NY&markers=color:blue%7Csize:small%7C16+Hasbrouck+Rd+New+Paltz+NY&markers=color:blue%7Csize:small%7C1349+Old+Ford+Rd+New+Paltz+NY&markers=color:blue%7Csize:small%7C36+Sparkling+Ridge+Rd+New+Paltz+NY&markers=color:blue%7Csize:small%7C109+Hasbrouck+Rd+New+Paltz+NY&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
-                 alt="Map showing 31 Outlook Farm Dr and comparable properties" class="google-map shadow-lg mx-auto">
-        </div>
-
-        <!-- Tier 1 Comparables -->
-        <div class="mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-blue-600">Tier 1 Comparables (Under 1.5 Miles)</h3>
+        <!-- Comparable Properties Analysis -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Comparable Properties Analysis</h2>
+            <p class="text-lg text-gray-700 mb-6">Our analysis focuses on recent sales of similar properties within a 2.5-mile radius of the subject property, emphasizing homes with comparable size, age, and neighborhood characteristics. We've selected the most relevant comparable sales from the past 12 months to ensure accuracy in current market conditions.</p>
             
-            <!-- Comp 1: 16 Autumn Knl -->
-            <div class="comparable-card p-6 rounded-lg mb-6">
-                <h4 class="text-xl font-bold mb-4">16 Autumn Knl, New Paltz, NY 12561</h4>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-                    <div><strong>Distance:</strong> 1.33 miles</div>
-                    <div><strong>Sale Date:</strong> 10/25/2024</div>
-                    <div><strong>Sale Price:</strong> $772,500</div>
-                    <div><strong>Price/Sq.Ft.:</strong> $400</div>
-                    <div><strong>Beds/Baths:</strong> 3 BR / 2 BA</div>
-                    <div><strong>Square Feet:</strong> 1,932 sq ft</div>
-                    <div><strong>Year Built:</strong> 1996</div>
-                    <div><strong>Status:</strong> Closed</div>
-                </div>
-                <p class="mb-4">This recently sold property in the desirable Autumn Knoll neighborhood demonstrates strong market performance. Built in 1996, it offers similar colonial styling with updated systems and finishes that appealed to modern buyers.</p>
-                <div class="bg-blue-50 p-4 rounded mb-4">
-                    <h5 class="font-bold mb-2">Price Adjustments to Subject Property:</h5>
-                    <div class="grid md:grid-cols-2 gap-2">
-                        <div>Square Footage: -$1,000 (smaller)</div>
-                        <div>Bedrooms: -$8,000 (1 fewer bedroom)</div>
-                        <div>Age/Condition: +$5,000 (newer construction)</div>
-                        <div>Lot Size: -$3,000 (smaller lot)</div>
-                    </div>
-                    <div class="font-bold mt-2">Adjusted Value: $765,500</div>
-                </div>
-                <p class="font-semibold text-blue-600">Strategic Insight: This sale supports a premium valuation for the subject property, demonstrating that buyers are willing to pay $400+ per square foot for quality colonial homes in prime New Paltz locations.</p>
+            <!-- Enhanced Google Maps with Comparables -->
+            <div class="text-center mb-8">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=31+Outlook+Farm+Dr+New+Paltz+NY+12561&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C31+Outlook+Farm+Dr+New+Paltz+NY+12561&markers=color:blue%7C16+Hasbrouck+Rd+New+Paltz+NY+12561&markers=color:blue%7C36+Sparkling+Ridge+Rd+New+Paltz+NY+12561&markers=color:blue%7C109+Hasbrouck+Rd+New+Paltz+NY+12561&markers=color:blue%7C111+Mountain+Rest+Rd+New+Paltz+NY+12561&markers=color:blue%7C118+Guilford+Schoolhouse+Rd+New+Paltz+NY+12561&markers=color:blue%7C3+Jansen+Rd+New+Paltz+NY+12561&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                     alt="Map showing 31 Outlook Farm Dr and comparable properties" 
+                     class="google-map">
             </div>
-
-            <!-- Comp 2: 16 Hasbrouck Rd -->
-            <div class="comparable-card p-6 rounded-lg mb-6">
-                <h4 class="text-xl font-bold mb-4">16 Hasbrouck Rd, New Paltz, NY 12561</h4>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-                    <div><strong>Distance:</strong> 1.38 miles</div>
-                    <div><strong>Sale Date:</strong> 11/15/2024</div>
-                    <div><strong>Sale Price:</strong> $875,200</div>
-                    <div><strong>Price/Sq.Ft.:</strong> $424</div>
-                    <div><strong>Beds/Baths:</strong> 3 BR / 2 BA</div>
-                    <div><strong>Square Feet:</strong> 2,062 sq ft</div>
-                    <div><strong>Year Built:</strong> 1853</div>
-                    <div><strong>Status:</strong> Closed</div>
-                </div>
-                <p class="mb-4">Historic property with significant charm and character. The 1853 construction date represents antique status which commands premium pricing from buyers seeking unique properties with historical significance.</p>
-                <div class="bg-blue-50 p-4 rounded mb-4">
-                    <h5 class="font-bold mb-2">Price Adjustments to Subject Property:</h5>
-                    <div class="grid md:grid-cols-2 gap-2">
-                        <div>Square Footage: -$6,000 (8% larger)</div>
-                        <div>Historical Premium: -$15,000</div>
-                        <div>Bedrooms: -$8,000 (1 fewer bedroom)</div>
-                        <div>Location Premium: -$10,000</div>
-                    </div>
-                    <div class="font-bold mt-2">Adjusted Value: $836,200</div>
-                </div>
-                <p class="font-semibold text-blue-600">Strategic Insight: While this historic property achieved the highest price per square foot, adjustments for historical premium and location still support strong valuation for the subject property.</p>
-            </div>
-
-            <!-- Comp 3: 1349 Old Ford Rd -->
-            <div class="comparable-card p-6 rounded-lg mb-6">
-                <h4 class="text-xl font-bold mb-4">1349 Old Ford Rd, New Paltz, NY 12561</h4>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-                    <div><strong>Distance:</strong> 1.39 miles</div>
-                    <div><strong>Sale Date:</strong> 11/25/2024</div>
-                    <div><strong>Sale Price:</strong> $575,000</div>
-                    <div><strong>Price/Sq.Ft.:</strong> $394</div>
-                    <div><strong>Beds/Baths:</strong> 3 BR / 2 BA</div>
-                    <div><strong>Square Feet:</strong> 1,460 sq ft</div>
-                    <div><strong>Year Built:</strong> 1985</div>
-                    <div><strong>Status:</strong> Closed</div>
-                </div>
-                <p class="mb-4">This property represents excellent value comparison as it's the most recent sale with similar vintage (1985 vs 1987). The slightly smaller footprint still achieved strong per-square-foot pricing.</p>
-                <div class="bg-blue-50 p-4 rounded mb-4">
-                    <h5 class="font-bold mb-2">Price Adjustments to Subject Property:</h5>
-                    <div class="grid md:grid-cols-2 gap-2">
-                        <div>Square Footage: +$22,500 (24% larger)</div>
-                        <div>Bedrooms: +$12,000 (1 additional bedroom)</div>
-                        <div>Lot Size: +$8,000 (larger lot)</div>
-                        <div>Condition: +$5,000</div>
-                    </div>
-                    <div class="font-bold mt-2">Adjusted Value: $622,500</div>
-                </div>
-                <p class="font-semibold text-blue-600">Strategic Insight: This recent sale establishes a strong baseline for similar-vintage properties, with adjustments for size and amenities supporting the subject's higher valuation range.</p>
-            </div>
-        </div>
-
-        <!-- Tier 2 Comparables -->
-        <div class="mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-blue-600">Tier 2 Comparables (1.5-2.0 Miles)</h3>
             
-            <!-- Key Tier 2 Comparables -->
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <!-- 36 Sparkling Ridge Rd -->
-                <div class="comparable-card p-4 rounded-lg">
-                    <h5 class="font-bold mb-2">36 Sparkling Ridge Rd</h5>
-                    <div class="text-sm mb-2">
-                        <div>Distance: 1.6 mi | Sale: $665,200 (10/2/24)</div>
-                        <div>1,878 sq ft | 4BR/2BA | Built: 1969 | $354/sf</div>
+            <!-- Comparable Property Cards -->
+            <div class="comparable-card">
+                <div class="comparable-title">16 Hasbrouck Rd, New Paltz, NY 12561</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.38 miles</p>
                     </div>
-                    <p class="text-sm">Excellent 4-bedroom comparison with similar acreage. Strong adjusted value of $685,000 after size and condition adjustments.</p>
-                </div>
-
-                <!-- 109 Hasbrouck Rd -->
-                <div class="comparable-card p-4 rounded-lg">
-                    <h5 class="font-bold mb-2">109 Hasbrouck Rd</h5>
-                    <div class="text-sm mb-2">
-                        <div>Distance: 1.8 mi | Sale: $875,000 (9/27/24)</div>
-                        <div>2,332 sq ft | 3BR/3BA | Built: 2010 | $375/sf</div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">November 15, 2024</p>
                     </div>
-                    <p class="text-sm">Premium newer construction demonstrating market strength for quality improvements. Adjusted value: $695,000.</p>
-                </div>
-
-                <!-- 12 Edgewood Dr -->
-                <div class="comparable-card p-4 rounded-lg">
-                    <h5 class="font-bold mb-2">12 Edgewood Dr</h5>
-                    <div class="text-sm mb-2">
-                        <div>Distance: 1.97 mi | Sale: $585,000 (10/15/24)</div>
-                        <div>2,174 sq ft | 5BR/5BA | Built: 1985 | $269/sf</div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$875,200</p>
                     </div>
-                    <p class="text-sm">Unique 5-bedroom layout with multiple bathrooms. Similar vintage supports market timing. Adjusted value: $645,000.</p>
-                </div>
-
-                <!-- 8 Watch Hill Rd -->
-                <div class="comparable-card p-4 rounded-lg">
-                    <h5 class="font-bold mb-2">8 Watch Hill Rd</h5>
-                    <div class="text-sm mb-2">
-                        <div>Distance: 1.98 mi | Sale: $346,500 (3/20/25)</div>
-                        <div>1,728 sq ft | 3BR/2BA | Built: 1975 | $201/sf</div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$424</p>
                     </div>
-                    <p class="text-sm">Lower price point reflects older construction and condition needs. Adjusted value: $525,000 after improvements.</p>
-                </div>
-            </div>
-
-            <!-- Additional Tier 2 Properties Summary -->
-            <div class="bg-gray-50 p-4 rounded-lg">
-                <h5 class="font-bold mb-2">Additional Tier 2 Properties:</h5>
-                <div class="grid md:grid-cols-2 gap-2 text-sm">
-                    <div>â¢ 1111 Old Ford Rd: $285,000 | 1,824 sf | Needs work</div>
-                    <div>â¢ 197 State Route 208: $290,000 | 1,734 sf | Road noise</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tier 3 Comparables Summary -->
-        <div class="mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-blue-600">Tier 3 Comparables (2.0+ Miles)</h3>
-            <div class="grid md:grid-cols-3 gap-4">
-                <div class="comparable-card p-4 rounded-lg text-sm">
-                    <h5 class="font-bold">118 Guilford Schoolhouse Rd</h5>
-                    <div>$597,520 | 1,658sf | 4BR/2BA | $360/sf</div>
-                </div>
-                <div class="comparable-card p-4 rounded-lg text-sm">
-                    <h5 class="font-bold">3 Jansen Rd</h5>
-                    <div>$575,000 | 1,480sf | 3BR/2BA | $389/sf</div>
-                </div>
-                <div class="comparable-card p-4 rounded-lg text-sm">
-                    <h5 class="font-bold">111 Mountain Rest Rd</h5>
-                    <div>$669,500 | 2,352sf | 3BR/4BA | $285/sf</div>
-                </div>
-                <div class="comparable-card p-4 rounded-lg text-sm">
-                    <h5 class="font-bold">3 Hawk Hill Rd</h5>
-                    <div>$700,000 | 2,240sf | 4BR/3BA | $312/sf</div>
-                </div>
-                <div class="comparable-card p-4 rounded-lg text-sm">
-                    <h5 class="font-bold">56 Plains Rd</h5>
-                    <div>$650,000 | 1,466sf | 3BR/3BA | $443/sf</div>
-                </div>
-                <div class="comparable-card p-4 rounded-lg text-sm">
-                    <h5 class="font-bold">62 Dubois Rd</h5>
-                    <div>$506,000 | 1,937sf | 3BR/3BA | $261/sf</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Active/Pending Properties -->
-        <div class="mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-green-600">Current Market Activity (Active/Pending)</h3>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
-                    <h5 class="font-bold">14 Woodland Dr (Pending)</h5>
-                    <div class="text-sm">$500,000 List | 1,612sf | 4BR/4BA | $310/sf</div>
-                    <p class="text-sm mt-2">Strong activity at $310/sf supports market demand.</p>
-                </div>
-                <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
-                    <h5 class="font-bold">138 Mountain Rest Rd (Pending)</h5>
-                    <div class="text-sm">$575,000 List | 1,812sf | 4BR/3BA | $317/sf</div>
-                    <p class="text-sm mt-2">Similar size range with pending status indicates market acceptance.</p>
-                </div>
-                <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-                    <h5 class="font-bold">8 Enclave Manor Dr (Active)</h5>
-                    <div class="text-sm">$699,000 List | 1,800sf | 3BR/2BA | $388/sf</div>
-                    <p class="text-sm mt-2">Premium pricing reflecting newer construction (2001).</p>
-                </div>
-                <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
-                    <h5 class="font-bold">339 State Route 32 S (Pending)</h5>
-                    <div class="text-sm">$599,000 List | 2,270sf | 3BR/3BA | $264/sf</div>
-                    <p class="text-sm mt-2">Larger home at competitive per-square-foot pricing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hidden Value Opportunities -->
-    <section class="max-w-6xl mx-auto p-6">
-        <div class="value-highlight p-6 rounded-lg mb-8">
-            <h2 class="text-3xl font-bold mb-6">Hidden Value Opportunities</h2>
-            
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <h3 class="text-xl font-bold mb-4"><i class="fas fa-tools mr-2"></i>Kitchen Modernization</h3>
-                    <p class="mb-3">Updating the kitchen with modern cabinetry, granite countertops, and stainless appliances could add significant value.</p>
-                    <div class="bg-yellow-100 p-3 rounded">
-                        <div><strong>Estimated Investment:</strong> $25,000 - $35,000</div>
-                        <div><strong>Projected Value Add:</strong> $30,000 - $45,000</div>
-                        <div><strong>ROI:</strong> 120% - 140%</div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,062 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1853</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large lot</p>
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-xl font-bold mb-4"><i class="fas fa-bath mr-2"></i>Master Bathroom Enhancement</h3>
-                    <p class="mb-3">Converting the half bath to full or adding a master suite bathroom would significantly increase appeal.</p>
-                    <div class="bg-yellow-100 p-3 rounded">
-                        <div><strong>Estimated Investment:</strong> $15,000 - $25,000</div>
-                        <div><strong>Projected Value Add:</strong> $20,000 - $30,000</div>
-                        <div><strong>ROI:</strong> 125% - 135%</div>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This historic property on Hasbrouck Road sold for a premium price, reflecting the unique character and renovation quality of older homes in the New Paltz market. The property sold after 57 days on market, indicating strong buyer interest despite the higher price point.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$11,400</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$125,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Historic Premium:</span>
+                            <span class="adjustment-negative">-$50,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$703,800</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-xl font-bold mb-4"><i class="fas fa-tree mr-2"></i>Outdoor Living Spaces</h3>
-                    <p class="mb-3">With 2.1 acres, there's tremendous opportunity for deck expansion, patio areas, or landscaping enhancement.</p>
-                    <div class="bg-yellow-100 p-3 rounded">
-                        <div><strong>Estimated Investment:</strong> $10,000 - $20,000</div>
-                        <div><strong>Projected Value Add:</strong> $15,000 - $25,000</div>
-                        <div><strong>ROI:</strong> 130% - 150%</div>
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable demonstrates the premium buyers will pay for quality and character, even with necessary adjustments for age and size differences. The strong sale price supports the robust market conditions in the area.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 2 -->
+            <div class="comparable-card">
+                <div class="comparable-title">36 Sparkling Ridge Rd, New Paltz, NY 12561</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.60 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">October 2, 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$665,200</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$354</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,878 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1969</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large lot</p>
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-xl font-bold mb-4"><i class="fas fa-home mr-2"></i>System Updates</h3>
-                    <p class="mb-3">HVAC modernization or energy efficiency improvements would appeal to today's environmentally conscious buyers.</p>
-                    <div class="bg-yellow-100 p-3 rounded">
-                        <div><strong>Estimated Investment:</strong> $8,000 - $15,000</div>
-                        <div><strong>Projected Value Add:</strong> $12,000 - $20,000</div>
-                        <div><strong>ROI:</strong> 125% - 140%</div>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This four-bedroom home on Sparkling Ridge Road represents an excellent comparable with similar square footage and bedroom count to the subject property. The property sold relatively quickly after 107 days on market, indicating solid market acceptance at this price point.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$2,400</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Location:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$697,600</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable provides strong support for our valuation, with similar size and bedroom configuration. The close price per square foot match suggests our subject property's pricing is well-positioned in the current market.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 3 -->
+            <div class="comparable-card">
+                <div class="comparable-title">109 Hasbrouck Rd, New Paltz, NY 12561</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.80 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">September 27, 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$875,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$375</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,332 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2010</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This newer construction property on Hasbrouck Road commanded a premium price due to its modern build quality and additional square footage. The property sold quickly in just 43 days, demonstrating strong buyer demand for quality homes in the Hasbrouck Road corridor.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$31,650</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$20,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$115,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Modern Features:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$723,350</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This newer home shows the premium buyers are willing to pay for modern construction and features. The quick sale demonstrates strong market velocity for properly priced quality properties in the area.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 4 -->
+            <div class="comparable-card">
+                <div class="comparable-title">111 Mountain Rest Rd, New Paltz, NY 12561</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.19 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">February 19, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$669,500</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$285</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 4 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,352 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2006</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This contemporary home on Mountain Rest Road offers a different profile with more square footage but fewer bedrooms, and an impressive four bathrooms. The property sold after 76 days, representing a more recent market transaction that reflects current buyer preferences.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$33,150</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$20,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$22,500</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$35,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$598,850</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This more recent sale provides current market data, though the bedroom-to-bathroom configuration difference requires significant adjustments. The sale supports continued strength in the higher-end market segment.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 5 -->
+            <div class="comparable-card">
+                <div class="comparable-title">118 Guilford Schoolhouse Rd, New Paltz, NY 12561</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.08 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">May 16, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$597,520</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$360</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,658 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1973</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This four-bedroom, two-bathroom home on Guilford Schoolhouse Road sold recently after 51 days on market, representing very current market conditions. Despite being smaller than the subject property, it achieved a strong price per square foot, demonstrating continued buyer demand for well-positioned homes.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$18,900</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$12,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Location:</span>
+                            <span class="adjustment-positive">+$5,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$648,420</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This most recent comparable sale provides excellent current market insight, showing strong buyer interest for four-bedroom homes. The quick sale time indicates robust market conditions and supports our pricing strategy.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 6 -->
+            <div class="comparable-card">
+                <div class="comparable-title">3 Jansen Rd, New Paltz, NY 12561</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.15 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">January 30, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$575,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$389</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,480 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1955</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Standard lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This three-bedroom home on Jansen Road, despite being older and smaller, achieved a strong price per square foot. The property sold after 73 days, demonstrating that even smaller homes are performing well in the current market when properly positioned.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$32,250</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$20,000</span>
+                        </div>
+                        <div class="flex justify-between items-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$667,250</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This smaller property's strong performance per square foot supports our subject property's value position. The additional bedroom and square footage in our subject property commands a measurable premium in the current market.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Value Opportunities -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Hidden Value Opportunities</h2>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-bath mr-2"></i>Master Bath Upgrade Opportunity
+                </h3>
+                <p class="text-yellow-700 mb-4">Converting one of the half-bathrooms to a full master suite bathroom could significantly increase the home's appeal to buyers seeking modern luxury amenities. This upgrade would position the property in a higher market tier and improve the bedroom-to-bathroom ratio.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $15,000 - $25,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-seedling mr-2"></i>Landscape Enhancement Package
+                </h3>
+                <p class="text-yellow-700 mb-4">Professional landscaping to showcase the property's generous lot size and create defined outdoor living spaces could dramatically improve curb appeal and create emotional connection with buyers. Enhanced landscaping is particularly important in the Outlook Farm neighborhood where outdoor space is a key selling feature.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $8,000 - $15,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-utensils mr-2"></i>Kitchen Modernization Strategy
+                </h3>
+                <p class="text-yellow-700 mb-4">Strategic kitchen updates focusing on countertops, appliances, and cabinetry refresh could bridge the gap to newer comparable properties. Given the 1987 construction date, modern kitchen features would significantly enhance the property's competitive position against newer construction.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $25,000 - $40,000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Reconciliation -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Value Reconciliation</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Estimated Market Value Range</h3>
+                
+                <div class="value-highlight mb-8">
+                    <p class="text-2xl font-bold text-blue-700 mb-4">$645,000 - $710,000</p>
+                    <p class="text-4xl font-bold text-blue-600">$677,000</p>
+                </div>
+                
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Value Considerations</h4>
+                <ul class="space-y-2 text-gray-700 mb-8">
+                    <li><strong>Comparable Sales Range:</strong> Recent sales show adjusted values from $598,850 to $723,350, supporting our target range</li>
+                    <li><strong>Market Appreciation:</strong> 10.6% increase in price per square foot over the past year indicates strong upward trajectory</li>
+                    <li><strong>Neighborhood Premium:</strong> Outlook Farm location commands premium for privacy, lot size, and community prestige</li>
+                    <li><strong>Bedroom Configuration:</strong> Four bedrooms provide competitive advantage over three-bedroom comparables in family market segment</li>
+                    <li><strong>Condition and Updates:</strong> 1987 construction requires consideration for age versus newer comparables but offers solid building quality</li>
+                </ul>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <h5 class="font-semibold text-gray-700 mb-2">Conservative Low</h5>
+                        <p class="text-2xl font-bold text-gray-600">$645,000</p>
+                    </div>
+                    <div class="text-center p-6 value-highlight">
+                        <h5 class="font-semibold text-blue-700 mb-2">Recommended Value</h5>
+                        <p class="text-2xl font-bold text-blue-600">$677,000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Summary & Strategic Recommendations -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Market Summary & Strategic Recommendations</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Market Analysis Summary</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Comparable Range:</strong> $575,000 - $875,200</li>
+                            <li><strong>Average Value (6 comps):</strong> $709,537</li>
+                            <li><strong>Median Value:</strong> $667,350</li>
+                            <li><strong>Most Recent Comp Value:</strong> $597,520 (May 2025)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Price per Square Foot Range:</strong> $285 - $424</li>
+                            <li><strong>Average Price per Square Foot:</strong> $354</li>
+                            <li><strong>Market Trend:</strong> Strong upward momentum</li>
+                            <li><strong>Inventory Level:</strong> Limited supply, seller's market</li>
+                        </ul>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t pt-4">
-                <h4 class="text-lg font-bold mb-2">Strategic Enhancement Total</h4>
-                <p>Complete enhancement package could increase property value by <strong>$77,000 - $120,000</strong> with total investment of <strong>$58,000 - $95,000</strong>, representing an overall ROI of <strong>130% - 140%</strong>.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Reconciliation -->
-    <section class="max-w-6xl mx-auto p-6">
-        <h2 class="gradient-header text-white p-4 rounded-lg text-3xl font-bold mb-6">Value Reconciliation</h2>
-        
-        <div class="mb-8">
-            <h3 class="text-2xl font-semibold mb-4">Estimated Market Value Range</h3>
-            <div class="text-center mb-6">
-                <p class="text-lg mb-2">$625,000 - $725,000</p>
-                <p class="text-4xl font-bold text-blue-600">Recommended Value: $677,000</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-6 mb-6">
-                <div class="text-center bg-red-50 p-4 rounded-lg">
-                    <h4 class="font-bold text-red-600">Conservative Low</h4>
-                    <p class="text-2xl font-bold">$625,000</p>
-                    <p class="text-sm">Quick sale scenario</p>
-                </div>
-                <div class="text-center bg-green-50 p-4 rounded-lg">
-                    <h4 class="font-bold text-green-600">Recommended Value</h4>
-                    <p class="text-2xl font-bold">$677,000</p>
-                    <p class="text-sm">Optimal market timing</p>
-                </div>
-                <div class="text-center bg-blue-50 p-4 rounded-lg">
-                    <h4 class="font-bold text-blue-600">Premium High</h4>
-                    <p class="text-2xl font-bold">$725,000</p>
-                    <p class="text-sm">With enhancements</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-6">
-            <h4 class="text-xl font-bold mb-4">Value Considerations</h4>
-            <ul class="space-y-2">
-                <li><strong>Premium Location:</strong> Outlook Farm Drive represents one of New Paltz's most desirable neighborhoods</li>
-                <li><strong>Lot Size Advantage:</strong> 2.1 acres provides significant competitive advantage over typical suburban lots</li>
-                <li><strong>Market Timing:</strong> Strong seller's market with limited inventory supports premium pricing</li>
-                <li><strong>Comparable Support:</strong> Recent sales demonstrate market acceptance of $350-400+ per square foot</li>
-                <li><strong>Enhancement Potential:</strong> Significant opportunity for value-add improvements</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Market Summary & Strategic Recommendations -->
-    <section class="max-w-6xl mx-auto p-6">
-        <h2 class="gradient-header text-white p-4 rounded-lg text-3xl font-bold mb-6">Market Summary & Strategic Recommendations</h2>
-        
-        <div class="market-insights p-6 rounded-lg mb-8">
-            <h3 class="text-2xl font-semibold mb-4">Market Analysis Summary</h3>
-            <ul class="grid md:grid-cols-2 gap-4 mb-6">
-                <li><strong>Comparable Range:</strong> $285,000 - $875,200</li>
-                <li><strong>Average Value (20 comps):</strong> $590,386</li>
-                <li><strong>Median Value:</strong> $575,000</li>
-                <li><strong>Most Recent Comp:</strong> $346,500 (3/20/2025)</li>
-                <li><strong>Price per Square Foot Range:</strong> $156 - $443</li>
-                <li><strong>Average Price per Square Foot:</strong> $309</li>
-                <li><strong>Market Trend:</strong> Strong upward momentum</li>
-                <li><strong>Inventory Level:</strong> Limited supply, high demand</li>
-            </ul>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-            <div>
-                <h3 class="text-xl font-bold mb-4">Strategic Positioning</h3>
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Strategic Positioning</h3>
+                
                 <div class="space-y-4">
                     <div>
-                        <h4 class="font-semibold text-blue-600">Optimal Pricing Strategy</h4>
-                        <p>List at $689,000 to allow for negotiation while maintaining premium positioning.</p>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Competitive Pricing Strategy</h4>
+                        <p class="text-gray-700">Position at $677,000 to capture immediate buyer attention while maintaining value integrity. This pricing sits strategically below the higher-end comparables while reflecting the property's quality and location advantages.</p>
                     </div>
+                    
                     <div>
-                        <h4 class="font-semibold text-blue-600">Pre-Marketing Preparation</h4>
-                        <p>Focus on curb appeal and minor interior updates to maximize first impressions.</p>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Market Timing Optimization</h4>
+                        <p class="text-gray-700">Current market conditions favor sellers with reduced days on market (68 vs 85 days) and improved sale-to-list ratios. Spring/early summer timing aligns with peak family buying season for four-bedroom homes.</p>
                     </div>
+                    
                     <div>
-                        <h4 class="font-semibold text-blue-600">Strategic Marketing</h4>
-                        <p>Emphasize acreage, privacy, and location within prestigious Outlook Farm enclave.</p>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Buyer Profile Targeting</h4>
+                        <p class="text-gray-700">Focus marketing on growing families seeking space, privacy, and excellent school districts. The four-bedroom configuration and large lot appeal strongly to families upgrading from smaller properties.</p>
                     </div>
+                    
                     <div>
-                        <h4 class="font-semibold text-blue-600">Timing Optimization</h4>
-                        <p>Spring market launch will maximize buyer activity and competition.</p>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Differentiation Emphasis</h4>
+                        <p class="text-gray-700">Highlight the property's unique attributes: prestigious Outlook Farm location, generous lot size, four-bedroom layout, and attached garage convenience that many area properties lack.</p>
                     </div>
                 </div>
             </div>
             
-            <div>
-                <h3 class="text-xl font-bold mb-4">Seller Strategy Recommendations</h3>
-                <ol class="space-y-3">
-                    <li><strong>1. Competitive Pricing:</strong> Position at $689,000 to attract multiple offers while achieving target value</li>
-                    <li><strong>2. Property Preparation:</strong> Invest in professional staging and minor cosmetic updates</li>
-                    <li><strong>3. Marketing Excellence:</strong> Professional photography highlighting unique features and lot size</li>
-                    <li><strong>4. Market Timing:</strong> List during peak spring buying season for maximum exposure</li>
-                    <li><strong>5. Negotiation Strategy:</strong> Expect multiple offers and maintain flexibility on terms</li>
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Seller Strategy Recommendations</h3>
+                
+                <ol class="space-y-3 text-gray-700">
+                    <li><strong>Optimal Pricing Strategy:</strong> List at $677,000 to generate immediate showing activity and potential multiple offers within first 30 days on market</li>
+                    <li><strong>Pre-Marketing Preparation:</strong> Focus on curb appeal enhancements, interior staging to emphasize space and flow, and professional photography highlighting lot size and neighborhood setting</li>
+                    <li><strong>Strategic Marketing:</strong> Target families through school district channels, emphasize outdoor living potential, and showcase proximity to both village amenities and major commuter routes</li>
+                    <li><strong>Timing Optimization:</strong> Launch marketing in early spring to capture peak family buying season when inventory is traditionally lower and buyer motivation higher</li>
+                    <li><strong>Buyer Education:</strong> Prepare materials highlighting neighborhood comparable sales, area appreciation trends, and unique property features that justify pricing position</li>
                 </ol>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                    <p class="font-semibold text-blue-800 mb-2">Strategic Recommendation:</p>
+                    <p class="text-blue-700">The property is well-positioned for a successful sale in the current market. Strategic pricing at $677,000 reflects both market reality and property value, while the four-bedroom configuration and desirable location provide competitive advantages that should generate strong buyer interest.</p>
+                </div>
             </div>
-        </div>
+            
+            <!-- Professional Recommendation -->
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Professional Recommendation</h3>
+                <div class="value-highlight mb-4">
+                    <span class="text-4xl font-bold">$677,000</span>
+                </div>
+                <p class="text-lg text-gray-700">Based on comprehensive market analysis, comparable property evaluation, and current market conditions, we recommend listing at $677,000. This positioning optimizes both sale probability and value realization while reflecting the property's competitive advantages in the New Paltz market.</p>
+            </div>
+        </section>
+    </div>
 
-        <div class="value-highlight p-6 rounded-lg">
-            <h3 class="text-2xl font-bold mb-4">Professional Recommendation</h3>
-            <p class="text-lg mb-4">Based on comprehensive market analysis and current conditions, we recommend positioning 31 Outlook Farm Dr at <strong>$689,000</strong>. This pricing strategy:</p>
-            <ul class="space-y-2 mb-4">
-                <li>â¢ Reflects the property's premium location and substantial lot size</li>
-                <li>â¢ Accounts for current market momentum and buyer demand</li>
-                <li>â¢ Allows for strategic negotiation while achieving target value</li>
-                <li>â¢ Positions competitively against comparable properties</li>
-                <li>â¢ Maximizes marketing impact and buyer interest</li>
-            </ul>
-            <p class="text-lg">The property's unique combination of location, lot size, and improvement potential makes it highly attractive to today's buyers seeking space and privacy in the Hudson Valley market.</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="max-w-6xl mx-auto p-6 border-t mt-8">
-        <div class="text-center">
-            <p class="font-semibold mb-2">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Justin Phillips, Managing Broker</p>
-            <p class="mb-2">United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
-            <p class="text-sm text-gray-600 mb-4">Licensed Real Estate Professionals in New York State</p>
-            <p class="text-sm text-gray-500">This analysis is based on recent comparable sales and current market conditions. Property values may vary based on individual property characteristics, market timing, and buyer preferences. This report is for informational purposes and does not constitute a formal appraisal.</p>
-            <p class="text-sm text-gray-400 mt-4"> | August 2025</p>
+    <!-- Blue Gradient Footer -->
+    <footer class="gradient-footer">
+        <div class="container text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Discuss Your Options?</h2>
+            <p class="text-xl mb-6 opacity-95">Let's schedule a comprehensive review of your property's value and discuss the best strategy for achieving your real estate goals in today's market.</p>
+            <a href="https://calendly.com/hudsonvalleysold/home-value" class="cta-button text-xl">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Schedule a Home Value Review
+            </a>
         </div>
     </footer>
+
+    <!-- Disclaimer Section -->
+    <div class="container py-8">
+        <div class="bg-gray-100 rounded-lg p-6 text-center text-sm text-gray-600">
+            <p class="mb-2">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Justin Phillips, Managing Broker</p>
+            <p class="mb-2">United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p class="mb-4">Licensed Real Estate Professionals in New York State</p>
+            <p class="text-xs">This analysis is based on recent comparable sales and current market conditions. Property values may vary based on individual property characteristics, market timing, and buyer preferences. This report is for informational purposes and does not constitute a formal appraisal.</p>
+        </div>
+    </div>
+
+    <!-- FUB Widget Integration -->
+    <!-- begin Widget Tracker Code -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+    {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+    (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+    e.parentNode.insertBefore(t,e);})
+    (window,"https://widgetbe.com/agent",document,"widgetTracker");
+    window.widgetTracker("create", "WT-FPLWTULQ");
+    window.widgetTracker("send", "pageview");
+    </script>
+    <!-- end Widget Tracker Code -->
 </body>
 </html>
     <script id="html_badge_script1">
         window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDmLjlpnVT7Ugf0cr66%2Fqb4JeNTtUa%2FJltuk5abqMJnHcN1WqONx51Bmt13UdlyJfhPdlIYkmtR9sXwowLqUtpal6D8SOCgqO1OwVu0LEaDEkuMpl7V1IX5RRBMXyqRSUnih23U%2FzWoNPoZqE2i5eK2%2BQh9Vz9JftbSboAPCejerE9nJ%2FyVwzVcR6WstgCH%2FxF0xFD0N6JOPnPbKkEWT%2BmFoD9I77avrcsbcMAqdVzIUL3%2BHJmD7qauoFvqrAJixP%2FzWtBjH1YBKs2rRmHutS3XsP1Jo1eJywrHeDRE2ZKvTEMaDKD7mSAEpga%2BY2hFk%2FhpIC9wo%2FsoEPTQbpWlEvwlxpHgJj0%2BgxYjpDA9ROKcc3j%2FibHEM4edYl4I82t09OFkeF0G11tNKASdT%2FnwictLjz4Df38ci0LX2ycUG8KvpSk8glcUQyRjf0bVBofzTxPJHmmkx4rfIA2dA56MgZevvPfcnvr038jeOIAB7jE%2F1RgQp1fbjXivjBRRu%2F%2BPZz8fmnkTyjEK1gY%2FXZHqrjde0%3D";
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDotxbaNNHMB%2Bw609ewmjPQQs9o524%2F%2BsCVRmwsa%2B8ykL7u2loxuBu1HeYUMZG5soNofL6Qr9Zbo76iEXPJ1nRC5MuZJsfepYYu6kZ%2Fyu%2BwOhxBxqDgjuQXEtT6c%2BCiFl2qNCs6MlZxRtg9Z%2F3e5A9%2FvLN2ZMsyL1knG%2FeZE0Ud178HNzl7kggedNrLXeN4Lo9FOruoTgWhJ%2Bi%2B37AvnIDKOzw%2FQxodUEfC%2BIBneK3OE3h%2B6jh9Yuz8jufmPCmIzx7m4YwlpxEB3%2BmH1LQQUeZNaSivOyoMn%2BD1DLQfejD5jyQ%2FhCJyFKBdCU8zQ6runyMQKdVTDiWCaUHZym3cZBlytD5ALmN1W4REA0wN7sspWkOyuYCX1voo7MABiS3ejPsnGgVxJoAfAFuIUgCfy0iUwdWMc9CorMRsug8fP%2FA8uBD2UM3wNxSjZIxqMTmOe6P7yh8wadz5Y%2BuaFypC2WMq9qu5RneZmBN5c1K2Lz5BkJExPNfeY5dSf2XpNFP%2FwpvNUMSUJbEanBORKf6mKWlv0%3D";
         window.__genspark_locale = "en-US";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDmLjlpnVT7Ugf0cr66/qb4JeNTtUa/Jltuk5abqMJnHcN1WqONx51Bmt13UdlyJfhPdlIYkmtR9sXwowLqUtpal6D8SOCgqO1OwVu0LEaDEkuMpl7V1IX5RRBMXyqRSUnih23U/zWoNPoZqE2i5eK2+Qh9Vz9JftbSboAPCejerE9nJ/yVwzVcR6WstgCH/xF0xFD0N6JOPnPbKkEWT+mFoD9I77avrcsbcMAqdVzIUL3+HJmD7qauoFvqrAJixP/zWtBjH1YBKs2rRmHutS3XsP1Jo1eJywrHeDRE2ZKvTEMaDKD7mSAEpga+Y2hFk/hpIC9wo/soEPTQbpWlEvwlxpHgJj0+gxYjpDA9ROKcc3j/ibHEM4edYl4I82t09OFkeF0G11tNKASdT/nwictLjz4Df38ci0LX2ycUG8KvpSk8glcUQyRjf0bVBofzTxPJHmmkx4rfIA2dA56MgZevvPfcnvr038jeOIAB7jE/1RgQp1fbjXivjBRRu/+PZz8fmnkTyjEK1gY/XZHqrjde0=";
-    </script>
-    
-    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
-    
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDotxbaNNHMB+w609ewmjPQQs9o524/+sCVRmwsa+8ykL7u2loxuBu1HeYUMZG5soNofL6Qr9Zbo76iEXPJ1nRC5MuZJsfepYYu6kZ/yu+wOhxBxqDgjuQXEtT6c+CiFl2qNCs6MlZxRtg9Z/3e5A9/vLN2ZMsyL1knG/eZE0Ud178HNzl7kggedNrLXeN4Lo9FOruoTgWhJ+i+37AvnIDKOzw/QxodUEfC+IBneK3OE3h+6jh9Yuz8jufmPCmIzx7m4YwlpxEB3+mH1LQQUeZNaSivOyoMn+D1DLQfejD5
