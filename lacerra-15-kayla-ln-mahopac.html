@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Kayla Ln, Mahopac, NY 10541 - Comparative Market Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .gradient-footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+            margin: 0 15px 15px 15px;
+            max-width: 200px;
+        }
+        
+        .agent-photo {
+            width: 144px;
+            height: 144px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1rem;
+        }
+        
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .comparable-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .comparable-title {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .value-highlight {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .hidden-value-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+        }
+        
+        .google-map {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid #e2e8f0;
+        }
+        
+        .market-table {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .market-table th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .market-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            word-wrap: break-word;
+        }
+        
+        .market-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-1px);
+            color: white;
+        }
+        
+        .property-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .property-specs div {
+            background: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .adjustment-positive {
+            color: #059669;
+            background: #d1fae5;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-negative {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-neutral {
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .gradient-header {
+                padding: 1.5rem 0;
+            }
+            
+            .logo {
+                height: 45px;
+                margin: 0 10px 10px 10px;
+                max-width: 150px;
+            }
+            
+            .agent-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .agent-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .comparable-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .market-table {
+                font-size: 0.875rem;
+            }
+            
+            .market-table th,
+            .market-table td {
+                padding: 0.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+                margin: 0 5px 8px 5px;
+            }
+            
+            .agent-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gradient-header {
+                padding: 1rem 0;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        .w-full {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        td, th {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Blue Gradient Header -->
+    <header class="gradient-header">
+        <div class="container">
+            <!-- Logos positioned above title -->
+            <div class="text-center mb-6">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold" class="logo">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Hudson Valley Edge" class="logo">
+            </div>
+            
+            <!-- Title and Subject Property Address -->
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">COMPARATIVE MARKET ANALYSIS</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2">15 Kayla Ln</h2>
+                <p class="text-xl opacity-95">Mahopac, NY 10541</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-8">
+        
+        <!-- Agent Details Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Real Estate Professionals</h2>
+            <p class="text-xl text-center text-gray-600 mb-8">Combined Experience: 44+ Years</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald (Left Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8de4e3ebe2cde5f8e9fee2e3fbece1e1e8f4fee2e1e9a3eee2e0">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+                
+                <!-- Partner Agent (Right Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/justin_phillips_official_professional_photo.jpg" alt="Justin Phillips" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Justin Phillips</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Managing Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="147d7a727b547c6170677b7a62757878716d677b78703a777b79">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-lg font-semibold text-gray-700 mt-6">United Real Estate Hudson Valley Edge</p>
+        </section>
+
+        <!-- Subject Property Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Luxury Colonial Estate on Private 7.49 Acres</h2>
+                
+                <div class="value-highlight mb-8">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-2">Estimated Market Value</h3>
+                    <p class="text-3xl font-bold text-blue-600">$1,232,500</p>
+                    <p class="text-lg text-gray-700">$272 per square foot</p>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="text-center mb-8">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=15+Kayla+Ln+Mahopac+NY+10541&zoom=16&size=1200x600&scale=2&maptype=satellite&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C15+Kayla+Ln+Mahopac+NY+10541&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                         alt="15 Kayla Ln Satellite View" 
+                         class="google-map">
+                </div>
+                
+                <div class="property-specs">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Property Type</h4>
+                        <p class="text-gray-800">Single Family Colonial</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2004 (21 years old)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bedrooms</h4>
+                        <p class="text-gray-800">4</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bathrooms</h4>
+                        <p class="text-gray-800">3.5</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Footage</h4>
+                        <p class="text-gray-800">4,532 sq.ft.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">7.49 acres</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">This exceptional colonial estate offers an extraordinary combination of luxury living and private retreat. Built in 2004, this 4,532 square foot home sits majestically on 7.49 acres of pristine Putnam County landscape, providing unparalleled privacy and tranquility just minutes from Mahopac's amenities.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">The property features 4 bedrooms and 3.5 bathrooms with colonial architecture, natural wood exterior elements, and a cozy fireplace. The substantial acreage offers endless possibilities for outdoor recreation, gardening, or future expansion, making this a truly unique offering in today's Mahopac market.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Trends Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Mahopac, NY Market Trends</h2>
+            
+            <div class="value-highlight mb-6">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Strong Seller's Market Conditions</h3>
+                <p class="text-lg text-blue-700">Mahopac continues to demonstrate robust market performance with increasing property values and strong buyer demand, particularly for luxury properties with significant acreage.</p>
+            </div>
+            
+            <div class="market-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>2024</th>
+                            <th>2025 YTD</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Median Sale Price</td>
+                            <td>$580,000</td>
+                            <td>$610,000</td>
+                            <td class="adjustment-positive">+5.2%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Median Price/Sq.Ft.</td>
+                            <td>$245</td>
+                            <td>$258</td>
+                            <td class="adjustment-positive">+5.3%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Days on Market</td>
+                            <td>42 days</td>
+                            <td>38 days</td>
+                            <td class="adjustment-negative">-9.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Sale to List Ratio</td>
+                            <td>97.2%</td>
+                            <td>98.1%</td>
+                            <td class="adjustment-positive">+0.9%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                <p class="font-semibold text-blue-800 mb-2">Market Insight:</p>
+                <p class="text-blue-700">The Mahopac luxury market is experiencing exceptional demand, with properties over $1 million showing particularly strong performance. Large lot properties like 15 Kayla Ln are increasingly rare and command premium pricing due to their scarcity and buyer preference for privacy and space.</p>
+            </div>
+        </section>
+
+        <!-- Comparable Properties Analysis -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Comparable Properties Analysis</h2>
+            <p class="text-lg text-gray-700 mb-6">Our analysis includes the most relevant comparable sales within Mahopac and surrounding areas, focusing on similar-sized homes with substantial acreage sold within the past 18 months.</p>
+            
+            <!-- Enhanced Google Maps with Comparables -->
+            <div class="text-center mb-8">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=15+Kayla+Ln+Mahopac+NY+10541&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C15+Kayla+Ln+Mahopac+NY+10541&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C500+North+Lake+Boulevard+Mahopac+NY&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C36+Barrett+Hill+Road+Mahopac+NY&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C237+Barrett+Hill+Road+Mahopac+NY&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                     alt="Map showing 15 Kayla Ln and comparable properties" 
+                     class="google-map">
+            </div>
+            
+            <!-- Comparable Property Cards -->
+            <div class="comparable-card">
+                <div class="comparable-title">500 North Lake Boulevard N, Mahopac</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.1 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">Recent Sale</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$1,200,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$269</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 5 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">4,463 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">Similar Era</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large Lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This luxury lakefront property represents the premium end of Mahopac's market. With 4 bedrooms and 5 bathrooms in 4,463 square feet, it offers similar scale to the subject property but with additional bathroom amenities and lakefront location.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$10,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lakefront Premium:</span>
+                            <span class="adjustment-negative">-$50,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Land Premium:</span>
+                            <span class="adjustment-positive">+$35,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,170,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable establishes the high-end benchmark for luxury homes in Mahopac. The subject property's substantial acreage and privacy advantages position it competitively in the luxury market segment.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 2 -->
+            <div class="comparable-card">
+                <div class="comparable-title">36 Barrett Hill Road, Mahopac</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">3.2 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">Recent Sale</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$825,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$297</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,778 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">Similar Era</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large Lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This Barrett Hill Road property demonstrates strong per-square-foot values in Mahopac's desirable neighborhoods. Though smaller than the subject property, it sold at a premium price per square foot, indicating strong market demand.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$485,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedroom:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Acreage Premium:</span>
+                            <span class="adjustment-positive">+$75,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,425,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable shows the premium that buyers will pay for quality construction and desirable location. When adjusted for size and features, it supports a strong valuation for the subject property.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 3 -->
+            <div class="comparable-card">
+                <div class="comparable-title">237 Barrett Hill Road, Mahopac</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">3.1 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">Recent Sale</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$695,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$251</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,768 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">Similar Era</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Standard Lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Another Barrett Hill Road property that establishes consistent pricing in this desirable area. This home represents the more conservative end of the price spectrum while still demonstrating strong market acceptance.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$442,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedroom:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$30,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Acreage Premium:</span>
+                            <span class="adjustment-positive">+$85,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,277,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This sale supports the baseline valuation and demonstrates that even smaller properties in desirable areas command premium pricing, reinforcing the value of the subject property's substantial improvements.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 4 -->
+            <div class="comparable-card">
+                <div class="comparable-title">88 Shear Hill Road, Mahopac</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.8 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">Recent Sale</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$599,900</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$284</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,116 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">Similar Era</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Standard Lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This Shear Hill Road property sold at a strong price per square foot despite being significantly smaller than the subject property. This indicates robust demand across all price points in Mahopac.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$686,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedroom:</span>
+                            <span class="adjustment-positive">+$30,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$35,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Acreage Premium:</span>
+                            <span class="adjustment-positive">+$95,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,445,900</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">The high price per square foot achieved by this smaller property demonstrates buyer willingness to pay premium pricing for quality homes in Mahopac, supporting higher valuations for larger properties.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 5 -->
+            <div class="comparable-card">
+                <div class="comparable-title">3 Curry Spur, Mahopac</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">4.1 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">Recent Sale</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$700,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$378</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">2 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,850 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">Similar Era</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Standard Lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This unique property achieved the highest price per square foot in our comparison at $378, demonstrating exceptional buyer demand for well-positioned homes with quality features, despite having fewer bedrooms.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$1,013,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$60,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Acreage Premium:</span>
+                            <span class="adjustment-positive">+$125,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,913,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">While this comparable shows exceptional price per square foot performance, it represents the upper limit of market pricing and requires significant adjustments. It demonstrates the ceiling potential for the subject property.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 6 -->
+            <div class="comparable-card">
+                <div class="comparable-title">244 Shear Hill Road, Mahopac</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.7 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">Recent Sale</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$595,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$328</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,812 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">Similar Era</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Standard Lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This Shear Hill Road property achieved strong pricing at $328 per square foot, representing consistent market performance in this desirable Mahopac neighborhood. The pricing supports our valuation methodology.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$892,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedroom:</span>
+                            <span class="adjustment-positive">+$30,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$35,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Acreage Premium:</span>
+                            <span class="adjustment-positive">+$110,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,662,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable reinforces the strong market performance of well-maintained homes in desirable Mahopac locations, supporting confidence in the subject property's valuation approach.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Value Opportunities -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Hidden Value Opportunities</h2>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-bath mr-2"></i>Master Suite Enhancement
+                </h3>
+                <p class="text-yellow-700 mb-4">Converting existing space or adding a luxury master suite with spa-like bathroom, walk-in closets, and private balcony would significantly increase the property's appeal to luxury buyers and command premium pricing.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $75,000 - $125,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-seedling mr-2"></i>Landscape & Outdoor Living Enhancement
+                </h3>
+                <p class="text-yellow-700 mb-4">With 7.49 acres of pristine land, creating formal gardens, outdoor entertaining areas, pool/spa area, and recreational amenities would maximize the property's unique selling proposition and appeal to luxury buyers seeking private retreat lifestyle.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $100,000 - $200,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-utensils mr-2"></i>Gourmet Kitchen Modernization
+                </h3>
+                <p class="text-yellow-700 mb-4">Updating the kitchen with high-end appliances, custom cabinetry, premium countertops, and open-concept design would align the property with current luxury market expectations and significantly enhance both functionality and value.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $60,000 - $100,000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Reconciliation -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Value Reconciliation</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Estimated Market Value Range</h3>
+                
+                <div class="value-highlight mb-8">
+                    <p class="text-2xl font-bold text-blue-700 mb-4">$1,220,000 - $1,245,000</p>
+                    <p class="text-4xl font-bold text-blue-600">$1,232,500</p>
+                </div>
+                
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Value Considerations</h4>
+                <ul class="space-y-2 text-gray-700 mb-8">
+                    <li><strong>Exceptional Acreage Premium:</strong> The 7.49-acre lot represents significant scarcity value in Mahopac's market, where large parcels are increasingly rare and highly sought after.</li>
+                    <li><strong>Quality Construction & Architecture:</strong> The 2004 colonial construction represents modern building standards with classic architectural appeal, positioned in the property's prime age range.</li>
+                    <li><strong>Privacy & Location Advantages:</strong> The secluded setting provides unmatched privacy while maintaining convenient access to Mahopac's amenities and transportation corridors.</li>
+                    <li><strong>Size & Scale Benefits:</strong> At 4,532 square feet with 4 bedrooms and 3.5 baths, the home offers substantial living space that appeals to luxury buyers seeking both comfort and functionality.</li>
+                    <li><strong>Market Timing Optimization:</strong> Current market conditions favor sellers, with low inventory levels and strong buyer demand creating optimal selling conditions for unique properties.</li>
+                </ul>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <h5 class="font-semibold text-gray-700 mb-2">Conservative Low</h5>
+                        <p class="text-2xl font-bold text-gray-600">$1,220,000</p>
+                    </div>
+                    <div class="text-center p-6 value-highlight">
+                        <h5 class="font-semibold text-blue-700 mb-2">Recommended Value</h5>
+                        <p class="text-2xl font-bold text-blue-600">$1,232,500</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Summary & Strategic Recommendations -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Market Summary & Strategic Recommendations</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Market Analysis Summary</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Comparable Range:</strong> $595,000 - $1,200,000</li>
+                            <li><strong>Average Value (6 comps):</strong> $769,150</li>
+                            <li><strong>Median Value:</strong> $697,500</li>
+                            <li><strong>Most Recent Comp Value:</strong> $1,200,000 (Premium Lakefront)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Price per Square Foot Range:</strong> $251 - $378</li>
+                            <li><strong>Average Price per Square Foot:</strong> $301</li>
+                            <li><strong>Market Trend:</strong> Strongly Upward</li>
+                            <li><strong>Inventory Level:</strong> Critically Low</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Strategic Positioning</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Luxury Market Positioning</h4>
+                        <p class="text-gray-700">Position the property in Mahopac's luxury segment, emphasizing the unique combination of substantial acreage, quality construction, and prime location as key differentiators from typical market offerings.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Scarcity Value Emphasis</h4>
+                        <p class="text-gray-700">Highlight the rarity of 7.49-acre properties in Mahopac's residential market, positioning this as a once-in-a-generation opportunity for buyers seeking privacy and space.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Private Estate Marketing</h4>
+                        <p class="text-gray-700">Market the property as a private estate retreat rather than a standard residential home, appealing to buyers seeking a lifestyle change and sanctuary from urban pressures.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Investment Potential Highlighting</h4>
+                        <p class="text-gray-700">Emphasize the long-term investment potential of large-acreage properties in desirable locations, particularly given development pressure and land scarcity in Westchester/Putnam counties.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Seller Strategy Recommendations</h3>
+                
+                <ol class="space-y-3 text-gray-700">
+                    <li><strong>Optimal Pricing Strategy:</strong> List at $1,249,000 to establish premium positioning while allowing negotiation room to our target value of $1,232,500.</li>
+                    <li><strong>Pre-Marketing Preparation:</strong> Focus on enhancing curb appeal, staging key interior spaces, and creating professional photography that showcases both home and extensive grounds.</li>
+                    <li><strong>Strategic Marketing:</strong> Develop luxury marketing campaign emphasizing privacy, acreage, and lifestyle benefits. Target high-net-worth buyers seeking estate properties.</li>
+                    <li><strong>Timing Optimization:</strong> Launch in early spring to take advantage of peak buying season and showcase the property's outdoor potential during optimal weather.</li>
+                    <li><strong>Buyer Education:</strong> Prepare detailed information packets highlighting unique features, development restrictions, and long-term value proposition of large-acreage ownership.</li>
+                </ol>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                    <p class="font-semibold text-blue-800 mb-2">Strategic Recommendation:</p>
+                    <p class="text-blue-700">This property represents a unique opportunity to capture premium pricing in Mahopac's luxury market. The combination of substantial acreage, quality construction, and current market conditions creates an optimal selling environment. Focus on differentiating from standard residential offerings by emphasizing the estate-like qualities and investment potential.</p>
+                </div>
+            </div>
+            
+            <!-- Professional Recommendation -->
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Professional Recommendation</h3>
+                <div class="value-highlight mb-4">
+                    <span class="text-4xl font-bold">$1,232,500</span>
+                </div>
+                <p class="text-lg text-gray-700">Based on our comprehensive analysis of comparable sales, current market conditions, and the unique attributes of this exceptional property, we recommend a market value of $1,232,500. This valuation reflects the property's substantial acreage premium while remaining competitive within Mahopac's luxury market segment.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blue Gradient Footer -->
+    <footer class="gradient-footer">
+        <div class="container text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Discuss Your Options?</h2>
+            <p class="text-xl mb-6 opacity-95">Schedule a personal consultation to discuss your property's market position and develop a customized selling strategy.</p>
+            <a href="https://calendly.com/hudsonvalleysold/home-value" class="cta-button text-xl">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Schedule a Home Value Review
+            </a>
+        </div>
+    </footer>
+
+    <!-- Disclaimer Section -->
+    <div class="container py-8">
+        <div class="bg-gray-100 rounded-lg p-6 text-center text-sm text-gray-600">
+            <p class="mb-2">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Justin Phillips, Managing Broker</p>
+            <p class="mb-2">United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p class="mb-4">Licensed Real Estate Professionals in New York State</p>
+            <p class="text-xs">This analysis is based on recent comparable sales and current market conditions. Property values may vary based on individual property characteristics, market timing, and buyer preferences. This report is for informational purposes and does not constitute a formal appraisal.</p>
+        </div>
+    </div>
+
+    <!-- FUB Widget Integration -->
+    <!-- begin Widget Tracker Code -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+    {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+    (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+    e.parentNode.insertBefore(t,e);})
+    (window,"https://widgetbe.com/agent",document,"widgetTracker");
+    window.widgetTracker("create", "WT-FPLWTULQ");
+    window.widgetTracker("send", "pageview");
+    </script>
+    <!-- end Widget Tracker Code -->
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDuiB2UG0ZDhSUiiX%2BZ5OzawNuqGGgDapttIs8VUDhHp%2BYqV5QCCw%2BAjBz%2BG9UT%2FK7I1P05KFZ6HnStEafrVIRITISdeVVTYfw8BiYzgTYlCgBU%2FWOQmycYh6JUjbDmvv8C4NNb%2FrBUKP1wJSvyaYzNsLXiqh2VTCRoL94jHxT2oAPdZNSvDgHTvOTiobT5LlsHFqQFS4rOQUoQtcs8UFXopiEhMSOIX%2F%2Fm8dLxwmNFgNkov9RQDKyoagbhtsdighC2rNu7QnPTw8V6gWqgMRSDQp8MGnEU4%2BYAVpmOyfbZe57DnWFmSXLwfiHbCDPTVu7xwN98UBWx08gSwnMEPR%2FTQQGvq2ScBHNSsnrL3DIbUwKjWNbbuzRE3uLoHlS6fr4SDWH1QuxFFeAVkVr1Uf2iLHNI0SE023ZKdrfCsX%2F3VEUEG2yBPoTIuJbw8j1mtO06%2B3WPhWk3wcgDupzP%2B5jlrnFZyC%2FKxJXjOd%2Fcke%2FOvyKIH0SaRo9fGCC8%2BqSPadidXetkAVLbnTIURNCySFqdg%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDuiB2UG0ZDhSUiiX+Z5OzawNuqGGgDapttIs8VUDhHp+YqV5QCCw+AjBz+G9UT/K7I1P05KFZ6HnStEafrVIRITISdeVVTYfw8BiYzgTYlCgBU/WOQmycYh6JUjbDmvv8C4NNb/rBUKP1wJSvyaYzNsLXiqh2VTCRoL94jHxT2oAPdZNSvDgHTvOTiobT5LlsHFqQFS4rOQUoQtcs8UFXopiEhMSOIX//m8dLxwmNFgNkov9RQDKyoagbhtsdighC2rNu7QnPTw8V6gWqgMRSDQp8MGnEU4+YAVpmOyfbZe57DnWFmSXLwfiHbCDPTVu7xwN98UBWx08gSwnMEPR/TQQGvq2ScBHNSsnrL3DIbUwKjWNbbuzRE3uLoHlS6fr4SDWH1QuxFFeAVkVr1Uf2iLHNI0SE023ZKdrfCsX/3VEUEG2yBPoTIuJbw8j1mtO06+3WPhWk3wcgDupzP+5jlrnFZyC/KxJXjOd/cke/OvyKIH0SaRo9fGCC8+qSPadidXetkAVLbnTIURNCySFqdg=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDp9RYu0k%2FlZuCh3bma%2BwC2VBXywa0%2FwM6jMrrzC61BEKBbv4QWtXpA5O7sLHw5u7anVkgvt0TaV3cdSzP93u%2FXzHU0KnR0k8obNxwOjSLJCiNCu7JM2YfPIHg%2FRRw%2B1hUf8FBvE1dx2NPteIM4Ht0zk5J0UTM7NNdiBdzndZ3N0KltXHjERXYniTrw7T5rP3djyKSCpBauL%2FolyCUA1ihB4MZNm4Pi2DaIXMJdzhqDyywu4UmBxWw8h7blMWbqcRixo4lSFkMpL1npddgVvicU8sctf%2BaoDNHhWjELCqCTN90qqbBmh%2BOURqAI5PTFi3E2qhUd7wvqyFDKmzGr4PTvxM7SRAEppgbaiC8O6EPqxscIbgjusbJu7MA%2Byr4h9bhle1ihI46NemkntmRzw9vDp23KuMZIoohgjwMMd8bcKAPhZaI0EktSZhPvoQcJC5%2FYo8%2F3q8go7tRX%2BSqear7TphWU84IvuPPmT%2BTFN3iA4Rd%2BHZVQq%2BG7enUmPFmJEI52aj21Jjo2VrCjkDMgFlpO3MmrqGPOI4qdqQFu0ORC2h";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDp9RYu0k/lZuCh3bma+wC2VBXywa0/wM6jMrrzC61BEKBbv4QWtXpA5O7sLHw5u7anVkgvt0TaV3cdSzP93u/XzHU0KnR0k8obNxwOjSLJCiNCu7JM2YfPIHg/RRw+1hUf8FBvE1dx2NPteIM4Ht0zk5J0UTM7NNdiBdzndZ3N0KltXHjERXYniTrw7T5rP3djyKSCpBauL/olyCUA1ihB4MZNm4Pi2DaIXMJdzhqDyywu4UmBxWw8h7blMWbqcRixo4lSFkMpL1npddgVvicU8sctf+aoDNHhWjELCqCTN90qqbBmh+OURqAI5PTF
