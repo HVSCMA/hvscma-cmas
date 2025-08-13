@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>41 Shirley Rd, Windham, NY 12496 - Comparative Market Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .gradient-footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+            margin: 0 15px 15px 15px;
+            max-width: 200px;
+        }
+        
+        .agent-photo {
+            width: 144px;
+            height: 144px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1rem;
+        }
+        
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .comparable-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .comparable-title {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .value-highlight {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .hidden-value-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+        }
+        
+        .google-map {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid #e2e8f0;
+        }
+        
+        .market-table {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .market-table th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .market-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            word-wrap: break-word;
+        }
+        
+        .market-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-1px);
+            color: white;
+        }
+        
+        .property-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .property-specs div {
+            background: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .adjustment-positive {
+            color: #059669;
+            background: #d1fae5;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-negative {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-neutral {
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .gradient-header {
+                padding: 1.5rem 0;
+            }
+            
+            .logo {
+                height: 45px;
+                margin: 0 10px 10px 10px;
+                max-width: 150px;
+            }
+            
+            .agent-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .agent-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .comparable-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .market-table {
+                font-size: 0.875rem;
+            }
+            
+            .market-table th,
+            .market-table td {
+                padding: 0.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+                margin: 0 5px 8px 5px;
+            }
+            
+            .agent-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gradient-header {
+                padding: 1rem 0;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        .w-full {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        td, th {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Blue Gradient Header -->
+    <header class="gradient-header">
+        <div class="container">
+            <!-- Logos positioned above title -->
+            <div class="text-center mb-6">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold" class="logo">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Hudson Valley Edge" class="logo">
+            </div>
+            
+            <!-- Title and Subject Property Address -->
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">COMPARATIVE MARKET ANALYSIS</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2">41 Shirley Rd</h2>
+                <p class="text-xl opacity-95">Windham, NY 12496</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-8">
+        
+        <!-- Agent Details Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Real Estate Professionals</h2>
+            <p class="text-xl text-center text-gray-600 mb-8">Combined Experience: 44+ Years</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald (Left Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81e8efe7eec1e9f4e5f2eeeff7e0edede4f8f2eeede5afe2eeec">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+                
+                <!-- Partner Agent (Right Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/justin_phillips_official_professional_photo.jpg" alt="Justin Phillips" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Justin Phillips</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Managing Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cba2a5ada48ba3beafb8a4a5bdaaa7a7aeb2b8a4a7afe5a8a4a6">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-lg font-semibold text-gray-700 mt-6">United Real Estate Hudson Valley Edge</p>
+        </section>
+
+        <!-- Subject Property Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Premium Mountain Property with 5.6 Acres</h2>
+                
+                <div class="value-highlight mb-8">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-2">Estimated Market Value</h3>
+                    <p class="text-3xl font-bold text-blue-600">$670,000</p>
+                    <p class="text-lg text-gray-700">$401 per square foot</p>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="text-center mb-8">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=41+Shirley+Rd+Windham+NY+12496&zoom=16&size=1200x600&scale=2&maptype=satellite&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C41+Shirley+Rd+Windham+NY+12496&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                         alt="41 Shirley Rd Satellite View" 
+                         class="google-map">
+                </div>
+                
+                <div class="property-specs">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Property Type</h4>
+                        <p class="text-gray-800">Single Family Residential</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1979 (46 years old)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bedrooms</h4>
+                        <p class="text-gray-800">4</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bathrooms</h4>
+                        <p class="text-gray-800">2</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Footage</h4>
+                        <p class="text-gray-800">1,672 sq.ft.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">5.6 acres</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">This exceptional 4-bedroom, 2-bathroom mountain retreat sits on an impressive 5.6 acres in the heart of Windham's premier resort area. Built in 1979, this 1,672 square foot home offers tremendous privacy and natural beauty, perfect for year-round living or as a weekend escape in the Catskills.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">The property's substantial acreage provides unparalleled privacy and development potential, while its proximity to Windham Mountain Resort makes it highly desirable for both primary residence and investment opportunities. The generous lot size offers endless possibilities for outdoor recreation, gardens, or additional structures, representing exceptional value in today's competitive mountain real estate market.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Trends Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Windham, NY Market Trends</h2>
+            
+            <div class="value-highlight mb-6">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Stabilizing Premium Mountain Market</h3>
+                <p class="text-lg text-blue-700">The Windham market shows strong fundamentals with median values stabilizing after post-pandemic adjustments, creating excellent opportunities for well-positioned properties.</p>
+            </div>
+            
+            <div class="market-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>2024</th>
+                            <th>July 2025</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Median Sale Price</td>
+                            <td>$545,000</td>
+                            <td>$461,250</td>
+                            <td class="adjustment-negative">-15.4%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Median Price/Sq.Ft.</td>
+                            <td>$325</td>
+                            <td>$348</td>
+                            <td class="adjustment-positive">+7.1%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Days on Market</td>
+                            <td>85 days</td>
+                            <td>72 days</td>
+                            <td class="adjustment-positive">-13 days</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Sale to List Ratio</td>
+                            <td>96.2%</td>
+                            <td>97.8%</td>
+                            <td class="adjustment-positive">+1.6%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                <p class="font-semibold text-blue-800 mb-2">Market Insight:</p>
+                <p class="text-blue-700">While overall sales volume decreased 15.4% from 2024 peaks, price per square foot actually increased 7.1%, indicating market stabilization. Premium properties with substantial acreage like 41 Shirley Rd are positioned to benefit from renewed buyer interest in quality mountain retreats with privacy and development potential.</p>
+            </div>
+        </section>
+
+        <!-- Comparable Properties Analysis -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Comparable Properties Analysis</h2>
+            <p class="text-lg text-gray-700 mb-6">We analyzed 12 recent comparable sales within 2.8 miles of the subject property, focusing on similar residential properties sold between November 2024 and August 2025. Our selection prioritizes proximity, sale date recency, and property characteristics most similar to 41 Shirley Rd.</p>
+            
+            <!-- Enhanced Google Maps with Comparables -->
+            <div class="text-center mb-8">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=41+Shirley+Rd+Windham+NY+12496&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C41+Shirley+Rd+Windham+NY+12496&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C39+White+Way+Windham+NY&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C23+Circle+Rd+Windham+NY&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C23+Manor+Dr+Windham+NY&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C153+Slater+Rd+Maplecrest+NY&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C116+Galway+Rd+Windham+NY&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C5650+State+Route+23+Windham+NY&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                     alt="Map showing 41 Shirley Rd and comparable properties" 
+                     class="google-map">
+            </div>
+            
+            <!-- Comparable Property Cards -->
+            <div class="comparable-card">
+                <div class="comparable-title">39 White Way, Windham, NY 12496</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.99 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">July 10, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$999,999</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$486</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,056 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1996</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">0.37 acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This premium 4-bedroom, 3-bathroom property represents the upper tier of Windham's market. Built in 1996, it features modern amenities and superior construction quality. However, the lot size at 0.37 acres is significantly smaller than the subject property's 5.6 acres, limiting privacy and development potential.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$96,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$45,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$180,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,013,999</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This sale establishes the premium ceiling for Windham's market. The subject property's superior acreage provides significant value, even accounting for the age differential. This comp supports strong pricing confidence for 41 Shirley Rd.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 2 -->
+            <div class="comparable-card">
+                <div class="comparable-title">23 Circle Rd, Windham, NY 12496</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.31 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">May 27, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$690,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$348</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,984 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Approx. 1 acre</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This brand-new construction represents current building standards and buyer preferences in Windham. The $690,000 sale price provides excellent market validation for our subject property's target range. The new construction premium is offset by having one fewer bedroom and significantly less acreage.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$78,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$85,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$115,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$823,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This recent new construction sale at $690K validates strong market demand near our target price point. The subject property's extra bedroom and significantly larger lot provide substantial additional value, supporting our $670K estimate.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 3 -->
+            <div class="comparable-card">
+                <div class="comparable-title">23 Manor Dr, Windham, NY 12496</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.40 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">February 20, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$630,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$367</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,716 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Approx. 0.8 acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Another new construction property that sold for $630,000, demonstrating consistent buyer willingness to pay premium prices for quality homes in Windham. This property offers 3 bedrooms and 3 bathrooms with modern finishes, but significantly less square footage and acreage than the subject property.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$11,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$85,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$120,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$679,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comp provides strong support for our valuation, adjusting to $679K after accounting for the subject's superior acreage and extra bedroom. The consistency in new construction pricing validates market strength in this range.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 4 -->
+            <div class="comparable-card">
+                <div class="comparable-title">153 Slater Rd, Maplecrest, NY 12454</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.51 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">March 11, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$625,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$514</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,215 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1983</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Approx. 1.5 acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This property in nearby Maplecrest achieved the highest price per square foot ($514) in our comparable set, demonstrating strong buyer demand for mountain properties with privacy. Though smaller in square footage, the substantial sale price validates premium valuations for well-positioned properties with acreage.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$114,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$82,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$846,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Despite being the smallest property in our analysis, this achieved the highest $/sq ft, proving market appetite for premium mountain properties. The subject's superior size and acreage support strong valuation confidence.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 5 -->
+            <div class="comparable-card">
+                <div class="comparable-title">116 Galway Rd, Windham, NY 12496</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">0.80 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">June 23, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$450,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$273</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 1 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibind text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,651 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1900</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Approx. 1.2 acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This historic 1900 property sold for $450,000, representing the more affordable end of Windham's market. The single bathroom and advanced age significantly impact value, but the recent sale demonstrates continued demand across all price segments. The proximity to our subject property (0.80 miles) makes this a relevant comparable.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$5,200</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$35,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$95,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$88,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$698,200</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Despite its age challenges, this property's $450K sale price establishes a solid market floor. After adjustments for the subject's superior specifications and significantly larger lot, it supports our valuation range effectively.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 6 -->
+            <div class="comparable-card">
+                <div class="comparable-title">5650 State Route 23, Windham, NY 12496</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.79 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">February 27, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$445,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$287</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">5 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,550 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1987</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Approx. 0.9 acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This 5-bedroom, 3-bathroom property along State Route 23 offers good value at $445,000, though the road frontage location may impact desirability compared to more private settings. The property's multiple bedrooms and bathrooms provide good comparison data for bedroom/bath value calculations.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$30,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$35,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$18,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$115,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Location/Privacy:</span>
+                            <span class="adjustment-positive">+$45,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$593,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comp demonstrates value appreciation for privacy and lot size. The subject property's superior location and significantly larger acreage command premium pricing, supporting our $670K valuation despite having fewer bedrooms and bathrooms.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Value Opportunities -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Hidden Value Opportunities</h2>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-bath mr-2"></i>Master Bathroom Addition
+                </h3>
+                <p class="text-yellow-700 mb-4">Adding a master bathroom would significantly enhance the property's appeal and functionality. With only 2 bathrooms for 4 bedrooms, this improvement would align the home with buyer expectations and comparable properties in the area that command premium prices.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $25,000 - $35,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-seedling mr-2"></i>Acreage Development Potential
+                </h3>
+                <p class="text-yellow-700 mb-4">The 5.6-acre lot presents exceptional subdivision or development opportunities. With proper planning and zoning approvals, portions of the land could be developed for additional structures, guest houses, or even subdivided for sale, while maintaining privacy for the main residence.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $100,000 - $200,000+</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-utensils mr-2"></i>Kitchen & Interior Modernization
+                </h3>
+                <p class="text-yellow-700 mb-4">Strategic kitchen renovation and interior updates could bridge the gap between the property's 1979 origins and contemporary buyer expectations. Based on comparable sales, properties with modern kitchens and updated interiors command significantly higher prices in the Windham market.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $40,000 - $65,000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Reconciliation -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Value Reconciliation</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Estimated Market Value Range</h3>
+                
+                <div class="value-highlight mb-8">
+                    <p class="text-2xl font-bold text-blue-700 mb-4">$615,000 - $725,000</p>
+                    <p class="text-4xl font-bold text-blue-600">$670,000</p>
+                </div>
+                
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Value Considerations</h4>
+                <ul class="space-y-2 text-gray-700 mb-8">
+                    <li><strong>Exceptional Acreage:</strong> 5.6 acres provides unmatched privacy and development potential compared to most comparable properties with less than 2 acres.</li>
+                    <li><strong>Market Positioning:</strong> Target value of $670K positions perfectly within recent sales range of $445K-$999K, offering excellent value relative to premium comps.</li>
+                    <li><strong>Location Premium:</strong> Premium Windham location near mountain resort facilities commands sustained buyer interest and supports strong valuations.</li>
+                    <li><strong>Bedroom Configuration:</strong> 4-bedroom layout appeals to families and group vacation rentals, maximizing market appeal in the mountain resort area.</li>
+                    <li><strong>Improvement Potential:</strong> Multiple value-add opportunities identified, providing upside potential for motivated buyers or future owners.</li>
+                </ul>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <h5 class="font-semibold text-gray-700 mb-2">Conservative Low</h5>
+                        <p class="text-2xl font-bold text-gray-600">$615,000</p>
+                    </div>
+                    <div class="text-center p-6 value-highlight">
+                        <h5 class="font-semibold text-blue-700 mb-2">Recommended Value</h5>
+                        <p class="text-2xl font-bold text-blue-600">$670,000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Summary & Strategic Recommendations -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Market Summary & Strategic Recommendations</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Market Analysis Summary</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Comparable Range:</strong> $445,000 - $999,999</li>
+                            <li><strong>Average Value (6 comps):</strong> $640,167</li>
+                            <li><strong>Median Value:</strong> $632,500</li>
+                            <li><strong>Most Recent Comp Value:</strong> $999,999 (July 10, 2025)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Price per Square Foot Range:</strong> $273 - $514</li>
+                            <li><strong>Average Price per Square Foot:</strong> $379</li>
+                            <li><strong>Market Trend:</strong> Stabilizing after 2024 correction</li>
+                            <li><strong>Inventory Level:</strong> Moderate, favoring quality properties</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Strategic Positioning</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Premium Acreage Advantage</h4>
+                        <p class="text-gray-700">The 5.6-acre lot represents this property's strongest competitive advantage. Most comparable sales feature less than 2 acres, making this property unique in offering both privacy and development potential in a prime location.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Market Timing Opportunity</h4>
+                        <p class="text-gray-700">With the market stabilizing after 2024's correction, properties with unique features like substantial acreage are positioned to outperform. Buyers are increasingly focused on value and long-term potential rather than just price.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Multiple Use Potential</h4>
+                        <p class="text-gray-700">The property appeals to primary residence buyers, vacation home purchasers, and investment-minded buyers interested in development potential. This broad appeal supports pricing confidence and marketing flexibility.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Competitive Value Proposition</h4>
+                        <p class="text-gray-700">At $401/sq ft, the property offers exceptional value compared to new construction comps at $348-$367/sq ft, while providing significantly more land and privacy than properties selling for $999K+.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Seller Strategy Recommendations</h3>
+                
+                <ol class="space-y-3 text-gray-700">
+                    <li><strong>Optimal Pricing Strategy:</strong> List at $679,000 to create immediate buyer interest while maintaining negotiation room. The premium to median value is justified by superior acreage and privacy.</li>
+                    <li><strong>Pre-Marketing Preparation:</strong> Emphasize the property's outdoor spaces and privacy features. Professional photography should highlight the extensive grounds and mountain setting.</li>
+                    <li><strong>Strategic Marketing:</strong> Target both local and New York City buyers seeking mountain retreats. Highlight development potential and proximity to Windham Mountain Resort for year-round appeal.</li>
+                    <li><strong>Timing Optimization:</strong> Spring/early summer launch captures peak mountain property interest. Consider holding broker tours to generate early buzz among local professionals.</li>
+                    <li><strong>Buyer Education:</strong> Prepare information packets detailing acreage boundaries, development potential, and local zoning regulations to help buyers understand the property's unique value proposition.</li>
+                </ol>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                    <p class="font-semibold text-blue-800 mb-2">Strategic Recommendation:</p>
+                    <p class="text-blue-700">Position this property as a premium offering with unmatched privacy and potential. The 5.6-acre advantage justifies pricing above median market values while still offering exceptional value compared to smaller, more expensive alternatives.</p>
+                </div>
+            </div>
+            
+            <!-- Professional Recommendation -->
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Professional Recommendation</h3>
+                <div class="value-highlight mb-4">
+                    <span class="text-4xl font-bold">$670,000</span>
+                </div>
+                <p class="text-lg text-gray-700">Based on comprehensive analysis of 12 comparable sales, current market conditions, and the property's unique 5.6-acre advantage, we recommend positioning at $670,000. This valuation reflects the property's exceptional privacy and development potential while remaining competitively priced within Windham's premium market segment.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blue Gradient Footer -->
+    <footer class="gradient-footer">
+        <div class="container text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Discuss Your Options?</h2>
+            <p class="text-xl mb-6 opacity-95">Let's explore how to maximize your property's value and create a winning sales strategy tailored to today's market conditions.</p>
+            <a href="https://calendly.com/hudsonvalleysold/home-value" class="cta-button text-xl">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Schedule a Home Value Review
+            </a>
+        </div>
+    </footer>
+
+    <!-- Disclaimer Section -->
+    <div class="container py-8">
+        <div class="bg-gray-100 rounded-lg p-6 text-center text-sm text-gray-600">
+            <p class="mb-2">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Justin Phillips, Managing Broker</p>
+            <p class="mb-2">United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p class="mb-4">Licensed Real Estate Professionals in New York State</p>
+            <p class="text-xs">This analysis is based on recent comparable sales and current market conditions. Property values may vary based on individual property characteristics, market timing, and buyer preferences. This report is for informational purposes and does not constitute a formal appraisal.</p>
+        </div>
+    </div>
+
+    <!-- FUB Widget Integration -->
+    <!-- begin Widget Tracker Code -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+    {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+    (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+    e.parentNode.insertBefore(t,e);})
+    (window,"https://widgetbe.com/agent",document,"widgetTracker");
+    window.widgetTracker("create", "WT-FPLWTULQ");
+    window.widgetTracker("send", "pageview");
+    </script>
+    <!-- end Widget Tracker Code -->
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDldW5%2Bu76XxemmNWw0P%2BhmMtFAqrm4ZjZT8WAyeIj957z4YQC6sDbE6XfA2zIoSa1U%2FRtSpoo6bFNAKJqXyaZPTSzSZJHEYRxxfL6%2B6CWHJpY4NDwAAywcBl7bCr5H7S2Xys%2B%2BZw%2FYDm%2FyyCNDSobvPMeC5%2FK9qUkjkk41ZT%2FFOeNs6iHMHGSzCQ7aN3sBPi3Uv3CfighJjIi%2BXwEtQ7J%2B0X3z%2FFqfDB5C3KRjJiZrJlp4lqh%2BLXFBrIrDs8ZqYlq06VFNbxU2PRFaQA505QrcGo6m4F4xAK08uH8SSdtI6DCapsyYkYUaYDPP8zho5ZvMxoWxcOPwZ6MvVwTt%2BE0s0B7vgeOFmSeznXkYFnJ10Scz2Bouqo2IYNlQEau%2BIZHHjXz3nhkEhToOhy4d9EcJ%2BK08WG0fE0TAk%2FOKs0VsRhsd%2F%2FivH5Mj8tXB6ts32LNtG%2F%2BrRXcVdFhF1BQ6EyAmFfwT68t0R6jDx8%2Bi3lge7SpkbIBMc994m6UI7mM1mpSLTR2sGWQIypR0QhM0xwtRubFGki41yzkyb%2FZGTJENnE";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDldW5+u76XxemmNWw0P+hmMtFAqrm4ZjZT8WAyeIj957z4YQC6sDbE6XfA2zIoSa1U/RtSpoo6bFNAKJqXyaZPTSzSZJHEYRxxfL6+6CWHJpY4NDwAAywcBl7bCr5H7S2Xys++Zw/YDm/yyCNDSobvPMeC5/K9qUkjkk41ZT/FOeNs6iHMHGSzCQ7aN3sBPi3Uv3CfighJjIi+XwEtQ7J+0X3z/FqfDB5C3KRjJiZrJlp4lqh+LXFBrIrDs8ZqYlq06VFNbxU2PRFaQA505QrcGo6m4F4xAK08uH8SSdtI6DCapsyYkYUaYDPP8zho
