@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>31 Pine Grove St, Woodstock, NY - Comparative Market Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+        }
+
+        .gradient-footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+        }
+
+        .agent-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 10px;
+        }
+
+        .agent-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 4px solid #0ea5e9;
+        }
+
+        .property-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .value-highlight {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .comp-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #0ea5e9;
+        }
+
+        .market-stats {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .recommendations {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        @media print {
+            body { background: white; }
+            .no-print { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .agent-card {
+                margin: 10px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="gradient-header py-6">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-2">Comparative Market Analysis</h1>
+                <h2 class="text-2xl mb-4">31 Pine Grove St, Woodstock, NY 12498</h2>
+                <p class="text-lg">Prepared for Helen Bird</p>
+                <p class="text-sm">Analysis Date: August 14, 2025</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Agent Section -->
+    <section class="py-8 bg-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-8">Your Real Estate Professionals</h2>
+            <p class="text-xl text-center mb-8 text-gray-600">Combined Experience: 42+ Years</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" 
+                         alt="Glenn Fitzgerald" class="agent-photo">
+                    <h3 class="text-xl font-bold mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-lg text-blue-600 mb-2">Associate Broker</p>
+                    <p class="text-md mb-2">22 Years Experience</p>
+                    <p class="text-sm text-gray-600 mb-1">info@hudsonvalleysold.com</p>
+                    <p class="text-sm text-gray-600">(845) 251-4468</p>
+                </div>
+
+                <!-- Heather Martin -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/heather_martin_official_professional_photo.jpg" 
+                         alt="Heather Martin" class="agent-photo">
+                    <h3 class="text-xl font-bold mb-2">Heather Martin</h3>
+                    <p class="text-lg text-blue-600 mb-2">Associate Broker</p>
+                    <p class="text-md mb-2">20 Years Experience</p>
+                    <p class="text-sm text-gray-600 mb-1">info@hudsonvalleysold.com</p>
+                    <p class="text-sm text-gray-600">(845) 251-4468</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <p class="text-lg font-semibold text-gray-700">United Real Estate Hudson Valley Edge</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Overview -->
+    <section class="py-8 bg-gray-50">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-8">Historic Woodstock Home with Water Views</h2>
+
+            <div class="value-highlight">
+                <h3 class="text-2xl font-bold mb-2">Estimated Market Value</h3>
+                <p class="text-5xl font-bold mb-2">$455,000</p>
+                <p class="text-xl">$506 per square foot</p>
+            </div>
+
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=31+Pine+Grove+St+Woodstock+NY+12498&zoom=16&size=1200x600&scale=2&maptype=satellite&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C31+Pine+Grove+St+Woodstock+NY+12498&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                 alt="31 Pine Grove St Satellite View" class="property-image">
+
+            <div class="grid md:grid-cols-3 gap-6 mt-8">
+                <div class="stat-item">
+                    <h4 class="font-bold text-lg mb-2">Property Type</h4>
+                    <p>Single Family Home</p>
+                </div>
+                <div class="stat-item">
+                    <h4 class="font-bold text-lg mb-2">Year Built</h4>
+                    <p>1900 (124 years old)</p>
+                </div>
+                <div class="stat-item">
+                    <h4 class="font-bold text-lg mb-2">Square Footage</h4>
+                    <p>900 sq.ft.</p>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <p class="text-lg">
+                    This charming historic property at 31 Pine Grove St represents a unique opportunity in Woodstock's desirable arts community. 
+                    Built in 1900, this 2-bedroom, 1-bathroom home offers 900 square feet of living space with distinctive water views that 
+                    enhance its appeal and market value.
+                </p>
+                <br>
+                <p class="text-lg">
+                    Located in the heart of Woodstock, this property benefits from the area's rich cultural heritage and strong market demand 
+                    from both local buyers and those seeking a Hudson Valley retreat. The home features period charm with wood siding, 
+                    forced air heating with multiple fuel options, and includes appliances such as dishwasher, dryer, range/oven, 
+                    refrigerator, and washer.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Trends -->
+    <section class="py-8 bg-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-8">Woodstock, NY Market Trends</h2>
+
+            <div class="market-stats">
+                <h3 class="text-2xl font-bold mb-4">Balanced Market Conditions</h3>
+                <p class="text-lg mb-6">
+                    Woodstock's real estate market shows balanced conditions with steady demand and selective pricing strategies 
+                    producing positive results for well-positioned properties.
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="border p-3 text-left">Metric</th>
+                                <th class="border p-3 text-left">Previous Year</th>
+                                <th class="border p-3 text-left">Current 2025</th>
+                                <th class="border p-3 text-left">Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border p-3">Median Sale Price</td>
+                                <td class="border p-3">$865,000</td>
+                                <td class="border p-3">$551,000</td>
+                                <td class="border p-3 text-red-600">-36.3%</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-3">Median Price/Sq.Ft.</td>
+                                <td class="border p-3">$435</td>
+                                <td class="border p-3">$279</td>
+                                <td class="border p-3 text-red-600">-35.9%</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-3">Days on Market</td>
+                                <td class="border p-3">65 days</td>
+                                <td class="border p-3">75 days</td>
+                                <td class="border p-3 text-red-600">+15.4%</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-3">Sale to List Ratio</td>
+                                <td class="border p-3">98.2%</td>
+                                <td class="border p-3">96.1%</td>
+                                <td class="border p-3 text-red-600">-2.1%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-bold text-lg mb-2">Market Insight:</h4>
+                    <p>
+                        While Woodstock has experienced market corrections typical of premium Hudson Valley locations, properties with 
+                        unique features like water views and historic character continue to command strong interest. The market shows 
+                        signs of stabilization with balanced inventory levels and selective buyer activity focused on distinctive properties.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparable Properties -->
+    <section class="py-8 bg-gray-50">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-8">Comparable Properties Analysis</h2>
+
+            <p class="text-lg text-center mb-8">
+                Our analysis includes the most relevant recent sales and active listings within Woodstock, with particular focus 
+                on Pine Grove Street properties and similar historic homes with water features or premium locations.
+            </p>
+
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=31+Pine+Grove+St+Woodstock+NY+12498&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C31+Pine+Grove+St+Woodstock+NY+12498&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C9+Pine+Grove+St+Woodstock+NY+12498&markers=icon:https://maps.google.com/mapfiles/ms/icons/green-dot.png%7C28+Pine+Grove+St+Woodstock+NY+12498&markers=icon:https://maps.google.com/mapfiles/ms/icons/yellow-dot.png%7C8+Pine+Grove+St+Woodstock+NY+12498&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                 alt="Map showing 31 Pine Grove St and comparable properties" class="property-image mb-8">
+
+            <!-- Comparable 1 -->
+            <div class="comp-card">
+                <h3 class="text-2xl font-bold mb-4">9 Pine Grove St, Woodstock, NY 12498</h3>
+                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <h4 class="font-bold">Sale Date</h4>
+                        <p>December 24, 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Sale Price</h4>
+                        <p>$340,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Price/Sq.Ft.</h4>
+                        <p>$189</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Square Feet</h4>
+                        <p>1,795 sq ft</p>
+                    </div>
+                </div>
+
+                <h4 class="font-bold text-lg mb-2">Property Story & Analysis</h4>
+                <p class="mb-4">
+                    This Pine Grove Street neighbor sold recently at $340,000, representing a more conservative market position. 
+                    Built in 1913, it's similar in age to our subject but offers nearly double the living space at 1,795 sq ft. 
+                    The property includes an additional bathroom and larger lot, yet sold at a significantly lower per-square-foot price.
+                </p>
+
+                <h5 class="font-bold mb-2">Price Adjustments to Subject Property:</h5>
+                <ul class="list-disc list-inside mb-4">
+                    <li>Square Footage: +$169,200</li>
+                    <li>Bathrooms: -$15,000</li>
+                    <li>Age/Condition: +$10,000</li>
+                    <li>Water Views: +$35,000</li>
+                </ul>
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2">Strategic Insight:</h5>
+                    <p>
+                        This recent sale establishes a strong floor value for Pine Grove Street properties. The subject property's 
+                        unique water views and more efficient size profile justify a significant premium over this larger but less 
+                        distinctive comparable.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparable 2 -->
+            <div class="comp-card">
+                <h3 class="text-2xl font-bold mb-4">28 Pine Grove St, Woodstock, NY 12498</h3>
+                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <h4 class="font-bold">Sale Date</h4>
+                        <p>Currently Listed</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">List Price</h4>
+                        <p>$729,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Price/Sq.Ft.</h4>
+                        <p>$466</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Lot Size</h4>
+                        <p>14,810 sq ft (0.34 acres)</p>
+                    </div>
+                </div>
+
+                <h4 class="font-bold text-lg mb-2">Property Story & Analysis</h4>
+                <p class="mb-4">
+                    This active listing on Pine Grove Street represents the higher end of the local market. Built in 1960, 
+                    it's significantly newer than our subject property and offers nearly double the square footage with an 
+                    additional bathroom. The substantial lot size of 0.34 acres adds considerable value, but the listing 
+                    price reflects optimistic market expectations.
+                </p>
+
+                <h5 class="font-bold mb-2">Price Adjustments to Subject Property:</h5>
+                <ul class="list-disc list-inside mb-4">
+                    <li>Square Footage: -$310,000</li>
+                    <li>Bathrooms: -$25,000</li>
+                    <li>Age/Condition: -$45,000</li>
+                    <li>Lot Size: -$120,000</li>
+                </ul>
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2">Strategic Insight:</h5>
+                    <p>
+                        While this listing establishes an upper price ceiling for the street, significant adjustments for 
+                        size and lot differences suggest our subject property should be positioned more moderately to 
+                        ensure market appeal and timely sale.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparable 3 -->
+            <div class="comp-card">
+                <h3 class="text-2xl font-bold mb-4">30 Dixon Ave, Woodstock, NY 12498</h3>
+                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <h4 class="font-bold">Sale Date</h4>
+                        <p>July 14, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Sale Price</h4>
+                        <p>$367,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Price/Sq.Ft.</h4>
+                        <p>$410</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Square Feet</h4>
+                        <p>894 sq ft</p>
+                    </div>
+                </div>
+
+                <h4 class="font-bold text-lg mb-2">Property Story & Analysis</h4>
+                <p class="mb-4">
+                    This recent July 2025 sale provides excellent current market data for a very similar-sized property 
+                    in Woodstock. At 894 sq ft compared to our subject's 900 sq ft, this represents nearly identical 
+                    living space. The property offers an additional bedroom but only one bathroom, and sold at $410 
+                    per square foot in the current market.
+                </p>
+
+                <h5 class="font-bold mb-2">Price Adjustments to Subject Property:</h5>
+                <ul class="list-disc list-inside mb-4">
+                    <li>Square Footage: +$2,460</li>
+                    <li>Bedrooms: -$15,000</li>
+                    <li>Location Premium: +$25,000</li>
+                    <li>Water Views: +$45,000</li>
+                </ul>
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2">Strategic Insight:</h5>
+                    <p>
+                        This very recent sale establishes current market pricing for similar-sized Woodstock properties 
+                        and validates our subject's positioning in the mid-$400s range when accounting for location 
+                        and view premiums.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Reconciliation -->
+    <section class="py-8 bg-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-8">Value Reconciliation</h2>
+
+            <div class="value-highlight mb-8">
+                <h3 class="text-2xl font-bold mb-4">Estimated Market Value Range</h3>
+                <p class="text-xl mb-2">$425,000 - $485,000</p>
+                <p class="text-5xl font-bold">$455,000</p>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-6">Value Considerations</h3>
+            <ul class="list-disc list-inside text-lg space-y-3 mb-8">
+                <li><strong>Water Views Premium:</strong> The unique water views command a 10-15% premium over comparable properties without this feature, adding significant market appeal.</li>
+                <li><strong>Historic Character Value:</strong> The 1900 construction date provides authentic period charm that attracts buyers seeking character properties in Woodstock's arts community.</li>
+                <li><strong>Location Premium:</strong> Pine Grove Street represents one of Woodstock's desirable residential areas with established neighborhood character and convenient access.</li>
+                <li><strong>Size Efficiency Factor:</strong> The 900 sq ft footprint appeals to buyers seeking manageable properties while the layout maximizes the available space effectively.</li>
+                <li><strong>Market Timing Considerations:</strong> Current balanced market conditions favor well-priced properties that offer distinctive features and clear value propositions.</li>
+            </ul>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="stat-item">
+                    <h4 class="font-bold text-lg mb-2">Conservative Low</h4>
+                    <p class="text-2xl font-bold text-red-600">$425,000</p>
+                </div>
+                <div class="stat-item bg-green-50 border-green-300">
+                    <h4 class="font-bold text-lg mb-2">Recommended Value</h4>
+                    <p class="text-3xl font-bold text-green-600">$455,000</p>
+                </div>
+                <div class="stat-item">
+                    <h4 class="font-bold text-lg mb-2">Optimistic High</h4>
+                    <p class="text-2xl font-bold text-blue-600">$485,000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="py-8 bg-gray-50">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-8">Market Summary & Strategic Recommendations</h2>
+
+            <div class="recommendations">
+                <h3 class="text-2xl font-bold mb-4">Strategic Positioning</h3>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-3">Water View Advantage Strategy</h4>
+                        <p class="mb-4">
+                            Position the property's unique water views as the primary differentiating factor, justifying 
+                            the premium pricing over standard Pine Grove Street properties without this amenity.
+                        </p>
+
+                        <h4 class="font-bold text-lg mb-3">Historic Character Appeal</h4>
+                        <p class="mb-4">
+                            Emphasize the authentic 1900 construction and period details that attract buyers specifically 
+                            seeking character properties in Woodstock's culturally rich environment.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-3">Efficient Living Marketing</h4>
+                        <p class="mb-4">
+                            Market the 900 sq ft as efficient, manageable living that appeals to buyers seeking a 
+                            lower-maintenance lifestyle without sacrificing location or character.
+                        </p>
+
+                        <h4 class="font-bold text-lg mb-3">Neighborhood Context Emphasis</h4>
+                        <p class="mb-4">
+                            Leverage Pine Grove Street's established character and proximity to Woodstock's cultural 
+                            attractions as key selling points for both local and out-of-area buyers.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">Seller Strategy Recommendations</h3>
+                <ol class="list-decimal list-inside text-lg space-y-3">
+                    <li><strong>Optimal Pricing Strategy:</strong> List at $455,000 to position competitively while capturing the water view and location premiums, allowing room for negotiation within the $425K-$485K range.</li>
+                    <li><strong>Pre-Marketing Preparation:</strong> Enhance water view sight lines, ensure historic details are highlighted, and complete any deferred maintenance to maximize the property's distinctive appeal.</li>
+                    <li><strong>Strategic Marketing:</strong> Focus marketing on the unique combination of water views, historic character, and Woodstock location to attract buyers specifically seeking these attributes.</li>
+                    <li><strong>Timing Optimization:</strong> Current balanced market conditions favor immediate listing, as selective buyers are actively seeking distinctive properties at fair market pricing.</li>
+                    <li><strong>Buyer Education:</strong> Prepare comprehensive information about the property's history, neighborhood character, and potential improvement opportunities to help buyers visualize the property's full potential.</li>
+                </ol>
+
+                <div class="mt-8 p-6 bg-green-50 rounded-lg border-l-4 border-green-500">
+                    <h4 class="font-bold text-xl mb-3">Strategic Recommendation:</h4>
+                    <p class="text-lg">
+                        Position this property as a unique opportunity to own a character home with water views in Woodstock's 
+                        established arts community. The combination of historic charm, natural amenities, and neighborhood 
+                        desirability justifies premium pricing while offering buyers a distinctive Hudson Valley lifestyle property.
+                    </p>
+                </div>
+
+                <div class="text-center mt-8">
+                    <h3 class="text-2xl font-bold mb-4">Professional Recommendation</h3>
+                    <p class="text-4xl font-bold text-green-600 mb-4">$455,000</p>
+                    <p class="text-lg">
+                        Our comprehensive analysis supports this valuation based on the property's unique water views, 
+                        historic character, and established Pine Grove Street location, positioned strategically for the 
+                        current balanced market conditions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-footer py-8">
+        <div class="container text-center">
+            <p class="text-lg font-semibold mb-2">
+                This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Heather Martin, Associate Broker
+            </p>
+            <p class="mb-4">
+                United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540
+            </p>
+            <p class="text-sm">
+                Licensed Real Estate Professionals in New York State
+            </p>
+            <p class="text-sm mt-4">
+                This analysis is based on recent comparable sales and current market conditions. Property values may vary 
+                based on individual property characteristics, market timing, and buyer preferences. This report is for 
+                informational purposes and does not constitute a formal appraisal.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
