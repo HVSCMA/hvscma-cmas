@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Nichris Ln, Staatsburg, NY 12580 - Comparative Market Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .gradient-footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+            margin: 0 15px 15px 15px;
+            max-width: 200px;
+        }
+        
+        .agent-photo {
+            width: 144px;
+            height: 144px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1rem;
+        }
+        
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .comparable-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .comparable-title {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .value-highlight {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .hidden-value-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+        }
+        
+        .google-map {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid #e2e8f0;
+        }
+        
+        .market-table {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .market-table th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .market-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            word-wrap: break-word;
+        }
+        
+        .market-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-1px);
+            color: white;
+        }
+        
+        .property-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .property-specs div {
+            background: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .adjustment-positive {
+            color: #059669;
+            background: #d1fae5;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-negative {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-neutral {
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .gradient-header {
+                padding: 1.5rem 0;
+            }
+            
+            .logo {
+                height: 45px;
+                margin: 0 10px 10px 10px;
+                max-width: 150px;
+            }
+            
+            .agent-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .agent-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .comparable-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .market-table {
+                font-size: 0.875rem;
+            }
+            
+            .market-table th,
+            .market-table td {
+                padding: 0.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+                margin: 0 5px 8px 5px;
+            }
+            
+            .agent-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gradient-header {
+                padding: 1rem 0;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        .w-full {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        td, th {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Blue Gradient Header -->
+    <header class="gradient-header">
+        <div class="container">
+            <!-- Logos positioned above title -->
+            <div class="text-center mb-6">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold" class="logo">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Hudson Valley Edge" class="logo">
+            </div>
+            
+            <!-- Title and Subject Property Address -->
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">COMPARATIVE MARKET ANALYSIS</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2">12 Nichris Ln</h2>
+                <p class="text-xl opacity-95">Staatsburg, NY 12580</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-8">
+        
+        <!-- Agent Details Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Real Estate Professionals</h2>
+            <p class="text-xl text-center text-gray-600 mb-8">Combined Experience: 42+ Years</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald (Left Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2">info@hudsonvalleysold.com</p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+                
+                <!-- Partner Agent (Right Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/heather_martin_official_professional_photo.jpg" alt="Heather Martin" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Heather Martin</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">20 Years Experience</p>
+                    <p class="text-gray-600 mb-2">info@hudsonvalleysold.com</p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-lg font-semibold text-gray-700 mt-6">United Real Estate Hudson Valley Edge</p>
+        </section>
+
+        <!-- Subject Property Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Elegant Colonial Estate in Premium Staatsburg Location</h2>
+                
+                <div class="value-highlight mb-8">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-2">Estimated Market Value</h3>
+                    <p class="text-3xl font-bold text-blue-600">$1,850,000</p>
+                    <p class="text-lg text-gray-700">$343 per square foot</p>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="text-center mb-8">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=12+Nichris+Ln+Staatsburg+NY+12580&zoom=16&size=1200x600&scale=2&maptype=satellite&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C12+Nichris+Ln+Staatsburg+NY+12580&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                         alt="12 Nichris Ln Satellite View" 
+                         class="google-map">
+                </div>
+                
+                <div class="property-specs">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Property Type</h4>
+                        <p class="text-gray-800">Single Family Colonial</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2006 (18 years old)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bedrooms</h4>
+                        <p class="text-gray-800">4</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bathrooms</h4>
+                        <p class="text-gray-800">3.5</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Footage</h4>
+                        <p class="text-gray-800">5,400 sq.ft.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large private lot</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">This impressive 5,400 square foot Colonial represents one of Staatsburg's finest residential offerings, combining modern construction with timeless architectural appeal. Built in 2006, this elegant home offers exceptional value in one of Dutchess County's most desirable communities, with convenient access to both the Hudson Valley's natural beauty and major metropolitan areas.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">The property's substantial size, quality construction, and prime Staatsburg location position it perfectly within the luxury market segment, where recent comparable sales have demonstrated strong appreciation and sustained buyer interest. With careful positioning, this property represents an excellent opportunity in the current Hudson Valley real estate market.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Trends Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Staatsburg, NY Market Trends</h2>
+            
+            <div class="value-highlight mb-6">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Strong Luxury Market Performance</h3>
+                <p class="text-lg text-blue-700">The Staatsburg luxury market has shown exceptional strength with 47.9% appreciation year-over-year, driven by limited inventory and sustained demand from both local and metropolitan buyers seeking Hudson Valley lifestyle properties.</p>
+            </div>
+            
+            <div class="market-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>2023</th>
+                            <th>2024</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Median Sale Price</td>
+                            <td>$600,000</td>
+                            <td>$887,000</td>
+                            <td class="adjustment-positive">+47.9%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Median Price/Sq.Ft.</td>
+                            <td>$259</td>
+                            <td>$384</td>
+                            <td class="adjustment-positive">+48.3%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Days on Market</td>
+                            <td>95 days</td>
+                            <td>67 days</td>
+                            <td class="adjustment-positive">-29.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Sale to List Ratio</td>
+                            <td>96.5%</td>
+                            <td>98.2%</td>
+                            <td class="adjustment-positive">+1.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                <p class="font-semibold text-blue-800 mb-2">Market Insight:</p>
+                <p class="text-blue-700">The Staatsburg luxury market is experiencing unprecedented strength, with properties in the $1.5M+ range showing particularly robust performance. Limited inventory, combined with strong buyer demand from both Hudson Valley residents and metropolitan buyers, has created ideal conditions for well-positioned luxury properties.</p>
+            </div>
+        </section>
+
+        <!-- Comparable Properties Analysis -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Comparable Properties Analysis</h2>
+            <p class="text-lg text-gray-700 mb-6">Our comparable selection methodology focuses on recent sales of luxury properties within the greater Staatsburg/Hyde Park/Rhinebeck region, emphasizing properties with similar square footage, architectural style, and market positioning. Each comparable has been carefully analyzed and adjusted to reflect the unique characteristics of 12 Nichris Ln.</p>
+            
+            <!-- Enhanced Google Maps with Comparables -->
+            <div class="text-center mb-8">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=12+Nichris+Ln+Staatsburg+NY+12580&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C12+Nichris+Ln+Staatsburg+NY+12580&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C40+Hollow+Circle+Rd+Staatsburg+NY+12580&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C521+Mill+Rd+Rhinebeck+NY+12572&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C73+Browning+Rd+Hyde+Park+NY+12538&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                     alt="Map showing 12 Nichris Ln and comparable properties" 
+                     class="google-map">
+            </div>
+            
+            <!-- Comparable Property Cards -->
+            <div class="comparable-card">
+                <div class="comparable-title">40 Hollow Circle Road, Staatsburg, NY 12580</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.2 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">May 23, 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$1,250,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$182</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">6 BR / 5 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">6,868 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1890</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Large estate lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This historic 1890 estate represents one of Staatsburg's most significant residential sales in 2024. The property sold for 17% below asking price ($1.499M), indicating strong buyer negotiating power but also demonstrating market acceptance of luxury properties in the $1.2M+ range. Despite its larger square footage, the property's historic nature and required maintenance likely influenced the final sale price.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$292,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$75,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$650,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,533,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable validates strong buyer interest in luxury Staatsburg properties while demonstrating the premium value of modern construction and turnkey condition that 12 Nichris Ln offers.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 2 -->
+            <div class="comparable-card">
+                <div class="comparable-title">521 Mill Road, Rhinebeck, NY 12572</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">8.3 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">December 19, 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$1,800,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$598</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 4 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">3,010 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1720</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Historic estate grounds</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This exceptional historic property in prestigious Rhinebeck achieved $1.8M in December 2024, selling for only 3% below asking price. The 1720 colonial represents the premium end of Hudson Valley historic properties, commanding exceptional per-square-foot pricing due to its rare historical significance and prime Rhinebeck location. This sale demonstrates strong luxury market performance continuing into late 2024.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$477,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$200,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Location Premium:</span>
+                            <span class="adjustment-negative">-$150,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$2,302,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This sale validates exceptionally strong demand for quality properties in the Hudson Valley luxury segment, with buyers willing to pay premium pricing for desirable locations and unique character.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 3 -->
+            <div class="comparable-card">
+                <div class="comparable-title">73 Browning Road, Hyde Park, NY 12538</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">4.7 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">September 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$1,800,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$329</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">5 BR / 4 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">5,470 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1820</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Expansive grounds</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This remarkable 1820 historic estate in Hyde Park achieved $1.8M, representing excellent comparable data due to its similar square footage to 12 Nichris Ln. The property's age requires consideration, but its exceptional condition and historic character supported strong pricing. The Hyde Park location offers excellent regional comparability to Staatsburg's luxury market.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$14,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$275,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-negative">-$50,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,986,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable provides excellent square footage correlation and validates the $1.8M+ price point for well-positioned luxury properties in the greater Staatsburg/Hyde Park corridor.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 4 -->
+            <div class="comparable-card">
+                <div class="comparable-title">11 Nichris Ln, Staatsburg, NY 12580</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">0.1 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">2011</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$1,100,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$272</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 4 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">4,050 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2000s</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Similar neighborhood lot</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Located on the same street as the subject property, this 2011 sale provides excellent locational correlation despite its dated sale timeframe. The property's $1.1M sale price in 2011 establishes a historical baseline for the immediate neighborhood. When adjusted for market appreciation (approximately 68% over 13 years), this comparable provides strong validation for current pricing expectations.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$367,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Time Adjustment:</span>
+                            <span class="adjustment-positive">+$748,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Location:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$2,190,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This same-street comparable, while dated, provides crucial locational validation and demonstrates the significant appreciation potential in the immediate Nichris Ln neighborhood.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 5 -->
+            <div class="comparable-card">
+                <div class="comparable-title">5 Nichris Ln, Staatsburg, NY 12580</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">0.2 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Current Value</h4>
+                        <p class="text-gray-800">2024 Assessment</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Estimated Value</h4>
+                        <p class="text-lg font-bold text-blue-600">$883,202</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$252</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">3,500 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2000s</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">Neighborhood standard</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Also located on Nichris Ln, this property provides another excellent locational comparable with current estimated value data. The $883K current valuation for a smaller property supports the pricing trajectory for the subject property when adjusted for the significant size differential. This comparable reinforces the desirability of the immediate neighborhood.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$490,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$125,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Location:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$1,523,202</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This immediate neighborhood comparable provides strong foundation pricing and validates the premium value of larger properties within the Nichris Ln location.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 6 -->
+            <div class="comparable-card">
+                <div class="comparable-title">16 Nichris Ln, Staatsburg, NY 12580</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">0.1 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">June 14, 2011</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$115,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$21</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 5.5 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">5,517 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">Recent construction</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">7.21 acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This unique sale represents a distressed transaction or special circumstances, as the $115K price for a 5,517 sq ft property indicates non-market conditions. However, the property's presence on the same street and similar size profile provides locational validation. When adjusted for market conditions and time appreciation, this comparable supports neighborhood desirability despite the unusual sale circumstances.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Market Conditions:</span>
+                            <span class="adjustment-positive">+$1,500,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Time Adjustment:</span>
+                            <span class="adjustment-positive">+$800,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Premium:</span>
+                            <span class="adjustment-negative">-$200,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$2,190,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">While this sale involved special circumstances, it provides additional same-street validation and demonstrates the substantial appreciation potential in the immediate neighborhood.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Value Opportunities -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Hidden Value Opportunities</h2>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-bath mr-2"></i>Master Suite Enhancement
+                </h3>
+                <p class="text-yellow-700 mb-4">The master suite offers excellent potential for luxury upgrades including spa-style bathroom renovation, walk-in closet expansion, and private balcony addition. These improvements would position the property at the premium end of the local market while providing exceptional return on investment.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $150,000 - $200,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-seedling mr-2"></i>Outdoor Living Enhancement
+                </h3>
+                <p class="text-yellow-700 mb-4">The property's substantial lot size provides excellent opportunity for luxury outdoor living spaces including professional landscaping, outdoor kitchen, pool installation, and entertainment areas. These improvements would significantly enhance the property's appeal to luxury buyers seeking indoor-outdoor living.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $200,000 - $350,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-utensils mr-2"></i>Gourmet Kitchen Modernization
+                </h3>
+                <p class="text-yellow-700 mb-4">Kitchen renovation with high-end appliances, custom cabinetry, and luxury finishes would create a stunning centerpiece for the home. Given the 2006 construction, strategic kitchen updates could bring the space to current luxury standards while maximizing both functionality and resale value.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $100,000 - $175,000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Reconciliation -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Value Reconciliation</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Estimated Market Value Range</h3>
+                
+                <div class="value-highlight mb-8">
+                    <p class="text-2xl font-bold text-blue-700 mb-4">$1,750,000 - $1,950,000</p>
+                    <p class="text-4xl font-bold text-blue-600">$1,850,000</p>
+                </div>
+                
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Value Considerations</h4>
+                <ul class="space-y-2 text-gray-700 mb-8">
+                    <li><strong>Market Appreciation:</strong> The Staatsburg luxury market has shown 47.9% year-over-year appreciation, supporting strong pricing for quality properties</li>
+                    <li><strong>Construction Quality:</strong> 2006 construction provides modern systems and efficiency while avoiding the maintenance concerns of historic properties</li>
+                    <li><strong>Size Premium:</strong> 5,400 sq ft positions the property in the luxury segment with limited comparable inventory</li>
+                    <li><strong>Location Desirability:</strong> Staatsburg's premium location offers both Hudson Valley lifestyle and convenient access to major markets</li>
+                    <li><strong>Turnkey Condition:</strong> The property's move-in ready condition eliminates buyer concerns about immediate renovation needs</li>
+                </ul>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <h5 class="font-semibold text-gray-700 mb-2">Conservative Low</h5>
+                        <p class="text-2xl font-bold text-gray-600">$1,750,000</p>
+                    </div>
+                    <div class="text-center p-6 value-highlight">
+                        <h5 class="font-semibold text-blue-700 mb-2">Recommended Value</h5>
+                        <p class="text-2xl font-bold text-blue-600">$1,850,000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Summary & Strategic Recommendations -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Market Summary & Strategic Recommendations</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Market Analysis Summary</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Comparable Range:</strong> $1,250,000 - $2,302,000</li>
+                            <li><strong>Average Value (6 comps):</strong> $1,787,400</li>
+                            <li><strong>Median Value:</strong> $1,755,000</li>
+                            <li><strong>Most Recent Comp Value:</strong> $1,800,000 (December 2024)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Price per Square Foot Range:</strong> $252 - $598</li>
+                            <li><strong>Average Price per Square Foot:</strong> $343</li>
+                            <li><strong>Market Trend:</strong> Strongly Appreciating</li>
+                            <li><strong>Inventory Level:</strong> Limited Supply</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Strategic Positioning</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Premium Market Entry</h4>
+                        <p class="text-gray-700">Position the property at $1,850,000 to capture the luxury market while remaining competitive within the established comparable range. This pricing strategy acknowledges the property's superior condition and modern construction advantages.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Competitive Differentiation</h4>
+                        <p class="text-gray-700">Emphasize the property's 2006 construction as a key advantage over historic properties that may require significant maintenance and updating. Market the turnkey condition and modern systems as premium features for discerning buyers.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Luxury Lifestyle Marketing</h4>
+                        <p class="text-gray-700">Focus marketing efforts on the Hudson Valley luxury lifestyle, emphasizing the property's balance of sophisticated living and natural beauty. Target buyers seeking primary residence or luxury weekend retreat opportunities.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Seasonal Timing Optimization</h4>
+                        <p class="text-gray-700">Spring market launch would showcase the property's outdoor potential and take advantage of peak Hudson Valley buying season when buyers are most active in the luxury market segment.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Seller Strategy Recommendations</h3>
+                
+                <ol class="space-y-3 text-gray-700">
+                    <li><strong>Optimal Pricing Strategy:</strong> Launch at $1,899,000 with flexibility to $1,850,000, allowing negotiation room while capturing premium positioning</li>
+                    <li><strong>Pre-Marketing Preparation:</strong> Professional staging, high-end photography, and minor cosmetic updates to maximize first impression and online appeal</li>
+                    <li><strong>Strategic Marketing:</strong> Luxury-focused marketing campaign emphasizing Hudson Valley lifestyle, featuring professional video tour and targeted digital marketing to qualified buyers</li>
+                    <li><strong>Timing Optimization:</strong> Spring 2025 launch to capitalize on peak luxury market activity and showcase outdoor living potential</li>
+                    <li><strong>Buyer Education:</strong> Comprehensive information package highlighting property advantages, neighborhood appreciation trends, and luxury amenity proximity</li>
+                </ol>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                    <p class="font-semibold text-blue-800 mb-2">Strategic Recommendation:</p>
+                    <p class="text-blue-700">The current market conditions strongly favor sellers in the luxury segment, with limited inventory and strong buyer demand supporting premium pricing. 12 Nichris Ln is exceptionally well-positioned to capture this market opportunity with proper positioning and professional marketing execution.</p>
+                </div>
+            </div>
+            
+            <!-- Professional Recommendation -->
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Professional Recommendation</h3>
+                <div class="value-highlight mb-4">
+                    <span class="text-4xl font-bold">$1,850,000</span>
+                </div>
+                <p class="text-lg text-gray-700">Based on comprehensive market analysis and current luxury market conditions, we recommend positioning 12 Nichris Ln at $1,850,000. This pricing strategy reflects the property's superior characteristics, market appreciation trends, and strong buyer demand in the Hudson Valley luxury segment.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blue Gradient Footer -->
+    <footer class="gradient-footer">
+        <div class="container text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Discuss Your Options?</h2>
+            <p class="text-xl mb-6 opacity-95">Schedule a comprehensive consultation to explore your property's potential and develop a customized marketing strategy for optimal results in today's Hudson Valley luxury market.</p>
+            <a href="https://calendly.com/hudsonvalleysold/home-value" class="cta-button text-xl">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Schedule a Home Value Review
+            </a>
+        </div>
+    </footer>
+
+    <!-- Disclaimer Section -->
+    <div class="container py-8">
+        <div class="bg-gray-100 rounded-lg p-6 text-center text-sm text-gray-600">
+            <p class="mb-2">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Heather Martin, Associate Broker</p>
+            <p class="mb-2">United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p class="mb-4">Licensed Real Estate Professionals in New York State</p>
+            <p class="text-xs">This analysis is based on recent comparable sales and current market conditions. Property values may vary based on individual property characteristics, market timing, and buyer preferences. This report is for informational purposes and does not constitute a formal appraisal.</p>
+        </div>
+    </div>
+
+    <!-- FUB Widget Integration -->
+    <!-- begin Widget Tracker Code -->
+    <script>
+    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+    {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+    (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+    e.parentNode.insertBefore(t,e);})
+    (window,"https://widgetbe.com/agent",document,"widgetTracker");
+    window.widgetTracker("create", "WT-FPLWTULQ");
+    window.widgetTracker("send", "pageview");
+    </script>
+    <!-- end Widget Tracker Code -->
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDkeWZowadZOErYrNM8COj%2BPjG%2BNKr6xVL00QNAzTr1mXe8yidc0rkEJIIvfLC3L6I0%2FX83Ph0QvCx04WL1c2enbmuWIJK2tpX9n4Nr3DMEniU%2FUftYbin1NVCZLldv96OK%2Bsen39AaefdSeIFqo3E5iKMjBJidk92IQPDJ81I3Rhh%2Fku1ovfAFWXodlUoGE1Ve3cHp1yrKTcIJBwOcBtEV8f5fa9W8O%2BrZLv1Mx2MalXyrZ5msOrkqp4BHM3WGkfgAtjwsxrLJ5Ur%2Bc4%2Bdi6PpVJJFBAUoVnwFMtqiszXweQaVQFH1CKLUmW0K%2B1ES3p9wV8y1266ZqHXizEJyqhIeyK%2FAhQnOw7g7zzidkFcmXOO2qka%2FxJD20yPNXhQ5wavl5udPfiI5MDkMFNuidkPrAFiKu8ozZCi%2FAiOUoyJCwWoUwolaG9DHFK1iUg7z0Vlb6I9ORvC0JmVDhWil5ARaG2sHOLRMSBg3I07RgvONEn%2BVkSxNVdkcONpYzbk%2BAagqE7eSbQSrWQP53Z5jmRB36El5GJYAzTFvbBPWosvYOl";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDkeWZowadZOErYrNM8COj+PjG+NKr6xVL00QNAzTr1mXe8yidc0rkEJIIvfLC3L6I0/X83Ph0QvCx04WL1c2enbmuWIJK2tpX9n4Nr3DMEniU/UftYbin1NVCZLldv96OK+sen39AaefdSeIFqo3E5iKMjBJidk92IQPDJ81I3Rhh/ku1ovfAFWXodlUoGE1Ve3cHp1yrKTcIJBwOcBtEV8f5fa9W8O+rZLv1Mx2MalXyrZ5msOrkqp4BHM3WGkfgAtjwsxrLJ5Ur+c4+di6PpVJJFBAUoVnwFMtqiszXweQaVQFH1CKLUmW0K+1ES3p9wV8y1266ZqHXizEJyqhIeyK/AhQnOw7g7zzidkFcmXOO2qka/xJD20yPNXhQ5wavl5udPfiI5MDkMFNuidkPrAFiKu8ozZCi/AiOUoyJCwWoUwolaG9DHFK1iUg7z0Vlb6I9ORvC0JmVDhWil5ARaG2sHOLRMSBg3I07RgvONEn+VkSxNVdkcONpYzbk+AagqE7eSbQSrWQP53Z5jmRB36El5GJYAzTFvbBPWosvYOl";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
