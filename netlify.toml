@@ -1,0 +1,30 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/fello-webhook"
+  to = "/.netlify/functions/fello-webhook"
+  status = 200
+
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health-check"
+  status = 200
+
+[context.production.environment]
+  FELLO_API_KEY = "uiQ4jADoUGeTqaBellkEcBxxrzQvgvnj"
+  FUB_API_TOKEN = "fka_0oHt622FKjKdBAbEHHeRjfdss5jBzspUbR"
+  GITHUB_TOKEN = "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"
+  GOOGLE_MAPS_API_KEY = "AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k"
+  WILLOW_VERSION = "40.0.0"
