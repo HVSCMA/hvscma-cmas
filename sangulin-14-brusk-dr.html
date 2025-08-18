@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 Brusk Dr, Hopewell Junction, NY - Comparative Market Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .gradient-footer {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+            margin: 0 15px 15px 15px;
+            max-width: 200px;
+        }
+        
+        .agent-photo {
+            width: 144px;
+            height: 144px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1rem;
+        }
+        
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .comparable-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .comparable-title {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .value-highlight {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .hidden-value-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
+        }
+        
+        .google-map {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid #e2e8f0;
+        }
+        
+        .market-table {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .market-table th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .market-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            word-wrap: break-word;
+        }
+        
+        .market-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-1px);
+            color: white;
+        }
+        
+        .property-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .property-specs div {
+            background: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .adjustment-positive {
+            color: #059669;
+            background: #d1fae5;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-negative {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-neutral {
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .gradient-header {
+                padding: 1.5rem 0;
+            }
+            
+            .logo {
+                height: 45px;
+                margin: 0 10px 10px 10px;
+                max-width: 150px;
+            }
+            
+            .agent-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .agent-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .comparable-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .market-table {
+                font-size: 0.875rem;
+            }
+            
+            .market-table th,
+            .market-table td {
+                padding: 0.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+                margin: 0 5px 8px 5px;
+            }
+            
+            .agent-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gradient-header {
+                padding: 1rem 0;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        .w-full {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        td, th {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Blue Gradient Header -->
+    <header class="gradient-header">
+        <div class="container">
+            <!-- Logos positioned above title -->
+            <div class="text-center mb-6">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold" class="logo">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Hudson Valley Edge" class="logo">
+            </div>
+            
+            <!-- Title and Subject Property Address -->
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">COMPARATIVE MARKET ANALYSIS</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2">14 Brusk Dr</h2>
+                <p class="text-xl opacity-95">Hopewell Junction, NY 12533</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-8">
+        
+        <!-- Agent Details Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Real Estate Professionals</h2>
+            <p class="text-xl text-center text-gray-600 mb-8">Combined Experience: 42+ Years</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald (Left Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7cec9c1c8e7cfd2c3d4c8c9d1c6cbcbc2ded4c8cbc389c4c8ca">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+                
+                <!-- Heather Martin (Right Side) -->
+                <div class="agent-card">
+                    <img src="https://assets.site-static.com/userFiles/3673/image/cma/heather_martin_official_professional_photo.jpg" alt="Heather Martin" class="agent-photo">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Heather Martin</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">20 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6afa8a0a986aeb3a2b5a9a8b0a7aaaaa3bfb5a9aaa2e8a5a9ab">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-lg font-semibold text-gray-700 mt-6">United Real Estate Hudson Valley Edge</p>
+        </section>
+
+        <!-- Subject Property Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Beautiful 5-Bedroom Colonial on Private 1-Acre Lot</h2>
+                
+                <div class="value-highlight mb-8">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-2">Estimated Market Value</h3>
+                    <p class="text-3xl font-bold text-blue-600">$580,000</p>
+                    <p class="text-lg text-gray-700">$279 per square foot</p>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="text-center mb-8">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=14+Brusk+Dr+Hopewell+Junction+NY+12533&zoom=16&size=1200x600&scale=2&maptype=satellite&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C14+Brusk+Dr+Hopewell+Junction+NY+12533&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                         alt="14 Brusk Dr Satellite View" 
+                         class="google-map">
+                </div>
+                
+                <div class="property-specs">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Property Type</h4>
+                        <p class="text-gray-800">Single Family Colonial</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1969 (55 years old)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bedrooms</h4>
+                        <p class="text-gray-800">5</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bathrooms</h4>
+                        <p class="text-gray-800">3 (2 full, 1 half)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Footage</h4>
+                        <p class="text-gray-800">2,080 sq.ft.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.0 acre</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">This charming 5-bedroom Colonial sits on a private 1-acre lot in the desirable Hopewell Junction area. The home features beautiful hardwood floors throughout, a cozy fireplace for gathering, and a partially finished basement offering additional living space and storage.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">The property includes modern conveniences with included appliances (dishwasher, dryer, freezer, microwave, range/oven, refrigerator, and washer) and an attached garage. The spacious lot provides excellent privacy and potential for outdoor entertaining, gardening, or recreational activities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Trends Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Hopewell Junction, NY Market Trends</h2>
+            
+            <div class="value-highlight mb-6">
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Strong Seller's Market with Continued Appreciation</h3>
+                <p class="text-lg text-blue-700">Hopewell Junction continues to experience steady home value appreciation with strong buyer demand and limited inventory creating favorable conditions for sellers.</p>
+            </div>
+            
+            <div class="market-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>2023</th>
+                            <th>2024</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Median Sale Price</td>
+                            <td>$539,200</td>
+                            <td>$572,866</td>
+                            <td class="adjustment-positive">+6.2%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Median Price/Sq.Ft.</td>
+                            <td>$263</td>
+                            <td>$279</td>
+                            <td class="adjustment-positive">+6.1%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Days on Market</td>
+                            <td>28 days</td>
+                            <td>32 days</td>
+                            <td class="adjustment-negative">+4 days</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Sale to List Ratio</td>
+                            <td>97.8%</td>
+                            <td>98.5%</td>
+                            <td class="adjustment-positive">+0.7%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                <p class="font-semibold text-blue-800 mb-2">Market Insight:</p>
+                <p class="text-blue-700">The Hopewell Junction market shows healthy appreciation with homes selling close to list price. The slight increase in days on market reflects seasonal patterns, while the strong sale-to-list ratio indicates buyer confidence and fair pricing by sellers.</p>
+            </div>
+        </section>
+
+        <!-- Comparable Properties Analysis -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Comparable Properties Analysis</h2>
+            <p class="text-lg text-gray-700 mb-6">We've selected 6 comparable properties within 2 miles of the subject property, sold within the last 12 months, with similar square footage, bedroom/bathroom counts, and lot sizes to provide the most accurate market valuation.</p>
+            
+            <!-- Enhanced Google Maps with Comparables -->
+            <div class="text-center mb-8">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=14+Brusk+Dr+Hopewell+Junction+NY+12533&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C14+Brusk+Dr+Hopewell+Junction+NY+12533&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C20+Brusk+Dr+Hopewell+Junction+NY+12533&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C5+Brusk+Dr+Hopewell+Junction+NY+12533&markers=icon:https://maps.google.com/mapfiles/ms/icons/blue-dot.png%7C3+Brusk+Dr+Hopewell+Junction+NY+12533&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                     alt="Map showing 14 Brusk Dr and comparable properties" 
+                     class="google-map">
+            </div>
+            
+            <!-- Comparable Property 1 -->
+            <div class="comparable-card">
+                <div class="comparable-title">20 Brusk Dr, Hopewell Junction, NY 12533</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">0.1 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">April 10, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$490,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$238</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,056 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1975</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.0 acre</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This property is directly on Brusk Dr, providing the most comparable location match. The home sold quickly in a competitive spring market, attracting multiple offers due to its desirable neighborhood location and large lot size.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$1,200</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms (5 vs 4):</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$8,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$514,200</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This is our strongest comparable due to identical location and lot size. The subject property's additional bedroom and slightly older construction balance out, supporting a higher valuation range.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 2 -->
+            <div class="comparable-card">
+                <div class="comparable-title">5 Brusk Dr, Hopewell Junction, NY 12533</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">0.2 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">March 15, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$525,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$248</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,120 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1978</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">0.8 acre</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Another Brusk Drive property with similar characteristics. This home benefited from recent updates and sold above initial asking price after 18 days on market, indicating strong buyer interest in the neighborhood.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$2,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms (5 vs 4):</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$12,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$8,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$558,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">This comparable supports the upper end of our valuation range due to similar location and the market appreciation between March and current date.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 3 -->
+            <div class="comparable-card">
+                <div class="comparable-title">26 Doran Dr, Hopewell Junction, NY 12533</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">0.8 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">February 28, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$545,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$265</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 2.5 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,056 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1974</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.0 acre</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Located in a similar neighborhood setting with comparable lot size and home characteristics. This property had been on market since 1974 ownership and sold to buyers seeking the same rural residential feel as Brusk Drive.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$1,200</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms (5 vs 4):</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms (3 vs 2.5):</span>
+                            <span class="adjustment-positive">+$8,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$569,200</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Strong comparable with similar buyer demographic and property characteristics. The higher price per square foot reflects market appreciation and desirable features.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 4 -->
+            <div class="comparable-card">
+                <div class="comparable-title">14 Buroak Dr, Hopewell Junction, NY 12533</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.2 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">January 20, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$585,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$250</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">5 BR / 3.5 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,337 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1978</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">0.9 acre</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This 5-bedroom home in a similar neighborhood setting provides excellent comparison for bedroom count and overall layout. The property sold during winter months but still achieved strong pricing due to desirable features.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$12,850</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms (3 vs 3.5):</span>
+                            <span class="adjustment-negative">-$5,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$8,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$4,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$579,150</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Excellent bedroom count match with this comparable. The adjusted value strongly supports our target pricing range despite the larger square footage difference.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 5 -->
+            <div class="comparable-card">
+                <div class="comparable-title">283 Augusta Dr, Hopewell Junction, NY 12533</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.8 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">December 15, 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$520,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$375</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,387 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1956</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">0.7 acre</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Smaller home but demonstrates strong price per square foot in the market area. This property was extensively updated and shows the premium buyers will pay for renovated homes with character.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$138,600</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms (5 vs 3):</span>
+                            <span class="adjustment-positive">+$30,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bathrooms (3 vs 2):</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$12,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$715,600</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">While this comparable adjusts high due to size differences, it demonstrates the market's appetite for well-maintained properties and supports strong pricing potential.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 6 -->
+            <div class="comparable-card">
+                <div class="comparable-title">79 Saddle Ridge Dr, Hopewell Junction, NY 12533</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.9 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">November 28, 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$680,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$227</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,988 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1985</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.2 acre</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Larger home in desirable Saddle Ridge neighborhood. Currently active listing shows market expectations. The larger square footage and premium location command higher pricing but provide useful market context.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-negative">-$45,400</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms (5 vs 4):</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$8,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-negative">-$8,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$633,600</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">While this comparable adjusts above our target range due to size premium, it demonstrates strong market ceiling and buyer willingness to pay for desirable properties in the area.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Value Opportunities -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Hidden Value Opportunities</h2>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-bath mr-2"></i>Full Bathroom Addition/Upgrade
+                </h3>
+                <p class="text-yellow-700 mb-4">Converting the half bath to a full bath or adding another full bathroom would significantly enhance the property's appeal and value. The large square footage provides flexibility for bathroom expansion or master suite enhancement.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $15,000 - $25,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-seedling mr-2"></i>Landscaping & Outdoor Living Enhancement
+                </h3>
+                <p class="text-yellow-700 mb-4">The private 1-acre lot offers tremendous potential for landscaping improvements, deck/patio additions, or outdoor entertaining spaces. Strategic outdoor improvements could significantly enhance curb appeal and functional outdoor living.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $10,000 - $20,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-utensils mr-2"></i>Kitchen Modernization
+                </h3>
+                <p class="text-yellow-700 mb-4">Kitchen updates including modern appliances, countertops, and cabinetry could transform this space into a modern focal point. Given the home's age (1969), strategic kitchen improvements would provide excellent return on investment.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $20,000 - $35,000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Reconciliation -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Value Reconciliation</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Estimated Market Value Range</h3>
+                
+                <div class="value-highlight mb-8">
+                    <p class="text-2xl font-bold text-blue-700 mb-4">$550,000 - $610,000</p>
+                    <p class="text-4xl font-bold text-blue-600">$580,000</p>
+                </div>
+                
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Value Considerations</h4>
+                <ul class="space-y-2 text-gray-700 mb-8">
+                    <li><strong>Location Premium:</strong> Brusk Drive is a highly desirable street with larger lots and established neighborhood character</li>
+                    <li><strong>Bedroom Count Advantage:</strong> 5 bedrooms provides significant value over 4-bedroom comparables in current market</li>
+                    <li><strong>Lot Size Premium:</strong> Full acre lot commands premium over smaller lots, especially in current market conditions</li>
+                    <li><strong>Market Timing:</strong> Spring/summer selling season approaching provides optimal timing for maximum value</li>
+                    <li><strong>Improvement Potential:</strong> Hidden value opportunities provide upside potential for motivated sellers</li>
+                </ul>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <h5 class="font-semibold text-gray-700 mb-2">Conservative Low</h5>
+                        <p class="text-2xl font-bold text-gray-600">$550,000</p>
+                    </div>
+                    <div class="text-center p-6 value-highlight">
+                        <h5 class="font-semibold text-blue-700 mb-2">Recommended Value</h5>
+                        <p class="text-2xl font-bold text-blue-600">$580,000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Summary & Strategic Recommendations -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Market Summary & Strategic Recommendations</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Market Analysis Summary</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Comparable Range:</strong> $490,000 - $680,000</li>
+                            <li><strong>Average Value (6 comps):</strong> $574,167</li>
+                            <li><strong>Median Value:</strong> $535,000</li>
+                            <li><strong>Most Recent Comp Value:</strong> $490,000 (April 2025)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Price per Square Foot Range:</strong> $227 - $375</li>
+                            <li><strong>Average Price per Square Foot:</strong> $279</li>
+                            <li><strong>Market Trend:</strong> Steady Appreciation (+6.2%)</li>
+                            <li><strong>Inventory Level:</strong> Balanced to Low</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Strategic Positioning</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Optimal List Price Strategy</h4>
+                        <p class="text-gray-700">Position at $579,900 to attract serious buyers while leaving room for negotiation. This pricing captures the premium for 5 bedrooms and large lot while remaining competitive.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Market Timing Advantage</h4>
+                        <p class="text-gray-700">Spring market timing provides maximum buyer activity. List in late February/early March to capture peak buyer interest and multiple offer potential.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Competitive Differentiation</h4>
+                        <p class="text-gray-700">Highlight the rare 5-bedroom configuration and full acre lot as key differentiators. These features are in high demand and justify premium pricing over 4-bedroom alternatives.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Pre-Sale Enhancement Focus</h4>
+                        <p class="text-gray-700">Focus on cost-effective improvements: professional cleaning, minor paint touch-ups, and enhancing curb appeal to maximize first impression impact.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Seller Strategy Recommendations</h3>
+                
+                <ol class="space-y-3 text-gray-700">
+                    <li><strong>Optimal Pricing Strategy:</strong> List at $579,900 to position competitively while capturing bedroom and lot premiums</li>
+                    <li><strong>Pre-Marketing Preparation:</strong> Focus on decluttering, deep cleaning, and minor cosmetic improvements to enhance showing readiness</li>
+                    <li><strong>Strategic Marketing:</strong> Emphasize unique features - 5 bedrooms, 1-acre lot, established neighborhood, and privacy advantages</li>
+                    <li><strong>Timing Optimization:</strong> Target March listing to capture spring buyer activity and optimal market conditions</li>
+                    <li><strong>Buyer Education:</strong> Prepare information packet highlighting neighborhood amenities, lot potential, and home's distinctive features</li>
+                </ol>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                    <p class="font-semibold text-blue-800 mb-2">Strategic Recommendation:</p>
+                    <p class="text-blue-700">This property offers excellent market positioning with its 5-bedroom configuration and desirable lot size. Strategic pricing and marketing will attract multiple qualified buyers and achieve optimal value.</p>
+                </div>
+            </div>
+            
+            <!-- Professional Recommendation -->
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Professional Recommendation</h3>
+                <div class="value-highlight mb-4">
+                    <span class="text-4xl font-bold">$580,000</span>
+                </div>
+                <p class="text-lg text-gray-700">Based on comprehensive market analysis, comparable sales data, and current market conditions, we recommend positioning this property at $580,000. This valuation reflects the premium for 5 bedrooms, desirable location, and strong market fundamentals while remaining competitive for optimal market response.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blue Gradient Footer -->
+    <footer class="gradient-footer">
+        <div class="container text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Discuss Your Options?</h2>
+            <p class="text-xl mb-6 opacity-95">Let's explore how we can maximize your home's value and achieve your selling goals</p>
+            <a href="https://calendly.com/hudsonvalleysold/home-value" class="cta-button text-xl">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Schedule a Home Value Review
+            </a>
+        </div>
+    </footer>
+
+    <!-- Disclaimer Section -->
+    <div class="container py-8">
+        <div class="bg-gray-100 rounded-lg p-6 text-center text-sm text-gray-600">
+            <p class="mb-2">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Heather Martin, Associate Broker</p>
+            <p class="mb-2">United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p class="mb-4">Licensed Real Estate Professionals in New York State</p>
+            <p class="text-xs">This analysis is based on recent comparable sales and current market conditions. Property values may vary based on individual property characteristics, market timing, and buyer preferences. This report is for informational purposes and does not constitute a formal appraisal.</p>
+        </div>
+    </div>
+
+    <!-- FUB Widget Integration -->
+    <!-- begin Widget Tracker Code -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+    {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+    (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+    e.parentNode.insertBefore(t,e);})
+    (window,"https://widgetbe.com/agent",document,"widgetTracker");
+    window.widgetTracker("create", "WT-FPLWTULQ");
+    window.widgetTracker("send", "pageview");
+    </script>
+    <!-- end Widget Tracker Code -->
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDrFgdaT2jwMJ16d8FBudNPA7zXFB9wIneKdZHpSJk1SedJQYdtWNGd1afSMaKMc0f1mUusSUard%2FcHj%2FZTOa%2Faq3xLzPxDe55IzUt6mbFX%2BMdyow5S5nr4B8ShpLiScSHviB5G1QSJ%2FBIm57uc%2B4CG0SP6%2FgYsHEiD0HCpy6X9KqAdUAa0F7WC1eJ45bUf3A%2B7V%2B024rg36MK5g8OFm20KoWNmWbdWTedDSD35bCwF4%2B3ZRs0eJOYSOGWKotYQl8YZraFbPZiuOLg3joRoRorMOvbQgPn99f83fkJEzNuZuO%2BkRXVhvlLbjmHX0rsoy44qkAeLIXs%2Bis5YKvwzB0H5TF2tl%2FJmSwVnLAvk4VWQIMTbvVH5uFzaULBbpnGTmMUFReQ%2FFw7%2FXxd1qIXy5t8DfYQARYSCRGR0h6GQNazuzhyVx7TPX5b55FQWVRCtZOSbN19rXJenten2jJ5rHEOp65NPWksutz9A71wtoy5cBBJ5u6D%2FksjqV%2BFkXsasU8ZQ%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDrFgdaT2jwMJ16d8FBudNPA7zXFB9wIneKdZHpSJk1SedJQYdtWNGd1afSMaKMc0f1mUusSUard/cHj/ZTOa/aq3xLzPxDe55IzUt6mbFX+Mdyow5S5nr4B8ShpLiScSHviB5G1QSJ/BIm57uc+4CG0SP6/gYsHEiD0HCpy6X9KqAdUAa0F7WC1eJ45bUf3A+7V+024rg36MK5g8OFm20KoWNmWbdWTedDSD35bCwF4+3ZRs0eJOYSOGWKotYQl8YZraFbPZiuOLg3joRoRorM
