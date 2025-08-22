@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer Opportunities | Club Management</title>
+    <title>Volunteer Opportunities | Hidden Harbor Yacht Club</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
             min-height: 100vh;
             color: #333;
         }
@@ -28,651 +28,759 @@
 
         .header {
             text-align: center;
-            color: white;
             margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header i {
+            font-size: 3rem;
+            color: #1e40af;
+            margin-bottom: 15px;
         }
 
         .header h1 {
             font-size: 2.5rem;
-            font-weight: 700;
+            color: #1e40af;
             margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            color: #0ea5e9;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .header p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            color: #666;
         }
 
-        .events-container {
-            background: white;
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
-        .events-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .events-header h2 {
-            color: #333;
+        .events-section h2 {
+            color: #1e40af;
+            margin-bottom: 20px;
             font-size: 1.8rem;
-            font-weight: 600;
-        }
-
-        .admin-link {
-            background: #ff6b6b;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .admin-link:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .event-card {
-            border: 1px solid #e0e0e0;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
-            overflow: hidden;
+            padding: 25px;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #0ea5e9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .event-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-        }
-
-        .event-content {
-            padding: 20px;
-        }
-
-        .event-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .event-details {
-            color: #666;
+            border-radius: 8px;
             margin-bottom: 15px;
         }
 
-        .event-details i {
-            margin-right: 8px;
-            color: #667eea;
-        }
-
-        .event-progress {
-            margin-top: 15px;
-        }
-
-        .progress-bar {
-            background: #f0f0f0;
-            border-radius: 20px;
-            height: 8px;
-            overflow: hidden;
+        .event-title {
+            font-size: 1.5rem;
+            color: #1e40af;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
-        .progress-fill {
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            height: 100%;
-            border-radius: 20px;
-            transition: width 0.3s ease;
+        .event-date {
+            color: #0ea5e9;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
 
-        .progress-text {
-            font-size: 0.9rem;
+        .event-description {
             color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .volunteer-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: #e0f2fe;
+            color: #0277bd;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
         }
 
         .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-        }
-
-        .empty-state i {
-            font-size: 4rem;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .loading {
             text-align: center;
             padding: 40px;
             color: #666;
         }
 
-        .loading i {
-            font-size: 2rem;
-            margin-right: 10px;
-            animation: spin 1s linear infinite;
+        .empty-state i {
+            font-size: 3rem;
+            color: #cbd5e1;
+            margin-bottom: 15px;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .modal {
+        .gate-modal {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-content {
-            background-color: white;
-            margin: 5% auto;
+            background: white;
             padding: 30px;
             border-radius: 15px;
+            max-width: 500px;
             width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes modalSlideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .modal-content h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
 
-        .close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #aaa;
-        }
-
-        .close:hover {
-            color: #333;
-        }
-
-        .signup-form {
-            margin-top: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .modal-content input {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #e2e8f0;
             border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
+            font-size: 1rem;
+            margin: 15px 0;
+            text-align: center;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .modal-content input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #0ea5e9;
         }
 
-        .submit-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .modal-btn {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9);
             color: white;
-            padding: 15px 30px;
             border: none;
+            padding: 12px 25px;
             border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
-            width: 100%;
+            margin: 10px;
             transition: all 0.3s ease;
         }
 
-        .submit-btn:hover {
+        .modal-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
         }
 
-        .task-list {
-            margin: 20px 0;
-        }
-
-        .task-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background: #f9f9f9;
-        }
-
-        .task-name {
-            font-weight: 500;
-        }
-
-        .task-count {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .volunteers-list {
-            margin-top: 15px;
-        }
-
-        .volunteer-item {
-            background: white;
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            border-left: 4px solid #667eea;
+        .cancel-btn {
+            background: #64748b;
         }
 
         .error-message {
-            background: #ffe6e6;
-            color: #d63031;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #d63031;
+            color: #dc2626;
+            margin-top: 10px;
+            font-size: 0.9rem;
         }
 
-        .success-message {
-            background: #e6ffe6;
-            color: #00b894;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #00b894;
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer a:hover {
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
             .header h1 {
                 font-size: 2rem;
             }
 
-            .events-container {
-                padding: 20px;
+            .header h2 {
+                font-size: 1.2rem;
             }
 
-            .events-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 15px;
             }
 
-            .events-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .modal-content {
-                margin: 10% auto;
-                padding: 20px;
+            .volunteer-stats {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-hands-helping"></i> Volunteer Opportunities</h1>
+        <!-- Header -->
+        <header class="header">
+            <i class="fas fa-anchor"></i>
+            <h1>Hidden Harbor Yacht Club</h1>
+            <h2>Volunteer Opportunities</h2>
             <p>Find volunteer opportunities and make a difference</p>
-        </div>
+        </header>
 
-        <div class="events-container">
-            <div class="events-header">
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="events-section">
                 <h2><i class="fas fa-calendar-alt"></i> Available Events</h2>
-                <a href="admin.html" class="admin-link">
-                    <i class="fas fa-cog"></i> Event Management
-                </a>
-            </div>
-
-            <div id="events-grid" class="events-grid">
-                <div class="loading">
-                    <i class="fas fa-spinner"></i>
-                    Loading available events...
+                <div id="events-container">
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-plus"></i>
+                        <h3>No Events Available</h3>
+                        <p>Check back soon for volunteer opportunities!</p>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Thank you for volunteering! ⚓</p>
+            <p><strong>Hidden Harbor Yacht Club</strong></p>
+            <p><a href="admin.html">Event Management</a></p>
+        </footer>
     </div>
 
-    <!-- Event Signup Modal -->
-    <div id="event-modal" class="modal">
+    <!-- Gate Code Modal -->
+    <div id="gate-modal" class="gate-modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="event-details">
-                <!-- Event details will be loaded here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Gate Code Verification Modal -->
-    <div id="gate-code-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3><i class="fas fa-key"></i> Member Verification</h3>
-            <p>Please enter the club gate code to continue:</p>
-            <div class="form-group">
-                <input type="password" id="gate-code-input" placeholder="Enter gate code..." maxlength="4">
-            </div>
-            <div id="gate-code-error" class="error-message" style="display: none;">
+            <i class="fas fa-key" style="font-size: 2rem; color: #1e40af; margin-bottom: 15px;"></i>
+            <h3>HHYC Member Verification</h3>
+            <p>Please enter the Hidden Harbor Yacht Club gate code to continue:</p>
+            <input type="password" id="gate-code-input" placeholder="Enter gate code..." maxlength="4">
+            <div id="gate-error" class="error-message" style="display: none;">
                 Incorrect gate code. Please try again.
             </div>
-            <button onclick="verifyGateCode()" class="submit-btn">Verify</button>
+            <div>
+                <button onclick="closeGateModal()" class="modal-btn cancel-btn">Cancel</button>
+                <button onclick="verifyGateCode()" class="modal-btn">Verify</button>
+            </div>
+            <div style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                <i class="fas fa-info-circle"></i>
+                This is the same code you use at the club entrance gate.
+            </div>
         </div>
     </div>
 
     <script>
         // Global variables
-        let currentEvent = null;
-        let currentTask = null;
+        let currentEventSlug = '';
         const GATE_CODE = '1957';
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('Hidden Harbor Yacht Club Volunteer System initialized');
+            checkForEventPage();
             loadEvents();
-            setupEventListeners();
         });
 
-        function setupEventListeners() {
-            // Modal close buttons
-            document.querySelectorAll('.close').forEach(closeBtn => {
-                closeBtn.onclick = function() {
-                    this.closest('.modal').style.display = 'none';
-                }
-            });
+        // Check if we're on an individual event page
+        function checkForEventPage() {
+            const path = window.location.pathname;
+            const pathParts = path.split('/').filter(part => part);
 
-            // Click outside modal to close
-            window.onclick = function(event) {
-                if (event.target.classList.contains('modal')) {
-                    event.target.style.display = 'none';
-                }
+            // Check if we're on an event-specific page
+            if (pathParts.length >= 2 && pathParts[pathParts.length - 2] !== 'volunteer') {
+                const eventSlug = pathParts[pathParts.length - 2];
+                console.log('Event page detected:', eventSlug);
+                loadEventPage(eventSlug);
+                return true;
             }
+
+            // Check for direct event slug in URL
+            if (pathParts.length >= 1 && pathParts[0] !== 'volunteer' && pathParts[0] !== 'admin.html') {
+                const eventSlug = pathParts[0];
+                console.log('Direct event slug detected:', eventSlug);
+                loadEventPage(eventSlug);
+                return true;
+            }
+
+            return false;
         }
 
+        // Load events from localStorage
         function loadEvents() {
             const events = getStoredEvents();
-            const eventsGrid = document.getElementById('events-grid');
+            const container = document.getElementById('events-container');
+
+            if (!container) return;
 
             if (events.length === 0) {
-                eventsGrid.innerHTML = `
+                container.innerHTML = `
                     <div class="empty-state">
                         <i class="fas fa-calendar-plus"></i>
                         <h3>No Events Available</h3>
-                        <p>Check back later for volunteer opportunities.</p>
+                        <p>Check back soon for volunteer opportunities!</p>
                     </div>
                 `;
                 return;
             }
 
-            eventsGrid.innerHTML = events.map(event => createEventCard(event)).join('');
+            container.innerHTML = events.map(event => createEventCard(event)).join('');
         }
 
+        // Create event card HTML
         function createEventCard(event) {
-            const volunteers = getEventVolunteers(event.slug);
             const totalNeeded = event.tasks.reduce((sum, task) => sum + task.needed, 0);
-            const totalSignedUp = volunteers.length;
-            const progressPercent = totalNeeded > 0 ? (totalSignedUp / totalNeeded) * 100 : 0;
+            const totalVolunteers = event.tasks.reduce((sum, task) => sum + task.volunteers.length, 0);
+            const completionRate = totalNeeded > 0 ? Math.round((totalVolunteers / totalNeeded) * 100) : 0;
+
+            const eventDate = new Date(event.eventDate);
+            const formattedDate = eventDate.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
 
             return `
-                <div class="event-card" onclick="openEventModal('${event.slug}')">
-                    ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.name}" class="event-image">` : '<div class="event-image"></div>'}
-                    <div class="event-content">
-                        <h3 class="event-title">${event.name}</h3>
-                        <div class="event-details">
-                            <div><i class="fas fa-calendar"></i> ${formatDate(event.date)}</div>
-                            <div><i class="fas fa-clock"></i> ${event.startTime} - ${event.endTime}</div>
-                            <div><i class="fas fa-map-marker-alt"></i> Club Facilities</div>
+                <div class="event-card" onclick="viewEvent('${event.eventSlug}')">
+                    ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.eventName}" class="event-image" onerror="this.style.display='none'">` : ''}
+                    <div class="event-title">${event.eventName}</div>
+                    <div class="event-date">
+                        <i class="fas fa-calendar"></i> ${formattedDate} • ${event.startTime} - ${event.endTime}
+                    </div>
+                    <div class="event-description">${event.description}</div>
+                    <div class="volunteer-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i> ${totalVolunteers}/${totalNeeded} volunteers
                         </div>
-                        <p>${event.description}</p>
-                        <div class="event-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${Math.min(progressPercent, 100)}%"></div>
-                            </div>
-                            <div class="progress-text">
-                                ${totalSignedUp} of ${totalNeeded} volunteers signed up
-                            </div>
+                        <div class="stat">
+                            <i class="fas fa-tasks"></i> ${event.tasks.length} tasks
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-chart-pie"></i> ${completionRate}% complete
                         </div>
                     </div>
+                    <button class="signup-btn" onclick="event.stopPropagation(); signupForEvent('${event.eventSlug}')">
+                        <i class="fas fa-hand-paper"></i> Volunteer for this Event
+                    </button>
                 </div>
             `;
         }
 
-        function openEventModal(eventSlug) {
-            const event = getStoredEvents().find(e => e.slug === eventSlug);
-            if (!event) return;
-
-            currentEvent = event;
-            const volunteers = getEventVolunteers(eventSlug);
-
-            document.getElementById('event-details').innerHTML = `
-                <h2>${event.name}</h2>
-                ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.name}" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; margin: 15px 0;">` : ''}
-                <div class="event-details">
-                    <div><i class="fas fa-calendar"></i> ${formatDate(event.date)}</div>
-                    <div><i class="fas fa-clock"></i> ${event.startTime} - ${event.endTime}</div>
-                </div>
-                <p style="margin: 15px 0;">${event.description}</p>
-
-                <h3>Available Tasks</h3>
-                <div class="task-list">
-                    ${event.tasks.map(task => {
-                        const taskVolunteers = volunteers.filter(v => v.taskId === task.id);
-                        return `
-                            <div class="task-item">
-                                <div>
-                                    <div class="task-name">${task.name}</div>
-                                    <div class="task-count">${taskVolunteers.length} of ${task.needed} volunteers</div>
-                                    ${taskVolunteers.length > 0 ? `
-                                        <div class="volunteers-list">
-                                            ${taskVolunteers.map(v => `<div class="volunteer-item">${v.name}</div>`).join('')}
-                                        </div>
-                                    ` : ''}
-                                </div>
-                                ${taskVolunteers.length < task.needed ? `
-                                    <button onclick="startSignup(${task.id})" class="submit-btn" style="width: auto; padding: 8px 16px;">
-                                        Sign Up
-                                    </button>
-                                ` : '<span style="color: #00b894; font-weight: 600;">Full</span>'}
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-            `;
-
-            document.getElementById('event-modal').style.display = 'block';
+        // View individual event
+        function viewEvent(eventSlug) {
+            window.location.href = `/${eventSlug}/`;
         }
 
-        function startSignup(taskId) {
-            currentTask = taskId;
-            document.getElementById('event-modal').style.display = 'none';
-            document.getElementById('gate-code-modal').style.display = 'block';
+        // Sign up for event
+        function signupForEvent(eventSlug) {
+            currentEventSlug = eventSlug;
+            showGateModal();
+        }
+
+        // Show gate code modal
+        function showGateModal() {
+            const modal = document.getElementById('gate-modal');
+            modal.style.display = 'flex';
             document.getElementById('gate-code-input').focus();
         }
 
-        function verifyGateCode() {
-            const enteredCode = document.getElementById('gate-code-input').value;
-            const errorDiv = document.getElementById('gate-code-error');
+        // Close gate code modal
+        function closeGateModal() {
+            const modal = document.getElementById('gate-modal');
+            modal.style.display = 'none';
+            document.getElementById('gate-code-input').value = '';
+            document.getElementById('gate-error').style.display = 'none';
+        }
 
-            if (enteredCode === GATE_CODE) {
-                document.getElementById('gate-code-modal').style.display = 'none';
-                showSignupForm();
+        // Verify gate code
+        function verifyGateCode() {
+            const input = document.getElementById('gate-code-input');
+            const error = document.getElementById('gate-error');
+
+            if (input.value === GATE_CODE) {
+                closeGateModal();
+                if (currentEventSlug) {
+                    window.location.href = `/${currentEventSlug}/`;
+                }
             } else {
-                errorDiv.style.display = 'block';
-                document.getElementById('gate-code-input').value = '';
-                document.getElementById('gate-code-input').focus();
+                error.style.display = 'block';
+                input.value = '';
+                input.focus();
             }
         }
 
-        function showSignupForm() {
-            const task = currentEvent.tasks.find(t => t.id === currentTask);
-
-            document.getElementById('event-details').innerHTML = `
-                <h2>Sign Up for ${currentEvent.name}</h2>
-                <h3>Task: ${task.name}</h3>
-                <p><strong>Date:</strong> ${formatDate(currentEvent.date)} | <strong>Time:</strong> ${currentEvent.startTime} - ${currentEvent.endTime}</p>
-
-                <form class="signup-form" onsubmit="submitSignup(event)">
-                    <div class="form-group">
-                        <label for="volunteer-name">Your Name *</label>
-                        <input type="text" id="volunteer-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="volunteer-email">Email Address *</label>
-                        <input type="email" id="volunteer-email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="volunteer-phone">Phone Number (optional)</label>
-                        <input type="tel" id="volunteer-phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="volunteer-notes">Notes (optional)</label>
-                        <textarea id="volunteer-notes" rows="3" placeholder="Any special requests or notes..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-check"></i> Sign Me Up!
-                    </button>
-                </form>
-            `;
-
-            document.getElementById('event-modal').style.display = 'block';
-        }
-
-        function submitSignup(event) {
-            event.preventDefault();
-
-            const volunteer = {
-                id: Date.now(),
-                name: document.getElementById('volunteer-name').value,
-                email: document.getElementById('volunteer-email').value,
-                phone: document.getElementById('volunteer-phone').value,
-                notes: document.getElementById('volunteer-notes').value,
-                taskId: currentTask,
-                eventSlug: currentEvent.slug,
-                signupDate: new Date().toISOString()
-            };
-
-            saveVolunteer(volunteer);
-            showSuccessMessage();
-            sendThankYouEmail(volunteer);
-            sendOrganizerUpdate(currentEvent, volunteer);
-
-            // Refresh the events display
-            setTimeout(() => {
-                document.getElementById('event-modal').style.display = 'none';
-                loadEvents();
-            }, 2000);
-        }
-
-        function showSuccessMessage() {
-            document.getElementById('event-details').innerHTML = `
-                <div style="text-align: center; padding: 40px;">
-                    <i class="fas fa-check-circle" style="font-size: 4rem; color: #00b894; margin-bottom: 20px;"></i>
-                    <h2>Thank You!</h2>
-                    <p>You've successfully signed up for ${currentEvent.name}. We'll send you more details closer to the event.</p>
-                </div>
-            `;
-        }
-
-        // Data storage functions
-        function getStoredEvents() {
-            const events = localStorage.getItem('volunteerEvents');
-            return events ? JSON.parse(events) : [];
-        }
-
-        function getEventVolunteers(eventSlug) {
-            const volunteers = localStorage.getItem('eventVolunteers');
-            const allVolunteers = volunteers ? JSON.parse(volunteers) : [];
-            return allVolunteers.filter(v => v.eventSlug === eventSlug);
-        }
-
-        function saveVolunteer(volunteer) {
-            const volunteers = localStorage.getItem('eventVolunteers');
-            const allVolunteers = volunteers ? JSON.parse(volunteers) : [];
-            allVolunteers.push(volunteer);
-            localStorage.setItem('eventVolunteers', JSON.stringify(allVolunteers));
-        }
-
-        // Email simulation functions
-        function sendThankYouEmail(volunteer) {
-            console.log('Thank you email sent to:', volunteer.email);
-            console.log('Email content: Thank you for volunteering for', currentEvent.name);
-        }
-
-        function sendOrganizerUpdate(event, volunteer) {
-            console.log('Organizer update sent for event:', event.name);
-            console.log('New volunteer:', volunteer.name, 'signed up for task ID:', volunteer.taskId);
-        }
-
-        // Utility functions
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-        }
-
-        // Enter key support for gate code
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && document.getElementById('gate-code-modal').style.display === 'block') {
+        // Handle Enter key in gate code input
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && document.getElementById('gate-modal').style.display === 'flex') {
                 verifyGateCode();
             }
         });
+
+        // Load event page content
+        function loadEventPage(eventSlug) {
+            const events = getStoredEvents();
+            const event = events.find(e => e.eventSlug === eventSlug);
+
+            if (!event) {
+                document.body.innerHTML = `
+                    <div class="container">
+                        <div class="main-content" style="text-align: center; padding: 60px 30px;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #f59e0b; margin-bottom: 20px;"></i>
+                            <h2 style="color: #1e40af; margin-bottom: 15px;">Event Not Found</h2>
+                            <p style="color: #666; margin-bottom: 25px;">The event you're looking for doesn't exist or has been removed.</p>
+                            <a href="/volunteer/" style="display: inline-block; background: linear-gradient(135deg, #1e40af, #0ea5e9); color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                                <i class="fas fa-arrow-left"></i> Back to Events
+                            </a>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // Create event-specific page content
+            createEventPage(event);
+        }
+
+        // Create individual event page
+        function createEventPage(event) {
+            const eventDate = new Date(event.eventDate);
+            const formattedDate = eventDate.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            document.body.innerHTML = `
+                <div class="container">
+                    <header class="header">
+                        <i class="fas fa-anchor"></i>
+                        <h1>Hidden Harbor Yacht Club</h1>
+                        <h2>${event.eventName}</h2>
+                        <p>${formattedDate} • ${event.startTime} - ${event.endTime}</p>
+                    </header>
+
+                    ${event.imageUrl ? `
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <img src="${event.imageUrl}" alt="${event.eventName}" style="max-width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                        </div>
+                    ` : ''}
+
+                    <main class="main-content">
+                        <section>
+                            <h2 style="color: #1e40af; margin-bottom: 15px;">
+                                <i class="fas fa-info-circle"></i> Event Details
+                            </h2>
+                            <p style="font-size: 1.1rem; line-height: 1.6; color: #666; margin-bottom: 30px;">${event.description}</p>
+
+                            <h3 style="color: #1e40af; margin-bottom: 20px;">
+                                <i class="fas fa-users"></i> Current Volunteers
+                            </h3>
+                            <div id="current-volunteers">
+                                ${createVolunteerDisplay(event)}
+                            </div>
+
+                            <h3 style="color: #1e40af; margin: 30px 0 20px 0;">
+                                <i class="fas fa-hand-paper"></i> Sign Up to Help
+                            </h3>
+                            <div id="signup-forms">
+                                ${createSignupForms(event)}
+                            </div>
+                        </section>
+                    </main>
+
+                    <footer class="footer">
+                        <p>Thank you for volunteering! ⚓</p>
+                        <p><strong>Hidden Harbor Yacht Club</strong></p>
+                        <p><a href="/volunteer/">← Back to All Events</a></p>
+                    </footer>
+                </div>
+
+                <!-- Gate Code Modal for signup -->
+                <div id="gate-modal" class="gate-modal">
+                    <div class="modal-content">
+                        <i class="fas fa-key" style="font-size: 2rem; color: #1e40af; margin-bottom: 15px;"></i>
+                        <h3>HHYC Member Verification</h3>
+                        <p>Please enter the Hidden Harbor Yacht Club gate code to continue:</p>
+                        <input type="password" id="gate-code-input" placeholder="Enter gate code..." maxlength="4">
+                        <div id="gate-error" class="error-message" style="display: none;">
+                            Incorrect gate code. Please try again.
+                        </div>
+                        <div>
+                            <button onclick="closeGateModal()" class="modal-btn cancel-btn">Cancel</button>
+                            <button onclick="verifyGateCode()" class="modal-btn">Verify</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Re-initialize event handlers
+            initializeEventPageHandlers(event);
+        }
+
+        // Create volunteer display
+        function createVolunteerDisplay(event) {
+            if (!event.tasks || event.tasks.length === 0) {
+                return '<p style="color: #666; font-style: italic;">No volunteer tasks defined yet.</p>';
+            }
+
+            return event.tasks.map(task => {
+                const volunteersHtml = task.volunteers.length > 0 
+                    ? task.volunteers.map(v => `<span style="background: #e0f2fe; color: #0277bd; padding: 4px 8px; border-radius: 12px; font-size: 0.85rem; margin: 2px;">${v.name}</span>`).join(' ')
+                    : '<span style="color: #999; font-style: italic;">No volunteers yet</span>';
+
+                return `
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin-bottom: 15px;">
+                        <h4 style="color: #1e40af; margin-bottom: 10px; font-size: 1.1rem;">
+                            ${task.name} (${task.volunteers.length}/${task.needed} needed)
+                        </h4>
+                        <div style="margin-bottom: 10px;">
+                            ${volunteersHtml}
+                        </div>
+                        <div style="background: #e0f2fe; border-radius: 6px; height: 8px; overflow: hidden;">
+                            <div style="background: #0277bd; height: 100%; width: ${task.needed > 0 ? (task.volunteers.length / task.needed) * 100 : 0}%; transition: width 0.3s ease;"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Create signup forms
+        function createSignupForms(event) {
+            if (!event.tasks || event.tasks.length === 0) {
+                return '<p style="color: #666; font-style: italic;">No volunteer opportunities available.</p>';
+            }
+
+            return event.tasks.map(task => {
+                const spotsLeft = task.needed - task.volunteers.length;
+                const isFull = spotsLeft <= 0;
+
+                return `
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin-bottom: 15px;">
+                        <h4 style="color: #1e40af; margin-bottom: 15px;">${task.name}</h4>
+                        <p style="color: #666; margin-bottom: 15px;">
+                            ${isFull ? 
+                                '<span style="color: #dc2626; font-weight: 600;"><i class="fas fa-users"></i> This task is full</span>' :
+                                `<span style="color: #059669; font-weight: 600;"><i class="fas fa-check-circle"></i> ${spotsLeft} spot${spotsLeft !== 1 ? 's' : ''} available</span>`
+                            }
+                        </p>
+                        ${!isFull ? `
+                            <button onclick="startVolunteerSignup(${task.id})" class="signup-btn">
+                                <i class="fas fa-user-plus"></i> Sign up for this task
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize event page handlers
+        function initializeEventPageHandlers(event) {
+            window.currentEvent = event;
+            window.currentTaskId = null;
+
+            // Re-bind modal handlers
+            window.closeGateModal = function() {
+                const modal = document.getElementById('gate-modal');
+                modal.style.display = 'none';
+                document.getElementById('gate-code-input').value = '';
+                document.getElementById('gate-error').style.display = 'none';
+            };
+
+            window.verifyGateCode = function() {
+                const input = document.getElementById('gate-code-input');
+                const error = document.getElementById('gate-error');
+
+                if (input.value === GATE_CODE) {
+                    closeGateModal();
+                    if (window.currentTaskId) {
+                        showVolunteerForm(window.currentTaskId);
+                    }
+                } else {
+                    error.style.display = 'block';
+                    input.value = '';
+                    input.focus();
+                }
+            };
+
+            window.startVolunteerSignup = function(taskId) {
+                window.currentTaskId = taskId;
+                const modal = document.getElementById('gate-modal');
+                modal.style.display = 'flex';
+                document.getElementById('gate-code-input').focus();
+            };
+
+            // Handle Enter key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && document.getElementById('gate-modal').style.display === 'flex') {
+                    verifyGateCode();
+                }
+            });
+        }
+
+        // Show volunteer signup form
+        function showVolunteerForm(taskId) {
+            const task = window.currentEvent.tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            const formHtml = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center;" id="volunteer-form-modal">
+                    <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; text-align: left;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px; text-align: center;">Sign Up: ${task.name}</h3>
+                        <form id="volunteer-signup-form">
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #374151;">Your Name *</label>
+                                <input type="text" id="volunteer-name" required style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #374151;">Email Address *</label>
+                                <input type="email" id="volunteer-email" required style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #374151;">Phone Number (optional)</label>
+                                <input type="tel" id="volunteer-phone" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #374151;">Notes (optional)</label>
+                                <textarea id="volunteer-notes" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; resize: vertical;" placeholder="Any special requests or notes..."></textarea>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="button" onclick="closeVolunteerForm()" style="background: #64748b; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 1rem; cursor: pointer; margin-right: 10px;">Cancel</button>
+                                <button type="submit" style="background: linear-gradient(135deg, #1e40af, #0ea5e9); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 1rem; cursor: pointer;">
+                                    <i class="fas fa-check"></i> Sign Me Up!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', formHtml);
+
+            // Handle form submission
+            document.getElementById('volunteer-signup-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitVolunteerSignup(taskId);
+            });
+
+            window.closeVolunteerForm = function() {
+                const modal = document.getElementById('volunteer-form-modal');
+                if (modal) modal.remove();
+            };
+        }
+
+        // Submit volunteer signup
+        function submitVolunteerSignup(taskId) {
+            const name = document.getElementById('volunteer-name').value;
+            const email = document.getElementById('volunteer-email').value;
+            const phone = document.getElementById('volunteer-phone').value;
+            const notes = document.getElementById('volunteer-notes').value;
+
+            if (!name || !email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Add volunteer to event
+            const events = getStoredEvents();
+            const eventIndex = events.findIndex(e => e.eventSlug === window.currentEvent.eventSlug);
+            if (eventIndex === -1) return;
+
+            const taskIndex = events[eventIndex].tasks.findIndex(t => t.id === taskId);
+            if (taskIndex === -1) return;
+
+            const volunteer = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                phone: phone,
+                notes: notes,
+                signupDate: new Date().toISOString()
+            };
+
+            events[eventIndex].tasks[taskIndex].volunteers.push(volunteer);
+            saveEvents(events);
+
+            // Close form and refresh page
+            closeVolunteerForm();
+
+            // Show success message
+            alert(`Thank you, ${name}! You've successfully signed up for "${events[eventIndex].tasks[taskIndex].name}". We'll send you more details closer to the event.`);
+
+            // Refresh the page to show updated volunteer count
+            location.reload();
+        }
+
+        // Storage functions
+        function getStoredEvents() {
+            const stored = localStorage.getItem('hhyc_events');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveEvents(events) {
+            localStorage.setItem('hhyc_events', JSON.stringify(events));
+        }
     </script>
 </body>
 </html>
