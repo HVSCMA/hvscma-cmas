@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Setup - Club Work Hours Admin</title>
+    <title>Event Management - Club Work Hours</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -14,202 +14,240 @@
         <header class="header">
             <div class="header-content">
                 <i class="fas fa-cog header-icon"></i>
-                <h1>Event Setup</h1>
+                <h1>Event Management</h1>
                 <h2 class="event-title">Organizer Admin Panel</h2>
                 <p class="subtitle">Configure Events & Manage Volunteers</p>
             </div>
         </header>
 
-        <div id="admin-content" style="display: none;">
+        <!-- Organizer Authentication -->
+        <section id="auth-section" class="auth-section">
+            <div class="auth-card">
+                <h2><i class="fas fa-shield-alt"></i> Organizer Access Required</h2>
+                <p>Enter the organizer password to continue:</p>
+                <div class="auth-form">
+                    <input type="password" id="admin-password" placeholder="Organizer password..." maxlength="4">
+                    <button type="button" onclick="verifyAdminAccess()" class="verify-btn">
+                        <i class="fas fa-unlock"></i> Access Panel
+                    </button>
+                </div>
+                <div id="admin-error" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Incorrect password. Please try again.
+                </div>
+                <div class="back-link">
+                    <a href="index.html" class="btn-link">
+                        <i class="fas fa-arrow-left"></i> Back to Volunteer Signup
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel (hidden until authenticated) -->
+        <div id="admin-panel" style="display: none;">
+
             <!-- Event Configuration -->
-            <section class="event-config">
-                <div class="info-card">
-                    <h2><i class="fas fa-calendar-plus"></i> Event Configuration</h2>
-                    <form id="event-config-form" class="admin-form">
+            <section class="admin-section">
+                <h2><i class="fas fa-calendar-edit"></i> Event Configuration</h2>
+                <div class="admin-card">
+                    <form id="event-form" class="admin-form">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="event_name">Event Name *</label>
-                                <input type="text" id="event_name" name="event_name" required>
+                                <label for="event-name">Event Name *</label>
+                                <input type="text" id="event-name" required>
                             </div>
                             <div class="form-group">
-                                <label for="event_date">Event Date *</label>
-                                <input type="date" id="event_date" name="event_date" required>
+                                <label for="event-date-config">Event Date *</label>
+                                <input type="date" id="event-date-config" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="start_time">Start Time *</label>
-                                <input type="time" id="start_time" name="start_time" required>
+                                <label for="event-start-time">Start Time *</label>
+                                <input type="time" id="event-start-time" required>
                             </div>
                             <div class="form-group">
-                                <label for="end_time">End Time *</label>
-                                <input type="time" id="end_time" name="end_time" required>
+                                <label for="event-end-time">End Time *</label>
+                                <input type="time" id="event-end-time" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="event_description">Event Description</label>
-                            <textarea id="event_description" name="event_description" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="organizer_email">Organizer Email (for notifications) *</label>
-                            <input type="email" id="organizer_email" name="organizer_email" required>
+                            <label for="event-description-config">Event Description</label>
+                            <textarea id="event-description-config" rows="3" placeholder="Describe the event purpose and activities..."></textarea>
                         </div>
 
                         <button type="submit" class="submit-btn">
-                            <i class="fas fa-save"></i>
-                            Save Event Configuration
+                            <i class="fas fa-save"></i> Save Event Details
                         </button>
                     </form>
                 </div>
             </section>
 
             <!-- Task Management -->
-            <section class="task-management">
-                <div class="info-card">
-                    <h2><i class="fas fa-tasks"></i> Task Management</h2>
-                    <div class="task-controls">
-                        <button id="add-task-btn" class="add-btn">
-                            <i class="fas fa-plus"></i>
-                            Add New Task
-                        </button>
+            <section class="admin-section">
+                <h2><i class="fas fa-tasks"></i> Task Management</h2>
+                <div class="admin-card">
+                    <div class="task-form">
+                        <h3>Add New Task</h3>
+                        <form id="task-form" class="inline-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="task-name">Task Name *</label>
+                                    <input type="text" id="task-name" required placeholder="e.g., Landscaping">
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-volunteers">Volunteers Needed *</label>
+                                    <input type="number" id="task-volunteers" required min="1" placeholder="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-time">Time Slot</label>
+                                    <input type="text" id="task-time" placeholder="9:00 AM - 12:00 PM">
+                                </div>
+                            </div>
+                            <button type="submit" class="add-btn">
+                                <i class="fas fa-plus"></i> Add Task
+                            </button>
+                        </form>
                     </div>
-                    <div id="tasks-list">
-                        <!-- Tasks will be loaded dynamically -->
+
+                    <div class="tasks-list">
+                        <h3>Current Tasks</h3>
+                        <div id="admin-tasks-container">
+                            <!-- Tasks will be loaded here -->
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Current Volunteers Management -->
-            <section class="volunteer-management">
-                <div class="info-card">
-                    <h2><i class="fas fa-users-cog"></i> Volunteer Management</h2>
-                    <div id="admin-volunteers-container">
-                        <!-- Volunteers will be loaded dynamically -->
+            <!-- Volunteer Management -->
+            <section class="admin-section">
+                <h2><i class="fas fa-users-cog"></i> Volunteer Management</h2>
+                <div class="admin-card">
+                    <div class="volunteers-summary">
+                        <div class="summary-stats">
+                            <div class="stat-card">
+                                <div class="stat-number" id="total-volunteers">0</div>
+                                <div class="stat-label">Total Volunteers</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="total-tasks">0</div>
+                                <div class="stat-label">Active Tasks</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="completion-rate">0%</div>
+                                <div class="stat-label">Completion Rate</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="management-tools">
+
+                    <div class="volunteers-list">
+                        <h3>Registered Volunteers</h3>
+                        <div class="table-container">
+                            <table class="volunteers-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Task</th>
+                                        <th>Registered</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="volunteers-table-body">
+                                    <!-- Volunteer data will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="export-tools">
                         <button onclick="exportVolunteers()" class="export-btn">
-                            <i class="fas fa-download"></i>
-                            Export Volunteer List
+                            <i class="fas fa-download"></i> Export Volunteer List
                         </button>
                         <button onclick="printVolunteers()" class="print-btn">
-                            <i class="fas fa-print"></i>
-                            Print Volunteer List
-                        </button>
-                        <button onclick="sendReminderEmails()" class="email-btn">
-                            <i class="fas fa-envelope"></i>
-                            Send Reminder Emails
+                            <i class="fas fa-print"></i> Print Volunteer List
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- Email Settings -->
-            <section class="email-settings">
-                <div class="info-card">
-                    <h2><i class="fas fa-envelope-open-text"></i> Email Configuration</h2>
-                    <form id="email-config-form" class="admin-form">
+            <!-- Email Configuration -->
+            <section class="admin-section">
+                <h2><i class="fas fa-envelope-open"></i> Email Settings</h2>
+                <div class="admin-card">
+                    <form id="email-form" class="admin-form">
                         <div class="form-group">
-                            <label for="smtp_host">SMTP Host</label>
-                            <input type="text" id="smtp_host" name="smtp_host" placeholder="smtp.gmail.com">
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="smtp_port">SMTP Port</label>
-                                <input type="number" id="smtp_port" name="smtp_port" placeholder="587">
-                            </div>
-                            <div class="form-group">
-                                <label for="smtp_secure">Security</label>
-                                <select id="smtp_secure" name="smtp_secure">
-                                    <option value="false">STARTTLS</option>
-                                    <option value="true">SSL/TLS</option>
-                                </select>
-                            </div>
+                            <label for="organizer-email">Organizer Email *</label>
+                            <input type="email" id="organizer-email" required placeholder="organizer@club.com">
+                            <small>Receives notifications when volunteers sign up</small>
                         </div>
 
                         <div class="form-group">
-                            <label for="smtp_user">Email Username</label>
-                            <input type="email" id="smtp_user" name="smtp_user">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="smtp_pass">Email Password</label>
-                            <input type="password" id="smtp_pass" name="smtp_pass">
+                            <label for="email-template">Thank You Email Template</label>
+                            <textarea id="email-template" rows="4" placeholder="Thank you for volunteering for {EVENT_NAME} on {EVENT_DATE}..."></textarea>
+                            <small>Use {EVENT_NAME}, {EVENT_DATE}, {VOLUNTEER_NAME}, {TASK_NAME} as placeholders</small>
                         </div>
 
                         <button type="submit" class="submit-btn">
-                            <i class="fas fa-save"></i>
-                            Save Email Settings
+                            <i class="fas fa-save"></i> Save Email Settings
                         </button>
                     </form>
                 </div>
             </section>
-        </div>
 
-        <!-- Access Control -->
-        <div id="access-control">
-            <div class="access-form">
-                <i class="fas fa-lock access-icon"></i>
-                <h3>Organizer Access Required</h3>
-                <p>Enter the organizer password to continue:</p>
-                <input type="password" id="admin-password" placeholder="Enter password..." maxlength="10">
-                <div class="access-error" id="access-error">
-                    <i class="fas fa-exclamation-circle"></i>
-                    Incorrect password. Please try again.
+            <!-- System Actions -->
+            <section class="admin-section">
+                <h2><i class="fas fa-tools"></i> System Actions</h2>
+                <div class="admin-card">
+                    <div class="action-buttons">
+                        <button onclick="resetAllData()" class="danger-btn">
+                            <i class="fas fa-trash-alt"></i> Reset All Data
+                        </button>
+                        <button onclick="backupData()" class="backup-btn">
+                            <i class="fas fa-shield-alt"></i> Backup Data
+                        </button>
+                        <button onclick="testEmailSystem()" class="test-btn">
+                            <i class="fas fa-envelope"></i> Test Email System
+                        </button>
+                    </div>
                 </div>
-                <button onclick="verifyAdminAccess()" class="verify-btn">Access Admin Panel</button>
-                <a href="index.html" class="back-link">← Back to Volunteer Signup</a>
-            </div>
+            </section>
         </div>
 
         <!-- Footer -->
         <footer class="footer">
             <p>Club Work Hours Management System</p>
-            <p class="contact-info">Authorized Personnel Only</p>
+            <div class="back-link">
+                <a href="index.html" class="btn-link">
+                    <i class="fas fa-arrow-left"></i> Back to Volunteer Signup
+                </a>
+            </div>
         </footer>
     </div>
 
-    <!-- Task Creation Modal -->
-    <div id="task-modal" class="modal">
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="modal">
         <div class="modal-content">
-            <i class="fas fa-tasks task-icon"></i>
-            <h3>Add/Edit Task</h3>
-            <form id="task-form">
-                <div class="form-group">
-                    <label for="task_name">Task Name *</label>
-                    <input type="text" id="task_name" name="task_name" required>
-                </div>
+            <i class="fas fa-question-circle confirm-icon"></i>
+            <h3 id="confirm-title">Confirm Action</h3>
+            <p id="confirm-message">Are you sure you want to proceed?</p>
+            <div class="modal-buttons">
+                <button onclick="closeConfirmModal()" class="modal-btn cancel-btn">Cancel</button>
+                <button id="confirm-action-btn" class="modal-btn confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
 
-                <div class="form-group">
-                    <label for="task_description">Description</label>
-                    <textarea id="task_description" name="task_description" rows="2"></textarea>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="volunteers_needed">Volunteers Needed *</label>
-                        <input type="number" id="volunteers_needed" name="volunteers_needed" min="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="task_category">Category</label>
-                        <select id="task_category" name="task_category">
-                            <option value="Setup">Setup</option>
-                            <option value="Maintenance">Maintenance</option>
-                            <option value="Landscaping">Landscaping</option>
-                            <option value="Cleaning">Cleaning</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="modal-buttons">
-                    <button type="button" onclick="closeTaskModal()" class="modal-btn cancel-btn">Cancel</button>
-                    <button type="submit" class="modal-btn save-btn">Save Task</button>
-                </div>
-            </form>
+    <!-- Success Modal -->
+    <div id="admin-success-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Success!</h3>
+            <p id="success-message-admin">Action completed successfully.</p>
+            <button onclick="closeSuccessModal()" class="modal-btn">Close</button>
         </div>
     </div>
 
