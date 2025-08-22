@@ -3,163 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Management Admin | Club Volunteer System</title>
+    <title>Admin Panel | Club Volunteer Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Password Protection -->
-        <div id="admin-login" class="admin-login">
+        <!-- Password Login Screen -->
+        <div id="login-screen" class="login-screen">
             <div class="login-card">
-                <i class="fas fa-shield-alt login-icon"></i>
-                <h2>Event Management Access</h2>
+                <h2><i class="fas fa-lock"></i> Event Management Access</h2>
                 <p>Enter the admin password to continue:</p>
-                <div class="login-form">
-                    <input type="password" id="admin-password" placeholder="Enter password..." maxlength="4">
-                    <div class="password-error" id="password-error" style="display: none;">
-                        <i class="fas fa-exclamation-circle"></i>
+                <div class="form-group">
+                    <input type="password" id="admin-password" placeholder="Admin Password" maxlength="4">
+                    <div id="password-error" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
                         Incorrect password. Please try again.
                     </div>
-                    <button onclick="verifyAdminPassword()" class="login-btn">
-                        <i class="fas fa-unlock"></i>
-                        Access Admin Panel
-                    </button>
                 </div>
-                <a href="index.html" class="back-link">
-                    <i class="fas fa-arrow-left"></i>
-                    Back to Events
-                </a>
+                <button id="login-btn" class="btn btn-primary">Access Admin Panel</button>
+                <p><a href="index.html">Back to Events</a></p>
             </div>
         </div>
 
-        <!-- Admin Panel (hidden until authenticated) -->
+        <!-- Admin Panel -->
         <div id="admin-panel" class="admin-panel" style="display: none;">
             <header class="header">
                 <div class="header-content">
-                    <i class="fas fa-cogs header-icon"></i>
+                    <i class="fas fa-cog header-icon"></i>
                     <h1>Event Management</h1>
                     <p class="subtitle">Create and manage volunteer events</p>
                 </div>
             </header>
 
-            <!-- Navigation -->
-            <nav class="admin-nav">
-                <button class="nav-btn active" onclick="showCreateEvent()">
-                    <i class="fas fa-plus"></i>
-                    Create Event
-                </button>
-                <button class="nav-btn" onclick="showManageEvents()">
-                    <i class="fas fa-list"></i>
-                    Manage Events
-                </button>
-                <a href="index.html" class="nav-btn">
-                    <i class="fas fa-eye"></i>
-                    View Public Page
-                </a>
-            </nav>
+            <div class="admin-nav">
+                <button id="create-event-btn" class="nav-btn active"><i class="fas fa-plus"></i> Create Event</button>
+                <button id="manage-events-btn" class="nav-btn"><i class="fas fa-edit"></i> Manage Events</button>
+                <a href="index.html" class="nav-btn"><i class="fas fa-eye"></i> View Public</a>
+            </div>
 
             <!-- Create Event Section -->
-            <section id="create-event" class="admin-section">
-                <h2><i class="fas fa-plus-circle"></i> Create New Event</h2>
-                <form id="event-form" class="event-form">
-                    <div class="form-group">
-                        <label for="event-name">
-                            <i class="fas fa-tag"></i>
-                            Event Name *
-                        </label>
-                        <input type="text" id="event-name" required placeholder="e.g., Spring Cleanup Day">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="event-slug">
-                            <i class="fas fa-link"></i>
-                            URL Slug *
-                        </label>
-                        <input type="text" id="event-slug" required placeholder="e.g., spring-cleanup-2024">
-                        <small>This creates the event URL: /volunteer/your-slug/</small>
-                    </div>
-
+            <section id="create-event-section" class="admin-section">
+                <h2>Create New Event</h2>
+                <form id="create-event-form" class="admin-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="event-date">
-                                <i class="fas fa-calendar"></i>
-                                Event Date *
-                            </label>
+                            <label for="event-name">Event Name *</label>
+                            <input type="text" id="event-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-slug">Event URL Slug *</label>
+                            <input type="text" id="event-slug" placeholder="e.g., spring-cleanup-2024" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-date">Event Date *</label>
                             <input type="date" id="event-date" required>
                         </div>
                         <div class="form-group">
-                            <label for="start-time">
-                                <i class="fas fa-clock"></i>
-                                Start Time *
-                            </label>
+                            <label for="start-time">Start Time *</label>
                             <input type="time" id="start-time" required>
                         </div>
                         <div class="form-group">
-                            <label for="end-time">
-                                <i class="fas fa-clock"></i>
-                                End Time *
-                            </label>
+                            <label for="end-time">End Time *</label>
                             <input type="time" id="end-time" required>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="event-description">
-                            <i class="fas fa-align-left"></i>
-                            Description *
-                        </label>
-                        <textarea id="event-description" required rows="3" placeholder="Describe the event and encourage participation..."></textarea>
+                        <label for="event-description">Event Description *</label>
+                        <textarea id="event-description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-image">Event Image URL (optional)</label>
+                        <input type="url" id="event-image" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="organizer-email">Organizer Email *</label>
+                        <input type="email" id="organizer-email" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="event-image">
-                            <i class="fas fa-image"></i>
-                            Event Image URL (optional)
-                        </label>
-                        <input type="url" id="event-image" placeholder="https://example.com/event-photo.jpg">
-                        <small>Small image displayed at top of volunteer signup page</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="organizer-email">
-                            <i class="fas fa-envelope"></i>
-                            Organizer Email *
-                        </label>
-                        <input type="email" id="organizer-email" required placeholder="organizer@club.com">
-                        <small>Receives volunteer signup notifications</small>
-                    </div>
-
-                    <!-- Tasks Section -->
-                    <div class="tasks-section">
-                        <h3><i class="fas fa-tasks"></i> Volunteer Tasks</h3>
-                        <div id="tasks-container">
-                            <div class="task-item">
-                                <input type="text" placeholder="Task description (e.g., Set up tables and chairs)" class="task-name" required>
-                                <input type="number" placeholder="# needed" class="task-count" min="1" required>
-                                <button type="button" onclick="removeTask(this)" class="remove-task">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
+                    <h3>Volunteer Tasks</h3>
+                    <div id="tasks-container">
+                        <div class="task-item">
+                            <input type="text" placeholder="Task name (e.g., Set up tables)" class="task-name">
+                            <input type="number" placeholder="# needed" class="task-count" min="1" max="50">
+                            <button type="button" class="btn-remove-task">Remove</button>
                         </div>
-                        <button type="button" onclick="addTask()" class="add-task-btn">
-                            <i class="fas fa-plus"></i>
-                            Add Another Task
-                        </button>
                     </div>
-
-                    <button type="submit" class="create-btn">
-                        <i class="fas fa-check"></i>
-                        Create Event
-                    </button>
+                    <button type="button" id="add-task-btn" class="btn btn-secondary">Add Task</button>
+                    <button type="submit" class="btn btn-primary">Create Event</button>
                 </form>
             </section>
 
             <!-- Manage Events Section -->
-            <section id="manage-events" class="admin-section" style="display: none;">
-                <h2><i class="fas fa-list"></i> Manage Existing Events</h2>
-                <div id="events-management">
+            <section id="manage-events-section" class="admin-section" style="display: none;">
+                <h2>Existing Events</h2>
+                <div id="existing-events-container">
                     <div class="loading">
                         <i class="fas fa-spinner fa-spin"></i>
                         Loading events...
