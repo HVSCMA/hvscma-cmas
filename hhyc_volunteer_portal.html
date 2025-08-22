@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HHYC Volunteer Portal - Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .auth-section {
+            padding: 40px;
+            text-align: center;
+            background: white;
+        }
+
+        .main-content {
+            padding: 40px;
+            background: white;
+            display: none;
+        }
+
+        .auth-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="password"], 
+        input[type="text"], 
+        input[type="email"], 
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .event-card {
+            border: 2px solid #e1e5e9;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .event-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+
+        .event-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #6c757d;
+            flex-wrap: wrap;
+        }
+
+        .tasks-container {
+            padding: 20px;
+        }
+
+        .task-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .task-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .task-description {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-open {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-full {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .volunteer-roster {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .roster-title {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .volunteer-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .volunteer-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .capacity-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .capacity-bar {
+            flex: 1;
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .capacity-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            transition: width 0.3s ease;
+        }
+
+        .capacity-full .capacity-fill {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+        }
+
+        .signup-section {
+            border-top: 2px solid #e1e5e9;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #28a745;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #dc3545;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-color: #17a2b8;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .signup-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .signup-form h4 {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .event-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚓ HHYC Volunteer Portal</h1>
+            <p>Hidden Harbor Yacht Club - Join Our Community Events</p>
+        </div>
+
+        <!-- Authentication Section -->
+        <div id="authSection" class="auth-section">
+            <h2>Volunteer Access</h2>
+            <p>Please enter the gate code to view available volunteer opportunities</p>
+
+            <form class="auth-form" onsubmit="authenticateVolunteer(event)">
+                <div class="form-group">
+                    <label for="gateCode">Gate Code</label>
+                    <input type="password" id="gateCode" required placeholder="Enter volunteer gate code">
+                </div>
+                <button type="submit" class="btn btn-primary">Access Volunteer Portal</button>
+            </form>
+
+            <div id="authError" class="alert alert-error" style="display: none;">
+                Invalid gate code. Please contact the club for assistance.
+            </div>
+        </div>
+
+        <!-- Main Volunteer Content -->
+        <div id="mainContent" class="main-content">
+            <div class="alert alert-info">
+                <strong>Welcome to HHYC Volunteer Portal!</strong><br>
+                Choose from the available tasks below and sign up to help our community. 
+                You'll see who else is volunteering so you can coordinate with fellow members.
+            </div>
+
+            <div id="eventsContainer" class="loading">
+                Loading volunteer opportunities...
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal/Form (Initially Hidden) -->
+    <div id="signupModal" style="display: none;">
+        <div class="signup-form">
+            <h4>Sign Up for Task</h4>
+            <div id="selectedTaskInfo"></div>
+
+            <form onsubmit="submitSignup(event)">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" required placeholder="Your first name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" required placeholder="Your last name">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="(845) 555-1234">
+                </div>
+
+                <div class="form-group">
+                    <label for="membershipStatus">Membership Status</label>
+                    <select id="membershipStatus">
+                        <option value="Full Member">Full Member</option>
+                        <option value="Associate">Associate Member</option>
+                        <option value="Guest">Guest</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes or Special Requests</label>
+                    <textarea id="notes" rows="3" placeholder="Any special requirements, arrival time, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Confirm Signup</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelSignup()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Configuration - Replace with actual Apps Script URL
+        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+        let currentEvents = [];
+        let selectedTask = null;
+
+        // Authentication
+        async function authenticateVolunteer(event) {
+            event.preventDefault();
+            const gateCode = document.getElementById('gateCode').value;
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'authenticateVolunteer',
+                        gateCode: gateCode
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('authSection').style.display = 'none';
+                    document.getElementById('mainContent').style.display = 'block';
+                    loadEvents();
+                } else {
+                    document.getElementById('authError').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Authentication error:', error);
+                document.getElementById('authError').style.display = 'block';
+            }
+        }
+
+        // Load Events and Tasks
+        async function loadEvents() {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL + '?action=getAllEvents');
+                const result = await response.json();
+
+                if (result.success) {
+                    currentEvents = result.data.filter(event => event.Status === 'Active');
+                    await loadTasksForEvents();
+                } else {
+                    document.getElementById('eventsContainer').innerHTML = 
+                        '<div class="alert alert-error">Error loading events: ' + result.error + '</div>';
+                }
+            } catch (error) {
+                document.getElementById('eventsContainer').innerHTML = 
+                    '<div class="alert alert-error">Error loading events: ' + error.message + '</div>';
+            }
+        }
+
+        async function loadTasksForEvents() {
+            if (currentEvents.length === 0) {
+                document.getElementById('eventsContainer').innerHTML = 
+                    '<div class="alert alert-info">No active events at this time. Check back soon for volunteer opportunities!</div>';
+                return;
+            }
+
+            let eventsHtml = '';
+
+            for (const event of currentEvents) {
+                try {
+                    const tasksResponse = await fetch(APPS_SCRIPT_URL + `?action=getEventTasks&eventId=${event.EventID}`);
+                    const tasksResult = await tasksResponse.json();
+
+                    if (tasksResult.success && tasksResult.data.length > 0) {
+                        const tasks = tasksResult.data.filter(task => task.Status === 'Open');
+
+                        if (tasks.length > 0) {
+                            eventsHtml += await generateEventCard(event, tasks);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading tasks for event:', event.EventID, error);
+                }
+            }
+
+            if (eventsHtml === '') {
+                document.getElementById('eventsContainer').innerHTML = 
+                    '<div class="alert alert-info">All current events are fully staffed. Thank you for your interest in volunteering!</div>';
+            } else {
+                document.getElementById('eventsContainer').innerHTML = eventsHtml;
+            }
+        }
+
+        async function generateEventCard(event, tasks) {
+            let html = `
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-title">${event.EventName}</div>
+                        <div class="event-meta">
+                            <span>📅 ${formatDate(event.EventDate)}</span>
+                            <span>⏰ ${event.StartTime} - ${event.EndTime}</span>
+                            <span>📍 ${event.Location}</span>
+                        </div>
+                        <p style="margin-top: 10px; color: #6c757d;">${event.Description}</p>
+                    </div>
+                    <div class="tasks-container">
+            `;
+
+            for (const task of tasks) {
+                const signups = await getTaskSignups(task.TaskID);
+                const capacityPercent = (task.VolunteersSignedUp / task.VolunteersNeeded) * 100;
+                const isFull = task.VolunteersSignedUp >= task.VolunteersNeeded;
+
+                html += `
+                    <div class="task-item">
+                        <div class="task-title">${task.TaskName}</div>
+                        <div class="task-description">${task.TaskDescription}</div>
+                        <div class="task-meta">
+                            <span>⏰ ${task.StartTime} - ${task.EndTime}</span>
+                            <span>🏆 ${task.Priority} Priority</span>
+                        </div>
+
+                        <div class="capacity-info ${isFull ? 'capacity-full' : ''}">
+                            <span style="min-width: 120px; font-weight: 500;">
+                                ${task.VolunteersSignedUp}/${task.VolunteersNeeded} volunteers
+                            </span>
+                            <div class="capacity-bar">
+                                <div class="capacity-fill" style="width: ${Math.min(capacityPercent, 100)}%"></div>
+                            </div>
+                            <span class="status-badge status-${isFull ? 'full' : 'open'}">
+                                ${isFull ? 'FULL' : 'OPEN'}
+                            </span>
+                        </div>
+                `;
+
+                // Add volunteer roster if there are signups
+                if (signups.length > 0) {
+                    html += `
+                        <div class="volunteer-roster">
+                            <div class="roster-title">🤝 Working with:</div>
+                            <div class="volunteer-list">
+                    `;
+
+                    signups.forEach(signup => {
+                        html += `<span class="volunteer-tag">${signup.firstName} ${signup.lastName.charAt(0)}.</span>`;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Add signup section if not full
+                if (!isFull) {
+                    html += `
+                        <div class="signup-section">
+                            <button class="btn btn-success" onclick="startSignup('${task.TaskID}', '${event.EventID}')">
+                                Sign Up for This Task
+                            </button>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+            }
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            return html;
+        }
+
+        async function getTaskSignups(taskId) {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL + `?action=getTaskSignups&taskId=${taskId}`);
+                const result = await response.json();
+                return result.success ? result.data : [];
+            } catch (error) {
+                console.error('Error loading signups:', error);
+                return [];
+            }
+        }
+
+        // Signup Process
+        function startSignup(taskId, eventId) {
+            selectedTask = { taskId, eventId };
+
+            // Find task and event info
+            const event = currentEvents.find(e => e.EventID === eventId);
+            let taskInfo = '';
+
+            if (event) {
+                taskInfo = `
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <strong>Event:</strong> ${event.EventName}<br>
+                        <strong>Date:</strong> ${formatDate(event.EventDate)}<br>
+                        <strong>Location:</strong> ${event.Location}
+                    </div>
+                `;
+            }
+
+            document.getElementById('selectedTaskInfo').innerHTML = taskInfo;
+            document.getElementById('signupModal').style.display = 'block';
+            document.getElementById('signupModal').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function cancelSignup() {
+            document.getElementById('signupModal').style.display = 'none';
+            selectedTask = null;
+            document.querySelector('#signupModal form').reset();
+        }
+
+        async function submitSignup(event) {
+            event.preventDefault();
+
+            if (!selectedTask) {
+                showAlert('No task selected. Please try again.', 'error');
+                return;
+            }
+
+            const volunteerData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                membershipStatus: document.getElementById('membershipStatus').value
+            };
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'volunteerSignup',
+                        eventId: selectedTask.eventId,
+                        taskId: selectedTask.taskId,
+                        volunteerData: volunteerData,
+                        notes: document.getElementById('notes').value
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showAlert('Successfully signed up! You will receive a confirmation email shortly.', 'success');
+                    cancelSignup();
+                    setTimeout(() => { loadEvents(); }, 1000);
+                } else {
+                    showAlert('Signup failed: ' + result.error, 'error');
+                }
+            } catch (error) {
+                showAlert('Signup failed: ' + error.message, 'error');
+            }
+        }
+
+        function formatDate(dateString) {
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        function showAlert(message, type) {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = message;
+
+            const mainContent = document.getElementById('mainContent');
+            mainContent.insertBefore(alert, mainContent.firstChild);
+
+            alert.scrollIntoView({ behavior: 'smooth' });
+
+            setTimeout(() => { alert.remove(); }, 5000);
+        }
+    </script>
+</body>
+</html>
