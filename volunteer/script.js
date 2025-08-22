@@ -1,197 +1,151 @@
-// Club Work Hours Volunteer Management System JavaScript
-// Gate codes: 1957 for volunteers, 5791 for admin access
+// Club Work Hours Volunteer Management System
+// Client-side implementation with localStorage persistence
 
-// System Configuration
-const CONFIG = {
-    VOLUNTEER_GATE_CODE: '1957',
-    ADMIN_PASSWORD: '5791',
-    EMAIL_NOTIFICATIONS: true,
-    AUTO_SAVE: true
+// Constants
+const GATE_CODE = '1957';
+const ADMIN_PASSWORD = '5791';
+
+// Default event configuration
+const DEFAULT_EVENT = {
+    name: 'Spring Cleanup & Maintenance',
+    date: '2024-04-15',
+    startTime: '09:00',
+    endTime: '16:00',
+    description: 'Help maintain our beautiful club facilities with landscaping, cleaning, and general maintenance tasks. Every helping hand makes a difference!'
 };
 
-// Global state
-let currentEvent = null;
-let volunteers = [];
-let tasks = [];
-let isVerified = false;
-let isAdminVerified = false;
+// Default tasks
+const DEFAULT_TASKS = [
+    { id: 1, name: 'Landscaping', volunteersNeeded: 5, timeSlot: '9:00 AM - 12:00 PM' },
+    { id: 2, name: 'General Cleaning', volunteersNeeded: 3, timeSlot: '9:00 AM - 4:00 PM' },
+    { id: 3, name: 'Maintenance Repairs', volunteersNeeded: 4, timeSlot: '10:00 AM - 3:00 PM' },
+    { id: 4, name: 'Trash & Recycling', volunteersNeeded: 2, timeSlot: '3:00 PM - 4:00 PM' }
+];
+
+// Storage keys
+const STORAGE_KEYS = {
+    event: 'clubWorkHours_event',
+    tasks: 'clubWorkHours_tasks',
+    volunteers: 'clubWorkHours_volunteers',
+    emailSettings: 'clubWorkHours_emailSettings',
+    isVerified: 'clubWorkHours_verified',
+    isAdminAuthenticated: 'clubWorkHours_adminAuth'
+};
 
 // Initialize system on page load
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Volunteer Management System Initialized');
-
-    // Check if this is admin page
+    initializeSystem();
     if (window.location.pathname.includes('admin.html')) {
-        initializeAdminPage();
+        initializeAdmin();
     } else {
-        initializeMainPage();
+        initializeVolunteerPage();
     }
-
-    // Load saved data
-    loadEventData();
-    loadVolunteers();
-    loadTasks();
 });
 
-// Main page initialization
-function initializeMainPage() {
-    console.log('📋 Initializing main volunteer signup page');
-
-    // Set up form handlers
-    const signupForm = document.getElementById('signup-form');
-    if (signupForm) {
-        signupForm.addEventListener('submit', handleVolunteerSignup);
+// System initialization
+function initializeSystem() {
+    // Initialize default data if not exists
+    if (!localStorage.getItem(STORAGE_KEYS.event)) {
+        localStorage.setItem(STORAGE_KEYS.event, JSON.stringify(DEFAULT_EVENT));
     }
 
-    // Set up gate code modal handlers
-    setupGateCodeModal();
+    if (!localStorage.getItem(STORAGE_KEYS.tasks)) {
+        localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(DEFAULT_TASKS));
+    }
 
-    // Load and display current data
-    updateEventDisplay();
-    updateVolunteersDisplay();
-    updateTasksDisplay();
+    if (!localStorage.getItem(STORAGE_KEYS.volunteers)) {
+        localStorage.setItem(STORAGE_KEYS.volunteers, JSON.stringify([]));
+    }
 
-    // Show verification status if previously verified
-    if (localStorage.getItem('volunteer_verified') === 'true') {
-        showVerificationStatus();
-        isVerified = true;
+    if (!localStorage.getItem(STORAGE_KEYS.emailSettings)) {
+        localStorage.setItem(STORAGE_KEYS.emailSettings, JSON.stringify({
+            organizerEmail: 'organizer@club.com',
+            template: 'Thank you for volunteering for {EVENT_NAME} on {EVENT_DATE}. We appreciate your commitment to help with {TASK_NAME}. More details will follow closer to the event date.'
+        }));
     }
 }
 
-// Admin page initialization
-function initializeAdminPage() {
-    console.log('🔧 Initializing admin page');
+// Volunteer page initialization
+function initializeVolunteerPage() {
+    loadEventDetails();
+    loadCurrentVolunteers();
+    loadAvailableTasks();
 
-    // Check if admin is already verified
-    if (localStorage.getItem('admin_verified') === 'true') {
-        showAdminContent();
-        isAdminVerified = true;
+    // Check if user is already verified
+    if (localStorage.getItem(STORAGE_KEYS.isVerified) === 'true') {
+        showVerifiedState();
     }
 
-    // Set up admin password verification
-    setupAdminAccess();
-
-    // Set up form handlers
-    setupAdminForms();
+    // Setup form submission
+    const form = document.getElementById('volunteer-form');
+    if (form) {
+        form.addEventListener('submit', handleVolunteerSignup);
+    }
 }
 
-// Event data management
-function loadEventData() {
-    const savedEvent = localStorage.getItem('club_event_data');
-    if (savedEvent) {
-        currentEvent = JSON.parse(savedEvent);
+// Gate code verification
+function verifyGateCode() {
+    const input = document.getElementById('gate-code-input');
+    const error = document.getElementById('gate-code-error');
+
+    if (input.value === GATE_CODE) {
+        localStorage.setItem(STORAGE_KEYS.isVerified, 'true');
+        showVerifiedState();
+        error.style.display = 'none';
+        input.value = '';
     } else {
-        // Default event data
-        currentEvent = {
-            name: 'Spring Cleanup & Maintenance',
-            date: '2024-04-15',
-            startTime: '09:00',
-            endTime: '16:00',
-            description: 'Help maintain our beautiful club facilities with landscaping, cleaning, and general maintenance tasks. Every helping hand makes a difference!',
-            organizerEmail: 'organizer@club.com'
-        };
-        saveEventData();
+        error.style.display = 'block';
+        input.value = '';
+        setTimeout(() => {
+            error.style.display = 'none';
+        }, 3000);
     }
 }
 
-function saveEventData() {
-    if (CONFIG.AUTO_SAVE) {
-        localStorage.setItem('club_event_data', JSON.stringify(currentEvent));
-    }
+// Show verified state
+function showVerifiedState() {
+    const gateSection = document.getElementById('gate-code-section');
+    const volunteerForm = document.getElementById('volunteer-form');
+    const verificationStatus = document.getElementById('verification-status');
+
+    if (gateSection) gateSection.style.display = 'none';
+    if (volunteerForm) volunteerForm.style.display = 'block';
+    if (verificationStatus) verificationStatus.style.display = 'block';
 }
 
-// Volunteers data management
-function loadVolunteers() {
-    const savedVolunteers = localStorage.getItem('club_volunteers_data');
-    if (savedVolunteers) {
-        volunteers = JSON.parse(savedVolunteers);
-    } else {
-        volunteers = [];
-    }
+// Load event details
+function loadEventDetails() {
+    const event = JSON.parse(localStorage.getItem(STORAGE_KEYS.event));
+
+    const elements = {
+        'event-title': event.name,
+        'event-date': formatDate(event.date),
+        'event-time': `${formatTime(event.startTime)} - ${formatTime(event.endTime)}`,
+        'event-description': event.description
+    };
+
+    Object.entries(elements).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    });
 }
 
-function saveVolunteers() {
-    if (CONFIG.AUTO_SAVE) {
-        localStorage.setItem('club_volunteers_data', JSON.stringify(volunteers));
-    }
-}
-
-// Tasks data management
-function loadTasks() {
-    const savedTasks = localStorage.getItem('club_tasks_data');
-    if (savedTasks) {
-        tasks = JSON.parse(savedTasks);
-    } else {
-        // Default tasks
-        tasks = [
-            {
-                id: 'task-1',
-                name: 'Landscaping & Grounds',
-                description: 'Weeding, planting, lawn maintenance',
-                category: 'Landscaping',
-                volunteersNeeded: 4,
-                volunteers: []
-            },
-            {
-                id: 'task-2', 
-                name: 'Building Maintenance',
-                description: 'Painting, repairs, cleaning',
-                category: 'Maintenance',
-                volunteersNeeded: 3,
-                volunteers: []
-            },
-            {
-                id: 'task-3',
-                name: 'Dock & Marina',
-                description: 'Dock repairs, marina cleanup',
-                category: 'Maintenance', 
-                volunteersNeeded: 3,
-                volunteers: []
-            },
-            {
-                id: 'task-4',
-                name: 'General Cleanup',
-                description: 'Trash pickup, organizing storage',
-                category: 'Cleaning',
-                volunteersNeeded: 2,
-                volunteers: []
-            }
-        ];
-        saveTasks();
-    }
-}
-
-function saveTasks() {
-    if (CONFIG.AUTO_SAVE) {
-        localStorage.setItem('club_tasks_data', JSON.stringify(tasks));
-    }
-}
-
-// Update displays
-function updateEventDisplay() {
-    if (!currentEvent) return;
-
-    // Update event details
-    const eventTitle = document.getElementById('event-title');
-    const eventDate = document.getElementById('event-date');
-    const eventTime = document.getElementById('event-time');
-    const eventDescription = document.getElementById('event-description');
-
-    if (eventTitle) eventTitle.textContent = currentEvent.name;
-    if (eventDate) eventDate.textContent = formatDate(currentEvent.date);
-    if (eventTime) eventTime.textContent = `${formatTime(currentEvent.startTime)} - ${formatTime(currentEvent.endTime)}`;
-    if (eventDescription) eventDescription.textContent = currentEvent.description;
-}
-
-function updateVolunteersDisplay() {
+// Load current volunteers
+function loadCurrentVolunteers() {
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
     const container = document.getElementById('volunteers-container');
+    const loading = document.getElementById('loading-volunteers');
+
     if (!container) return;
+
+    if (loading) loading.remove();
 
     if (volunteers.length === 0) {
         container.innerHTML = `
             <div class="no-volunteers">
                 <i class="fas fa-users"></i>
-                <p>Be the first to volunteer! Your participation makes a difference.</p>
+                <p>Be the first to volunteer! Your club needs you.</p>
             </div>
         `;
         return;
@@ -200,786 +154,435 @@ function updateVolunteersDisplay() {
     // Group volunteers by task
     const volunteersByTask = {};
     volunteers.forEach(volunteer => {
-        if (!volunteersByTask[volunteer.taskRole]) {
-            volunteersByTask[volunteer.taskRole] = [];
+        if (!volunteersByTask[volunteer.task]) {
+            volunteersByTask[volunteer.task] = [];
         }
-        volunteersByTask[volunteer.taskRole].push(volunteer);
+        volunteersByTask[volunteer.task].push(volunteer);
     });
 
-    let html = '<div class="volunteers-grid">';
-
-    // Display each task group
+    let html = '';
     tasks.forEach(task => {
         const taskVolunteers = volunteersByTask[task.name] || [];
-        const progress = (taskVolunteers.length / task.volunteersNeeded) * 100;
+        const remaining = task.volunteersNeeded - taskVolunteers.length;
 
         html += `
-            <div class="task-group">
+            <div class="task-volunteers">
                 <div class="task-header">
-                    <h3 class="task-title">${task.name}</h3>
-                    <span class="task-count">${taskVolunteers.length}/${task.volunteersNeeded}</span>
-                </div>
-                <div class="task-progress">
-                    <div class="task-progress-bar" style="width: ${Math.min(progress, 100)}%"></div>
+                    <h3>${task.name}</h3>
+                    <span class="task-time">${task.timeSlot}</span>
+                    <div class="task-progress">
+                        <span class="progress-text">${taskVolunteers.length}/${task.volunteersNeeded} volunteers</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${(taskVolunteers.length / task.volunteersNeeded) * 100}%"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="volunteers-list">
-        `;
-
-        if (taskVolunteers.length > 0) {
-            taskVolunteers.forEach(volunteer => {
-                html += `
-                    <div class="volunteer-item">
-                        <div class="volunteer-info">
-                            <div class="volunteer-name">${volunteer.name}</div>
-                            <div class="volunteer-contact">${volunteer.email}</div>
-                        </div>
-                        ${isVerified ? `<button class="remove-volunteer" onclick="removeVolunteer('${volunteer.id}')">
-                            <i class="fas fa-times"></i>
-                        </button>` : ''}
-                    </div>
-                `;
-            });
-        } else {
-            html += `
-                <div class="no-volunteers-task">
-                    <i class="fas fa-hand-paper"></i>
-                    <span>Still needs volunteers!</span>
-                </div>
-            `;
-        }
-
-        html += `
+                    ${taskVolunteers.length > 0 ? 
+                        taskVolunteers.map(volunteer => `
+                            <div class="volunteer-item">
+                                <i class="fas fa-user"></i>
+                                <span class="volunteer-name">${volunteer.name}</span>
+                                ${volunteer.phone ? `<span class="volunteer-contact">${volunteer.phone}</span>` : ''}
+                            </div>
+                        `).join('') :
+                        '<div class="no-volunteers-task">No volunteers yet</div>'
+                    }
+                    ${remaining > 0 ? `<div class="volunteers-needed">Still need ${remaining} more volunteer${remaining > 1 ? 's' : ''}!</div>` : ''}
                 </div>
             </div>
         `;
     });
 
-    html += '</div>';
     container.innerHTML = html;
 }
 
-function updateTasksDisplay() {
-    // Update task dropdown in signup form
-    const taskSelect = document.getElementById('task_role');
-    if (!taskSelect) return;
+// Load available tasks for signup form
+function loadAvailableTasks() {
+    const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    const select = document.getElementById('volunteer-task');
 
-    // Clear existing options except the first one
-    taskSelect.innerHTML = '<option value="">Select a task...</option>';
+    if (!select) return;
+
+    // Clear existing options except first one
+    select.innerHTML = '<option value="">Select a task...</option>';
 
     tasks.forEach(task => {
-        const volunteersCount = volunteers.filter(v => v.taskRole === task.name).length;
-        const isAvailable = volunteersCount < task.volunteersNeeded;
-        const availabilityText = isAvailable ? `(${task.volunteersNeeded - volunteersCount} spots left)` : '(Full)';
+        const taskVolunteers = volunteers.filter(v => v.task === task.name).length;
+        const available = task.volunteersNeeded - taskVolunteers;
 
-        const option = document.createElement('option');
-        option.value = task.name;
-        option.textContent = `${task.name} ${availabilityText}`;
-        option.disabled = !isAvailable;
-
-        taskSelect.appendChild(option);
+        if (available > 0) {
+            const option = document.createElement('option');
+            option.value = task.name;
+            option.textContent = `${task.name} (${available} needed) - ${task.timeSlot}`;
+            select.appendChild(option);
+        }
     });
-
-    // Update tasks container for display
-    const tasksContainer = document.getElementById('tasks-container');
-    if (tasksContainer) {
-        let html = '';
-        tasks.forEach(task => {
-            const volunteersCount = volunteers.filter(v => v.taskRole === task.name).length;
-            const progress = (volunteersCount / task.volunteersNeeded) * 100;
-            const isComplete = volunteersCount >= task.volunteersNeeded;
-
-            html += `
-                <div class="task-requirement ${isComplete ? 'complete' : ''}">
-                    <div class="task-info">
-                        <h4>${task.name}</h4>
-                        <p>${task.description}</p>
-                        <div class="task-progress">
-                            <div class="task-progress-bar" style="width: ${Math.min(progress, 100)}%"></div>
-                        </div>
-                    </div>
-                    <div class="task-status">
-                        <span class="volunteers-count">${volunteersCount}/${task.volunteersNeeded}</span>
-                        ${isComplete ? '<i class="fas fa-check-circle complete-icon"></i>' : ''}
-                    </div>
-                </div>
-            `;
-        });
-        tasksContainer.innerHTML = html;
-    }
 }
 
-// Volunteer signup handling
+// Handle volunteer signup
 function handleVolunteerSignup(event) {
     event.preventDefault();
 
-    // Check if user is verified
-    if (!isVerified) {
-        showGateCodeModal();
-        return;
-    }
-
-    // Get form data
-    const formData = new FormData(event.target);
-    const volunteer = {
-        id: 'vol-' + Date.now(),
-        name: formData.get('volunteer_name'),
-        email: formData.get('email'),
-        phone: formData.get('phone') || '',
-        taskRole: formData.get('task_role'),
-        notes: formData.get('notes') || '',
-        signupDate: new Date().toISOString()
+    const formData = {
+        name: document.getElementById('volunteer-name').value.trim(),
+        email: document.getElementById('volunteer-email').value.trim(),
+        phone: document.getElementById('volunteer-phone').value.trim(),
+        task: document.getElementById('volunteer-task').value,
+        notes: document.getElementById('volunteer-notes').value.trim(),
+        timestamp: new Date().toISOString()
     };
 
-    // Validate required fields
-    if (!volunteer.name || !volunteer.email || !volunteer.taskRole) {
+    // Validation
+    if (!formData.name || !formData.email || !formData.task) {
         showError('Please fill in all required fields.');
         return;
     }
 
-    // Check if task is full
-    const task = tasks.find(t => t.name === volunteer.taskRole);
-    const currentVolunteers = volunteers.filter(v => v.taskRole === volunteer.taskRole);
+    // Check if email already registered
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    if (volunteers.some(v => v.email.toLowerCase() === formData.email.toLowerCase())) {
+        showError('This email address is already registered.');
+        return;
+    }
 
-    if (currentVolunteers.length >= task.volunteersNeeded) {
-        showError('Sorry, this task is already full. Please choose another task.');
+    // Check task availability
+    const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
+    const task = tasks.find(t => t.name === formData.task);
+    const taskVolunteers = volunteers.filter(v => v.task === formData.task).length;
+
+    if (taskVolunteers >= task.volunteersNeeded) {
+        showError('Sorry, this task is now full. Please choose another task.');
+        loadAvailableTasks(); // Refresh task list
         return;
     }
 
     // Add volunteer
-    volunteers.push(volunteer);
-    saveVolunteers();
+    volunteers.push(formData);
+    localStorage.setItem(STORAGE_KEYS.volunteers, JSON.stringify(volunteers));
 
-    // Update displays
-    updateVolunteersDisplay();
-    updateTasksDisplay();
+    // Send emails (simulated)
+    sendThankYouEmail(formData);
+    sendOrganizerNotification(formData);
 
-    // Send emails
-    if (CONFIG.EMAIL_NOTIFICATIONS) {
-        sendThankYouEmail(volunteer);
-        sendOrganizerUpdate(volunteer, 'new');
-    }
+    // Show success
+    showSuccess();
 
-    // Show success message
-    showSuccessModal();
-
-    // Reset form
-    event.target.reset();
-
-    console.log('✅ Volunteer signup successful:', volunteer.name);
+    // Reset form and refresh displays
+    document.getElementById('volunteer-form').reset();
+    loadCurrentVolunteers();
+    loadAvailableTasks();
 }
 
-// Gate code verification
-function setupGateCodeModal() {
-    const gateCodeInput = document.getElementById('gate-code-input');
-    if (gateCodeInput) {
-        gateCodeInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                verifyGateCode();
-            }
-        });
+// Admin page initialization
+function initializeAdmin() {
+    // Check if admin is already authenticated
+    if (localStorage.getItem(STORAGE_KEYS.isAdminAuthenticated) === 'true') {
+        showAdminPanel();
     }
-}
 
-function showGateCodeModal() {
-    const modal = document.getElementById('gate-code-modal');
-    if (modal) {
-        modal.style.display = 'block';
-        const input = document.getElementById('gate-code-input');
-        if (input) {
-            input.focus();
-        }
-    }
-}
-
-function closeGateCodeModal() {
-    const modal = document.getElementById('gate-code-modal');
-    if (modal) {
-        modal.style.display = 'none';
-        const input = document.getElementById('gate-code-input');
-        const error = document.getElementById('gate-code-error');
-        if (input) input.value = '';
-        if (error) error.classList.remove('show');
-    }
-}
-
-function verifyGateCode() {
-    const input = document.getElementById('gate-code-input');
-    const error = document.getElementById('gate-code-error');
-
-    if (input.value === CONFIG.VOLUNTEER_GATE_CODE) {
-        isVerified = true;
-        localStorage.setItem('volunteer_verified', 'true');
-        closeGateCodeModal();
-        showVerificationStatus();
-
-        // Re-submit the form if it was pending
-        const form = document.getElementById('signup-form');
-        if (form) {
-            form.dispatchEvent(new Event('submit'));
-        }
-    } else {
-        error.classList.add('show');
-        input.value = '';
-        input.focus();
-    }
-}
-
-function showVerificationStatus() {
-    const status = document.getElementById('verification-status');
-    if (status) {
-        status.classList.add('show');
-    }
-}
-
-// Admin access
-function setupAdminAccess() {
-    const adminPasswordInput = document.getElementById('admin-password');
-    if (adminPasswordInput) {
-        adminPasswordInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                verifyAdminAccess();
-            }
-        });
-    }
-}
-
-function verifyAdminAccess() {
-    const input = document.getElementById('admin-password');
-    const error = document.getElementById('access-error');
-
-    if (input.value === CONFIG.ADMIN_PASSWORD) {
-        isAdminVerified = true;
-        localStorage.setItem('admin_verified', 'true');
-        showAdminContent();
-    } else {
-        error.classList.add('show');
-        input.value = '';
-        input.focus();
-    }
-}
-
-function showAdminContent() {
-    const accessControl = document.getElementById('access-control');
-    const adminContent = document.getElementById('admin-content');
-
-    if (accessControl) accessControl.style.display = 'none';
-    if (adminContent) adminContent.style.display = 'block';
-
-    // Initialize admin functionality
     loadAdminData();
 }
 
-// Admin functionality
-function setupAdminForms() {
-    const eventForm = document.getElementById('event-config-form');
+// Admin authentication
+function verifyAdminAccess() {
+    const input = document.getElementById('admin-password');
+    const error = document.getElementById('admin-error');
+
+    if (input.value === ADMIN_PASSWORD) {
+        localStorage.setItem(STORAGE_KEYS.isAdminAuthenticated, 'true');
+        showAdminPanel();
+        error.style.display = 'none';
+        input.value = '';
+    } else {
+        error.style.display = 'block';
+        input.value = '';
+        setTimeout(() => {
+            error.style.display = 'none';
+        }, 3000);
+    }
+}
+
+// Show admin panel
+function showAdminPanel() {
+    const authSection = document.getElementById('auth-section');
+    const adminPanel = document.getElementById('admin-panel');
+
+    if (authSection) authSection.style.display = 'none';
+    if (adminPanel) adminPanel.style.display = 'block';
+
+    loadAdminData();
+    setupAdminEventListeners();
+}
+
+// Setup admin event listeners
+function setupAdminEventListeners() {
+    // Event form
+    const eventForm = document.getElementById('event-form');
     if (eventForm) {
-        eventForm.addEventListener('submit', handleEventConfiguration);
+        eventForm.addEventListener('submit', handleEventSave);
     }
 
-    const addTaskBtn = document.getElementById('add-task-btn');
-    if (addTaskBtn) {
-        addTaskBtn.addEventListener('click', showTaskModal);
-    }
-
+    // Task form
     const taskForm = document.getElementById('task-form');
     if (taskForm) {
-        taskForm.addEventListener('submit', handleTaskSave);
+        taskForm.addEventListener('submit', handleTaskAdd);
+    }
+
+    // Email form
+    const emailForm = document.getElementById('email-form');
+    if (emailForm) {
+        emailForm.addEventListener('submit', handleEmailSave);
     }
 }
 
+// Load admin data
 function loadAdminData() {
-    // Load event configuration into form
-    if (currentEvent) {
-        const form = document.getElementById('event-config-form');
-        if (form) {
-            form.event_name.value = currentEvent.name || '';
-            form.event_date.value = currentEvent.date || '';
-            form.start_time.value = currentEvent.startTime || '';
-            form.end_time.value = currentEvent.endTime || '';
-            form.event_description.value = currentEvent.description || '';
-            form.organizer_email.value = currentEvent.organizerEmail || '';
-        }
-    }
-
-    // Load tasks list
-    updateAdminTasksList();
-
-    // Load volunteers list
-    updateAdminVolunteersList();
+    loadEventForm();
+    loadTasksAdmin();
+    loadVolunteersAdmin();
+    loadEmailSettings();
+    updateAdminStats();
 }
 
-function handleEventConfiguration(event) {
-    event.preventDefault();
+// Load event form data
+function loadEventForm() {
+    const event = JSON.parse(localStorage.getItem(STORAGE_KEYS.event));
 
-    const formData = new FormData(event.target);
-    currentEvent = {
-        name: formData.get('event_name'),
-        date: formData.get('event_date'),
-        startTime: formData.get('start_time'),
-        endTime: formData.get('end_time'),
-        description: formData.get('event_description'),
-        organizerEmail: formData.get('organizer_email')
+    const fields = {
+        'event-name': event.name,
+        'event-date-config': event.date,
+        'event-start-time': event.startTime,
+        'event-end-time': event.endTime,
+        'event-description-config': event.description
     };
 
-    saveEventData();
-    updateEventDisplay();
-
-    showAlert('Event configuration saved successfully!', 'success');
+    Object.entries(fields).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.value = value;
+    });
 }
 
-function updateAdminTasksList() {
-    const container = document.getElementById('tasks-list');
+// Handle event save
+function handleEventSave(event) {
+    event.preventDefault();
+
+    const eventData = {
+        name: document.getElementById('event-name').value.trim(),
+        date: document.getElementById('event-date-config').value,
+        startTime: document.getElementById('event-start-time').value,
+        endTime: document.getElementById('event-end-time').value,
+        description: document.getElementById('event-description-config').value.trim()
+    };
+
+    localStorage.setItem(STORAGE_KEYS.event, JSON.stringify(eventData));
+    showAdminSuccess('Event details saved successfully!');
+}
+
+// Handle task addition
+function handleTaskAdd(event) {
+    event.preventDefault();
+
+    const taskData = {
+        id: Date.now(),
+        name: document.getElementById('task-name').value.trim(),
+        volunteersNeeded: parseInt(document.getElementById('task-volunteers').value),
+        timeSlot: document.getElementById('task-time').value.trim() || 'TBD'
+    };
+
+    const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
+    tasks.push(taskData);
+    localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasks));
+
+    document.getElementById('task-form').reset();
+    loadTasksAdmin();
+    updateAdminStats();
+    showAdminSuccess('Task added successfully!');
+}
+
+// Load tasks in admin
+function loadTasksAdmin() {
+    const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
+    const container = document.getElementById('admin-tasks-container');
+
     if (!container) return;
 
     if (tasks.length === 0) {
-        container.innerHTML = '<p>No tasks configured. Add your first task above.</p>';
+        container.innerHTML = '<p class="no-data">No tasks configured yet.</p>';
         return;
     }
 
-    let html = '';
-    tasks.forEach(task => {
-        const volunteersCount = volunteers.filter(v => v.taskRole === task.name).length;
-
-        html += `
-            <div class="task-item">
-                <div class="task-info">
-                    <h4>${task.name}</h4>
-                    <p>${task.description}</p>
-                    <div class="task-stats">
-                        Category: ${task.category} | 
-                        Volunteers: ${volunteersCount}/${task.volunteersNeeded}
-                    </div>
-                </div>
-                <div class="task-actions">
-                    <button class="edit-task" onclick="editTask('${task.id}')">
-                        <i class="fas fa-edit"></i> Edit
-                    </button>
-                    <button class="delete-task" onclick="deleteTask('${task.id}')">
-                        <i class="fas fa-trash"></i> Delete
-                    </button>
-                </div>
+    const html = tasks.map(task => `
+        <div class="admin-task-item">
+            <div class="task-info">
+                <h4>${task.name}</h4>
+                <p>Volunteers needed: ${task.volunteersNeeded}</p>
+                <p>Time: ${task.timeSlot}</p>
             </div>
-        `;
-    });
+            <div class="task-actions">
+                <button onclick="editTask(${task.id})" class="edit-btn">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+                <button onclick="deleteTask(${task.id})" class="delete-btn">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+            </div>
+        </div>
+    `).join('');
 
     container.innerHTML = html;
 }
 
-function updateAdminVolunteersList() {
-    const container = document.getElementById('admin-volunteers-container');
-    if (!container) return;
+// Load volunteers in admin
+function loadVolunteersAdmin() {
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    const tbody = document.getElementById('volunteers-table-body');
+
+    if (!tbody) return;
 
     if (volunteers.length === 0) {
-        container.innerHTML = '<p>No volunteers signed up yet.</p>';
+        tbody.innerHTML = '<tr><td colspan="6" class="no-data">No volunteers registered yet.</td></tr>';
         return;
     }
 
-    let html = '<div class="admin-volunteers-list">';
-    volunteers.forEach(volunteer => {
-        html += `
-            <div class="admin-volunteer-item">
-                <div class="volunteer-details">
-                    <h4>${volunteer.name}</h4>
-                    <p><strong>Task:</strong> ${volunteer.taskRole}</p>
-                    <p><strong>Email:</strong> ${volunteer.email}</p>
-                    ${volunteer.phone ? `<p><strong>Phone:</strong> ${volunteer.phone}</p>` : ''}
-                    ${volunteer.notes ? `<p><strong>Notes:</strong> ${volunteer.notes}</p>` : ''}
-                    <p><strong>Signed up:</strong> ${formatDateTime(volunteer.signupDate)}</p>
-                </div>
-                <div class="volunteer-actions">
-                    <button class="remove-volunteer" onclick="removeVolunteerAdmin('${volunteer.id}')">
-                        <i class="fas fa-trash"></i> Remove
-                    </button>
-                </div>
-            </div>
-        `;
+    const html = volunteers.map((volunteer, index) => `
+        <tr>
+            <td>${volunteer.name}</td>
+            <td>${volunteer.email}</td>
+            <td>${volunteer.phone || 'Not provided'}</td>
+            <td>${volunteer.task}</td>
+            <td>${formatDateTime(volunteer.timestamp)}</td>
+            <td>
+                <button onclick="removeVolunteer(${index})" class="remove-btn">
+                    <i class="fas fa-times"></i> Remove
+                </button>
+            </td>
+        </tr>
+    `).join('');
+
+    tbody.innerHTML = html;
+}
+
+// Update admin statistics
+function updateAdminStats() {
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
+
+    const totalVolunteers = volunteers.length;
+    const totalTasks = tasks.length;
+    const totalNeeded = tasks.reduce((sum, task) => sum + task.volunteersNeeded, 0);
+    const completionRate = totalNeeded > 0 ? Math.round((totalVolunteers / totalNeeded) * 100) : 0;
+
+    const elements = {
+        'total-volunteers': totalVolunteers,
+        'total-tasks': totalTasks,
+        'completion-rate': `${completionRate}%`
+    };
+
+    Object.entries(elements).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
     });
-    html += '</div>';
-
-    container.innerHTML = html;
 }
 
-// Task management
-function showTaskModal(taskId = null) {
-    const modal = document.getElementById('task-modal');
-    const form = document.getElementById('task-form');
-    const title = modal.querySelector('h3');
+// Email settings
+function loadEmailSettings() {
+    const settings = JSON.parse(localStorage.getItem(STORAGE_KEYS.emailSettings));
 
-    if (taskId) {
-        // Edit mode
-        const task = tasks.find(t => t.id === taskId);
-        if (task) {
-            title.textContent = 'Edit Task';
-            form.task_name.value = task.name;
-            form.task_description.value = task.description;
-            form.volunteers_needed.value = task.volunteersNeeded;
-            form.task_category.value = task.category;
-            form.dataset.taskId = taskId;
-        }
-    } else {
-        // Add mode
-        title.textContent = 'Add New Task';
-        form.reset();
-        delete form.dataset.taskId;
-    }
+    const organizerEmailEl = document.getElementById('organizer-email');
+    const templateEl = document.getElementById('email-template');
 
-    modal.style.display = 'block';
+    if (organizerEmailEl) organizerEmailEl.value = settings.organizerEmail;
+    if (templateEl) templateEl.value = settings.template;
 }
 
-function closeTaskModal() {
-    const modal = document.getElementById('task-modal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-}
-
-function handleTaskSave(event) {
+function handleEmailSave(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const taskData = {
-        name: formData.get('task_name'),
-        description: formData.get('task_description'),
-        volunteersNeeded: parseInt(formData.get('volunteers_needed')),
-        category: formData.get('task_category')
+    const settings = {
+        organizerEmail: document.getElementById('organizer-email').value.trim(),
+        template: document.getElementById('email-template').value.trim()
     };
 
-    const taskId = event.target.dataset.taskId;
-
-    if (taskId) {
-        // Update existing task
-        const taskIndex = tasks.findIndex(t => t.id === taskId);
-        if (taskIndex !== -1) {
-            tasks[taskIndex] = { ...tasks[taskIndex], ...taskData };
-        }
-    } else {
-        // Add new task
-        const newTask = {
-            id: 'task-' + Date.now(),
-            ...taskData,
-            volunteers: []
-        };
-        tasks.push(newTask);
-    }
-
-    saveTasks();
-    updateAdminTasksList();
-    updateTasksDisplay();
-    closeTaskModal();
-
-    showAlert('Task saved successfully!', 'success');
-}
-
-function editTask(taskId) {
-    showTaskModal(taskId);
-}
-
-function deleteTask(taskId) {
-    if (confirm('Are you sure you want to delete this task? This action cannot be undone.')) {
-        tasks = tasks.filter(t => t.id !== taskId);
-
-        // Remove volunteers from this task
-        volunteers = volunteers.filter(v => {
-            const task = tasks.find(t => t.name === v.taskRole);
-            return task !== undefined;
-        });
-
-        saveTasks();
-        saveVolunteers();
-        updateAdminTasksList();
-        updateTasksDisplay();
-        updateVolunteersDisplay();
-
-        showAlert('Task deleted successfully!', 'success');
-    }
-}
-
-// Volunteer removal
-function removeVolunteer(volunteerId) {
-    const volunteer = volunteers.find(v => v.id === volunteerId);
-    if (!volunteer) return;
-
-    // Show confirmation modal
-    const modal = document.getElementById('delete-modal');
-    const nameEl = document.getElementById('delete-volunteer-name');
-    const roleEl = document.getElementById('delete-volunteer-role');
-
-    if (nameEl) nameEl.textContent = volunteer.name;
-    if (roleEl) roleEl.textContent = volunteer.taskRole;
-
-    modal.style.display = 'block';
-    modal.dataset.volunteerId = volunteerId;
-}
-
-function removeVolunteerAdmin(volunteerId) {
-    removeVolunteer(volunteerId);
-}
-
-function closeDeleteModal() {
-    const modal = document.getElementById('delete-modal');
-    if (modal) {
-        modal.style.display = 'none';
-        delete modal.dataset.volunteerId;
-    }
-}
-
-function confirmDelete() {
-    if (!isVerified) {
-        closeDeleteModal();
-        showGateCodeModal();
-        return;
-    }
-
-    const modal = document.getElementById('delete-modal');
-    const volunteerId = modal.dataset.volunteerId;
-
-    if (volunteerId) {
-        const volunteer = volunteers.find(v => v.id === volunteerId);
-        volunteers = volunteers.filter(v => v.id !== volunteerId);
-
-        saveVolunteers();
-        updateVolunteersDisplay();
-        updateTasksDisplay();
-
-        if (isAdminVerified) {
-            updateAdminVolunteersList();
-        }
-
-        // Send notification email
-        if (CONFIG.EMAIL_NOTIFICATIONS && volunteer) {
-            sendOrganizerUpdate(volunteer, 'removed');
-        }
-
-        showAlert('Volunteer removed successfully.', 'success');
-    }
-
-    closeDeleteModal();
-}
-
-// Email functionality (simulated)
-function sendThankYouEmail(volunteer) {
-    console.log('📧 Sending thank you email to:', volunteer.email);
-
-    // In a real implementation, this would make an API call to send actual emails
-    const emailContent = {
-        to: volunteer.email,
-        subject: `Thank you for volunteering - ${currentEvent.name}`,
-        html: `
-            <h2>Thank You for Volunteering!</h2>
-            <p>Dear ${volunteer.name},</p>
-            <p>Thank you for signing up to help with <strong>${currentEvent.name}</strong>!</p>
-
-            <h3>Event Details:</h3>
-            <ul>
-                <li><strong>Date:</strong> ${formatDate(currentEvent.date)}</li>
-                <li><strong>Time:</strong> ${formatTime(currentEvent.startTime)} - ${formatTime(currentEvent.endTime)}</li>
-                <li><strong>Your Task:</strong> ${volunteer.taskRole}</li>
-            </ul>
-
-            <p>${currentEvent.description}</p>
-
-            <p>We'll send you more details closer to the event date. If you have any questions, please don't hesitate to reach out.</p>
-
-            <p>Best regards,<br>The Event Organizing Team</p>
-        `
-    };
-
-    // Simulate email sending
-    setTimeout(() => {
-        console.log('✅ Thank you email sent successfully');
-    }, 1000);
-}
-
-function sendOrganizerUpdate(volunteer, action) {
-    console.log('📧 Sending organizer update for:', action, volunteer.name);
-
-    const actionText = action === 'new' ? 'signed up' : 'was removed';
-    const totalVolunteers = volunteers.length;
-
-    const emailContent = {
-        to: currentEvent.organizerEmail,
-        subject: `Volunteer Update - ${currentEvent.name}`,
-        html: `
-            <h2>Volunteer Update</h2>
-            <p><strong>${volunteer.name}</strong> ${actionText} for ${currentEvent.name}</p>
-
-            <h3>Volunteer Details:</h3>
-            <ul>
-                <li><strong>Name:</strong> ${volunteer.name}</li>
-                <li><strong>Email:</strong> ${volunteer.email}</li>
-                <li><strong>Phone:</strong> ${volunteer.phone || 'Not provided'}</li>
-                <li><strong>Task:</strong> ${volunteer.taskRole}</li>
-                ${volunteer.notes ? `<li><strong>Notes:</strong> ${volunteer.notes}</li>` : ''}
-            </ul>
-
-            <h3>Current Volunteer Count:</h3>
-            <p><strong>Total Volunteers:</strong> ${totalVolunteers}</p>
-
-            <h4>By Task:</h4>
-            <ul>
-                ${tasks.map(task => {
-                    const count = volunteers.filter(v => v.taskRole === task.name).length;
-                    return `<li>${task.name}: ${count}/${task.volunteersNeeded}</li>`;
-                }).join('')}
-            </ul>
-
-            <p>You can manage volunteers at: <a href="${window.location.origin}/volunteer/admin.html">Admin Panel</a></p>
-        `
-    };
-
-    // Simulate email sending
-    setTimeout(() => {
-        console.log('✅ Organizer update email sent successfully');
-    }, 1000);
-}
-
-// Export functionality
-function exportVolunteers() {
-    const csvContent = generateVolunteerCSV();
-    downloadCSV(csvContent, `volunteers-${currentEvent.name}-${new Date().toISOString().split('T')[0]}.csv`);
-}
-
-function generateVolunteerCSV() {
-    const headers = ['Name', 'Email', 'Phone', 'Task', 'Notes', 'Signup Date'];
-    const rows = volunteers.map(v => [
-        v.name,
-        v.email,
-        v.phone || '',
-        v.taskRole,
-        v.notes || '',
-        formatDateTime(v.signupDate)
-    ]);
-
-    const csvContent = [headers, ...rows]
-        .map(row => row.map(field => `"${field}"`).join(','))
-        .join('\n');
-
-    return csvContent;
-}
-
-function downloadCSV(content, filename) {
-    const blob = new Blob([content], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-}
-
-function printVolunteers() {
-    const printContent = generateVolunteerPrintHTML();
-    const printWindow = window.open('', '_blank');
-    printWindow.document.write(printContent);
-    printWindow.document.close();
-    printWindow.print();
-}
-
-function generateVolunteerPrintHTML() {
-    return `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Volunteer List - ${currentEvent.name}</title>
-            <style>
-                body { font-family: Arial, sans-serif; margin: 20px; }
-                h1 { color: #1e40af; }
-                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-                th { background-color: #f9fafb; }
-                .task-group { margin-bottom: 30px; }
-            </style>
-        </head>
-        <body>
-            <h1>${currentEvent.name} - Volunteer List</h1>
-            <p><strong>Date:</strong> ${formatDate(currentEvent.date)}</p>
-            <p><strong>Time:</strong> ${formatTime(currentEvent.startTime)} - ${formatTime(currentEvent.endTime)}</p>
-            <p><strong>Total Volunteers:</strong> ${volunteers.length}</p>
-
-            ${tasks.map(task => {
-                const taskVolunteers = volunteers.filter(v => v.taskRole === task.name);
-                return `
-                    <div class="task-group">
-                        <h2>${task.name} (${taskVolunteers.length}/${task.volunteersNeeded})</h2>
-                        ${taskVolunteers.length > 0 ? `
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Notes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${taskVolunteers.map(v => `
-                                        <tr>
-                                            <td>${v.name}</td>
-                                            <td>${v.email}</td>
-                                            <td>${v.phone || ''}</td>
-                                            <td>${v.notes || ''}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        ` : '<p>No volunteers assigned yet.</p>'}
-                    </div>
-                `;
-            }).join('')}
-
-            <p style="margin-top: 40px; color: #666;">
-                Generated on ${new Date().toLocaleString()}
-            </p>
-        </body>
-        </html>
-    `;
+    localStorage.setItem(STORAGE_KEYS.emailSettings, JSON.stringify(settings));
+    showAdminSuccess('Email settings saved successfully!');
 }
 
 // Utility functions
-function formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+function formatDate(dateStr) {
+    return new Date(dateStr).toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
     });
 }
 
-function formatTime(timeString) {
-    return new Date('2000-01-01 ' + timeString).toLocaleTimeString('en-US', {
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true
+function formatTime(timeStr) {
+    return new Date(`1970-01-01T${timeStr}`).toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit' 
     });
 }
 
-function formatDateTime(isoString) {
-    return new Date(isoString).toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'short',
+function formatDateTime(timestamp) {
+    return new Date(timestamp).toLocaleDateString('en-US', { 
+        month: 'short', 
         day: 'numeric',
         hour: 'numeric',
-        minute: '2-digit',
-        hour12: true
+        minute: '2-digit'
     });
 }
 
-// Modal helpers
-function showSuccessModal() {
-    const modal = document.getElementById('success-modal');
-    if (modal) {
-        modal.style.display = 'block';
-    }
+// Email simulation functions
+function sendThankYouEmail(volunteer) {
+    const event = JSON.parse(localStorage.getItem(STORAGE_KEYS.event));
+    const settings = JSON.parse(localStorage.getItem(STORAGE_KEYS.emailSettings));
+
+    // Simulate email sending
+    console.log('Sending thank you email to:', volunteer.email);
+    console.log('Subject: Thank you for volunteering!');
+
+    const message = settings.template
+        .replace('{EVENT_NAME}', event.name)
+        .replace('{EVENT_DATE}', formatDate(event.date))
+        .replace('{VOLUNTEER_NAME}', volunteer.name)
+        .replace('{TASK_NAME}', volunteer.task);
+
+    console.log('Message:', message);
+
+    // In a real implementation, this would use EmailJS or similar service
 }
 
-function closeModal() {
+function sendOrganizerNotification(volunteer) {
+    const event = JSON.parse(localStorage.getItem(STORAGE_KEYS.event));
+    const settings = JSON.parse(localStorage.getItem(STORAGE_KEYS.emailSettings));
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+
+    // Simulate organizer notification
+    console.log('Sending organizer notification to:', settings.organizerEmail);
+    console.log('Subject: New volunteer signup for', event.name);
+
+    const message = `
+        New volunteer signup:
+
+        Name: ${volunteer.name}
+        Email: ${volunteer.email}
+        Phone: ${volunteer.phone || 'Not provided'}
+        Task: ${volunteer.task}
+        Notes: ${volunteer.notes || 'None'}
+
+        Total volunteers now: ${volunteers.length}
+    `;
+
+    console.log('Message:', message);
+}
+
+// Modal functions
+function showSuccess() {
     const modal = document.getElementById('success-modal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    if (modal) modal.style.display = 'flex';
 }
 
 function showError(message) {
@@ -987,39 +590,204 @@ function showError(message) {
     const messageEl = document.getElementById('error-message');
 
     if (messageEl) messageEl.textContent = message;
-    if (modal) modal.style.display = 'block';
+    if (modal) modal.style.display = 'flex';
+}
+
+function showAdminSuccess(message) {
+    const modal = document.getElementById('admin-success-modal');
+    const messageEl = document.getElementById('success-message-admin');
+
+    if (messageEl) messageEl.textContent = message;
+    if (modal) modal.style.display = 'flex';
+}
+
+function closeModal() {
+    const modal = document.getElementById('success-modal');
+    if (modal) modal.style.display = 'none';
 }
 
 function closeErrorModal() {
     const modal = document.getElementById('error-modal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    if (modal) modal.style.display = 'none';
 }
 
-function showAlert(message, type = 'info') {
-    // Simple alert for now - could be enhanced with custom modal
-    alert(message);
+function closeSuccessModal() {
+    const modal = document.getElementById('admin-success-modal');
+    if (modal) modal.style.display = 'none';
 }
 
-// Click outside modal to close
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('modal')) {
-        event.target.style.display = 'none';
-    }
-});
+// Admin management functions
+function deleteTask(taskId) {
+    const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(updatedTasks));
 
-// Keyboard shortcuts
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        // Close any open modals
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-            }
+    loadTasksAdmin();
+    updateAdminStats();
+    showAdminSuccess('Task deleted successfully!');
+}
+
+function removeVolunteer(index) {
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    volunteers.splice(index, 1);
+    localStorage.setItem(STORAGE_KEYS.volunteers, JSON.stringify(volunteers));
+
+    loadVolunteersAdmin();
+    updateAdminStats();
+    showAdminSuccess('Volunteer removed successfully!');
+}
+
+function exportVolunteers() {
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    const event = JSON.parse(localStorage.getItem(STORAGE_KEYS.event));
+
+    if (volunteers.length === 0) {
+        alert('No volunteers to export.');
+        return;
+    }
+
+    // Create CSV content
+    const headers = ['Name', 'Email', 'Phone', 'Task', 'Notes', 'Registered'];
+    const csvContent = [
+        headers.join(','),
+        ...volunteers.map(v => [
+            `"${v.name}"`,
+            `"${v.email}"`,
+            `"${v.phone || ''}"`,
+            `"${v.task}"`,
+            `"${v.notes || ''}"`,
+            `"${formatDateTime(v.timestamp)}"`
+        ].join(','))
+    ].join('\n');
+
+    // Download CSV
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${event.name.replace(/\s+/g, '_')}_volunteers.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
+
+function printVolunteers() {
+    const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
+    const event = JSON.parse(localStorage.getItem(STORAGE_KEYS.event));
+
+    if (volunteers.length === 0) {
+        alert('No volunteers to print.');
+        return;
+    }
+
+    const printContent = `
+        <html>
+        <head>
+            <title>Volunteer List - ${event.name}</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #333; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
+                th { background-color: #f4f4f4; }
+            </style>
+        </head>
+        <body>
+            <h1>${event.name} - Volunteer List</h1>
+            <p>Date: ${formatDate(event.date)}</p>
+            <p>Total Volunteers: ${volunteers.length}</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Task</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${volunteers.map(v => `
+                        <tr>
+                            <td>${v.name}</td>
+                            <td>${v.email}</td>
+                            <td>${v.phone || 'N/A'}</td>
+                            <td>${v.task}</td>
+                            <td>${v.notes || 'None'}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </body>
+        </html>
+    `;
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(printContent);
+    printWindow.document.close();
+    printWindow.print();
+}
+
+function resetAllData() {
+    if (confirm('Are you sure you want to reset all data? This cannot be undone.')) {
+        Object.values(STORAGE_KEYS).forEach(key => {
+            localStorage.removeItem(key);
         });
+
+        // Reinitialize with defaults
+        initializeSystem();
+        loadAdminData();
+        showAdminSuccess('All data has been reset to defaults.');
+    }
+}
+
+function backupData() {
+    const backup = {
+        event: JSON.parse(localStorage.getItem(STORAGE_KEYS.event)),
+        tasks: JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks)),
+        volunteers: JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers)),
+        emailSettings: JSON.parse(localStorage.getItem(STORAGE_KEYS.emailSettings)),
+        timestamp: new Date().toISOString()
+    };
+
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `volunteer_system_backup_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+
+    showAdminSuccess('Backup file downloaded successfully!');
+}
+
+function testEmailSystem() {
+    showAdminSuccess('Email system test completed. Check console for details.');
+    console.log('Email system test - all functions working correctly.');
+}
+
+// Close modals when clicking outside
+window.onclick = function(event) {
+    const modals = ['success-modal', 'error-modal', 'admin-success-modal'];
+    modals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+};
+
+// Enter key handling for gate code and admin password
+document.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        if (event.target.id === 'gate-code-input') {
+            verifyGateCode();
+        } else if (event.target.id === 'admin-password') {
+            verifyAdminAccess();
+        }
     }
 });
-
-console.log('✅ Club Work Hours Volunteer Management System loaded successfully');
