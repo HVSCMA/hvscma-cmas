@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HHYC Volunteer Events - Sign Up to Help!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .intro {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .events-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-image {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .event-info h2 {
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .event-meta {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .event-description {
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+
+        .tasks-section {
+            margin-top: 2rem;
+        }
+
+        .tasks-section h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .task-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .task-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .volunteer-count {
+            background: rgba(76, 175, 80, 0.3);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .volunteer-count.full {
+            background: rgba(244, 67, 54, 0.3);
+        }
+
+        .task-description {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .participants {
+            margin-bottom: 1rem;
+        }
+
+        .participants h4 {
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .participant-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .participant-tag {
+            background: rgba(33, 150, 243, 0.3);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+        }
+
+        .btn:disabled {
+            background: rgba(150, 150, 150, 0.5);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            color: white;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .event-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .task-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 Hidden Harbor Yacht Club</h1>
+            <p>Volunteer Opportunities - Join Our Community!</p>
+        </div>
+
+        <div class="intro">
+            <h2>Welcome Fellow Members!</h2>
+            <p>Choose from the available volunteer opportunities below and help make our events successful. You'll see who else is volunteering so you can coordinate with fellow club members. Sign up is easy - just click "Volunteer for This" and provide your contact information.</p>
+        </div>
+
+        <div id="eventsContainer" class="events-grid">
+            Loading volunteer opportunities...
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Volunteer Signup</h2>
+            <p id="signupTaskInfo"></p>
+
+            <div class="form-group">
+                <label for="volunteerName">Full Name:</label>
+                <input type="text" id="volunteerName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="volunteerAddress">Address:</label>
+                <input type="text" id="volunteerAddress" required>
+            </div>
+
+            <div class="form-group">
+                <label for="volunteerEmail">Email:</label>
+                <input type="email" id="volunteerEmail" required>
+            </div>
+
+            <button class="btn" onclick="submitSignup()">Complete Signup</button>
+            <button class="btn btn-danger" onclick="closeModal()">Cancel</button>
+
+            <div id="signupMessage"></div>
+        </div>
+    </div>
+
+    <!-- Cancellation Modal -->
+    <div id="cancelModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCancelModal()">&times;</span>
+            <h2>Cancel Volunteer Commitment</h2>
+            <p id="cancelTaskInfo"></p>
+
+            <div class="form-group">
+                <label for="cancelGateCode">Gate Code:</label>
+                <input type="password" id="cancelGateCode" placeholder="Enter gate code to cancel" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cancelReason">Reason for Cancellation:</label>
+                <textarea id="cancelReason" placeholder="Please let us know why you need to cancel..." required></textarea>
+            </div>
+
+            <button class="btn btn-danger" onclick="submitCancellation()">Cancel My Commitment</button>
+            <button class="btn" onclick="closeCancelModal()">Keep My Commitment</button>
+
+            <div id="cancelMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration - UPDATE WITH YOUR APPS SCRIPT URL
+        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+
+        let currentSignupTask = null;
+        let currentCancelSignup = null;
+
+        // Load events on page load
+        document.addEventListener('DOMContentLoaded', loadEvents);
+
+        async function loadEvents() {
+            try {
+                const response = await fetch(`${APPS_SCRIPT_URL}?action=getEvents`);
+                const events = await response.json();
+
+                const container = document.getElementById('eventsContainer');
+
+                if (events.length === 0) {
+                    container.innerHTML = `
+                        <div class="event-card">
+                            <h2>No Events Available</h2>
+                            <p>Check back soon for upcoming volunteer opportunities!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = events.map(event => `
+                    <div class="event-card">
+                        <div class="event-header">
+                            ${event.imageUrl ? `<img src="${event.imageUrl}" alt="Event Image" class="event-image">` : '<div style="width: 100px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center;">📅</div>'}
+                            <div class="event-info">
+                                <h2>${event.name}</h2>
+                                <div class="event-meta">
+                                    📅 ${event.date} | ⏰ ${event.startTime} - ${event.endTime}<br>
+                                    📍 ${event.location}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event-description">
+                            ${event.description}
+                        </div>
+
+                        ${event.tasks.length > 0 ? `
+                            <div class="tasks-section">
+                                <h3>Volunteer Opportunities (${event.tasks.length} tasks available)</h3>
+                                ${event.tasks.map(task => {
+                                    const isFull = task.participants.length >= task.volunteersNeeded;
+                                    const canSignup = !isFull;
+
+                                    return `
+                                        <div class="task-item">
+                                            <div class="task-header">
+                                                <div class="task-name">${task.name}</div>
+                                                <div class="volunteer-count ${isFull ? 'full' : ''}">${task.participants.length}/${task.volunteersNeeded} volunteers</div>
+                                            </div>
+
+                                            <div class="task-description">${task.description}</div>
+
+                                            ${task.participants.length > 0 ? `
+                                                <div class="participants">
+                                                    <h4>Currently Working:</h4>
+                                                    <div class="participant-list">
+                                                        ${task.participants.map(p => `<span class="participant-tag">${p.name}</span>`).join('')}
+                                                    </div>
+                                                </div>
+                                            ` : '<p><em>No volunteers signed up yet - be the first!</em></p>'}
+
+                                            <div style="margin-top: 1rem;">
+                                                <button class="btn" onclick="openSignupModal('${task.id}', '${task.name}', '${event.name}')" ${!canSignup ? 'disabled' : ''}>
+                                                    ${canSignup ? 'Volunteer for This' : 'Position Full'}
+                                                </button>
+                                                ${task.participants.length > 0 ? `
+                                                    <button class="btn btn-danger" onclick="openCancelModal('${task.id}', '${task.name}', '${event.name}')">
+                                                        Cancel My Commitment
+                                                    </button>
+                                                ` : ''}
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        ` : '<p><em>No volunteer tasks have been set up for this event yet.</em></p>'}
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                document.getElementById('eventsContainer').innerHTML = `
+                    <div class="event-card">
+                        <div class="error">Error loading events. Please refresh the page.</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Modal functions
+        function openSignupModal(taskId, taskName, eventName) {
+            currentSignupTask = taskId;
+            document.getElementById('signupTaskInfo').innerHTML = `Signing up for: <strong>${taskName}</strong> at ${eventName}`;
+            document.getElementById('signupModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('signupModal').style.display = 'none';
+            currentSignupTask = null;
+            clearSignupForm();
+        }
+
+        function openCancelModal(taskId, taskName, eventName) {
+            currentCancelSignup = taskId;
+            document.getElementById('cancelTaskInfo').innerHTML = `Cancelling commitment for: <strong>${taskName}</strong> at ${eventName}`;
+            document.getElementById('cancelModal').style.display = 'block';
+        }
+
+        function closeCancelModal() {
+            document.getElementById('cancelModal').style.display = 'none';
+            currentCancelSignup = null;
+            clearCancelForm();
+        }
+
+        // Signup submission
+        async function submitSignup() {
+            const signupData = {
+                taskId: currentSignupTask,
+                name: document.getElementById('volunteerName').value,
+                address: document.getElementById('volunteerAddress').value,
+                email: document.getElementById('volunteerEmail').value
+            };
+
+            if (!signupData.name || !signupData.address || !signupData.email) {
+                document.getElementById('signupMessage').innerHTML = '<div class="error">Please fill in all fields.</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        action: 'signupVolunteer',
+                        ...signupData
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('signupMessage').innerHTML = '<div class="success">Thank you! Your volunteer commitment has been recorded.</div>';
+                    setTimeout(() => {
+                        closeModal();
+                        loadEvents(); // Refresh to show updated participant list
+                    }, 2000);
+                } else {
+                    document.getElementById('signupMessage').innerHTML = `<div class="error">Error: ${result.error}</div>`;
+                }
+            } catch (error) {
+                document.getElementById('signupMessage').innerHTML = '<div class="error">Connection error. Please try again.</div>';
+            }
+        }
+
+        // Cancellation submission
+        async function submitCancellation() {
+            const cancelData = {
+                signupId: currentCancelSignup, // This would need to be properly identified
+                gateCode: document.getElementById('cancelGateCode').value,
+                reason: document.getElementById('cancelReason').value
+            };
+
+            if (!cancelData.gateCode || !cancelData.reason) {
+                document.getElementById('cancelMessage').innerHTML = '<div class="error">Please provide both gate code and reason.</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        action: 'cancelSignup',
+                        ...cancelData
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('cancelMessage').innerHTML = '<div class="success">Your commitment has been cancelled. Thank you for letting us know.</div>';
+                    setTimeout(() => {
+                        closeCancelModal();
+                        loadEvents(); // Refresh to show updated participant list
+                    }, 2000);
+                } else {
+                    document.getElementById('cancelMessage').innerHTML = `<div class="error">Error: ${result.error}</div>`;
+                }
+            } catch (error) {
+                document.getElementById('cancelMessage').innerHTML = '<div class="error">Connection error. Please try again.</div>';
+            }
+        }
+
+        function clearSignupForm() {
+            document.getElementById('volunteerName').value = '';
+            document.getElementById('volunteerAddress').value = '';
+            document.getElementById('volunteerEmail').value = '';
+            document.getElementById('signupMessage').innerHTML = '';
+        }
+
+        function clearCancelForm() {
+            document.getElementById('cancelGateCode').value = '';
+            document.getElementById('cancelReason').value = '';
+            document.getElementById('cancelMessage').innerHTML = '';
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const signupModal = document.getElementById('signupModal');
+            const cancelModal = document.getElementById('cancelModal');
+            if (event.target == signupModal) {
+                closeModal();
+            }
+            if (event.target == cancelModal) {
+                closeCancelModal();
+            }
+        }
+
+        // Initialize
+        if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+            document.getElementById('eventsContainer').innerHTML = '<div class="event-card"><div class="error">Please update the APPS_SCRIPT_URL in the code with your deployed Apps Script web app URL.</div></div>';
+        }
+    </script>
+</body>
+</html>
