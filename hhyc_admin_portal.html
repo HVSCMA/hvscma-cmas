@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HHYC Volunteer Management - Admin Portal</title>
+    <title>HHYC Admin Portal - Volunteer Management</title>
     <style>
         * {
             margin: 0;
@@ -16,322 +15,149 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            color: white;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            padding: 2rem;
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
             text-align: center;
+            margin-bottom: 2rem;
         }
 
         .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .auth-section {
-            padding: 40px;
-            text-align: center;
-            background: white;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
-        .main-content {
-            padding: 40px;
-            background: white;
+        .admin-content {
             display: none;
         }
 
-        .auth-form {
-            max-width: 400px;
-            margin: 0 auto;
+        .admin-content.authenticated {
+            display: block;
         }
 
         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 1.5rem;
         }
 
-        label {
+        .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
             color: #333;
         }
 
-        input[type="password"], 
-        input[type="text"], 
-        input[type="email"], 
-        input[type="date"], 
-        input[type="time"], 
-        input[type="number"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
         .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
         }
 
-        .btn-primary:hover {
+        .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-secondary {
-            background: #f8f9fa;
-            color: #495057;
-            border: 2px solid #e1e5e9;
-        }
-
-        .btn-secondary:hover {
-            background: #e9ecef;
-        }
-
-        .btn-success {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #218838;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .btn-danger {
-            background: #dc3545;
-            color: white;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
         }
 
-        .btn-danger:hover {
-            background: #c82333;
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .nav-tabs {
-            display: flex;
-            border-bottom: 2px solid #e1e5e9;
-            margin-bottom: 30px;
-        }
-
-        .nav-tab {
-            padding: 15px 25px;
-            background: none;
-            border: none;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            color: #666;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .nav-tab.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .card {
-            background: white;
+        .admin-panel {
+            background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 20px;
-            overflow: hidden;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
-        .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            font-weight: 500;
+        .admin-panel h3 {
+            margin-bottom: 1rem;
+            color: #fff;
         }
 
-        .card-body {
-            padding: 25px;
+        .events-list {
+            max-height: 300px;
+            overflow-y: auto;
         }
 
-        .event-item, .task-item {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #667eea;
+        .event-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .event-meta, .task-meta {
-            display: flex;
-            gap: 20px;
-            margin-top: 10px;
+        .event-item h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .event-item p {
             font-size: 0.9rem;
-            color: #666;
-        }
-
-        .status-badge {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .status-active {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .status-open {
-            background: #d1ecf1;
-            color: #0c5460;
-        }
-
-        .status-full {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .col {
-            flex: 1;
-        }
-
-        .col-2 {
-            flex: 0 0 48%;
+            opacity: 0.8;
         }
 
         .alert {
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-left: 4px solid;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
 
         .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border-color: #28a745;
+            background: rgba(46, 213, 115, 0.2);
+            border: 1px solid rgba(46, 213, 115, 0.4);
         }
 
         .alert-error {
-            background: #f8d7da;
-            color: #721c24;
-            border-color: #dc3545;
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
         }
 
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-
-        .loading::after {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .volunteer-roster {
-            background: #e3f2fd;
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
-        }
-
-        .volunteer-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .volunteer-tag {
-            background: #667eea;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.85rem;
+        .hidden {
+            display: none;
         }
 
         @media (max-width: 768px) {
-            .container {
-                margin: 0;
-                border-radius: 0;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .row {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .nav-tabs {
-                overflow-x: auto;
+            .admin-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -339,270 +165,420 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏛️ HHYC Admin Portal</h1>
+            <h1>🏆 HHYC Admin Portal</h1>
             <p>Hidden Harbor Yacht Club - Volunteer Management System</p>
         </div>
 
         <!-- Authentication Section -->
-        <div id="authSection" class="auth-section">
-            <h2>Administrative Access Required</h2>
+        <div class="auth-section" id="authSection">
+            <h2>🔐 Administrative Access Required</h2>
             <p>Please enter the admin password to continue</p>
-
-            <form class="auth-form" onsubmit="authenticateAdmin(event)">
-                <div class="form-group">
-                    <label for="adminPassword">Admin Password</label>
-                    <input type="password" id="adminPassword" required placeholder="Enter admin password">
-                </div>
-                <button type="submit" class="btn btn-primary">Access Admin Portal</button>
-            </form>
-
-            <div id="authError" class="alert alert-error" style="display: none;">
+            <div class="form-group">
+                <label for="adminPassword">Admin Password</label>
+                <input type="password" id="adminPassword" placeholder="Enter admin password">
+            </div>
+            <button class="btn" onclick="authenticate()">Access Admin Portal</button>
+            <div id="authError" class="alert alert-error hidden">
                 Invalid password. Please try again.
             </div>
         </div>
 
-        <!-- Main Admin Content -->
-        <div id="mainContent" class="main-content">
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="showTab('events')">Events</button>
-                <button class="nav-tab" onclick="showTab('tasks')">Tasks</button>
-                <button class="nav-tab" onclick="showTab('volunteers')">Volunteers</button>
-                <button class="nav-tab" onclick="showTab('reports')">Reports</button>
+        <!-- Admin Content -->
+        <div class="admin-content" id="adminContent">
+            <div id="statusAlert" class="alert alert-success hidden">
+                Status messages will appear here
             </div>
 
-            <!-- Events Tab -->
-            <div id="eventsTab" class="tab-content active">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Create New Event</h3>
-                    </div>
-                    <div class="card-body">
-                        <form onsubmit="createEvent(event)">
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="eventName">Event Name</label>
-                                        <input type="text" id="eventName" required placeholder="e.g. Spring Dock Maintenance">
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="eventDate">Event Date</label>
-                                        <input type="date" id="eventDate" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="startTime">Start Time</label>
-                                        <input type="time" id="startTime" required>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="endTime">End Time</label>
-                                        <input type="time" id="endTime" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="eventLocation">Location</label>
-                                <input type="text" id="eventLocation" required placeholder="e.g. Main Dock Area">
-                            </div>
-                            <div class="form-group">
-                                <label for="eventDescription">Description</label>
-                                <textarea id="eventDescription" rows="3" required placeholder="Detailed description of the event..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-success">Create Event</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Existing Events</h3>
-                    </div>
-                    <div class="card-body">
-                        <div id="eventsList" class="loading">Loading events...</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tasks Tab -->
-            <div id="tasksTab" class="tab-content">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Create New Task</h3>
-                    </div>
-                    <div class="card-body">
-                        <form onsubmit="createTask(event)">
-                            <div class="form-group">
-                                <label for="taskEvent">Select Event</label>
-                                <select id="taskEvent" required>
-                                    <option value="">Choose an event...</option>
-                                </select>
-                            </div>
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="taskName">Task Name</label>
-                                        <input type="text" id="taskName" required placeholder="e.g. Setup, Cleanup, Cooking">
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="volunteersNeeded">Volunteers Needed</label>
-                                        <input type="number" id="volunteersNeeded" required min="1" placeholder="4">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="taskStartTime">Task Start Time</label>
-                                        <input type="time" id="taskStartTime" required>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="form-group">
-                                        <label for="taskEndTime">Task End Time</label>
-                                        <input type="time" id="taskEndTime" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="taskPriority">Priority Level</label>
-                                <select id="taskPriority" required>
-                                    <option value="High">High</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="Low">Low</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="taskDescription">Task Description</label>
-                                <textarea id="taskDescription" rows="3" required placeholder="Detailed description of what volunteers will do..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-success">Create Task</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3>All Tasks</h3>
-                    </div>
-                    <div class="card-body">
-                        <div id="tasksList" class="loading">Loading tasks...</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Volunteers Tab -->
-            <div id="volunteersTab" class="tab-content">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Registered Volunteers</h3>
-                    </div>
-                    <div class="card-body">
-                        <div id="volunteersList" class="loading">Loading volunteers...</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reports Tab -->
-            <div id="reportsTab" class="tab-content">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>System Reports & Analytics</h3>
-                    </div>
-                    <div class="card-body">
-                        <div id="reportsContent">
-                            <p>Reports and analytics functionality coming soon...</p>
-                            <p>This section will include:</p>
-                            <ul>
-                                <li>Volunteer participation statistics</li>
-                                <li>Event completion rates</li>
-                                <li>Task assignment analytics</li>
-                                <li>Email notification logs</li>
-                            </ul>
+            <div class="admin-grid">
+                <!-- Event Creation Panel -->
+                <div class="admin-panel">
+                    <h3>📅 Create New Event</h3>
+                    <form id="eventForm">
+                        <div class="form-group">
+                            <label for="eventName">Event Name</label>
+                            <input type="text" id="eventName" required>
                         </div>
+                        <div class="form-group">
+                            <label for="eventDate">Event Date</label>
+                            <input type="date" id="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="startTime">Start Time</label>
+                            <input type="time" id="startTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endTime">End Time</label>
+                            <input type="time" id="endTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Create Event</button>
+                        <button type="button" class="btn btn-danger" onclick="resetEventForm()">Clear Form</button>
+                    </form>
+                </div>
+
+                <!-- Existing Events Panel -->
+                <div class="admin-panel">
+                    <h3>📋 Existing Events</h3>
+                    <div class="events-list" id="eventsList">
+                        <p>Loading events...</p>
                     </div>
+                    <button class="btn" onclick="loadEvents()">Refresh Events</button>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <!-- Task Management Panel -->
+                <div class="admin-panel">
+                    <h3>📝 Create New Task</h3>
+                    <form id="taskForm">
+                        <div class="form-group">
+                            <label for="taskEvent">Select Event</label>
+                            <select id="taskEvent" required>
+                                <option value="">Choose an event...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskName">Task Name</label>
+                            <select id="taskName" required>
+                                <option value="">Choose task type...</option>
+                                <option value="Setup">Setup</option>
+                                <option value="Cooking">Cooking</option>
+                                <option value="Serving">Serving</option>
+                                <option value="Cleanup">Cleanup</option>
+                                <option value="Other">Other (Custom)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="customTaskName">Custom Task Name (if Other selected)</label>
+                            <input type="text" id="customTaskName">
+                        </div>
+                        <div class="form-group">
+                            <label for="volunteersNeeded">Volunteers Needed</label>
+                            <input type="number" id="volunteersNeeded" min="1" max="20" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskStartTime">Task Start Time</label>
+                            <input type="time" id="taskStartTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskEndTime">Task End Time</label>
+                            <input type="time" id="taskEndTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="priority">Priority Level</label>
+                            <select id="priority" required>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskDescription">Task Description</label>
+                            <textarea id="taskDescription" rows="2"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Create Task</button>
+                        <button type="button" class="btn btn-danger" onclick="resetTaskForm()">Clear Form</button>
+                    </form>
+                </div>
+
+                <!-- All Tasks Panel -->
+                <div class="admin-panel">
+                    <h3>📊 All Tasks</h3>
+                    <div class="events-list" id="tasksList">
+                        <p>Loading tasks...</p>
+                    </div>
+                    <button class="btn" onclick="loadTasks()">Refresh Tasks</button>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <!-- Volunteer Management Panel -->
+                <div class="admin-panel">
+                    <h3>👥 Registered Volunteers</h3>
+                    <div class="events-list" id="volunteersList">
+                        <p>Loading volunteers...</p>
+                    </div>
+                    <button class="btn" onclick="loadVolunteers()">Refresh Volunteers</button>
+                </div>
+
+                <!-- Reports Panel -->
+                <div class="admin-panel">
+                    <h3>📈 System Reports & Analytics</h3>
+                    <p>Reports and analytics functionality:</p>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li>Volunteer participation statistics</li>
+                        <li>Event completion rates</li>
+                        <li>Task assignment analytics</li>
+                        <li>Email notification logs</li>
+                    </ul>
+                    <button class="btn" onclick="generateReport()">Generate Report</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        // Configuration
+        const ADMIN_PASSWORD = '7591';
+        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE'; // To be updated with actual Apps Script URL
+
         // Authentication System
-        let isAuthenticated = false;
+        function authenticate() {
+            const password = document.getElementById('adminPassword').value;
+            const authError = document.getElementById('authError');
+            const authSection = document.getElementById('authSection');
+            const adminContent = document.getElementById('adminContent');
 
-        function checkAuth() {
-            // Check if already authenticated
-            if (sessionStorage.getItem('hhyc_admin_auth') === 'true') {
-                isAuthenticated = true;
-                showMainContent();
-                return;
-            }
-            showAuthPrompt();
-        }
-
-        function showAuthPrompt() {
-            const authSection = document.getElementById('auth-section');
-            const mainContent = document.getElementById('main-content');
-            if (authSection && mainContent) {
-                authSection.style.display = 'block';
-                mainContent.style.display = 'none';
-            }
-        }
-
-        function showMainContent() {
-            const authSection = document.getElementById('auth-section');
-            const mainContent = document.getElementById('main-content');
-            if (authSection && mainContent) {
+            if (password === ADMIN_PASSWORD) {
                 authSection.style.display = 'none';
-                mainContent.style.display = 'block';
-            }
-            isAuthenticated = true;
-        }
-
-        function handleAuth() {
-            const password = document.getElementById('admin-password').value;
-            const errorMsg = document.getElementById('error-message');
-
-            if (password === '7591') {
-                sessionStorage.setItem('hhyc_admin_auth', 'true');
-                showMainContent();
-                if (errorMsg) errorMsg.style.display = 'none';
+                adminContent.classList.add('authenticated');
+                showAlert('Authentication successful! Welcome to HHYC Admin Portal.', 'success');
+                loadInitialData();
             } else {
-                if (errorMsg) {
-                    errorMsg.textContent = 'Invalid password. Please try again.';
-                    errorMsg.style.display = 'block';
-                }
-                document.getElementById('admin-password').value = '';
+                authError.classList.remove('hidden');
+                document.getElementById('adminPassword').value = '';
+                setTimeout(() => {
+                    authError.classList.add('hidden');
+                }, 3000);
             }
         }
 
-        function logout() {
-            sessionStorage.removeItem('hhyc_admin_auth');
-            isAuthenticated = false;
-            showAuthPrompt();
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAuth();
-
-            // Add enter key support for password field
-            const passwordField = document.getElementById('admin-password');
-            if (passwordField) {
-                passwordField.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        handleAuth();
-                    }
-                });
+        // Allow Enter key for authentication
+        document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                authenticate();
             }
         });
-</script>
+
+        // Event Management Functions
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            createEvent();
+        });
+
+        document.getElementById('taskForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            createTask();
+        });
+
+        function createEvent() {
+            const eventData = {
+                name: document.getElementById('eventName').value,
+                date: document.getElementById('eventDate').value,
+                startTime: document.getElementById('startTime').value,
+                endTime: document.getElementById('endTime').value,
+                location: document.getElementById('location').value,
+                description: document.getElementById('description').value,
+                id: generateId(),
+                created: new Date().toISOString()
+            };
+
+            // For now, store in localStorage until Google Sheets backend is connected
+            let events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+            events.push(eventData);
+            localStorage.setItem('hhyc_events', JSON.stringify(events));
+
+            showAlert(`Event "${eventData.name}" created successfully!`, 'success');
+            resetEventForm();
+            loadEvents();
+            loadEventOptions();
+        }
+
+        function createTask() {
+            const taskName = document.getElementById('taskName').value === 'Other' 
+                ? document.getElementById('customTaskName').value 
+                : document.getElementById('taskName').value;
+
+            const taskData = {
+                eventId: document.getElementById('taskEvent').value,
+                name: taskName,
+                volunteersNeeded: parseInt(document.getElementById('volunteersNeeded').value),
+                startTime: document.getElementById('taskStartTime').value,
+                endTime: document.getElementById('taskEndTime').value,
+                priority: document.getElementById('priority').value,
+                description: document.getElementById('taskDescription').value,
+                id: generateId(),
+                volunteers: [],
+                created: new Date().toISOString()
+            };
+
+            // Store in localStorage
+            let tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+            tasks.push(taskData);
+            localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
+
+            showAlert(`Task "${taskData.name}" created successfully!`, 'success');
+            resetTaskForm();
+            loadTasks();
+        }
+
+        function loadEvents() {
+            const events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+            const eventsList = document.getElementById('eventsList');
+
+            if (events.length === 0) {
+                eventsList.innerHTML = '<p>No events created yet. Create your first event!</p>';
+                return;
+            }
+
+            eventsList.innerHTML = events.map(event => `
+                <div class="event-item">
+                    <h4>${event.name}</h4>
+                    <p><strong>Date:</strong> ${event.date}</p>
+                    <p><strong>Time:</strong> ${event.startTime} - ${event.endTime}</p>
+                    <p><strong>Location:</strong> ${event.location}</p>
+                    <p><strong>Description:</strong> ${event.description}</p>
+                    <button class="btn btn-danger" onclick="deleteEvent('${event.id}')">Delete Event</button>
+                </div>
+            `).join('');
+        }
+
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+            const events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+            const tasksList = document.getElementById('tasksList');
+
+            if (tasks.length === 0) {
+                tasksList.innerHTML = '<p>No tasks created yet. Create your first task!</p>';
+                return;
+            }
+
+            tasksList.innerHTML = tasks.map(task => {
+                const event = events.find(e => e.id === task.eventId);
+                const eventName = event ? event.name : 'Unknown Event';
+                return `
+                    <div class="event-item">
+                        <h4>${task.name} (${eventName})</h4>
+                        <p><strong>Volunteers Needed:</strong> ${task.volunteersNeeded}</p>
+                        <p><strong>Time:</strong> ${task.startTime} - ${task.endTime}</p>
+                        <p><strong>Priority:</strong> ${task.priority}</p>
+                        <p><strong>Signed Up:</strong> ${task.volunteers.length}/${task.volunteersNeeded}</p>
+                        <button class="btn btn-danger" onclick="deleteTask('${task.id}')">Delete Task</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function loadEventOptions() {
+            const events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+            const select = document.getElementById('taskEvent');
+
+            select.innerHTML = '<option value="">Choose an event...</option>' + 
+                events.map(event => `<option value="${event.id}">${event.name}</option>`).join('');
+        }
+
+        function loadVolunteers() {
+            const volunteers = JSON.parse(localStorage.getItem('hhyc_volunteers') || '[]');
+            const volunteersList = document.getElementById('volunteersList');
+
+            if (volunteers.length === 0) {
+                volunteersList.innerHTML = '<p>No volunteers registered yet.</p>';
+                return;
+            }
+
+            volunteersList.innerHTML = volunteers.map(volunteer => `
+                <div class="event-item">
+                    <h4>${volunteer.name}</h4>
+                    <p><strong>Email:</strong> ${volunteer.email}</p>
+                    <p><strong>Phone:</strong> ${volunteer.phone}</p>
+                    <p><strong>Joined:</strong> ${new Date(volunteer.joined).toLocaleDateString()}</p>
+                </div>
+            `).join('');
+        }
+
+        function deleteEvent(eventId) {
+            if (confirm('Are you sure you want to delete this event?')) {
+                let events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+                events = events.filter(event => event.id !== eventId);
+                localStorage.setItem('hhyc_events', JSON.stringify(events));
+
+                // Also delete associated tasks
+                let tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+                tasks = tasks.filter(task => task.eventId !== eventId);
+                localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
+
+                showAlert('Event deleted successfully!', 'success');
+                loadEvents();
+                loadTasks();
+                loadEventOptions();
+            }
+        }
+
+        function deleteTask(taskId) {
+            if (confirm('Are you sure you want to delete this task?')) {
+                let tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+                tasks = tasks.filter(task => task.id !== taskId);
+                localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
+
+                showAlert('Task deleted successfully!', 'success');
+                loadTasks();
+            }
+        }
+
+        function resetEventForm() {
+            document.getElementById('eventForm').reset();
+        }
+
+        function resetTaskForm() {
+            document.getElementById('taskForm').reset();
+        }
+
+        function generateReport() {
+            const events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+            const tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+            const volunteers = JSON.parse(localStorage.getItem('hhyc_volunteers') || '[]');
+
+            const report = `
+📊 HHYC System Report - ${new Date().toLocaleDateString()}
+
+📅 Events: ${events.length} total
+📝 Tasks: ${tasks.length} total  
+👥 Volunteers: ${volunteers.length} registered
+
+This is a basic report. Full analytics will be available once Google Sheets backend is connected.
+            `;
+
+            alert(report);
+        }
+
+        // Utility Functions
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        function showAlert(message, type) {
+            const alert = document.getElementById('statusAlert');
+            alert.textContent = message;
+            alert.className = `alert alert-${type}`;
+            alert.classList.remove('hidden');
+
+            setTimeout(() => {
+                alert.classList.add('hidden');
+            }, 5000);
+        }
+
+        function loadInitialData() {
+            loadEvents();
+            loadTasks();
+            loadVolunteers();
+            loadEventOptions();
+        }
+
+        // Custom task name toggle
+        document.getElementById('taskName').addEventListener('change', function() {
+            const customField = document.getElementById('customTaskName');
+            customField.style.display = this.value === 'Other' ? 'block' : 'none';
+            if (this.value !== 'Other') {
+                customField.value = '';
+            }
+        });
+    </script>
 </body>
 </html>
