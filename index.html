@@ -5,69 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HHYC Volunteer Management System</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            text-align: center;
             color: white;
-            padding: 2rem;
         }
-        .logo {
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
             font-size: 3rem;
-            font-weight: bold;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .subtitle {
+
+        .header p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
             opacity: 0.9;
         }
-        .buttons {
-            display: flex;
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
-        .btn {
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
+
+        .nav-button {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            padding: 2rem;
             text-decoration: none;
             color: white;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 10px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
-        .btn:hover {
-            background: rgba(255,255,255,0.3);
+
+        .nav-button:hover {
+            background: rgba(255,255,255,0.2);
             border-color: rgba(255,255,255,0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
         }
-        .admin { border-color: #ff6b6b; }
-        .volunteer { border-color: #4ecdc4; }
-        .setup { border-color: #45b7d1; }
+
+        .nav-button h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-button p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">⚓ HHYC</div>
-        <div class="subtitle">Hidden Harbor Yacht Club<br>Volunteer Management System</div>
-        <div class="buttons">
-            <a href="hhyc_admin_portal.html" class="btn admin">🔧 Admin Portal</a>
-            <a href="hhyc_volunteer_portal.html" class="btn volunteer">👥 Volunteer Portal</a>
-            <a href="HHYC_SETUP_GUIDE.md" class="btn setup">📋 Setup Guide</a>
+        <div class="header">
+            <h1>🏆 Hidden Harbor Yacht Club</h1>
+            <p>Professional Volunteer Management System</p>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="hhyc_admin_portal.html" class="nav-button">
+                <h3>👨‍💼 Admin Portal</h3>
+                <p>Create events, manage tasks, view volunteer rosters<br><strong>Password: 7591</strong></p>
+            </a>
+
+            <a href="hhyc_volunteer_portal.html" class="nav-button">
+                <h3>👥 Volunteer Portal</h3>
+                <p>Sign up for events, view tasks, see who you're working with<br><strong>Gate Code: 1957</strong></p>
+            </a>
+
+            <a href="HHYC_SETUP_GUIDE.md" class="nav-button">
+                <h3>📖 Setup Guide</h3>
+                <p>Complete instructions for system configuration and deployment</p>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Hidden Harbor Yacht Club Volunteer Management System</p>
+            <p>Professional System Deployment</p>
         </div>
     </div>
 </body>
