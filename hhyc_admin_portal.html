@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HHYC Volunteer Management - Admin Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .auth-section {
+            padding: 40px;
+            text-align: center;
+            background: white;
+        }
+
+        .main-content {
+            padding: 40px;
+            background: white;
+            display: none;
+        }
+
+        .auth-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="password"], 
+        input[type="text"], 
+        input[type="email"], 
+        input[type="date"], 
+        input[type="time"], 
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e1e5e9;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .nav-tabs {
+            display: flex;
+            border-bottom: 2px solid #e1e5e9;
+            margin-bottom: 30px;
+        }
+
+        .nav-tab {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-weight: 500;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .event-item, .task-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .event-meta, .task-meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-open {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-full {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .col-2 {
+            flex: 0 0 48%;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #28a745;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #dc3545;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .volunteer-roster {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .volunteer-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .volunteer-tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-tabs {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ HHYC Admin Portal</h1>
+            <p>Hidden Harbor Yacht Club - Volunteer Management System</p>
+        </div>
+
+        <!-- Authentication Section -->
+        <div id="authSection" class="auth-section">
+            <h2>Administrative Access Required</h2>
+            <p>Please enter the admin password to continue</p>
+
+            <form class="auth-form" onsubmit="authenticateAdmin(event)">
+                <div class="form-group">
+                    <label for="adminPassword">Admin Password</label>
+                    <input type="password" id="adminPassword" required placeholder="Enter admin password">
+                </div>
+                <button type="submit" class="btn btn-primary">Access Admin Portal</button>
+            </form>
+
+            <div id="authError" class="alert alert-error" style="display: none;">
+                Invalid password. Please try again.
+            </div>
+        </div>
+
+        <!-- Main Admin Content -->
+        <div id="mainContent" class="main-content">
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showTab('events')">Events</button>
+                <button class="nav-tab" onclick="showTab('tasks')">Tasks</button>
+                <button class="nav-tab" onclick="showTab('volunteers')">Volunteers</button>
+                <button class="nav-tab" onclick="showTab('reports')">Reports</button>
+            </div>
+
+            <!-- Events Tab -->
+            <div id="eventsTab" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Create New Event</h3>
+                    </div>
+                    <div class="card-body">
+                        <form onsubmit="createEvent(event)">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="eventName">Event Name</label>
+                                        <input type="text" id="eventName" required placeholder="e.g. Spring Dock Maintenance">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="eventDate">Event Date</label>
+                                        <input type="date" id="eventDate" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="startTime">Start Time</label>
+                                        <input type="time" id="startTime" required>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="endTime">End Time</label>
+                                        <input type="time" id="endTime" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="eventLocation">Location</label>
+                                <input type="text" id="eventLocation" required placeholder="e.g. Main Dock Area">
+                            </div>
+                            <div class="form-group">
+                                <label for="eventDescription">Description</label>
+                                <textarea id="eventDescription" rows="3" required placeholder="Detailed description of the event..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Create Event</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Existing Events</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="eventsList" class="loading">Loading events...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks Tab -->
+            <div id="tasksTab" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Create New Task</h3>
+                    </div>
+                    <div class="card-body">
+                        <form onsubmit="createTask(event)">
+                            <div class="form-group">
+                                <label for="taskEvent">Select Event</label>
+                                <select id="taskEvent" required>
+                                    <option value="">Choose an event...</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="taskName">Task Name</label>
+                                        <input type="text" id="taskName" required placeholder="e.g. Setup, Cleanup, Cooking">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="volunteersNeeded">Volunteers Needed</label>
+                                        <input type="number" id="volunteersNeeded" required min="1" placeholder="4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="taskStartTime">Task Start Time</label>
+                                        <input type="time" id="taskStartTime" required>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="taskEndTime">Task End Time</label>
+                                        <input type="time" id="taskEndTime" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="taskPriority">Priority Level</label>
+                                <select id="taskPriority" required>
+                                    <option value="High">High</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="taskDescription">Task Description</label>
+                                <textarea id="taskDescription" rows="3" required placeholder="Detailed description of what volunteers will do..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Create Task</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>All Tasks</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="tasksList" class="loading">Loading tasks...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volunteers Tab -->
+            <div id="volunteersTab" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Registered Volunteers</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="volunteersList" class="loading">Loading volunteers...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reportsTab" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>System Reports & Analytics</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="reportsContent">
+                            <p>Reports and analytics functionality coming soon...</p>
+                            <p>This section will include:</p>
+                            <ul>
+                                <li>Volunteer participation statistics</li>
+                                <li>Event completion rates</li>
+                                <li>Task assignment analytics</li>
+                                <li>Email notification logs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE'; // Replace with actual Apps Script URL
+        let currentEvents = [];
+        let currentTasks = [];
+        let currentVolunteers = [];
+
+        // Authentication
+        async function authenticateAdmin(event) {
+            event.preventDefault();
+            const password = document.getElementById('adminPassword').value;
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'authenticateAdmin',
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('authSection').style.display = 'none';
+                    document.getElementById('mainContent').style.display = 'block';
+                    loadAllData();
+                } else {
+                    document.getElementById('authError').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Authentication error:', error);
+                document.getElementById('authError').style.display = 'block';
+            }
+        }
+
+        // Tab Management
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all nav tabs
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.add('active');
+            event.target.classList.add('active');
+
+            // Load data for specific tabs
+            if (tabName === 'events') loadEvents();
+            else if (tabName === 'tasks') loadTasks();
+            else if (tabName === 'volunteers') loadVolunteers();
+        }
+
+        // Load all data
+        async function loadAllData() {
+            await loadEvents();
+            await loadTasks(); 
+            await loadVolunteers();
+            populateEventSelect();
+        }
+
+        // Events Management
+        async function loadEvents() {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL + '?action=getAllEvents');
+                const result = await response.json();
+
+                if (result.success) {
+                    currentEvents = result.data;
+                    displayEvents(result.data);
+                } else {
+                    document.getElementById('eventsList').innerHTML = '<p>Error loading events: ' + result.error + '</p>';
+                }
+            } catch (error) {
+                document.getElementById('eventsList').innerHTML = '<p>Error loading events: ' + error.message + '</p>';
+            }
+        }
+
+        function displayEvents(events) {
+            const container = document.getElementById('eventsList');
+
+            if (events.length === 0) {
+                container.innerHTML = '<p>No events found. Create your first event above!</p>';
+                return;
+            }
+
+            const html = events.map(event => `
+                <div class="event-item">
+                    <h4>${event.EventName}</h4>
+                    <p>${event.Description}</p>
+                    <div class="event-meta">
+                        <span>📅 ${formatDate(event.EventDate)}</span>
+                        <span>⏰ ${event.StartTime} - ${event.EndTime}</span>
+                        <span>📍 ${event.Location}</span>
+                        <span class="status-badge status-${event.Status.toLowerCase()}">${event.Status}</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="viewEventTasks('${event.EventID}')">View Tasks</button>
+                </div>
+            `).join('');
+
+            container.innerHTML = html;
+        }
+
+        async function createEvent(event) {
+            event.preventDefault();
+
+            const eventData = {
+                eventName: document.getElementById('eventName').value,
+                eventDate: document.getElementById('eventDate').value,
+                startTime: document.getElementById('startTime').value,
+                endTime: document.getElementById('endTime').value,
+                location: document.getElementById('eventLocation').value,
+                description: document.getElementById('eventDescription').value,
+                createdBy: 'Admin'
+            };
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'createEvent',
+                        eventData: eventData
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showAlert('Event created successfully!', 'success');
+                    event.target.reset();
+                    await loadEvents();
+                    populateEventSelect();
+                } else {
+                    showAlert('Error creating event: ' + result.error, 'error');
+                }
+            } catch (error) {
+                showAlert('Error creating event: ' + error.message, 'error');
+            }
+        }
+
+        // Tasks Management
+        async function loadTasks() {
+            try {
+                // Load tasks for all events
+                const allTasks = [];
+                for (const event of currentEvents) {
+                    const response = await fetch(APPS_SCRIPT_URL + `?action=getEventTasks&eventId=${event.EventID}`);
+                    const result = await response.json();
+                    if (result.success) {
+                        allTasks.push(...result.data.map(task => ({...task, EventName: event.EventName})));
+                    }
+                }
+                currentTasks = allTasks;
+                displayTasks(allTasks);
+            } catch (error) {
+                document.getElementById('tasksList').innerHTML = '<p>Error loading tasks: ' + error.message + '</p>';
+            }
+        }
+
+        function displayTasks(tasks) {
+            const container = document.getElementById('tasksList');
+
+            if (tasks.length === 0) {
+                container.innerHTML = '<p>No tasks found. Create tasks for your events above!</p>';
+                return;
+            }
+
+            const html = tasks.map(task => `
+                <div class="task-item">
+                    <h4>${task.TaskName}</h4>
+                    <p><strong>Event:</strong> ${task.EventName}</p>
+                    <p>${task.TaskDescription}</p>
+                    <div class="task-meta">
+                        <span>⏰ ${task.StartTime} - ${task.EndTime}</span>
+                        <span>👥 ${task.VolunteersSignedUp}/${task.VolunteersNeeded} volunteers</span>
+                        <span class="status-badge status-${task.Status.toLowerCase()}">${task.Status}</span>
+                        <span class="status-badge">${task.Priority} Priority</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="viewTaskSignups('${task.TaskID}')">View Signups</button>
+                </div>
+            `).join('');
+
+            container.innerHTML = html;
+        }
+
+        async function createTask(event) {
+            event.preventDefault();
+
+            const taskData = {
+                eventId: document.getElementById('taskEvent').value,
+                taskName: document.getElementById('taskName').value,
+                taskDescription: document.getElementById('taskDescription').value,
+                volunteersNeeded: parseInt(document.getElementById('volunteersNeeded').value),
+                startTime: document.getElementById('taskStartTime').value,
+                endTime: document.getElementById('taskEndTime').value,
+                priority: document.getElementById('taskPriority').value
+            };
+
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'createTask',
+                        taskData: taskData
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showAlert('Task created successfully!', 'success');
+                    event.target.reset();
+                    await loadTasks();
+                } else {
+                    showAlert('Error creating task: ' + result.error, 'error');
+                }
+            } catch (error) {
+                showAlert('Error creating task: ' + error.message, 'error');
+            }
+        }
+
+        // Volunteers Management
+        async function loadVolunteers() {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL + '?action=getAllVolunteers');
+                const result = await response.json();
+
+                if (result.success) {
+                    currentVolunteers = result.data;
+                    displayVolunteers(result.data);
+                } else {
+                    document.getElementById('volunteersList').innerHTML = '<p>Error loading volunteers: ' + result.error + '</p>';
+                }
+            } catch (error) {
+                document.getElementById('volunteersList').innerHTML = '<p>Error loading volunteers: ' + error.message + '</p>';
+            }
+        }
+
+        function displayVolunteers(volunteers) {
+            const container = document.getElementById('volunteersList');
+
+            if (volunteers.length === 0) {
+                container.innerHTML = '<p>No volunteers registered yet.</p>';
+                return;
+            }
+
+            const html = volunteers.map(volunteer => `
+                <div class="event-item">
+                    <h4>${volunteer.FirstName} ${volunteer.LastName}</h4>
+                    <p><strong>Email:</strong> ${volunteer.Email}</p>
+                    <p><strong>Phone:</strong> ${volunteer.Phone}</p>
+                    <div class="event-meta">
+                        <span>👤 ${volunteer.MembershipStatus}</span>
+                        <span>🕒 Total Hours: ${volunteer.TotalHours}</span>
+                        <span class="status-badge status-${volunteer.Status.toLowerCase()}">${volunteer.Status}</span>
+                    </div>
+                    <p><strong>Skills:</strong> ${volunteer.SkillsExperience}</p>
+                    <p><strong>Preferred Tasks:</strong> ${volunteer.PreferredTasks}</p>
+                </div>
+            `).join('');
+
+            container.innerHTML = html;
+        }
+
+        // Utility Functions
+        function populateEventSelect() {
+            const select = document.getElementById('taskEvent');
+            select.innerHTML = '<option value="">Choose an event...</option>';
+
+            currentEvents.forEach(event => {
+                const option = document.createElement('option');
+                option.value = event.EventID;
+                option.textContent = `${event.EventName} (${formatDate(event.EventDate)})`;
+                select.appendChild(option);
+            });
+        }
+
+        async function viewEventTasks(eventId) {
+            showTab('tasks');
+            // Filter tasks for specific event
+            const eventTasks = currentTasks.filter(task => task.EventID === eventId);
+            displayTasks(eventTasks);
+        }
+
+        async function viewTaskSignups(taskId) {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL + `?action=getTaskSignups&taskId=${taskId}`);
+                const result = await response.json();
+
+                if (result.success) {
+                    const signups = result.data;
+                    let message = `Task Signups:\n\n`;
+                    if (signups.length === 0) {
+                        message += 'No volunteers signed up yet.';
+                    } else {
+                        signups.forEach(signup => {
+                            message += `• ${signup.firstName} ${signup.lastName} (${signup.email})\n`;
+                        });
+                    }
+                    alert(message);
+                }
+            } catch (error) {
+                alert('Error loading signups: ' + error.message);
+            }
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString();
+        }
+
+        function showAlert(message, type) {
+            // Create alert element
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+
+            // Insert at top of main content
+            const mainContent = document.getElementById('mainContent');
+            mainContent.insertBefore(alert, mainContent.firstChild);
+
+            // Remove after 5 seconds
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
