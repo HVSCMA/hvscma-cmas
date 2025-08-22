@@ -42,7 +42,7 @@
 
         .nav-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
@@ -56,6 +56,7 @@
             color: white;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            display: block;
         }
 
         .nav-button:hover {
@@ -74,20 +75,28 @@
             line-height: 1.6;
         }
 
-        .footer {
+        .features {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
             margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
         }
 
-        .testing-badge {
-            background: rgba(81,207,102,0.2);
-            border: 2px solid rgba(81,207,102,0.6);
-            border-radius: 25px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
+        .features h2 {
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
             margin-top: 1rem;
-            display: inline-block;
+        }
+
+        .feature-item {
+            padding: 1rem;
+            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
@@ -106,26 +115,53 @@
         <div class="header">
             <h1>🏆 Hidden Harbor Yacht Club</h1>
             <p>Professional Volunteer Management System</p>
-            <div class="testing-badge">
-                ✅ WILLOW v40 TESTED & VALIDATED
-            </div>
         </div>
 
         <div class="nav-buttons">
             <a href="hhyc_admin_portal.html" class="nav-button">
                 <h3>👨‍💼 Admin Portal</h3>
-                <p>Create events, manage tasks, view volunteer rosters<br><strong>Password: 7591</strong><br>✅ Event editing & image upload</p>
+                <p>Create and manage events, tasks, and volunteer assignments.<br><strong>Password: 7591</strong></p>
             </a>
 
-            <a href="hhyc_volunteer_portal.html" class="nav-button">
-                <h3>👥 Volunteer Portal</h3>
-                <p>Sign up for events, view tasks, see who you're working with<br><strong>Gate Code: 1957</strong><br>✅ Working roster display</p>
+            <a href="hhyc_events.html" class="nav-button">
+                <h3>👥 Volunteer Events</h3>
+                <p>View volunteer opportunities and sign up to help. See who you'll be working with!<br><strong>Open Access - No Login Required</strong></p>
             </a>
         </div>
 
-        <div class="footer">
-            <p>© 2025 Hidden Harbor Yacht Club Volunteer Management System</p>
-            <p>Built by WILLOW v40 - Tested & Validated for Perfect Operation</p>
+        <div class="features">
+            <h2>🎯 System Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>✅ Event Management</strong><br>
+                    Create, edit, update, delete events with image uploads
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Task Organization</strong><br>
+                    Unique task names, volunteer counts, simplified workflow
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Participant Transparency</strong><br>
+                    Everyone sees who's working each task
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Easy Signup</strong><br>
+                    Simple volunteer registration (name, address, email)
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Cancellation System</strong><br>
+                    Gate code protected cancellations with reasons
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Mobile Responsive</strong><br>
+                    Works perfectly on phones and tablets
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem; opacity: 0.8;">
+            <p>© 2025 Hidden Harbor Yacht Club - Professional Volunteer Management System</p>
+            <p>Built with WILLOW v40 Perfection Standards</p>
         </div>
     </div>
 </body>
