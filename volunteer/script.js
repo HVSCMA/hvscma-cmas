@@ -1,528 +1,683 @@
-// Volunteer Management System - Complete JavaScript
-// Admin password: 7591, Gate code: 1957
+// Volunteer Management System - Complete Client-Side Implementation
+// Admin Password: 7591, Gate Code: 1957
 
-// Global variables
-let events = [];
-let currentEvent = null;
-const ADMIN_PASSWORD = '7591';
-const GATE_CODE = '1957';
-
-// Storage keys
-const EVENTS_STORAGE_KEY = 'volunteerEvents';
-const VOLUNTEERS_STORAGE_KEY = 'volunteerData';
-
-// Initialize system on page load
-document.addEventListener('DOMContentLoaded', function() {
-    loadEventsFromStorage();
-
-    // Check what page we're on and initialize accordingly
-    if (window.location.pathname.includes('/admin.html')) {
-        initializeAdminPage();
-    } else {
-        initializePublicPage();
-    }
-});
-
-// Storage functions
-function saveEventsToStorage() {
-    localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(events));
-}
-
-function loadEventsFromStorage() {
-    const stored = localStorage.getItem(EVENTS_STORAGE_KEY);
-    events = stored ? JSON.parse(stored) : [];
-}
-
-function saveVolunteerData(eventSlug, volunteers) {
-    const allVolunteers = JSON.parse(localStorage.getItem(VOLUNTEERS_STORAGE_KEY) || '{}');
-    allVolunteers[eventSlug] = volunteers;
-    localStorage.setItem(VOLUNTEERS_STORAGE_KEY, JSON.stringify(allVolunteers));
-}
-
-function loadVolunteerData(eventSlug) {
-    const allVolunteers = JSON.parse(localStorage.getItem(VOLUNTEERS_STORAGE_KEY) || '{}');
-    return allVolunteers[eventSlug] || [];
-}
-
-// Public page initialization
-function initializePublicPage() {
-    displayEventList();
-}
-
-// Admin page initialization
-function initializeAdminPage() {
-    // Admin page is protected by password, so don't initialize until authenticated
-}
-
-// Display event list on main page
-function displayEventList() {
-    const container = document.getElementById('events-container');
-    const noEventsDiv = document.getElementById('no-events');
-
-    if (events.length === 0) {
-        container.innerHTML = '';
-        noEventsDiv.style.display = 'block';
-        return;
+class VolunteerManager {
+    constructor() {
+        this.adminPassword = '7591';
+        this.gateCode = '1957';
+        this.events = this.loadEvents();
+        this.volunteers = this.loadVolunteers();
+        this.init();
     }
 
-    noEventsDiv.style.display = 'none';
+    init() {
+        // Initialize based on current page
+        if (window.location.pathname.includes('admin.html')) {
+            this.initAdminPanel();
+        } else {
+            this.initMainPage();
+        }
+    }
 
-    container.innerHTML = events.map(event => {
-        const volunteers = loadVolunteerData(event.eventSlug);
-        const totalVolunteers = volunteers.length;
-        const totalNeeded = event.tasks.reduce((sum, task) => sum + task.needed, 0);
+    // Data Management
+    loadEvents() {
+        return JSON.parse(localStorage.getItem('volunteer_events') || '[]');
+    }
 
-        return `
+    saveEvents() {
+        localStorage.setItem('volunteer_events', JSON.stringify(this.events));
+    }
+
+    loadVolunteers() {
+        return JSON.parse(localStorage.getItem('volunteer_volunteers') || '{}');
+    }
+
+    saveVolunteers() {
+        localStorage.setItem('volunteer_volunteers', JSON.stringify(this.volunteers));
+    }
+
+    // Main Page Functionality
+    initMainPage() {
+        this.loadMainPageEvents();
+    }
+
+    loadMainPageEvents() {
+        const container = document.getElementById('events-container');
+        if (!container) return;
+
+        if (this.events.length === 0) {
+            container.innerHTML = `
+                <div class="no-events">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No Events Available</h3>
+                    <p>There are currently no volunteer events scheduled. Check back soon!</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = this.events.map(event => `
+            <div class="event-card" onclick="window.open('${event.eventSlug}/', '_self')">
+                ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.eventName}" class="event-image">` : ''}
+                <div class="event-title">${event.eventName}</div>
+                <div class="event-date">
+                    <i class="fas fa-calendar"></i> 
+                    ${this.formatDate(event.eventDate)} • ${this.formatTime(event.startTime)} - ${this.formatTime(event.endTime)}
+                </div>
+                <div class="event-description">${event.description}</div>
+                <div class="volunteer-count">
+                    <i class="fas fa-users"></i> 
+                    ${this.getEventVolunteerCount(event.eventSlug)} / ${this.getEventTotalNeeded(event)} volunteers signed up
+                </div>
+            </div>
+        `).join('');
+    }
+
+    getEventVolunteerCount(eventSlug) {
+        const eventVolunteers = this.volunteers[eventSlug] || [];
+        return eventVolunteers.length;
+    }
+
+    getEventTotalNeeded(event) {
+        return event.tasks.reduce((total, task) => total + task.needed, 0);
+    }
+
+    // Admin Panel Functionality
+    initAdminPanel() {
+        this.setupAdminLogin();
+        this.setupAdminNavigation();
+        this.setupEventCreation();
+    }
+
+    setupAdminLogin() {
+        const loginBtn = document.getElementById('login-btn');
+        const passwordInput = document.getElementById('admin-password');
+        const loginScreen = document.getElementById('login-screen');
+        const adminPanel = document.getElementById('admin-panel');
+        const errorDiv = document.getElementById('password-error');
+
+        if (!loginBtn || !passwordInput) return;
+
+        const checkPassword = () => {
+            const password = passwordInput.value;
+            if (password === this.adminPassword) {
+                loginScreen.style.display = 'none';
+                adminPanel.style.display = 'block';
+                this.loadExistingEvents();
+            } else {
+                errorDiv.style.display = 'flex';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        };
+
+        loginBtn.addEventListener('click', checkPassword);
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        // Hide error on input
+        passwordInput.addEventListener('input', () => {
+            errorDiv.style.display = 'none';
+        });
+    }
+
+    setupAdminNavigation() {
+        const createBtn = document.getElementById('create-event-btn');
+        const manageBtn = document.getElementById('manage-events-btn');
+        const createSection = document.getElementById('create-event-section');
+        const manageSection = document.getElementById('manage-events-section');
+
+        if (!createBtn || !manageBtn) return;
+
+        createBtn.addEventListener('click', () => {
+            createBtn.classList.add('active');
+            manageBtn.classList.remove('active');
+            createSection.style.display = 'block';
+            manageSection.style.display = 'none';
+        });
+
+        manageBtn.addEventListener('click', () => {
+            manageBtn.classList.add('active');
+            createBtn.classList.remove('active');
+            manageSection.style.display = 'block';
+            createSection.style.display = 'none';
+            this.loadExistingEvents();
+        });
+    }
+
+    setupEventCreation() {
+        const form = document.getElementById('create-event-form');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const tasksContainer = document.getElementById('tasks-container');
+
+        if (!form) return;
+
+        // Auto-generate slug from event name
+        const eventNameInput = document.getElementById('event-name');
+        const eventSlugInput = document.getElementById('event-slug');
+
+        if (eventNameInput && eventSlugInput) {
+            eventNameInput.addEventListener('input', () => {
+                const slug = eventNameInput.value
+                    .toLowerCase()
+                    .replace(/[^a-z0-9\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .trim();
+                eventSlugInput.value = slug;
+            });
+        }
+
+        // Add task functionality
+        if (addTaskBtn && tasksContainer) {
+            addTaskBtn.addEventListener('click', () => {
+                this.addTaskItem(tasksContainer);
+            });
+
+            // Setup remove task buttons for existing tasks
+            this.setupRemoveTaskButtons(tasksContainer);
+        }
+
+        // Form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.createEvent(form);
+        });
+    }
+
+    addTaskItem(container) {
+        const taskItem = document.createElement('div');
+        taskItem.className = 'task-item';
+        taskItem.innerHTML = `
+            <input type="text" placeholder="Task name (e.g., Set up tables)" class="task-name" required>
+            <input type="number" placeholder="# needed" class="task-count" min="1" max="50" required>
+            <button type="button" class="btn-remove-task">Remove</button>
+        `;
+        container.appendChild(taskItem);
+        this.setupRemoveTaskButtons(container);
+    }
+
+    setupRemoveTaskButtons(container) {
+        container.querySelectorAll('.btn-remove-task').forEach(btn => {
+            btn.onclick = () => {
+                if (container.children.length > 1) {
+                    btn.parentElement.remove();
+                }
+            };
+        });
+    }
+
+    createEvent(form) {
+        const formData = new FormData(form);
+
+        // Collect tasks
+        const taskItems = document.querySelectorAll('.task-item');
+        const tasks = [];
+
+        taskItems.forEach((item, index) => {
+            const name = item.querySelector('.task-name').value.trim();
+            const needed = parseInt(item.querySelector('.task-count').value);
+
+            if (name && needed > 0) {
+                tasks.push({
+                    id: index + 1,
+                    name,
+                    needed,
+                    volunteers: []
+                });
+            }
+        });
+
+        if (tasks.length === 0) {
+            alert('Please add at least one task.');
+            return;
+        }
+
+        const event = {
+            eventSlug: document.getElementById('event-slug').value.trim(),
+            eventName: document.getElementById('event-name').value.trim(),
+            eventDate: document.getElementById('event-date').value,
+            startTime: document.getElementById('start-time').value,
+            endTime: document.getElementById('end-time').value,
+            description: document.getElementById('event-description').value.trim(),
+            imageUrl: document.getElementById('event-image').value.trim(),
+            organizerEmail: document.getElementById('organizer-email').value.trim(),
+            tasks,
+            createdAt: new Date().toISOString()
+        };
+
+        // Check for duplicate slug
+        if (this.events.find(e => e.eventSlug === event.eventSlug)) {
+            alert('Event URL slug already exists. Please choose a different one.');
+            return;
+        }
+
+        this.events.push(event);
+        this.saveEvents();
+
+        // Create event page
+        this.createEventPage(event);
+
+        // Show success message
+        this.showSuccessMessage('Event created successfully! Event page is now available.');
+
+        // Reset form
+        form.reset();
+        document.getElementById('tasks-container').innerHTML = `
+            <div class="task-item">
+                <input type="text" placeholder="Task name (e.g., Set up tables)" class="task-name">
+                <input type="number" placeholder="# needed" class="task-count" min="1" max="50">
+                <button type="button" class="btn-remove-task">Remove</button>
+            </div>
+        `;
+        this.setupRemoveTaskButtons(document.getElementById('tasks-container'));
+    }
+
+    createEventPage(event) {
+        // This would create the individual event signup page
+        // For now, we'll simulate this with localStorage data
+        console.log(`Event page created: /volunteer/${event.eventSlug}/`);
+    }
+
+    loadExistingEvents() {
+        const container = document.getElementById('existing-events-container');
+        if (!container) return;
+
+        if (this.events.length === 0) {
+            container.innerHTML = `
+                <div class="no-events">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No Events Created</h3>
+                    <p>Create your first event to get started.</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = this.events.map(event => `
             <div class="event-card">
-                ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.eventName}" class="event-image" onerror="this.style.display='none'">` : ''}
-                <div class="event-header">
-                    <div>
-                        <h3 class="event-title">${event.eventName}</h3>
-                        <p class="event-date">
-                            <i class="fas fa-calendar"></i>
-                            ${formatEventDate(event.eventDate)} • ${event.startTime} - ${event.endTime}
-                        </p>
-                    </div>
+                ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.eventName}" class="event-image">` : ''}
+                <div class="event-title">${event.eventName}</div>
+                <div class="event-date">
+                    <i class="fas fa-calendar"></i> 
+                    ${this.formatDate(event.eventDate)} • ${this.formatTime(event.startTime)} - ${this.formatTime(event.endTime)}
+                </div>
+                <div class="event-description">${event.description}</div>
+                <div class="volunteer-count">
+                    <i class="fas fa-users"></i> 
+                    ${this.getEventVolunteerCount(event.eventSlug)} / ${this.getEventTotalNeeded(event)} volunteers
+                </div>
+                <div style="margin-top: 1rem;">
+                    <button class="btn btn-primary" onclick="window.open('../${event.eventSlug}/', '_blank')">
+                        <i class="fas fa-eye"></i> View Event Page
+                    </button>
+                    <button class="btn btn-secondary" onclick="volunteerManager.deleteEvent('${event.eventSlug}')">
+                        <i class="fas fa-trash"></i> Delete Event
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    deleteEvent(eventSlug) {
+        if (confirm('Are you sure you want to delete this event? This action cannot be undone.')) {
+            this.events = this.events.filter(e => e.eventSlug !== eventSlug);
+            delete this.volunteers[eventSlug];
+            this.saveEvents();
+            this.saveVolunteers();
+            this.loadExistingEvents();
+            this.showSuccessMessage('Event deleted successfully.');
+        }
+    }
+
+    // Utility Functions
+    formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+    }
+
+    formatTime(timeStr) {
+        const time = new Date(`2000-01-01T${timeStr}`);
+        return time.toLocaleTimeString('en-US', { 
+            hour: 'numeric', 
+            minute: '2-digit',
+            hour12: true 
+        });
+    }
+
+    showSuccessMessage(message) {
+        // Remove existing success messages
+        const existing = document.querySelector('.success-message');
+        if (existing) existing.remove();
+
+        const successDiv = document.createElement('div');
+        successDiv.className = 'success-message';
+        successDiv.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            ${message}
+        `;
+
+        const adminSection = document.querySelector('.admin-section');
+        if (adminSection) {
+            adminSection.insertBefore(successDiv, adminSection.firstChild);
+        }
+
+        // Remove after 5 seconds
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.remove();
+            }
+        }, 5000);
+    }
+
+    // Simulate email notifications
+    sendEmail(type, data) {
+        console.log(`📧 Email sent (${type}):`, data);
+
+        if (type === 'volunteer_signup') {
+            console.log(`✅ Thank you email sent to ${data.email}`);
+        } else if (type === 'organizer_update') {
+            console.log(`📊 Organizer roster update sent to ${data.organizerEmail}`);
+        }
+    }
+}
+
+// Individual Event Page Functionality
+class EventPageManager {
+    constructor(eventSlug) {
+        this.eventSlug = eventSlug;
+        this.gateCode = '1957';
+        this.volunteerManager = new VolunteerManager();
+        this.event = this.volunteerManager.events.find(e => e.eventSlug === eventSlug);
+
+        if (this.event) {
+            this.volunteers = this.volunteerManager.volunteers[eventSlug] || [];
+            this.initEventPage();
+        } else {
+            this.show404();
+        }
+    }
+
+    initEventPage() {
+        this.renderEventPage();
+        this.setupVolunteerSignup();
+    }
+
+    renderEventPage() {
+        document.title = `${this.event.eventName} | Volunteer Signup`;
+
+        const container = document.querySelector('.container') || document.body;
+        container.innerHTML = `
+            <header class="header">
+                <div class="header-content">
+                    <i class="fas fa-hands-helping header-icon"></i>
+                    <h1>${this.event.eventName}</h1>
+                    <p class="subtitle">Join us and make a difference!</p>
+                </div>
+            </header>
+
+            ${this.event.imageUrl ? `
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <img src="${this.event.imageUrl}" alt="${this.event.eventName}" class="event-image" style="max-width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+            ` : ''}
+
+            <section class="events-section">
+                <h2><i class="fas fa-info-circle"></i> Event Details</h2>
+                <div class="event-details">
+                    <p><strong>Date:</strong> ${this.volunteerManager.formatDate(this.event.eventDate)}</p>
+                    <p><strong>Time:</strong> ${this.volunteerManager.formatTime(this.event.startTime)} - ${this.volunteerManager.formatTime(this.event.endTime)}</p>
+                    <p><strong>Description:</strong> ${this.event.description}</p>
+                </div>
+            </section>
+
+            <section class="events-section">
+                <h2><i class="fas fa-users"></i> Current Volunteers</h2>
+                <div id="current-volunteers"></div>
+            </section>
+
+            <section class="events-section">
+                <h2><i class="fas fa-hand-paper"></i> Volunteer Signup</h2>
+                <div id="volunteer-form-container"></div>
+            </section>
+
+            <footer class="footer">
+                <p>Thank you for volunteering! 🤝</p>
+                <p><a href="../">View All Events</a></p>
+            </footer>
+        `;
+
+        this.renderCurrentVolunteers();
+        this.renderVolunteerForm();
+    }
+
+    renderCurrentVolunteers() {
+        const container = document.getElementById('current-volunteers');
+        if (!container) return;
+
+        if (this.volunteers.length === 0) {
+            container.innerHTML = `
+                <div class="no-events">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Be the First to Volunteer!</h3>
+                    <p>No one has signed up yet. Be the first to join this event!</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Group volunteers by task
+        const volunteersByTask = {};
+        this.volunteers.forEach(volunteer => {
+            if (!volunteersByTask[volunteer.taskId]) {
+                volunteersByTask[volunteer.taskId] = [];
+            }
+            volunteersByTask[volunteer.taskId].push(volunteer);
+        });
+
+        container.innerHTML = this.event.tasks.map(task => {
+            const taskVolunteers = volunteersByTask[task.id] || [];
+            const remaining = Math.max(0, task.needed - taskVolunteers.length);
+
+            return `
+                <div class="event-card">
+                    <div class="event-title">${task.name}</div>
                     <div class="volunteer-count">
-                        ${totalVolunteers}/${totalNeeded} volunteers
+                        ${taskVolunteers.length} / ${task.needed} volunteers signed up
+                        ${remaining > 0 ? `<span style="color: #e53e3e;"> (${remaining} more needed)</span>` : '<span style="color: #38a169;"> (Complete!)</span>'}
+                    </div>
+                    ${taskVolunteers.length > 0 ? `
+                        <div style="margin-top: 1rem;">
+                            <strong>Volunteers:</strong>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                ${taskVolunteers.map(v => `<li>${v.name} ${v.phone ? `(${v.phone})` : ''}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }).join('');
+    }
+
+    renderVolunteerForm() {
+        const container = document.getElementById('volunteer-form-container');
+        if (!container) return;
+
+        // Check if any tasks still need volunteers
+        const availableTasks = this.event.tasks.filter(task => {
+            const taskVolunteers = this.volunteers.filter(v => v.taskId === task.id);
+            return taskVolunteers.length < task.needed;
+        });
+
+        if (availableTasks.length === 0) {
+            container.innerHTML = `
+                <div class="no-events">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>All Positions Filled!</h3>
+                    <p>Thank you for your interest! All volunteer positions for this event have been filled.</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = `
+            <form id="volunteer-signup-form" class="admin-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="volunteer-name">Your Name *</label>
+                        <input type="text" id="volunteer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="volunteer-email">Email Address *</label>
+                        <input type="email" id="volunteer-email" required>
                     </div>
                 </div>
-                <p class="event-description">${event.description}</p>
-                <div class="event-actions">
-                    <a href="#" onclick="showEventSignup('${event.eventSlug}')" class="volunteer-btn">
-                        <i class="fas fa-hand-paper"></i>
-                        Volunteer Now
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="volunteer-phone">Phone Number (optional)</label>
+                        <input type="tel" id="volunteer-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="volunteer-task">Choose Your Task *</label>
+                        <select id="volunteer-task" required>
+                            <option value="">Select a task...</option>
+                            ${availableTasks.map(task => {
+                                const taskVolunteers = this.volunteers.filter(v => v.taskId === task.id);
+                                const remaining = task.needed - taskVolunteers.length;
+                                return `<option value="${task.id}">${task.name} (${remaining} needed)</option>`;
+                            }).join('')}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="volunteer-notes">Notes (optional)</label>
+                    <textarea id="volunteer-notes" rows="2" placeholder="Any special requests or notes..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="gate-code">Club Gate Code *</label>
+                    <input type="password" id="gate-code" maxlength="4" required>
+                    <div id="gate-code-error" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Incorrect gate code. Please try again.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-check"></i>
+                    Sign Me Up!
+                </button>
+            </form>
+        `;
+    }
+
+    setupVolunteerSignup() {
+        const form = document.getElementById('volunteer-signup-form');
+        if (!form) return;
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.processSignup(form);
+        });
+
+        // Hide gate code error on input
+        const gateCodeInput = document.getElementById('gate-code');
+        const errorDiv = document.getElementById('gate-code-error');
+
+        if (gateCodeInput && errorDiv) {
+            gateCodeInput.addEventListener('input', () => {
+                errorDiv.style.display = 'none';
+            });
+        }
+    }
+
+    processSignup(form) {
+        const gateCode = document.getElementById('gate-code').value;
+        const errorDiv = document.getElementById('gate-code-error');
+
+        if (gateCode !== this.gateCode) {
+            errorDiv.style.display = 'flex';
+            document.getElementById('gate-code').focus();
+            return;
+        }
+
+        const volunteer = {
+            id: Date.now().toString(),
+            name: document.getElementById('volunteer-name').value.trim(),
+            email: document.getElementById('volunteer-email').value.trim(),
+            phone: document.getElementById('volunteer-phone').value.trim(),
+            taskId: parseInt(document.getElementById('volunteer-task').value),
+            notes: document.getElementById('volunteer-notes').value.trim(),
+            signupDate: new Date().toISOString()
+        };
+
+        // Add to volunteers list
+        if (!this.volunteerManager.volunteers[this.eventSlug]) {
+            this.volunteerManager.volunteers[this.eventSlug] = [];
+        }
+        this.volunteerManager.volunteers[this.eventSlug].push(volunteer);
+        this.volunteerManager.saveVolunteers();
+
+        // Update local volunteers array
+        this.volunteers = this.volunteerManager.volunteers[this.eventSlug];
+
+        // Send emails
+        this.volunteerManager.sendEmail('volunteer_signup', {
+            email: volunteer.email,
+            name: volunteer.name,
+            eventName: this.event.eventName,
+            taskName: this.event.tasks.find(t => t.id === volunteer.taskId).name
+        });
+
+        this.volunteerManager.sendEmail('organizer_update', {
+            organizerEmail: this.event.organizerEmail,
+            eventName: this.event.eventName,
+            volunteerCount: this.volunteers.length,
+            newVolunteer: volunteer
+        });
+
+        // Show success and refresh
+        alert('Thank you for signing up! You will receive a confirmation email shortly.');
+
+        // Refresh the page displays
+        this.renderCurrentVolunteers();
+        this.renderVolunteerForm();
+    }
+
+    show404() {
+        document.body.innerHTML = `
+            <div class="container">
+                <div class="events-section" style="text-align: center;">
+                    <h1><i class="fas fa-exclamation-triangle"></i> Event Not Found</h1>
+                    <p>The event you're looking for doesn't exist or has been removed.</p>
+                    <a href="../" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Events
                     </a>
                 </div>
             </div>
         `;
-    }).join('');
-}
-
-// Show individual event signup (simulates going to unique URL)
-function showEventSignup(eventSlug) {
-    const event = events.find(e => e.eventSlug === eventSlug);
-    if (!event) return;
-
-    currentEvent = event;
-
-    // Create modal for event signup
-    const modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        padding: 20px;
-    `;
-
-    const volunteers = loadVolunteerData(eventSlug);
-
-    modal.innerHTML = `
-        <div style="background: white; border-radius: 15px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 30px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 style="color: #1e40af; margin: 0;">${event.eventName}</h2>
-                <button onclick="closeModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b;">×</button>
-            </div>
-
-            ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.eventName}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;" onerror="this.style.display='none'">` : ''}
-
-            <div style="margin-bottom: 30px;">
-                <p style="color: #64748b; margin-bottom: 10px;">
-                    <i class="fas fa-calendar"></i> ${formatEventDate(event.eventDate)} • ${event.startTime} - ${event.endTime}
-                </p>
-                <p style="color: #64748b; line-height: 1.6;">${event.description}</p>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-                <h3 style="color: #1e40af; margin-bottom: 20px;"><i class="fas fa-users"></i> Current Volunteers</h3>
-                <div id="current-volunteers">
-                    ${displayCurrentVolunteers(event, volunteers)}
-                </div>
-            </div>
-
-            <div>
-                <h3 style="color: #1e40af; margin-bottom: 20px;"><i class="fas fa-hand-paper"></i> Sign Up to Help</h3>
-                <div id="signup-section">
-                    <div style="background: #f0f9ff; border: 1px solid #bae6fd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                        <i class="fas fa-shield-alt" style="color: #0ea5e9;"></i>
-                        <strong>Member Verification Required:</strong> Please enter the club gate code to continue.
-                    </div>
-                    <form id="volunteer-signup-form" onsubmit="submitVolunteerSignup(event)">
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
-                                <i class="fas fa-key"></i> Gate Code *
-                            </label>
-                            <input type="password" id="gate-code" maxlength="4" required style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
-                                <i class="fas fa-user"></i> Your Name *
-                            </label>
-                            <input type="text" id="volunteer-name" required style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
-                                <i class="fas fa-envelope"></i> Email *
-                            </label>
-                            <input type="email" id="volunteer-email" required style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
-                                <i class="fas fa-phone"></i> Phone (optional)
-                            </label>
-                            <input type="tel" id="volunteer-phone" style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px;">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
-                                <i class="fas fa-tasks"></i> Choose Your Task *
-                            </label>
-                            <select id="volunteer-task" required style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px;">
-                                <option value="">Select a task...</option>
-                                ${event.tasks.map(task => {
-                                    const taskVolunteers = volunteers.filter(v => v.taskId === task.id).length;
-                                    const available = task.needed - taskVolunteers;
-                                    return `<option value="${task.id}" ${available <= 0 ? 'disabled' : ''}>${task.name} (${available} spots available)</option>`;
-                                }).join('')}
-                            </select>
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
-                                <i class="fas fa-comment"></i> Notes (optional)
-                            </label>
-                            <textarea id="volunteer-notes" rows="3" placeholder="Any special requests or notes..." style="width: 100%; padding: 12px 15px; border: 2px solid #e2e8f0; border-radius: 8px;"></textarea>
-                        </div>
-                        <button type="submit" style="background: linear-gradient(135deg, #059669, #10b981); color: white; padding: 15px 30px; border: none; border-radius: 10px; font-weight: 600; width: 100%; cursor: pointer;">
-                            <i class="fas fa-check"></i> Sign Me Up!
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-}
-
-// Display current volunteers for an event
-function displayCurrentVolunteers(event, volunteers) {
-    if (volunteers.length === 0) {
-        return '<p style="color: #94a3b8; font-style: italic;">No volunteers signed up yet. Be the first!</p>';
-    }
-
-    return event.tasks.map(task => {
-        const taskVolunteers = volunteers.filter(v => v.taskId === task.id);
-        const available = task.needed - taskVolunteers.length;
-
-        return `
-            <div style="margin-bottom: 20px; padding: 15px; background: #f8fafc; border-radius: 8px;">
-                <h4 style="color: #1e40af; margin-bottom: 10px;">${task.name}</h4>
-                <p style="color: #64748b; margin-bottom: 10px;">
-                    <strong>${taskVolunteers.length}/${task.needed}</strong> volunteers
-                    ${available > 0 ? `• <span style="color: #059669;">${available} spots available</span>` : '• <span style="color: #dc2626;">Full</span>'}
-                </p>
-                ${taskVolunteers.length > 0 ? `
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                        ${taskVolunteers.map(volunteer => `
-                            <span style="background: #0ea5e9; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.9rem;">
-                                ${volunteer.name}
-                            </span>
-                        `).join('')}
-                    </div>
-                ` : ''}
-            </div>
-        `;
-    }).join('');
-}
-
-// Submit volunteer signup
-function submitVolunteerSignup(event) {
-    event.preventDefault();
-
-    const gateCode = document.getElementById('gate-code').value;
-    const name = document.getElementById('volunteer-name').value;
-    const email = document.getElementById('volunteer-email').value;
-    const phone = document.getElementById('volunteer-phone').value;
-    const taskId = parseInt(document.getElementById('volunteer-task').value);
-    const notes = document.getElementById('volunteer-notes').value;
-
-    // Validate gate code
-    if (gateCode !== GATE_CODE) {
-        alert('Incorrect gate code. Please verify your club membership.');
-        return;
-    }
-
-    // Get current volunteers and add new one
-    const volunteers = loadVolunteerData(currentEvent.eventSlug);
-    const newVolunteer = {
-        id: Date.now(),
-        name,
-        email,
-        phone,
-        taskId,
-        notes,
-        signupDate: new Date().toISOString()
-    };
-
-    volunteers.push(newVolunteer);
-    saveVolunteerData(currentEvent.eventSlug, volunteers);
-
-    // Send thank you email (simulated)
-    sendThankYouEmail(newVolunteer, currentEvent);
-
-    // Send organizer notification (simulated)
-    sendOrganizerNotification(currentEvent, volunteers);
-
-    // Show success message
-    alert(`Thank you, ${name}! You've successfully signed up for ${currentEvent.eventName}. You'll receive a confirmation email shortly.`);
-
-    // Close modal and refresh
-    closeModal();
-    displayEventList();
-}
-
-// Close modal
-function closeModal() {
-    const modal = document.querySelector('.modal');
-    if (modal) {
-        modal.remove();
     }
 }
 
-// Admin functions
-function verifyAdminPassword() {
-    const password = document.getElementById('admin-password').value;
-    const errorDiv = document.getElementById('password-error');
+// Initialize the appropriate manager based on the current page
+document.addEventListener('DOMContentLoaded', () => {
+    const path = window.location.pathname;
 
-    if (password === ADMIN_PASSWORD) {
-        document.getElementById('admin-login').style.display = 'none';
-        document.getElementById('admin-panel').style.display = 'block';
-        loadAdminData();
-    } else {
-        errorDiv.style.display = 'block';
-        document.getElementById('admin-password').value = '';
-    }
-}
-
-function loadAdminData() {
-    displayManageEvents();
-}
-
-// Admin navigation
-function showCreateEvent() {
-    document.getElementById('create-event').style.display = 'block';
-    document.getElementById('manage-events').style.display = 'none';
-
-    // Update nav buttons
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    document.querySelector('.nav-btn').classList.add('active');
-}
-
-function showManageEvents() {
-    document.getElementById('create-event').style.display = 'none';
-    document.getElementById('manage-events').style.display = 'block';
-
-    // Update nav buttons
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    document.querySelectorAll('.nav-btn')[1].classList.add('active');
-
-    displayManageEvents();
-}
-
-// Display events management
-function displayManageEvents() {
-    const container = document.getElementById('events-management');
-
-    if (events.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #64748b; padding: 40px;">No events created yet. Create your first event to get started!</p>';
-        return;
-    }
-
-    container.innerHTML = events.map(event => {
-        const volunteers = loadVolunteerData(event.eventSlug);
-        return `
-            <div class="event-management-card">
-                <div class="event-management-header">
-                    <div>
-                        <h3 style="color: #1e40af; margin-bottom: 5px;">${event.eventName}</h3>
-                        <p style="color: #64748b;">${formatEventDate(event.eventDate)} • ${volunteers.length} volunteers</p>
-                    </div>
-                    <div class="management-actions">
-                        <button onclick="viewEventDetails('${event.eventSlug}')" class="management-btn view-btn">
-                            <i class="fas fa-eye"></i> View
-                        </button>
-                        <button onclick="editEvent('${event.eventSlug}')" class="management-btn edit-btn">
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
-                        <button onclick="deleteEvent('${event.eventSlug}')" class="management-btn delete-btn">
-                            <i class="fas fa-trash"></i> Delete
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-    }).join('');
-}
-
-// Event form handling
-document.addEventListener('DOMContentLoaded', function() {
-    const eventForm = document.getElementById('event-form');
-    if (eventForm) {
-        eventForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            createNewEvent();
-        });
-    }
-
-    // Auto-generate slug from event name
-    const eventNameInput = document.getElementById('event-name');
-    const eventSlugInput = document.getElementById('event-slug');
-
-    if (eventNameInput && eventSlugInput) {
-        eventNameInput.addEventListener('input', function() {
-            const slug = this.value.toLowerCase()
-                .replace(/[^a-z0-9]+/g, '-')
-                .replace(/(^-|-$)/g, '');
-            eventSlugInput.value = slug;
-        });
-    }
-});
-
-// Create new event
-function createNewEvent() {
-    const eventData = {
-        eventSlug: document.getElementById('event-slug').value,
-        eventName: document.getElementById('event-name').value,
-        eventDate: document.getElementById('event-date').value,
-        startTime: document.getElementById('start-time').value,
-        endTime: document.getElementById('end-time').value,
-        description: document.getElementById('event-description').value,
-        imageUrl: document.getElementById('event-image').value,
-        organizerEmail: document.getElementById('organizer-email').value,
-        tasks: [],
-        createdDate: new Date().toISOString()
-    };
-
-    // Collect tasks
-    const taskItems = document.querySelectorAll('.task-item');
-    taskItems.forEach((item, index) => {
-        const name = item.querySelector('.task-name').value;
-        const needed = parseInt(item.querySelector('.task-count').value);
-
-        if (name && needed > 0) {
-            eventData.tasks.push({
-                id: index + 1,
-                name,
-                needed
-            });
+    if (path.includes('/volunteer/') && path !== '/volunteer/' && !path.includes('admin.html')) {
+        // Individual event page
+        const pathParts = path.split('/');
+        const eventSlug = pathParts[pathParts.length - 2] || pathParts[pathParts.length - 1];
+        if (eventSlug && eventSlug !== 'volunteer') {
+            new EventPageManager(eventSlug);
+            return;
         }
-    });
-
-    // Validate
-    if (eventData.tasks.length === 0) {
-        alert('Please add at least one volunteer task.');
-        return;
     }
 
-    // Check for duplicate slug
-    if (events.find(e => e.eventSlug === eventData.eventSlug)) {
-        alert('An event with this URL slug already exists. Please choose a different one.');
-        return;
-    }
-
-    // Add to events array
-    events.push(eventData);
-    saveEventsToStorage();
-
-    // Show success message
-    alert(`Event "${eventData.eventName}" created successfully!`);
-
-    // Reset form
-    document.getElementById('event-form').reset();
-
-    // Refresh management view
-    displayManageEvents();
-}
-
-// Task management
-function addTask() {
-    const container = document.getElementById('tasks-container');
-    const taskDiv = document.createElement('div');
-    taskDiv.className = 'task-item';
-    taskDiv.innerHTML = `
-        <input type="text" placeholder="Task description (e.g., Set up tables and chairs)" class="task-name" required>
-        <input type="number" placeholder="# needed" class="task-count" min="1" required>
-        <button type="button" onclick="removeTask(this)" class="remove-task">
-            <i class="fas fa-times"></i>
-        </button>
-    `;
-    container.appendChild(taskDiv);
-}
-
-function removeTask(button) {
-    const taskItem = button.closest('.task-item');
-    taskItem.remove();
-}
-
-// Delete event
-function deleteEvent(eventSlug) {
-    if (!confirm('Are you sure you want to delete this event? This action cannot be undone.')) {
-        return;
-    }
-
-    // Remove event
-    events = events.filter(e => e.eventSlug !== eventSlug);
-    saveEventsToStorage();
-
-    // Remove associated volunteer data
-    const allVolunteers = JSON.parse(localStorage.getItem(VOLUNTEERS_STORAGE_KEY) || '{}');
-    delete allVolunteers[eventSlug];
-    localStorage.setItem(VOLUNTEERS_STORAGE_KEY, JSON.stringify(allVolunteers));
-
-    // Refresh display
-    displayManageEvents();
-
-    alert('Event deleted successfully.');
-}
-
-// Email functions (simulated)
-function sendThankYouEmail(volunteer, event) {
-    console.log('Thank you email sent to:', volunteer.email);
-    console.log('Event:', event.eventName);
-    // In a real system, this would integrate with an email service
-}
-
-function sendOrganizerNotification(event, volunteers) {
-    console.log('Organizer notification sent to:', event.organizerEmail);
-    console.log('Total volunteers:', volunteers.length);
-    // In a real system, this would send updated volunteer roster
-}
-
-// Utility functions
-function formatEventDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
-// Allow Enter key for admin password
-document.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter' && document.getElementById('admin-password') === document.activeElement) {
-        verifyAdminPassword();
-    }
+    // Main page or admin page
+    window.volunteerManager = new VolunteerManager();
 });
