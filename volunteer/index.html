@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HHYC Volunteer Portal</title>
+    <title>Volunteer Opportunities - Hidden Harbor Yacht Club</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,354 +19,588 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
 
-        .header h1 { font-size: 28px; font-weight: 300; margin-bottom: 10px; }
-        .header p { opacity: 0.9; font-size: 16px; }
-
-        .volunteer-portal { display: none; padding: 40px; }
-
-        .volunteer-info {
-            background: #f9fafb;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        .form-group { margin-bottom: 20px; }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
+        .header h1 {
+            font-size: 32px;
             font-weight: 600;
-            color: #374151;
-            font-size: 14px;
+            margin-bottom: 10px;
         }
 
-        input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 14px;
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 18px;
         }
 
-        .btn {
-            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .btn:hover { transform: translateY(-2px); }
-
-        .task-item {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-
-        .teammates-section {
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f0f9ff;
-            border-radius: 8px;
-            border-left: 4px solid #3b82f6;
-        }
-
-        .teammates-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #1e40af;
-            margin-bottom: 8px;
-        }
-
-        .login-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .login-modal {
-            background: white;
+        .content {
             padding: 40px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 400px;
+        }
+
+        .gate-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
             text-align: center;
         }
 
-        .error-message, .success-message {
-            padding: 15px;
-            border-radius: 8px;
+        .gate-section h3 {
+            color: #2a5298;
             margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .gate-input {
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 18px;
+            width: 200px;
+            text-align: center;
+            margin-right: 15px;
+        }
+
+        .gate-input:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(42, 82, 152, 0.3);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+
+        .events-container {
             display: none;
         }
 
-        .error-message { background: #dc2626; color: white; }
-        .success-message { background: #10b981; color: white; }
+        .events-container.active {
+            display: block;
+        }
 
         .event-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: white;
+            border: 2px solid #e9ecef;
             border-radius: 12px;
-            padding: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .event-header {
             margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f8f9fa;
+        }
+
+        .event-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2a5298;
+            margin-bottom: 10px;
+        }
+
+        .event-date {
+            color: #6c757d;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .event-description {
+            color: #495057;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .tasks-section {
+            margin-top: 30px;
+        }
+
+        .tasks-section h4 {
+            color: #2a5298;
+            font-size: 22px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .task-card {
+            background: #f8f9fa;
+            border-left: 4px solid #2a5298;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .task-card:hover {
+            transform: translateX(5px);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .task-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2a5298;
+            margin-bottom: 8px;
+        }
+
+        .task-description {
+            color: #6c757d;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .task-roster {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #e9ecef;
+        }
+
+        .roster-title {
+            font-weight: 600;
+            color: #28a745;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .roster-volunteers {
+            color: #495057;
+            font-size: 14px;
+        }
+
+        .spots-available {
+            color: #ffc107;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .signup-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            margin-top: 15px;
+        }
+
+        .signup-form.active {
+            border-color: #2a5298;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+
+        .error-message {
+            color: #dc3545;
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .success-message {
+            color: #28a745;
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .no-events {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .no-events h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
         }
 
         @media (max-width: 768px) {
-            .form-row { grid-template-columns: 1fr; }
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .gate-input {
+                width: 100%;
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+
+            .task-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .signup-form {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Login Overlay -->
-    <div id="loginOverlay" class="login-overlay">
-        <div class="login-modal">
-            <h2>Volunteer Access Required</h2>
-            <div class="form-group">
-                <label for="gateCode">Enter Gate Code:</label>
-                <input type="password" id="gateCode" placeholder="Enter gate code">
-            </div>
-            <button class="btn" onclick="volunteerLogin()">Enter Portal</button>
-            <div id="loginError" class="error-message">Incorrect gate code. Please try again.</div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="header">
-            <h1>🤝 Volunteer Portal</h1>
-            <p>Sign up for specific tasks within club events</p>
+            <h1>🏛️ Hidden Harbor Yacht Club</h1>
+            <div class="subtitle">Volunteer Opportunities</div>
         </div>
 
-        <div id="volunteerPortal" class="volunteer-portal">
-            <div id="successMessage" class="success-message"></div>
-            <div id="errorMessage" class="error-message"></div>
-
-            <div class="volunteer-info">
-                <h2 style="color: #1e3a8a; margin-bottom: 20px;">My Volunteer Information</h2>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="volunteerName">Your Name:</label>
-                        <input type="text" id="volunteerName" placeholder="Enter your full name">
-                    </div>
-                    <div class="form-group">
-                        <label for="volunteerEmail">Email:</label>
-                        <input type="email" id="volunteerEmail" placeholder="your.email@example.com">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="volunteerPhone">Phone:</label>
-                    <input type="tel" id="volunteerPhone" placeholder="(555) 123-4567">
-                </div>
-                <button class="btn" onclick="saveVolunteerInfo()">Save My Information</button>
+        <div class="content">
+            <div id="gateSection" class="gate-section">
+                <h3>🔐 Enter Gate Code</h3>
+                <p style="margin-bottom: 20px;">Please enter the volunteer gate code to view available opportunities</p>
+                <input type="text" id="gateCode" class="gate-input" placeholder="Enter code" onkeypress="if(event.key==='Enter') checkGateCode()">
+                <button class="btn btn-primary" onclick="checkGateCode()">Access Volunteer Portal</button>
+                <div id="gateError" class="error-message" style="display: none;"></div>
             </div>
 
-            <div class="events-section">
-                <h2 style="color: #1e3a8a; margin-bottom: 25px;">Available Events</h2>
+            <div id="eventsContainer" class="events-container">
                 <div id="eventsList"></div>
             </div>
         </div>
     </div>
 
     <script>
-        let events = JSON.parse(localStorage.getItem('hhyc_volunteer_data')) || [];
+        let events = [];
+        let currentEventId = null;
 
-        function volunteerLogin() {
-            const gateCode = document.getElementById('gateCode').value;
-            if (gateCode === '1957') {
-                document.getElementById('loginOverlay').style.display = 'none';
-                document.getElementById('volunteerPortal').style.display = 'block';
-                loadVolunteerInfo();
+        function checkGateCode() {
+            const code = document.getElementById('gateCode').value.trim();
+            const errorDiv = document.getElementById('gateError');
+
+            if (code === '1957') {
+                document.getElementById('gateSection').style.display = 'none';
+                document.getElementById('eventsContainer').classList.add('active');
                 loadEvents();
             } else {
-                document.getElementById('loginError').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('loginError').style.display = 'none';
-                }, 3000);
+                errorDiv.textContent = 'Invalid gate code. Please contact the event organizer.';
+                errorDiv.style.display = 'block';
+                document.getElementById('gateCode').value = '';
             }
-        }
-
-        function loadVolunteerInfo() {
-            const volunteerInfo = localStorage.getItem('hhyc_volunteer_info');
-            if (volunteerInfo) {
-                const info = JSON.parse(volunteerInfo);
-                document.getElementById('volunteerName').value = info.name || '';
-                document.getElementById('volunteerEmail').value = info.email || '';
-                document.getElementById('volunteerPhone').value = info.phone || '';
-            }
-        }
-
-        function saveVolunteerInfo() {
-            const name = document.getElementById('volunteerName').value.trim();
-            const email = document.getElementById('volunteerEmail').value.trim();
-            const phone = document.getElementById('volunteerPhone').value.trim();
-
-            if (!name || !email || !phone) {
-                showMessage('Please fill in all fields.', 'error');
-                return;
-            }
-
-            localStorage.setItem('hhyc_volunteer_info', JSON.stringify({ name, email, phone }));
-            showMessage('Your information has been saved successfully!', 'success');
-        }
-
-        function formatVolunteerName(fullName) {
-            if (!fullName) return '';
-            const parts = fullName.trim().split(' ');
-            if (parts.length === 1) return parts[0];
-            return parts[0] + ' ' + parts[parts.length - 1].charAt(0) + '.';
         }
 
         function loadEvents() {
+            events = JSON.parse(localStorage.getItem('volunteer_events') || '[]');
+
+            // Check if specific event is requested via URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventSlug = urlParams.get('event');
+
+            if (eventSlug) {
+                const specificEvent = events.find(e => e.slug === eventSlug);
+                if (specificEvent) {
+                    events = [specificEvent];
+                }
+            }
+
+            renderEvents();
+        }
+
+        function renderEvents() {
             const eventsList = document.getElementById('eventsList');
 
             if (events.length === 0) {
-                eventsList.innerHTML = '<div style="text-align: center; padding: 60px; color: #6b7280;"><h3>No events available</h3><p>Check back later for volunteer opportunities!</p></div>';
-                return;
-            }
-
-            eventsList.innerHTML = events.map(event => {
-                const eventDate = new Date(event.date);
-                if (eventDate < new Date().setHours(0, 0, 0, 0)) return '';
-
-                return `
-                    <div class="event-card">
-                        <h3 style="color: #1e3a8a; margin-bottom: 10px;">${event.name}</h3>
-                        <p style="color: #6b7280; margin-bottom: 15px;">📅 ${eventDate.toLocaleDateString()} | 🕐 ${event.startTime} - ${event.endTime}</p>
-                        <p style="margin-bottom: 25px;">${event.description}</p>
-
-                        <h4 style="color: #374151; margin-bottom: 15px;">Volunteer Opportunities</h4>
-                        ${event.tasks.map(task => {
-                            const signedUp = task.volunteers.length;
-                            const needed = task.volunteersNeeded;
-                            const teammates = task.volunteers.map(v => formatVolunteerName(v.name)).join(', ');
-                            const isFull = signedUp >= needed;
-
-                            return `
-                                <div class="task-item">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                        <strong>${task.description}</strong>
-                                        <span style="background: ${isFull ? '#dcfce7' : '#dbeafe'}; color: ${isFull ? '#166534' : '#1e40af'}; padding: 4px 12px; border-radius: 12px; font-size: 12px;">
-                                            👥 ${signedUp}/${needed} volunteers${isFull ? ' ✓' : ''}
-                                        </span>
-                                    </div>
-
-                                    <div class="teammates-section">
-                                        <div class="teammates-label">🤝 Working with:</div>
-                                        <div style="color: #374151; font-size: 14px;">
-                                            ${teammates || 'Be the first to sign up!'}
-                                        </div>
-                                    </div>
-
-                                    ${isFull ? 
-                                        '<button class="btn" disabled style="opacity: 0.5;">Task Full</button>' :
-                                        `<button class="btn" onclick="signUpForTask(${event.id}, ${task.id})">Sign Up for This Task</button>`
-                                    }
-                                </div>
-                            `;
-                        }).join('')}
+                eventsList.innerHTML = `
+                    <div class="no-events">
+                        <h3>No Events Available</h3>
+                        <p>There are currently no volunteer opportunities available. Please check back later!</p>
                     </div>
                 `;
-            }).filter(html => html).join('');
-        }
-
-        function signUpForTask(eventId, taskId) {
-            const name = document.getElementById('volunteerName').value.trim();
-            const email = document.getElementById('volunteerEmail').value.trim();
-            const phone = document.getElementById('volunteerPhone').value.trim();
-
-            if (!name || !email || !phone) {
-                showMessage('Please fill in your volunteer information before signing up.', 'error');
                 return;
             }
 
-            const event = events.find(e => e.id == eventId);
-            const task = event.tasks.find(t => t.id == taskId);
+            // Filter out past events
+            const currentDate = new Date();
+            const upcomingEvents = events.filter(event => new Date(event.date) >= currentDate);
 
-            if (task.volunteers.some(v => v.email === email)) {
-                showMessage('You are already signed up for this task!', 'error');
+            if (upcomingEvents.length === 0) {
+                eventsList.innerHTML = `
+                    <div class="no-events">
+                        <h3>No Upcoming Events</h3>
+                        <p>All current events have passed. New volunteer opportunities will be posted soon!</p>
+                    </div>
+                `;
                 return;
             }
 
-            if (confirm(`Sign up for "${task.description}" at ${event.name}?`)) {
-                task.volunteers.push({ name, email, phone });
-                localStorage.setItem('hhyc_volunteer_data', JSON.stringify(events));
-                showMessage(`Successfully signed up for "${task.description}"!`, 'success');
-                loadEvents();
+            eventsList.innerHTML = upcomingEvents.map(event => `
+                <div class="event-card">
+                    <div class="event-header">
+                        <div class="event-title">${event.name}</div>
+                        <div class="event-date">📅 ${new Date(event.date).toLocaleDateString('en-US', { 
+                            weekday: 'long', 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        })} | ${event.startTime} - ${event.endTime}</div>
+                        <div class="event-description">${event.description || 'Join us for this volunteer opportunity!'}</div>
+                    </div>
+
+                    <div class="tasks-section">
+                        <h4>🙋‍♀️ Volunteer Opportunities</h4>
+                        ${event.tasks.map(task => `
+                            <div class="task-card">
+                                <div class="task-header">
+                                    <div>
+                                        <div class="task-name">${task.name}</div>
+                                        <div class="task-description">${task.description || 'Help make this event successful!'}</div>
+                                    </div>
+                                </div>
+
+                                <div class="task-roster">
+                                    ${task.volunteers && task.volunteers.length > 0 ? `
+                                        <div class="roster-title">👥 Working with:</div>
+                                        <div class="roster-volunteers">${task.volunteers.map(v => v.name).join(', ')}</div>
+                                    ` : ''}
+                                    <div class="spots-available">
+                                        ${task.volunteersNeeded - (task.volunteers ? task.volunteers.length : 0)} spot${(task.volunteersNeeded - (task.volunteers ? task.volunteers.length : 0)) !== 1 ? 's' : ''} available
+                                    </div>
+                                </div>
+
+                                ${(task.volunteers ? task.volunteers.length : 0) < task.volunteersNeeded ? `
+                                    <button class="btn btn-success" onclick="showSignupForm(${event.id}, ${task.id})">
+                                        🙋‍♀️ Sign Me Up!
+                                    </button>
+
+                                    <div id="signupForm_${event.id}_${task.id}" class="signup-form" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="volunteerName_${event.id}_${task.id}">Your Name *</label>
+                                            <input type="text" id="volunteerName_${event.id}_${task.id}" placeholder="Glenn F." required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="volunteerEmail_${event.id}_${task.id}">Email Address *</label>
+                                            <input type="email" id="volunteerEmail_${event.id}_${task.id}" placeholder="glenn@example.com" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="volunteerPhone_${event.id}_${task.id}">Phone Number</label>
+                                            <input type="tel" id="volunteerPhone_${event.id}_${task.id}" placeholder="(555) 123-4567">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="volunteerMessage_${event.id}_${task.id}">Message (optional)</label>
+                                            <textarea id="volunteerMessage_${event.id}_${task.id}" rows="3" placeholder="Any questions or special considerations?"></textarea>
+                                        </div>
+
+                                        <button class="btn btn-success" onclick="submitSignup(${event.id}, ${task.id})">
+                                            ✅ Complete Registration
+                                        </button>
+                                        <button class="btn" onclick="hideSignupForm(${event.id}, ${task.id})" style="background: #6c757d; color: white; margin-left: 10px;">
+                                            Cancel
+                                        </button>
+
+                                        <div id="signupMessage_${event.id}_${task.id}"></div>
+                                    </div>
+                                ` : `
+                                    <div style="color: #ffc107; font-weight: 600; text-align: center; padding: 10px;">
+                                        ✅ This task is fully staffed - Thank you!
+                                    </div>
+                                `}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showSignupForm(eventId, taskId) {
+            const form = document.getElementById(`signupForm_${eventId}_${taskId}`);
+            form.style.display = 'block';
+            form.classList.add('active');
+            form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function hideSignupForm(eventId, taskId) {
+            const form = document.getElementById(`signupForm_${eventId}_${taskId}`);
+            form.style.display = 'none';
+            form.classList.remove('active');
+        }
+
+        function submitSignup(eventId, taskId) {
+            const name = document.getElementById(`volunteerName_${eventId}_${taskId}`).value.trim();
+            const email = document.getElementById(`volunteerEmail_${eventId}_${taskId}`).value.trim();
+            const phone = document.getElementById(`volunteerPhone_${eventId}_${taskId}`).value.trim();
+            const message = document.getElementById(`volunteerMessage_${eventId}_${taskId}`).value.trim();
+            const messageDiv = document.getElementById(`signupMessage_${eventId}_${taskId}`);
+
+            // Validation
+            if (!name || !email) {
+                messageDiv.innerHTML = '<div class="error-message">Please fill in all required fields.</div>';
+                return;
             }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                messageDiv.innerHTML = '<div class="error-message">Please enter a valid email address.</div>';
+                return;
+            }
+
+            // Format name for display (FirstName L.)
+            const nameParts = name.trim().split(' ');
+            const displayName = nameParts.length > 1 
+                ? `${nameParts[0]} ${nameParts[nameParts.length - 1].charAt(0).toUpperCase()}.`
+                : name;
+
+            // Find and update the event
+            const eventIndex = events.findIndex(e => e.id === eventId);
+            if (eventIndex === -1) {
+                messageDiv.innerHTML = '<div class="error-message">Event not found. Please refresh and try again.</div>';
+                return;
+            }
+
+            const taskIndex = events[eventIndex].tasks.findIndex(t => t.id === taskId);
+            if (taskIndex === -1) {
+                messageDiv.innerHTML = '<div class="error-message">Task not found. Please refresh and try again.</div>';
+                return;
+            }
+
+            // Check if already signed up
+            const task = events[eventIndex].tasks[taskIndex];
+            if (task.volunteers && task.volunteers.some(v => v.email === email)) {
+                messageDiv.innerHTML = '<div class="error-message">You are already signed up for this task!</div>';
+                return;
+            }
+
+            // Check if task is full
+            const currentVolunteers = task.volunteers ? task.volunteers.length : 0;
+            if (currentVolunteers >= task.volunteersNeeded) {
+                messageDiv.innerHTML = '<div class="error-message">This task is now full. Please try another task.</div>';
+                return;
+            }
+
+            // Add volunteer
+            if (!task.volunteers) {
+                task.volunteers = [];
+            }
+
+            const volunteer = {
+                id: Date.now(),
+                name: displayName,
+                email: email,
+                phone: phone,
+                message: message,
+                signedUpAt: new Date().toISOString()
+            };
+
+            task.volunteers.push(volunteer);
+
+            // Update localStorage
+            const allEvents = JSON.parse(localStorage.getItem('volunteer_events') || '[]');
+            const allEventIndex = allEvents.findIndex(e => e.id === eventId);
+            if (allEventIndex !== -1) {
+                allEvents[allEventIndex] = events[eventIndex];
+                localStorage.setItem('volunteer_events', JSON.stringify(allEvents));
+            }
+
+            // Show success message
+            messageDiv.innerHTML = `
+                <div class="success-message">
+                    🎉 Registration successful! Thank you for volunteering, ${name}!<br>
+                    You will receive a confirmation email shortly.
+                </div>
+            `;
+
+            // Clear form
+            document.getElementById(`volunteerName_${eventId}_${taskId}`).value = '';
+            document.getElementById(`volunteerEmail_${eventId}_${taskId}`).value = '';
+            document.getElementById(`volunteerPhone_${eventId}_${taskId}`).value = '';
+            document.getElementById(`volunteerMessage_${eventId}_${taskId}`).value = '';
+
+            // Refresh the display after a short delay
+            setTimeout(() => {
+                renderEvents();
+            }, 2000);
         }
 
-        function showMessage(message, type) {
-            const messageElement = document.getElementById(type + 'Message');
-            messageElement.textContent = message;
-            messageElement.style.display = 'block';
-            setTimeout(() => messageElement.style.display = 'none', 5000);
-        }
-
-        // Add sample data if none exists
-        if (events.length === 0) {
-            events.push({
-                id: 1,
-                name: "Annual Holiday Party",
-                date: "2024-12-15",
-                startTime: "18:00",
-                endTime: "22:00",
-                description: "Join us for our annual holiday celebration with dinner, dancing, and door prizes!",
-                tasks: [
-                    {
-                        id: 1,
-                        description: "Setup tables and chairs (Start: 2:00 PM)",
-                        volunteersNeeded: 3,
-                        volunteers: [
-                            { name: "Glenn F.", email: "glenn@example.com", phone: "(555) 123-4567" },
-                            { name: "Justin P.", email: "justin@example.com", phone: "(555) 234-5678" }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        description: "Food service and cleanup (Start: 5:00 PM)",
-                        volunteersNeeded: 4,
-                        volunteers: [
-                            { name: "Sarah M.", email: "sarah@example.com", phone: "(555) 345-6789" }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        description: "Registration and check-in (Start: 5:30 PM)",
-                        volunteersNeeded: 2,
-                        volunteers: []
-                    }
-                ]
-            });
-            localStorage.setItem('hhyc_volunteer_data', JSON.stringify(events));
-        }
+        // Auto-focus gate code input
+        document.getElementById('gateCode').focus();
     </script>
 </body>
 </html>
