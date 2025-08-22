@@ -3,307 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Volunteer Management | Upcoming Events</title>
+    <title>Club Volunteer Management | Hudson Valley Events</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .event-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            position: relative;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .event-content {
-            padding: 25px;
-        }
-
-        .event-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #2d3748;
-        }
-
-        .event-date {
-            color: #667eea;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .event-description {
-            color: #718096;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .volunteer-count {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .count-item {
-            text-align: center;
-        }
-
-        .count-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
-        }
-
-        .count-label {
-            font-size: 0.85rem;
-            color: #718096;
-        }
-
-        .signup-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .signup-btn:hover {
-            background: linear-gradient(135deg, #5a6fd8, #6a4190);
-            transform: translateY(-2px);
-        }
-
-        .no-events {
-            text-align: center;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .no-events i {
-            font-size: 4rem;
-            color: #cbd5e0;
-            margin-bottom: 20px;
-        }
-
-        .admin-link {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .admin-link:hover {
-            background: rgba(0,0,0,0.9);
-            color: white;
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <header class="header">
-            <h1><i class="fas fa-users"></i> Club Volunteer Management</h1>
-            <p>Join your fellow members in making our club the best it can be!</p>
+            <div class="header-content">
+                <i class="fas fa-users header-icon"></i>
+                <h1>Club Volunteer Management</h1>
+                <p class="subtitle">Find volunteer opportunities and make a difference</p>
+            </div>
         </header>
 
-        <div id="events-container" class="events-grid">
-            <!-- Events will be loaded here -->
-        </div>
+        <!-- Event List -->
+        <section class="events-section">
+            <h2><i class="fas fa-calendar-alt"></i> Available Events</h2>
+            <div id="events-container">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Loading available events...
+                </div>
+            </div>
 
-        <div id="no-events" class="no-events" style="display: none;">
-            <i class="fas fa-calendar-plus"></i>
-            <h3>No Upcoming Events</h3>
-            <p>Check back soon for new volunteer opportunities!</p>
-        </div>
+            <!-- No Events Message -->
+            <div id="no-events" class="no-events" style="display: none;">
+                <div class="no-events-content">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No Events Available</h3>
+                    <p>There are currently no volunteer events scheduled. Check back later for new opportunities!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Thank you for your interest in volunteering! 🌟</p>
+            <p class="club-name">Hudson Valley Club Community</p>
+
+            <!-- Admin Link -->
+            <div class="admin-tools">
+                <a href="admin.html" class="admin-link">
+                    <i class="fas fa-cog"></i>
+                    Event Management
+                </a>
+            </div>
+        </footer>
     </div>
 
-    <a href="admin.html" class="admin-link">
-        <i class="fas fa-cog"></i> Event Admin
-    </a>
-
-    <script>
-        // Load and display all events
-        function loadEvents() {
-            const events = JSON.parse(localStorage.getItem('clubEvents') || '[]');
-            const container = document.getElementById('events-container');
-            const noEvents = document.getElementById('no-events');
-
-            if (events.length === 0) {
-                container.style.display = 'none';
-                noEvents.style.display = 'block';
-                return;
-            }
-
-            container.style.display = 'grid';
-            noEvents.style.display = 'none';
-
-            container.innerHTML = events.map(event => {
-                const totalNeeded = event.tasks.reduce((sum, task) => sum + task.needed, 0);
-                const totalVolunteers = event.tasks.reduce((sum, task) => sum + task.volunteers.length, 0);
-                const eventDate = new Date(event.eventDate + 'T' + event.startTime);
-
-                return `
-                    <div class="event-card">
-                        <div class="event-image" style="${event.imageUrl ? `background-image: url('${event.imageUrl}'); background-size: cover; background-position: center;` : ''}">
-                            ${!event.imageUrl ? '<i class="fas fa-calendar-check"></i> Event Image' : ''}
-                        </div>
-                        <div class="event-content">
-                            <h3 class="event-title">${event.eventName}</h3>
-                            <div class="event-date">
-                                <i class="fas fa-calendar"></i>
-                                ${eventDate.toLocaleDateString('en-US', { 
-                                    weekday: 'long', 
-                                    year: 'numeric', 
-                                    month: 'long', 
-                                    day: 'numeric' 
-                                })} at ${eventDate.toLocaleTimeString('en-US', { 
-                                    hour: 'numeric', 
-                                    minute: '2-digit' 
-                                })}
-                            </div>
-                            <p class="event-description">${event.description}</p>
-                            <div class="volunteer-count">
-                                <div class="count-item">
-                                    <div class="count-number">${totalVolunteers}</div>
-                                    <div class="count-label">Volunteers</div>
-                                </div>
-                                <div class="count-item">
-                                    <div class="count-number">${totalNeeded}</div>
-                                    <div class="count-label">Needed</div>
-                                </div>
-                                <div class="count-item">
-                                    <div class="count-number">${event.tasks.length}</div>
-                                    <div class="count-label">Tasks</div>
-                                </div>
-                            </div>
-                            <button class="signup-btn" onclick="goToEvent('${event.eventSlug}')">
-                                <i class="fas fa-hand-paper"></i> Sign Up to Help
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function goToEvent(eventSlug) {
-            window.location.href = `${eventSlug}/`;
-        }
-
-        // Load events on page load
-        document.addEventListener('DOMContentLoaded', loadEvents);
-
-        // Initialize with sample event if none exists
-        window.addEventListener('load', function() {
-            const events = JSON.parse(localStorage.getItem('clubEvents') || '[]');
-            if (events.length === 0) {
-                const sampleEvent = {
-                    eventSlug: "spring-cleanup-2024",
-                    eventName: "Spring Cleanup Day",
-                    eventDate: "2024-04-15", 
-                    startTime: "09:00",
-                    endTime: "16:00",
-                    description: "Help maintain our beautiful club facilities with landscaping, cleaning, and general maintenance tasks. Every helping hand makes a difference!",
-                    imageUrl: "",
-                    tasks: [
-                        {id: 1, name: "Set up tables and chairs", needed: 3, volunteers: []},
-                        {id: 2, name: "Landscape maintenance", needed: 5, volunteers: []},
-                        {id: 3, name: "General cleaning", needed: 4, volunteers: []}
-                    ],
-                    organizerEmail: "organizer@club.com"
-                };
-                localStorage.setItem('clubEvents', JSON.stringify([sampleEvent]));
-                loadEvents();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
