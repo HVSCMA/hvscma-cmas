@@ -3,54 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Volunteer Management | Hudson Valley Events</title>
+    <title>Club Volunteer Management | Available Events</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <i class="fas fa-users header-icon"></i>
+                <i class="fas fa-hands-helping header-icon"></i>
                 <h1>Club Volunteer Management</h1>
                 <p class="subtitle">Find volunteer opportunities and make a difference</p>
             </div>
         </header>
 
-        <!-- Event List -->
-        <section class="events-section">
-            <h2><i class="fas fa-calendar-alt"></i> Available Events</h2>
-            <div id="events-container">
-                <div class="loading">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    Loading available events...
+        <main>
+            <section class="events-section">
+                <h2><i class="fas fa-calendar-alt"></i> Available Events</h2>
+                <div id="events-container">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Loading available events...
+                    </div>
                 </div>
-            </div>
+            </section>
+        </main>
 
-            <!-- No Events Message -->
-            <div id="no-events" class="no-events" style="display: none;">
-                <div class="no-events-content">
-                    <i class="fas fa-calendar-times"></i>
-                    <h3>No Events Available</h3>
-                    <p>There are currently no volunteer events scheduled. Check back later for new opportunities!</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
         <footer class="footer">
-            <p>Thank you for your interest in volunteering! 🌟</p>
-            <p class="club-name">Hudson Valley Club Community</p>
-
-            <!-- Admin Link -->
-            <div class="admin-tools">
-                <a href="admin.html" class="admin-link">
-                    <i class="fas fa-cog"></i>
-                    Event Management
-                </a>
-            </div>
+            <p>Thank you for volunteering! 🤝</p>
+            <p><a href="admin.html" class="admin-link">Event Management</a></p>
         </footer>
     </div>
 
