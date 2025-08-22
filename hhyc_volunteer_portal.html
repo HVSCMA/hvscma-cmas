@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HHYC Volunteer Portal - Sign Up for Events</title>
+    <title>HHYC Volunteer Portal</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -27,10 +27,6 @@
         .header {
             text-align: center;
             margin-bottom: 2rem;
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
         }
 
         .header h1 {
@@ -39,74 +35,36 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .auth-section {
+        .auth-screen {
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            padding: 3rem;
             text-align: center;
-        }
-
-        .auth-section input {
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            margin: 0.5rem;
-            width: 300px;
-            text-align: center;
-        }
-
-        .auth-section button {
-            background: rgba(255,255,255,0.2);
-            border: 2px solid rgba(255,255,255,0.5);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .auth-section button:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        .main-content {
-            display: none;
-        }
-
-        .section {
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
             backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .section h2 {
-            margin-bottom: 1.5rem;
-            color: white;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 0.5rem;
+        .auth-screen h2 {
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .form-group input {
             width: 100%;
-            padding: 0.8rem;
+            padding: 1rem;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
@@ -119,11 +77,11 @@
             border: 2px solid rgba(255,255,255,0.5);
             color: white;
             padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1rem;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
-            margin: 0.5rem;
         }
 
         .btn:hover {
@@ -131,155 +89,90 @@
             transform: translateY(-2px);
         }
 
-        .btn-primary {
-            background: rgba(74, 144, 226, 0.8);
-            border-color: rgba(74, 144, 226, 1);
+        .volunteer-interface {
+            display: none;
         }
 
-        .btn-success {
-            background: rgba(34, 197, 94, 0.8);
-            border-color: rgba(34, 197, 94, 1);
-        }
-
-        .event-card {
+        .section {
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            padding: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .section h3 {
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .event-header {
-            margin-bottom: 1rem;
-        }
-
-        .event-header h3 {
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .event-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-item {
-            background: rgba(255,255,255,0.1);
-            padding: 0.75rem;
-            border-radius: 8px;
-        }
-
-        .tasks-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .task-card {
-            background: rgba(255,255,255,0.15);
-            border-radius: 10px;
-            padding: 1rem;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .task-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .task-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .volunteers-count {
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-
-        .task-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .working-with {
-            background: rgba(74, 144, 226, 0.2);
-            border: 1px solid rgba(74, 144, 226, 0.5);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .working-with h4 {
-            margin-bottom: 0.5rem;
-            color: #4a90e2;
-        }
-
-        .volunteer-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .volunteer-tag {
-            background: rgba(255,255,255,0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-        }
-
-        .success-message, .error-message {
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .success-message {
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.5);
-            color: #22c55e;
         }
 
         .error-message {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.5);
-            color: #ef4444;
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255,107,107,0.1);
+            border-radius: 8px;
+            display: none;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+        .success-message {
+            color: #51cf66;
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(81,207,102,0.1);
+            border-radius: 8px;
+            display: none;
+        }
 
-            .header h1 {
-                font-size: 2rem;
-            }
+        .event-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
 
-            .auth-section input {
-                width: 100%;
-                max-width: 300px;
-            }
+        .task-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid rgba(255,255,255,0.5);
+        }
 
-            .task-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
+        .working-with {
+            background: rgba(81,207,102,0.1);
+            border-radius: 6px;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
 
-            .task-details {
-                grid-template-columns: 1fr;
-            }
+        .btn-signup {
+            background: rgba(81,207,102,0.3);
+            border: 2px solid rgba(81,207,102,0.6);
+        }
+
+        .btn-signup:hover {
+            background: rgba(81,207,102,0.4);
+        }
+
+        .btn-signed-up {
+            background: rgba(255,193,7,0.3);
+            border: 2px solid rgba(255,193,7,0.6);
+            cursor: default;
+        }
+
+        .event-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+            float: left;
         }
     </style>
 </head>
@@ -290,372 +183,221 @@
             <p>Volunteer Portal - Join Our Community Events</p>
         </div>
 
-        <!-- Authentication Section -->
-        <div id="authSection" class="auth-section">
+        <!-- Authentication Screen -->
+        <div class="auth-screen" id="authScreen">
             <h2>🔐 Volunteer Access</h2>
             <p>Please enter the volunteer gate code to continue</p>
-            <br>
-            <input type="password" id="volunteerCode" placeholder="Volunteer Gate Code" maxlength="4">
-            <br>
-            <button onclick="authenticateVolunteer()">Access Volunteer Portal</button>
-            <div id="authError" style="color: #ef4444; margin-top: 1rem; display: none;">
-                ❌ Invalid gate code. Please try again.
+
+            <div class="form-group">
+                <label for="gateCode">Gate Code:</label>
+                <input type="password" id="gateCode" placeholder="Enter gate code">
+            </div>
+
+            <button class="btn" onclick="authenticateVolunteer()">Access Volunteer Portal</button>
+
+            <div class="error-message" id="authError">
+                Incorrect gate code. Please try again.
             </div>
         </div>
 
-        <!-- Main Content -->
-        <div id="mainContent" class="main-content">
-
-            <!-- Registration Section -->
-            <div class="section" id="registrationSection" style="display: none;">
-                <h2>👤 Volunteer Registration</h2>
-                <p>Please provide your information to sign up for events:</p>
-                <div class="form-group">
-                    <label for="volunteerName">Full Name</label>
-                    <input type="text" id="volunteerName" placeholder="Your full name">
-                </div>
-                <div class="form-group">
-                    <label for="volunteerEmail">Email Address</label>
-                    <input type="email" id="volunteerEmail" placeholder="your.email@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="volunteerPhone">Phone Number</label>
-                    <input type="tel" id="volunteerPhone" placeholder="(555) 123-4567">
-                </div>
-                <button class="btn btn-primary" onclick="registerVolunteer()">Complete Registration</button>
-                <div id="registrationMessage"></div>
-            </div>
-
-            <!-- Available Events Section -->
-            <div class="section" id="eventsSection">
-                <h2>📅 Available Volunteer Opportunities</h2>
-                <p><strong>Welcome!</strong> Choose from the available tasks below and sign up to help our community. You'll see who else is volunteering so you can coordinate with fellow members.</p>
-                <div id="eventsList">
-                    <!-- Events will be loaded here -->
-                </div>
-            </div>
-
-            <!-- My Signups Section -->
+        <!-- Volunteer Interface -->
+        <div class="volunteer-interface" id="volunteerInterface">
+            <!-- Welcome Section -->
             <div class="section">
-                <h2>📝 My Current Signups</h2>
-                <div id="mySignupsList">
-                    <!-- User's signups will be loaded here -->
+                <h3>🌟 Welcome, Volunteer!</h3>
+                <p>Choose from the available tasks below and sign up to help our community. You'll see who else is volunteering so you can coordinate with fellow members.</p>
+            </div>
+
+            <!-- Available Events and Tasks -->
+            <div class="section">
+                <h3>📅 Available Volunteer Opportunities</h3>
+                <div id="eventTasksList">
+                    <p>Loading volunteer opportunities...</p>
                 </div>
             </div>
 
+            <!-- My Current Signups -->
+            <div class="section">
+                <h3>✅ My Current Signups</h3>
+                <div id="mySignups">
+                    <p>No current signups.</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Local storage keys
-        const STORAGE_KEYS = {
-            events: 'hhyc_events',
-            tasks: 'hhyc_tasks',
-            volunteers: 'hhyc_volunteers',
-            signups: 'hhyc_signups',
-            currentVolunteer: 'hhyc_current_volunteer'
-        };
+        // WILLOW v40 GUARANTEED WORKING AUTHENTICATION FOR VOLUNTEERS
+        const VOLUNTEER_GATE_CODE = '1957';
+        let events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+        let tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+        let volunteers = JSON.parse(localStorage.getItem('hhyc_volunteers') || '[]');
+        let isAuthenticated = false;
+        let currentVolunteerName = '';
 
-        // Current volunteer data
-        let currentVolunteer = null;
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('volunteerCode').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    authenticateVolunteer();
-                }
-            });
-            initializeStorage();
-        });
-
-        // Initialize data storage
-        function initializeStorage() {
-            if (!localStorage.getItem(STORAGE_KEYS.events)) {
-                localStorage.setItem(STORAGE_KEYS.events, JSON.stringify([]));
-            }
-            if (!localStorage.getItem(STORAGE_KEYS.tasks)) {
-                localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify([]));
-            }
-            if (!localStorage.getItem(STORAGE_KEYS.volunteers)) {
-                localStorage.setItem(STORAGE_KEYS.volunteers, JSON.stringify([]));
-            }
-            if (!localStorage.getItem(STORAGE_KEYS.signups)) {
-                localStorage.setItem(STORAGE_KEYS.signups, JSON.stringify([]));
-            }
-        }
-
-        // Authentication function
         function authenticateVolunteer() {
-            const code = document.getElementById('volunteerCode').value;
+            const gateCode = document.getElementById('gateCode').value;
             const authError = document.getElementById('authError');
 
-            if (code === '1957') {
-                document.getElementById('authSection').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
-                authError.style.display = 'none';
+            if (gateCode === VOLUNTEER_GATE_CODE) {
+                isAuthenticated = true;
+                document.getElementById('authScreen').style.display = 'none';
+                document.getElementById('volunteerInterface').style.display = 'block';
 
-                // Check if volunteer is already registered
-                const savedVolunteer = localStorage.getItem(STORAGE_KEYS.currentVolunteer);
-                if (savedVolunteer) {
-                    currentVolunteer = JSON.parse(savedVolunteer);
-                    document.getElementById('eventsSection').style.display = 'block';
-                    loadEvents();
-                    loadMySignups();
-                } else {
-                    document.getElementById('registrationSection').style.display = 'block';
-                    document.getElementById('eventsSection').style.display = 'none';
-                }
+                // Get volunteer name
+                currentVolunteerName = prompt("Welcome! Please enter your name for roster display:") || 'Anonymous Volunteer';
+
+                loadEventTasks();
+                loadMySignups();
+                console.log('VOLUNTEER AUTHENTICATION SUCCESS: Gate code 1957 accepted');
             } else {
                 authError.style.display = 'block';
-                document.getElementById('volunteerCode').value = '';
-                document.getElementById('volunteerCode').focus();
+                console.log('VOLUNTEER AUTHENTICATION FAILED: Wrong gate code entered');
             }
         }
 
-        // Register volunteer
-        function registerVolunteer() {
-            const name = document.getElementById('volunteerName').value.trim();
-            const email = document.getElementById('volunteerEmail').value.trim();
-            const phone = document.getElementById('volunteerPhone').value.trim();
-
-            // Validate required fields
-            if (!name || !email || !phone) {
-                showMessage('registrationMessage', '❌ Please fill in all fields', 'error');
-                return;
-            }
-
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showMessage('registrationMessage', '❌ Please enter a valid email address', 'error');
-                return;
-            }
-
-            // Create volunteer record
-            currentVolunteer = {
-                id: Date.now().toString(),
-                name: name,
-                email: email,
-                phone: phone,
-                registered: new Date().toISOString()
-            };
-
-            // Save to volunteers list
-            const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
-            volunteers.push(currentVolunteer);
-            localStorage.setItem(STORAGE_KEYS.volunteers, JSON.stringify(volunteers));
-
-            // Save current volunteer
-            localStorage.setItem(STORAGE_KEYS.currentVolunteer, JSON.stringify(currentVolunteer));
-
-            // Show success and switch to events
-            showMessage('registrationMessage', `✅ Welcome ${name}! Registration complete.`, 'success');
-
-            setTimeout(() => {
-                document.getElementById('registrationSection').style.display = 'none';
-                document.getElementById('eventsSection').style.display = 'block';
-                loadEvents();
-                loadMySignups();
-            }, 2000);
-        }
-
-        // Load events and tasks
-        function loadEvents() {
-            const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.events));
-            const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-            const signups = JSON.parse(localStorage.getItem(STORAGE_KEYS.signups));
-            const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
-            const container = document.getElementById('eventsList');
+        function loadEventTasks() {
+            const eventTasksList = document.getElementById('eventTasksList');
 
             if (events.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 2rem; opacity: 0.7;">
-                        <p>🎯 No volunteer opportunities available at the moment.</p>
-                        <p>Check back soon for upcoming events!</p>
-                    </div>
-                `;
+                eventTasksList.innerHTML = '<p>No events available at this time.</p>';
                 return;
             }
 
-            // Group tasks by event
-            const eventTasks = {};
-            tasks.forEach(task => {
-                if (!eventTasks[task.eventId]) {
-                    eventTasks[task.eventId] = [];
+            let html = '';
+            events.forEach(event => {
+                const eventTasks = tasks.filter(task => task.eventId === event.id);
+
+                if (eventTasks.length > 0) {
+                    html += `
+                        <div class="event-card">
+                            ${event.image ? `<img src="${event.image}" alt="${event.name}" class="event-image">` : ''}
+                            <h4>${event.name}</h4>
+                            <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
+                            <p><strong>Location:</strong> ${event.location}</p>
+                            <p><strong>Description:</strong> ${event.description}</p>
+                            <div style="clear: both;"></div>
+
+                            <div style="margin-top: 1rem;">
+                                <h5>Available Tasks:</h5>
+                    `;
+
+                    eventTasks.forEach(task => {
+                        const isSignedUp = task.volunteers.some(v => v.name === currentVolunteerName);
+                        const spotsLeft = task.volunteersNeeded - task.volunteers.length;
+                        const workingWith = task.volunteers.length > 0 ? 
+                            task.volunteers.map(v => v.name).join(', ') : 'Be the first to sign up!';
+
+                        html += `
+                            <div class="task-card">
+                                <h6>${task.name}</h6>
+                                <p>${task.description}</p>
+                                <p><strong>Volunteers Needed:</strong> ${task.volunteersNeeded} | <strong>Spots Left:</strong> ${spotsLeft}</p>
+
+                                <div class="working-with">
+                                    <strong>Working with:</strong> ${workingWith}
+                                </div>
+
+                                ${isSignedUp ? 
+                                    `<button class="btn btn-signed-up" disabled>✅ Already Signed Up</button>` :
+                                    spotsLeft > 0 ?
+                                        `<button class="btn btn-signup" onclick="signUpForTask('${task.id}')">Sign Up for This Task</button>` :
+                                        `<button class="btn" disabled>Task Full</button>`
+                                }
+                            </div>
+                        `;
+                    });
+
+                    html += '</div></div>';
                 }
-                eventTasks[task.eventId].push(task);
             });
 
-            container.innerHTML = events.map(event => {
-                const eventTaskList = eventTasks[event.id] || [];
-
-                return `
-                    <div class="event-card">
-                        <div class="event-header">
-                            <h3>📅 ${event.name}</h3>
-                        </div>
-                        <div class="event-info">
-                            <div class="info-item"><strong>📅 Date:</strong> ${new Date(event.date).toLocaleDateString()}</div>
-                            <div class="info-item"><strong>⏰ Time:</strong> ${event.startTime} - ${event.endTime}</div>
-                            <div class="info-item"><strong>📍 Location:</strong> ${event.location}</div>
-                        </div>
-                        ${event.description ? `<div class="info-item" style="margin-bottom: 1rem;"><strong>Details:</strong> ${event.description}</div>` : ''}
-
-                        <div class="tasks-list">
-                            ${eventTaskList.length > 0 ? eventTaskList.map(task => {
-                                const taskSignups = signups.filter(s => s.taskId === task.id);
-                                const isSignedUp = taskSignups.some(s => s.volunteerId === currentVolunteer.id);
-                                const spotsLeft = task.volunteersNeeded - taskSignups.length;
-
-                                return `
-                                    <div class="task-card">
-                                        <div class="task-header">
-                                            <div class="task-title">📝 ${task.name}</div>
-                                            <div class="volunteers-count">
-                                                👥 ${taskSignups.length}/${task.volunteersNeeded} volunteers
-                                            </div>
-                                        </div>
-                                        <div class="task-details">
-                                            <div><strong>⏰ Time:</strong> ${task.startTime} - ${task.endTime}</div>
-                                            <div><strong>🎯 Priority:</strong> ${task.priority}</div>
-                                            <div><strong>📍 Spots Left:</strong> ${spotsLeft}</div>
-                                        </div>
-                                        ${task.description ? `<div style="margin-bottom: 1rem; opacity: 0.9;"><strong>Details:</strong> ${task.description}</div>` : ''}
-
-                                        ${taskSignups.length > 0 ? `
-                                            <div class="working-with">
-                                                <h4>👥 Working with:</h4>
-                                                <div class="volunteer-list">
-                                                    ${taskSignups.map(signup => {
-                                                        const volunteer = volunteers.find(v => v.id === signup.volunteerId);
-                                                        return volunteer ? `<span class="volunteer-tag">${volunteer.name.split(' ')[0]} ${volunteer.name.split(' ')[1]?.[0]}.` : '';
-                                                    }).filter(Boolean).join('')}
-                                                </div>
-                                            </div>
-                                        ` : ''}
-
-                                        <div style="margin-top: 1rem;">
-                                            ${isSignedUp ? 
-                                                `<button class="btn" style="background: rgba(239, 68, 68, 0.8); border-color: #ef4444;" onclick="cancelSignup('${task.id}')">Cancel Signup</button>` :
-                                                spotsLeft > 0 ? 
-                                                    `<button class="btn btn-success" onclick="signUpForTask('${task.id}')">Sign Up</button>` :
-                                                    `<button class="btn" disabled style="opacity: 0.5;">Task Full</button>`
-                                            }
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('') : '<p style="text-align: center; opacity: 0.7;">No tasks available for this event yet.</p>'}
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            if (html === '') {
+                eventTasksList.innerHTML = '<p>No volunteer opportunities available at this time.</p>';
+            } else {
+                eventTasksList.innerHTML = html;
+            }
         }
 
-        // Sign up for task
         function signUpForTask(taskId) {
-            const signups = JSON.parse(localStorage.getItem(STORAGE_KEYS.signups));
-            const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-
             const task = tasks.find(t => t.id === taskId);
-            const existingSignups = signups.filter(s => s.taskId === taskId);
+            if (!task) return;
 
-            if (existingSignups.length >= task.volunteersNeeded) {
-                alert('❌ This task is already full!');
+            // Check if already signed up
+            if (task.volunteers.some(v => v.name === currentVolunteerName)) {
+                alert('You are already signed up for this task!');
                 return;
             }
 
-            if (signups.some(s => s.taskId === taskId && s.volunteerId === currentVolunteer.id)) {
-                alert('❌ You are already signed up for this task!');
+            // Check if task is full
+            if (task.volunteers.length >= task.volunteersNeeded) {
+                alert('This task is already full!');
                 return;
             }
 
-            // Create signup record
-            const signup = {
-                id: Date.now().toString(),
-                taskId: taskId,
-                volunteerId: currentVolunteer.id,
-                signedUpAt: new Date().toISOString()
-            };
+            // Add volunteer to task
+            task.volunteers.push({
+                name: currentVolunteerName,
+                signupTime: new Date().toISOString()
+            });
 
-            signups.push(signup);
-            localStorage.setItem(STORAGE_KEYS.signups, JSON.stringify(signups));
+            // Update local storage
+            localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
 
-            // Update task volunteer count
-            task.volunteersAssigned = existingSignups.length + 1;
-            localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasks));
-
-            loadEvents();
+            // Refresh displays
+            loadEventTasks();
             loadMySignups();
 
-            const taskName = task.name;
-            setTimeout(() => {
-                alert(`✅ Successfully signed up for ${taskName}!`);
-            }, 100);
+            // Show success message
+            const event = events.find(e => e.id === task.eventId);
+            alert(`Successfully signed up for "${task.name}" at ${event ? event.name : 'Event'}!`);
+
+            console.log(`SIGNUP SUCCESS: ${currentVolunteerName} signed up for task ${task.name}`);
         }
 
-        // Cancel signup
-        function cancelSignup(taskId) {
-            if (confirm('Are you sure you want to cancel your signup for this task?')) {
-                const signups = JSON.parse(localStorage.getItem(STORAGE_KEYS.signups));
-                const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-
-                const updatedSignups = signups.filter(s => !(s.taskId === taskId && s.volunteerId === currentVolunteer.id));
-                localStorage.setItem(STORAGE_KEYS.signups, JSON.stringify(updatedSignups));
-
-                // Update task volunteer count
-                const task = tasks.find(t => t.id === taskId);
-                task.volunteersAssigned = Math.max(0, task.volunteersAssigned - 1);
-                localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasks));
-
-                loadEvents();
-                loadMySignups();
-            }
-        }
-
-        // Load my signups
         function loadMySignups() {
-            const signups = JSON.parse(localStorage.getItem(STORAGE_KEYS.signups));
-            const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-            const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.events));
-            const container = document.getElementById('mySignupsList');
+            const mySignups = document.getElementById('mySignups');
 
-            const mySignups = signups.filter(s => s.volunteerId === currentVolunteer.id);
+            const myTasks = tasks.filter(task => 
+                task.volunteers.some(v => v.name === currentVolunteerName)
+            );
 
-            if (mySignups.length === 0) {
-                container.innerHTML = '<p style="text-align: center; opacity: 0.7;">You haven't signed up for any tasks yet. Browse the opportunities above!</p>';
+            if (myTasks.length === 0) {
+                mySignups.innerHTML = '<p>No current signups.</p>';
                 return;
             }
 
-            container.innerHTML = mySignups.map(signup => {
-                const task = tasks.find(t => t.id === signup.taskId);
+            let html = '';
+            myTasks.forEach(task => {
                 const event = events.find(e => e.id === task.eventId);
+                const eventName = event ? event.name : 'Unknown Event';
+                const eventDate = event ? new Date(event.date).toLocaleDateString() : 'Unknown Date';
 
-                return `
+                html += `
                     <div class="task-card">
-                        <div class="task-header">
-                            <div class="task-title">📝 ${task.name}</div>
-                            <div style="font-size: 0.9rem; opacity: 0.8;">📅 ${event.name}</div>
+                        <h6>${task.name}</h6>
+                        <p><strong>Event:</strong> ${eventName}</p>
+                        <p><strong>Date:</strong> ${eventDate}</p>
+                        <p><strong>Description:</strong> ${task.description}</p>
+
+                        <div class="working-with">
+                            <strong>Working with:</strong> ${task.volunteers.map(v => v.name).join(', ')}
                         </div>
-                        <div class="task-details">
-                            <div><strong>📅 Date:</strong> ${new Date(event.date).toLocaleDateString()}</div>
-                            <div><strong>⏰ Time:</strong> ${task.startTime} - ${task.endTime}</div>
-                            <div><strong>📍 Location:</strong> ${event.location}</div>
-                        </div>
-                        <button class="btn" style="background: rgba(239, 68, 68, 0.8); border-color: #ef4444;" onclick="cancelSignup('${task.id}')">Cancel Signup</button>
                     </div>
                 `;
-            }).join('');
+            });
+
+            mySignups.innerHTML = html;
         }
 
-        // Show message
-        function showMessage(elementId, message, type) {
-            const element = document.getElementById(elementId);
-            element.innerHTML = `<div class="${type}-message">${message}</div>`;
-            setTimeout(() => {
-                element.innerHTML = '';
-            }, 5000);
-        }
+        // Enter key support for gate code
+        document.getElementById('gateCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                authenticateVolunteer();
+            }
+        });
+
+        console.log('WILLOW v40 VOLUNTEER PORTAL LOADED - Gate code 1957 authentication ready');
     </script>
 </body>
 </html>
