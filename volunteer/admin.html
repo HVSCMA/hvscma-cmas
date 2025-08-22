@@ -19,325 +19,98 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
+            padding: 30px;
             text-align: center;
-            padding: 30px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
         }
 
         .header p {
             font-size: 1.2em;
             opacity: 0.9;
-            position: relative;
-            z-index: 1;
         }
 
-        .login-section {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .admin-content {
-            display: none;
-            padding: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-            background: white;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        button {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .btn-danger {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
-        }
-
-        .btn-danger:hover {
-            box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3);
-        }
-
-        .btn-edit {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
-        }
-
-        .btn-edit:hover {
-            box-shadow: 0 6px 12px rgba(245, 158, 11, 0.3);
-        }
-
-        .section {
-            margin-bottom: 40px;
+        .main-content {
             padding: 30px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
         }
 
-        .section h2 {
-            color: #1e40af;
-            margin-bottom: 20px;
-            font-size: 1.8em;
+        .auth-section {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .event-list, .volunteer-management {
-            margin-top: 20px;
-        }
-
-        .event-item, .volunteer-item {
-            background: white;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border-left: 4px solid #3b82f6;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .event-title, .volunteer-name {
-            font-weight: 600;
-            color: #1e40af;
-            margin-bottom: 8px;
-            font-size: 1.2em;
-        }
-
-        .event-details, .volunteer-details {
-            color: #64748b;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .event-actions, .volunteer-actions {
+        .admin-input {
             display: flex;
-            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
-        .success-message {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
-        }
-
-        .error-message {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal h3 {
-            color: #1e40af;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
-
-        .btn-cancel {
-            background: #6b7280;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-confirm {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .back-link {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-            color: white;
+        .admin-input input {
             padding: 12px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .back-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .event-image-preview {
-            max-width: 200px;
-            max-height: 150px;
-            object-fit: cover;
+            border: 2px solid #ddd;
             border-radius: 8px;
-            margin: 10px 0;
-            display: block;
+            font-size: 16px;
+            width: 200px;
         }
 
-        .tabs {
+        .access-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .access-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .admin-dashboard {
+            display: none;
+        }
+
+        .dashboard-tabs {
             display: flex;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 30px;
         }
 
-        .tab {
-            padding: 12px 24px;
+        .tab-btn {
             background: none;
             border: none;
+            padding: 15px 25px;
+            font-size: 16px;
             cursor: pointer;
-            font-weight: 600;
-            color: #64748b;
             border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
         }
 
-        .tab.active {
-            color: #3b82f6;
-            border-bottom-color: #3b82f6;
-            background: #f0f9ff;
+        .tab-btn.active {
+            color: #1e3c72;
+            border-bottom-color: #1e3c72;
+            font-weight: 600;
         }
 
         .tab-content {
@@ -348,37 +121,278 @@
             display: block;
         }
 
+        .create-event-form {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .image-preview {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .image-preview img {
+            max-width: 200px;
+            max-height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .create-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .create-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .events-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .admin-event-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #1e3c72;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .edit-btn {
+            background: #ffc107;
+            color: #333;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .volunteers-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .volunteer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .volunteer-row:last-child {
+            border-bottom: none;
+        }
+
+        .volunteer-details {
+            flex: 1;
+        }
+
+        .volunteer-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .remove-volunteer-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal h3 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 10px;
+            .form-row {
+                grid-template-columns: 1fr;
             }
 
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .admin-content {
-                padding: 20px;
-            }
-
-            .event-actions, .volunteer-actions {
+            .event-header {
                 flex-direction: column;
             }
 
-            .modal-content {
-                width: 95%;
-                margin: 2% auto;
-                padding: 20px;
-            }
-
-            .tabs {
+            .dashboard-tabs {
                 flex-wrap: wrap;
             }
 
-            .tab {
-                flex: 1;
-                min-width: 120px;
+            .admin-input {
+                flex-direction: column;
             }
         }
     </style>
@@ -386,73 +400,91 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🛡️ Admin Dashboard</h1>
-            <p>Hidden Harbor Yacht Club Volunteer Management</p>
+            <h1>🛥️ Hidden Harbor Yacht Club</h1>
+            <p>Administrative Dashboard - Event Management</p>
         </div>
 
-        <div class="login-section" id="loginSection">
-            <h2>🔐 Admin Authentication</h2>
-            <p style="margin-bottom: 30px; color: #64748b;">Please enter the admin password to access the management dashboard.</p>
-            <div class="form-group">
-                <label for="adminPassword">Admin Password:</label>
-                <input type="password" id="adminPassword" placeholder="Enter admin password">
-            </div>
-            <button onclick="verifyAdmin()">Access Dashboard</button>
-        </div>
-
-        <div class="admin-content" id="adminContent">
-            <div class="tabs">
-                <button class="tab active" onclick="showTab('events')">📅 Event Management</button>
-                <button class="tab" onclick="showTab('volunteers')">👥 Volunteer Management</button>
+        <div class="main-content">
+            <div class="auth-section" id="authSection">
+                <h2>Administrator Access</h2>
+                <div class="admin-input">
+                    <input type="password" id="adminPasswordInput" placeholder="Enter admin password..." maxlength="20">
+                    <button class="access-btn" onclick="checkAdminPassword()">🔐 Access Dashboard</button>
+                </div>
+                <div id="authMessage"></div>
             </div>
 
-            <div id="eventsTab" class="tab-content active">
-                <div class="section">
-                    <h2>➕ Create New Event</h2>
-                    <div class="form-group">
-                        <label for="eventTitle">Event Title:</label>
-                        <input type="text" id="eventTitle" placeholder="Enter event title">
-                    </div>
-                    <div class="form-group">
-                        <label for="eventDate">Event Date:</label>
-                        <input type="date" id="eventDate">
-                    </div>
-                    <div class="form-group">
-                        <label for="eventTime">Event Time:</label>
-                        <input type="time" id="eventTime">
-                    </div>
-                    <div class="form-group">
-                        <label for="eventDescription">Event Description:</label>
-                        <textarea id="eventDescription" placeholder="Describe the work event and what volunteers should expect..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="eventImageUrl">Event Image URL (optional):</label>
-                        <input type="url" id="eventImageUrl" placeholder="https://example.com/image.jpg" oninput="previewImage('eventImageUrl', 'imagePreview')">
-                        <img id="imagePreview" class="event-image-preview" style="display: none;" alt="Event preview">
-                    </div>
-                    <button onclick="createEvent()">🎯 Create Event</button>
+            <div class="admin-dashboard" id="adminDashboard">
+                <div class="dashboard-tabs">
+                    <button class="tab-btn active" onclick="showTab('overview')">📊 Overview</button>
+                    <button class="tab-btn" onclick="showTab('create')">➕ Create Event</button>
+                    <button class="tab-btn" onclick="showTab('manage')">📋 Manage Events</button>
                 </div>
 
-                <div class="section">
-                    <h2>📋 Existing Events</h2>
-                    <div class="event-list" id="eventList">
-                        <!-- Events will be populated here -->
+                <!-- Overview Tab -->
+                <div id="overviewTab" class="tab-content active">
+                    <div class="stats-grid" id="statsGrid">
+                        <!-- Stats will be loaded here -->
+                    </div>
+                    <h3>Recent Activity</h3>
+                    <div id="recentActivity">
+                        <!-- Recent activity will be loaded here -->
                     </div>
                 </div>
-            </div>
 
-            <div id="volunteersTab" class="tab-content">
-                <div class="section">
-                    <h2>👥 Volunteer Management</h2>
-                    <p style="margin-bottom: 20px; color: #64748b;">Select an event to view and manage volunteers:</p>
-                    <div class="form-group">
-                        <label for="eventSelect">Select Event:</label>
-                        <select id="eventSelect" onchange="loadVolunteersForEvent()">
-                            <option value="">-- Choose an event --</option>
-                        </select>
+                <!-- Create Event Tab -->
+                <div id="createTab" class="tab-content">
+                    <div class="create-event-form">
+                        <h3>Create New Volunteer Event</h3>
+                        <form id="createEventForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="eventTitle">Event Title *</label>
+                                    <input type="text" id="eventTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="eventDate">Date *</label>
+                                    <input type="date" id="eventDate" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="eventTime">Time *</label>
+                                    <input type="time" id="eventTime" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="volunteersNeeded">Volunteers Needed *</label>
+                                    <input type="number" id="volunteersNeeded" min="1" max="50" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventLocation">Location *</label>
+                                <input type="text" id="eventLocation" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventDescription">Description *</label>
+                                <textarea id="eventDescription" placeholder="Describe the volunteer work needed, any special requirements, etc..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventImageUrl">Event Image URL (Optional)</label>
+                                <input type="url" id="eventImageUrl" placeholder="https://example.com/image.jpg">
+                                <div class="image-preview" id="imagePreview"></div>
+                            </div>
+
+                            <button type="submit" class="create-btn">🎯 Create Event</button>
+                        </form>
                     </div>
-                    <div class="volunteer-management" id="volunteerManagement">
-                        <!-- Volunteer management will be populated here -->
+                </div>
+
+                <!-- Manage Events Tab -->
+                <div id="manageTab" class="tab-content">
+                    <h3>All Events</h3>
+                    <div class="events-list" id="eventsList">
+                        <!-- Events will be loaded here -->
                     </div>
                 </div>
             </div>
@@ -462,301 +494,344 @@
     <!-- Edit Event Modal -->
     <div id="editModal" class="modal">
         <div class="modal-content">
-            <h3>✏️ Edit Event</h3>
-            <div class="form-group">
-                <label for="editEventTitle">Event Title:</label>
-                <input type="text" id="editEventTitle">
-            </div>
-            <div class="form-group">
-                <label for="editEventDate">Event Date:</label>
-                <input type="date" id="editEventDate">
-            </div>
-            <div class="form-group">
-                <label for="editEventTime">Event Time:</label>
-                <input type="time" id="editEventTime">
-            </div>
-            <div class="form-group">
-                <label for="editEventDescription">Event Description:</label>
-                <textarea id="editEventDescription"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="editEventImageUrl">Event Image URL (optional):</label>
-                <input type="url" id="editEventImageUrl" placeholder="https://example.com/image.jpg" oninput="previewImage('editEventImageUrl', 'editImagePreview')">
-                <img id="editImagePreview" class="event-image-preview" style="display: none;" alt="Event preview">
-            </div>
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeEditModal()">Cancel</button>
-                <button onclick="saveEventEdit()">💾 Save Changes</button>
-            </div>
+            <h3>Edit Event</h3>
+            <form id="editEventForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editEventTitle">Event Title *</label>
+                        <input type="text" id="editEventTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEventDate">Date *</label>
+                        <input type="date" id="editEventDate" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editEventTime">Time *</label>
+                        <input type="time" id="editEventTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editVolunteersNeeded">Volunteers Needed *</label>
+                        <input type="number" id="editVolunteersNeeded" min="1" max="50" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editEventLocation">Location *</label>
+                    <input type="text" id="editEventLocation" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editEventDescription">Description *</label>
+                    <textarea id="editEventDescription" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="editEventImageUrl">Event Image URL (Optional)</label>
+                    <input type="url" id="editEventImageUrl">
+                    <div class="image-preview" id="editImagePreview"></div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn-submit">Update Event</button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Delete Event Confirmation Modal -->
-    <div id="deleteEventModal" class="modal">
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
         <div class="modal-content">
-            <h3>🚨 Confirm Event Deletion</h3>
-            <p id="deleteEventMessage"></p>
+            <h3>Confirm Action</h3>
+            <p id="confirmMessage"></p>
             <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeDeleteEventModal()">Cancel</button>
-                <button class="btn-confirm" onclick="confirmEventDelete1()">Yes, Delete</button>
+                <button type="button" class="btn-cancel" onclick="closeConfirmModal()">Cancel</button>
+                <button type="button" class="btn-submit" onclick="confirmAction()">Confirm</button>
             </div>
         </div>
     </div>
-
-    <!-- Second Event Delete Confirmation Modal -->
-    <div id="confirmEventDeleteModal" class="modal">
-        <div class="modal-content">
-            <h3>⚠️ Final Confirmation</h3>
-            <p>Are you absolutely sure you want to permanently delete this event and ALL associated volunteer signups? This action cannot be undone!</p>
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeConfirmEventDeleteModal()">No, Keep It</button>
-                <button class="btn-confirm" onclick="confirmEventDelete2()">Yes, Permanently Delete</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete Volunteer Confirmation Modal -->
-    <div id="deleteVolunteerModal" class="modal">
-        <div class="modal-content">
-            <h3>🚨 Confirm Volunteer Removal</h3>
-            <p id="deleteVolunteerMessage"></p>
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeDeleteVolunteerModal()">Cancel</button>
-                <button class="btn-confirm" onclick="confirmVolunteerDelete1()">Yes, Remove</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Second Volunteer Delete Confirmation Modal -->
-    <div id="confirmVolunteerDeleteModal" class="modal">
-        <div class="modal-content">
-            <h3>⚠️ Final Confirmation</h3>
-            <p>Are you absolutely sure you want to remove this volunteer signup? This action cannot be undone.</p>
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeConfirmVolunteerDeleteModal()">No, Keep It</button>
-                <button class="btn-confirm" onclick="confirmVolunteerDelete2()">Yes, Permanently Remove</button>
-            </div>
-        </div>
-    </div>
-
-    <a href="index.html" class="back-link">⬅️ Back to Volunteer</a>
 
     <script>
-        let currentEditEvent = null;
-        let currentDeleteEvent = null;
-        let currentDeleteVolunteer = null;
+        let currentEvents = [];
+        let editingEventId = null;
+        let confirmCallback = null;
 
-        function verifyAdmin() {
-            const password = document.getElementById('adminPassword').value;
-            const loginSection = document.getElementById('loginSection');
-
+        // Admin authentication
+        function checkAdminPassword() {
+            const password = document.getElementById('adminPasswordInput').value;
             if (password === '7591') {
-                document.getElementById('loginSection').style.display = 'none';
-                document.getElementById('adminContent').style.display = 'block';
-                loadEvents();
-                loadEventSelect();
+                document.getElementById('authSection').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                loadDashboard();
+                showMessage('Welcome, Administrator!', 'success');
             } else {
-                // Show error message
-                let existingError = loginSection.querySelector('.error-message');
-                if (existingError) {
-                    existingError.remove();
-                }
-
-                const errorMsg = document.createElement('div');
-                errorMsg.className = 'error-message';
-                errorMsg.textContent = '❌ Invalid admin password. Please try again.';
-                loginSection.appendChild(errorMsg);
+                showMessage('Invalid admin password. Please try again.', 'error');
+                document.getElementById('adminPasswordInput').value = '';
             }
         }
 
+        // Allow Enter key for admin password
+        document.getElementById('adminPasswordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkAdminPassword();
+            }
+        });
+
+        // Load dashboard data
+        function loadDashboard() {
+            loadEvents();
+            loadStats();
+            loadRecentActivity();
+        }
+
+        // Load events from localStorage
+        function loadEvents() {
+            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
+            currentEvents = events;
+            displayEventsForManagement(events);
+        }
+
+        // Tab switching
         function showTab(tabName) {
-            // Update tab buttons
-            document.querySelectorAll('.tab').forEach(tab => {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.add('active');
             event.target.classList.add('active');
 
-            // Update tab content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabName + 'Tab').classList.add('active');
-
-            if (tabName === 'volunteers') {
-                loadEventSelect();
+            // Refresh data for specific tabs
+            if (tabName === 'overview') {
+                loadStats();
+                loadRecentActivity();
+            } else if (tabName === 'manage') {
+                displayEventsForManagement(currentEvents);
             }
         }
 
-        function previewImage(inputId, previewId) {
-            const input = document.getElementById(inputId);
-            const preview = document.getElementById(previewId);
-            const url = input.value.trim();
+        // Load statistics
+        function loadStats() {
+            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
+            const totalEvents = events.length;
+            const totalVolunteers = events.reduce((sum, event) => sum + event.volunteers.length, 0);
+            const upcomingEvents = events.filter(event => new Date(event.date) > new Date()).length;
+            const avgVolunteersPerEvent = totalEvents > 0 ? Math.round(totalVolunteers / totalEvents) : 0;
 
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalEvents}</div>
+                    <div class="stat-label">Total Events</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${totalVolunteers}</div>
+                    <div class="stat-label">Total Volunteers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${upcomingEvents}</div>
+                    <div class="stat-label">Upcoming Events</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${avgVolunteersPerEvent}</div>
+                    <div class="stat-label">Avg per Event</div>
+                </div>
+            `;
+        }
+
+        // Load recent activity
+        function loadRecentActivity() {
+            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
+            const recentSignups = [];
+
+            events.forEach(event => {
+                event.volunteers.forEach(volunteer => {
+                    recentSignups.push({
+                        eventTitle: event.title,
+                        volunteerName: volunteer.name,
+                        signupDate: new Date(volunteer.signupDate),
+                        eventDate: event.date
+                    });
+                });
+            });
+
+            recentSignups.sort((a, b) => b.signupDate - a.signupDate);
+            const recent = recentSignups.slice(0, 5);
+
+            const activityHtml = recent.length > 0 ? 
+                recent.map(signup => `
+                    <div class="volunteer-row">
+                        <div class="volunteer-details">
+                            <strong>${signup.volunteerName}</strong> signed up for 
+                            <strong>${signup.eventTitle}</strong>
+                            <br><small>Event Date: ${signup.eventDate} • Signed up: ${signup.signupDate.toLocaleDateString()}</small>
+                        </div>
+                    </div>
+                `).join('') :
+                '<p style="text-align: center; color: #666; padding: 20px;">No recent activity</p>';
+
+            document.getElementById('recentActivity').innerHTML = `
+                <div class="volunteers-section">
+                    ${activityHtml}
+                </div>
+            `;
+        }
+
+        // Handle create event form
+        document.getElementById('createEventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('eventTitle').value.trim();
+            const date = document.getElementById('eventDate').value;
+            const time = document.getElementById('eventTime').value;
+            const location = document.getElementById('eventLocation').value.trim();
+            const description = document.getElementById('eventDescription').value.trim();
+            const volunteersNeeded = parseInt(document.getElementById('volunteersNeeded').value);
+            const imageUrl = document.getElementById('eventImageUrl').value.trim();
+
+            if (!title || !date || !time || !location || !description || !volunteersNeeded) {
+                showMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            const newEvent = {
+                id: 'event_' + Date.now(),
+                title: title,
+                date: date,
+                time: time,
+                location: location,
+                description: description,
+                volunteersNeeded: volunteersNeeded,
+                imageUrl: imageUrl || '',
+                volunteers: [],
+                createdAt: new Date().toISOString()
+            };
+
+            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
+            events.push(newEvent);
+            localStorage.setItem('volunteerEvents', JSON.stringify(events));
+
+            // Reset form and refresh
+            document.getElementById('createEventForm').reset();
+            document.getElementById('imagePreview').innerHTML = '';
+            loadDashboard();
+            showMessage(`Event "${title}" created successfully!`, 'success');
+        });
+
+        // Handle image URL preview
+        document.getElementById('eventImageUrl').addEventListener('input', function() {
+            previewImage(this.value, 'imagePreview');
+        });
+
+        document.getElementById('editEventImageUrl').addEventListener('input', function() {
+            previewImage(this.value, 'editImagePreview');
+        });
+
+        function previewImage(url, previewId) {
+            const preview = document.getElementById(previewId);
             if (url && isValidImageUrl(url)) {
-                preview.src = url;
-                preview.style.display = 'block';
-                preview.onerror = function() {
-                    this.style.display = 'none';
-                };
+                preview.innerHTML = `<img src="${url}" alt="Preview" onerror="this.style.display='none'">`;
             } else {
-                preview.style.display = 'none';
+                preview.innerHTML = '';
             }
         }
 
         function isValidImageUrl(url) {
-            try {
-                new URL(url);
-                return /\.(jpg|jpeg|png|gif|bmp|webp)$/i.test(url);
-            } catch {
-                return false;
-            }
+            return /\.(jpg|jpeg|png|gif|webp)$/i.test(url) || url.includes('unsplash') || url.includes('pexels');
         }
 
-        function createEvent() {
-            const title = document.getElementById('eventTitle').value.trim();
-            const date = document.getElementById('eventDate').value;
-            const time = document.getElementById('eventTime').value;
-            const description = document.getElementById('eventDescription').value.trim();
-            const imageUrl = document.getElementById('eventImageUrl').value.trim();
-
-            if (!title || !date || !time || !description) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Validate image URL if provided
-            if (imageUrl && !isValidImageUrl(imageUrl)) {
-                alert('Please enter a valid image URL (jpg, jpeg, png, gif, bmp, webp).');
-                return;
-            }
-
-            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
-
-            const event = {
-                id: Date.now().toString(),
-                title,
-                date,
-                time,
-                description,
-                imageUrl: imageUrl || '',
-                createdAt: new Date().toISOString()
-            };
-
-            events.push(event);
-            localStorage.setItem('volunteerEvents', JSON.stringify(events));
-
-            // Show success message
-            const successMsg = document.createElement('div');
-            successMsg.className = 'success-message';
-            successMsg.textContent = `✅ Event "${title}" created successfully!`;
-            document.querySelector('.section').appendChild(successMsg);
-
-            // Clear form
-            document.getElementById('eventTitle').value = '';
-            document.getElementById('eventDate').value = '';
-            document.getElementById('eventTime').value = '';
-            document.getElementById('eventDescription').value = '';
-            document.getElementById('eventImageUrl').value = '';
-            document.getElementById('imagePreview').style.display = 'none';
-
-            // Refresh lists
-            loadEvents();
-            loadEventSelect();
-
-            setTimeout(() => {
-                const msg = document.querySelector('.success-message');
-                if (msg) msg.remove();
-            }, 3000);
-        }
-
-        function loadEvents() {
-            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
-            const eventList = document.getElementById('eventList');
-
+        // Display events for management
+        function displayEventsForManagement(events) {
+            const list = document.getElementById('eventsList');
             if (events.length === 0) {
-                eventList.innerHTML = '<p style="text-align: center; color: #64748b; padding: 20px;">No events created yet.</p>';
+                list.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">No events created yet.</p>';
                 return;
             }
 
-            eventList.innerHTML = events.map(event => {
-                const volunteerCount = getVolunteerCount(event.id);
-                return `
-                    <div class="event-item">
-                        ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.title}" class="event-image-preview" onerror="this.style.display='none'">` : ''}
-                        <div class="event-title">${event.title}</div>
-                        <div class="event-details">
-                            📅 <strong>Date:</strong> ${event.date}<br>
-                            🕐 <strong>Time:</strong> ${event.time}<br>
-                            📝 <strong>Description:</strong> ${event.description}<br>
-                            👥 <strong>Volunteers:</strong> ${volunteerCount}
+            list.innerHTML = events.map(event => `
+                <div class="admin-event-card">
+                    <div class="event-header">
+                        <div class="event-info">
+                            <h4>${event.title}</h4>
+                            <p><strong>📅</strong> ${event.date} at ${event.time}</p>
+                            <p><strong>📍</strong> ${event.location}</p>
+                            <p><strong>👥</strong> ${event.volunteers.length}/${event.volunteersNeeded} volunteers</p>
+                            <p><strong>📝</strong> ${event.description}</p>
                         </div>
                         <div class="event-actions">
-                            <button class="btn-edit" onclick="editEvent('${event.id}')">✏️ Edit</button>
-                            <button class="btn-danger" onclick="deleteEvent('${event.id}', '${event.title}')">🗑️ Delete</button>
+                            <button class="edit-btn" onclick="openEditModal('${event.id}')">✏️ Edit</button>
+                            <button class="delete-btn" onclick="confirmDeleteEvent('${event.id}', '${event.title}')">🗑️ Delete</button>
                         </div>
                     </div>
-                `;
-            }).join('');
+
+                    ${event.volunteers.length > 0 ? `
+                        <div class="volunteers-section">
+                            <h4>Registered Volunteers:</h4>
+                            ${event.volunteers.map((volunteer, index) => `
+                                <div class="volunteer-row">
+                                    <div class="volunteer-details">
+                                        <strong>${volunteer.name}</strong> • ${volunteer.email}
+                                        ${volunteer.phone ? ` • ${volunteer.phone}` : ''}
+                                        ${volunteer.notes ? `<br><small>${volunteer.notes}</small>` : ''}
+                                        <br><small>Signed up: ${new Date(volunteer.signupDate).toLocaleDateString()}</small>
+                                    </div>
+                                    <div class="volunteer-actions">
+                                        <button class="remove-volunteer-btn" onclick="confirmRemoveVolunteer('${event.id}', ${index}, '${volunteer.name}')">Remove</button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : '<p style="color: #666; font-style: italic; margin-top: 15px;">No volunteers registered yet.</p>'}
+                </div>
+            `).join('');
         }
 
-        function getVolunteerCount(eventId) {
-            const volunteers = JSON.parse(localStorage.getItem(`volunteers_${eventId}`) || '[]');
-            return volunteers.length;
-        }
-
-        function editEvent(eventId) {
-            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
-            const event = events.find(e => e.id === eventId);
-
+        // Edit event functions
+        function openEditModal(eventId) {
+            const event = currentEvents.find(e => e.id === eventId);
             if (!event) return;
 
-            currentEditEvent = eventId;
+            editingEventId = eventId;
 
-            // Populate edit form
             document.getElementById('editEventTitle').value = event.title;
             document.getElementById('editEventDate').value = event.date;
             document.getElementById('editEventTime').value = event.time;
+            document.getElementById('editEventLocation').value = event.location;
             document.getElementById('editEventDescription').value = event.description;
+            document.getElementById('editVolunteersNeeded').value = event.volunteersNeeded;
             document.getElementById('editEventImageUrl').value = event.imageUrl || '';
 
-            // Show image preview if URL exists
-            if (event.imageUrl) {
-                const preview = document.getElementById('editImagePreview');
-                preview.src = event.imageUrl;
-                preview.style.display = 'block';
-            }
-
+            previewImage(event.imageUrl || '', 'editImagePreview');
             document.getElementById('editModal').style.display = 'block';
         }
 
         function closeEditModal() {
             document.getElementById('editModal').style.display = 'none';
-            document.getElementById('editImagePreview').style.display = 'none';
-            currentEditEvent = null;
+            editingEventId = null;
         }
 
-        function saveEventEdit() {
-            if (!currentEditEvent) return;
+        // Handle edit event form
+        document.getElementById('editEventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!editingEventId) return;
 
             const title = document.getElementById('editEventTitle').value.trim();
             const date = document.getElementById('editEventDate').value;
             const time = document.getElementById('editEventTime').value;
+            const location = document.getElementById('editEventLocation').value.trim();
             const description = document.getElementById('editEventDescription').value.trim();
+            const volunteersNeeded = parseInt(document.getElementById('editVolunteersNeeded').value);
             const imageUrl = document.getElementById('editEventImageUrl').value.trim();
 
-            if (!title || !date || !time || !description) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Validate image URL if provided
-            if (imageUrl && !isValidImageUrl(imageUrl)) {
-                alert('Please enter a valid image URL (jpg, jpeg, png, gif, bmp, webp).');
-                return;
-            }
-
             const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
-            const eventIndex = events.findIndex(e => e.id === currentEditEvent);
+            const eventIndex = events.findIndex(e => e.id === editingEventId);
 
             if (eventIndex !== -1) {
                 events[eventIndex] = {
@@ -764,190 +839,104 @@
                     title,
                     date,
                     time,
+                    location,
                     description,
-                    imageUrl: imageUrl || '',
-                    updatedAt: new Date().toISOString()
+                    volunteersNeeded,
+                    imageUrl
                 };
 
                 localStorage.setItem('volunteerEvents', JSON.stringify(events));
-
-                // Show success message
-                const successMsg = document.createElement('div');
-                successMsg.className = 'success-message';
-                successMsg.textContent = `✅ Event "${title}" updated successfully!`;
-                document.getElementById('eventsTab').appendChild(successMsg);
-
-                // Close modal and refresh
                 closeEditModal();
-                loadEvents();
-                loadEventSelect();
+                loadDashboard();
+                showMessage(`Event "${title}" updated successfully!`, 'success');
+            }
+        });
 
-                setTimeout(() => {
-                    const msg = document.querySelector('.success-message');
-                    if (msg) msg.remove();
-                }, 3000);
+        // Delete confirmation functions
+        function confirmDeleteEvent(eventId, eventTitle) {
+            confirmCallback = () => deleteEvent(eventId);
+            document.getElementById('confirmMessage').textContent = 
+                `Are you sure you want to delete "${eventTitle}"? This will remove all volunteer signups.`;
+            document.getElementById('confirmModal').style.display = 'block';
+        }
+
+        function confirmRemoveVolunteer(eventId, volunteerIndex, volunteerName) {
+            confirmCallback = () => removeVolunteer(eventId, volunteerIndex);
+            document.getElementById('confirmMessage').textContent = 
+                `Are you sure you want to remove "${volunteerName}" from this event?`;
+            document.getElementById('confirmModal').style.display = 'block';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+            confirmCallback = null;
+        }
+
+        function confirmAction() {
+            if (confirmCallback) {
+                confirmCallback();
+                closeConfirmModal();
             }
         }
 
-        function deleteEvent(eventId, eventTitle) {
-            currentDeleteEvent = { eventId, eventTitle };
-            const volunteerCount = getVolunteerCount(eventId);
-            document.getElementById('deleteEventMessage').innerHTML = `
-                Are you sure you want to delete the event <strong>"${eventTitle}"</strong>?<br>
-                This will also remove <strong>${volunteerCount} volunteer signups</strong>.
-            `;
-            document.getElementById('deleteEventModal').style.display = 'block';
-        }
-
-        function closeDeleteEventModal() {
-            document.getElementById('deleteEventModal').style.display = 'none';
-            currentDeleteEvent = null;
-        }
-
-        function closeConfirmEventDeleteModal() {
-            document.getElementById('confirmEventDeleteModal').style.display = 'none';
-            currentDeleteEvent = null;
-        }
-
-        function confirmEventDelete1() {
-            document.getElementById('deleteEventModal').style.display = 'none';
-            document.getElementById('confirmEventDeleteModal').style.display = 'block';
-        }
-
-        function confirmEventDelete2() {
-            if (!currentDeleteEvent) return;
-
+        // Delete and remove functions
+        function deleteEvent(eventId) {
             const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
-            const updatedEvents = events.filter(e => e.id !== currentDeleteEvent.eventId);
-            localStorage.setItem('volunteerEvents', JSON.stringify(updatedEvents));
+            const filteredEvents = events.filter(e => e.id !== eventId);
+            localStorage.setItem('volunteerEvents', JSON.stringify(filteredEvents));
+            loadDashboard();
+            showMessage('Event deleted successfully.', 'success');
+        }
 
-            // Also remove volunteer data for this event
-            localStorage.removeItem(`volunteers_${currentDeleteEvent.eventId}`);
+        function removeVolunteer(eventId, volunteerIndex) {
+            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
+            const eventIndex = events.findIndex(e => e.id === eventId);
 
-            // Close modal and refresh
-            closeConfirmEventDeleteModal();
-            loadEvents();
-            loadEventSelect();
+            if (eventIndex !== -1 && events[eventIndex].volunteers[volunteerIndex]) {
+                const volunteerName = events[eventIndex].volunteers[volunteerIndex].name;
+                events[eventIndex].volunteers.splice(volunteerIndex, 1);
+                localStorage.setItem('volunteerEvents', JSON.stringify(events));
+                loadDashboard();
+                showMessage(`${volunteerName} removed from event.`, 'success');
+            }
+        }
 
-            // Show success message
-            const successMsg = document.createElement('div');
-            successMsg.className = 'success-message';
-            successMsg.textContent = `✅ Event "${currentDeleteEvent.eventTitle}" and all associated volunteers have been deleted.`;
-            document.getElementById('eventsTab').appendChild(successMsg);
+        // Show message function
+        function showMessage(text, type) {
+            const existingMessages = document.querySelectorAll('.message');
+            existingMessages.forEach(msg => msg.remove());
+
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+
+            const dashboard = document.getElementById('adminDashboard');
+            const authSection = document.getElementById('authSection');
+
+            if (dashboard.style.display !== 'none') {
+                dashboard.insertBefore(message, dashboard.firstChild);
+            } else {
+                authSection.appendChild(message);
+            }
 
             setTimeout(() => {
-                const msg = document.querySelector('.success-message');
-                if (msg) msg.remove();
-            }, 3000);
-        }
-
-        function loadEventSelect() {
-            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
-            const select = document.getElementById('eventSelect');
-
-            select.innerHTML = '<option value="">-- Choose an event --</option>';
-            events.forEach(event => {
-                const option = document.createElement('option');
-                option.value = event.id;
-                option.textContent = `${event.title} (${event.date})`;
-                select.appendChild(option);
-            });
-        }
-
-        function loadVolunteersForEvent() {
-            const eventId = document.getElementById('eventSelect').value;
-            const management = document.getElementById('volunteerManagement');
-
-            if (!eventId) {
-                management.innerHTML = '';
-                return;
-            }
-
-            const volunteers = JSON.parse(localStorage.getItem(`volunteers_${eventId}`) || '[]');
-
-            if (volunteers.length === 0) {
-                management.innerHTML = '<p style="text-align: center; color: #64748b; padding: 20px;">No volunteers signed up for this event yet.</p>';
-                return;
-            }
-
-            management.innerHTML = `
-                <h3>👥 Volunteers (${volunteers.length})</h3>
-                ${volunteers.map(volunteer => `
-                    <div class="volunteer-item">
-                        <div class="volunteer-name">${volunteer.name}</div>
-                        <div class="volunteer-details">
-                            📧 <strong>Email:</strong> ${volunteer.email}<br>
-                            ${volunteer.phone ? `📱 <strong>Phone:</strong> ${volunteer.phone}<br>` : ''}
-                            ${volunteer.notes ? `📝 <strong>Notes:</strong> ${volunteer.notes}<br>` : ''}
-                            🕐 <strong>Signed up:</strong> ${new Date(volunteer.signupTime).toLocaleString()}
-                        </div>
-                        <div class="volunteer-actions">
-                            <button class="btn-danger" onclick="deleteVolunteer('${eventId}', '${volunteer.id}', '${volunteer.name}', '${volunteer.email}')">🗑️ Remove Volunteer</button>
-                        </div>
-                    </div>
-                `).join('')}
-            `;
-        }
-
-        function deleteVolunteer(eventId, volunteerId, volunteerName, volunteerEmail) {
-            currentDeleteVolunteer = { eventId, volunteerId, volunteerName, volunteerEmail };
-            document.getElementById('deleteVolunteerMessage').innerHTML = `
-                Are you sure you want to remove <strong>${volunteerName}</strong> (${volunteerEmail}) from this event?
-            `;
-            document.getElementById('deleteVolunteerModal').style.display = 'block';
-        }
-
-        function closeDeleteVolunteerModal() {
-            document.getElementById('deleteVolunteerModal').style.display = 'none';
-            currentDeleteVolunteer = null;
-        }
-
-        function closeConfirmVolunteerDeleteModal() {
-            document.getElementById('confirmVolunteerDeleteModal').style.display = 'none';
-            currentDeleteVolunteer = null;
-        }
-
-        function confirmVolunteerDelete1() {
-            document.getElementById('deleteVolunteerModal').style.display = 'none';
-            document.getElementById('confirmVolunteerDeleteModal').style.display = 'block';
-        }
-
-        function confirmVolunteerDelete2() {
-            if (!currentDeleteVolunteer) return;
-
-            const volunteers = JSON.parse(localStorage.getItem(`volunteers_${currentDeleteVolunteer.eventId}`) || '[]');
-            const updatedVolunteers = volunteers.filter(v => v.id !== currentDeleteVolunteer.volunteerId);
-            localStorage.setItem(`volunteers_${currentDeleteVolunteer.eventId}`, JSON.stringify(updatedVolunteers));
-
-            // Close modal and refresh
-            closeConfirmVolunteerDeleteModal();
-            loadVolunteersForEvent();
-            loadEvents(); // Update volunteer counts
-
-            // Show success message
-            const successMsg = document.createElement('div');
-            successMsg.className = 'success-message';
-            successMsg.textContent = `✅ Volunteer ${currentDeleteVolunteer.volunteerName} has been removed from the event.`;
-            document.getElementById('volunteersTab').appendChild(successMsg);
-
-            setTimeout(() => {
-                const msg = document.querySelector('.success-message');
-                if (msg) msg.remove();
-            }, 3000);
-        }
-
-        // Close modals when clicking outside
-        window.onclick = function(event) {
-            const modals = ['editModal', 'deleteEventModal', 'confirmEventDeleteModal', 'deleteVolunteerModal', 'confirmVolunteerDeleteModal'];
-            modals.forEach(modalId => {
-                const modal = document.getElementById(modalId);
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    if (modalId === 'editModal') currentEditEvent = null;
-                    if (modalId.includes('Event')) currentDeleteEvent = null;
-                    if (modalId.includes('Volunteer')) currentDeleteVolunteer = null;
+                if (message.parentNode) {
+                    message.remove();
                 }
-            });
+            }, 5000);
+        }
+
+        // Modal click outside to close
+        window.onclick = function(event) {
+            const editModal = document.getElementById('editModal');
+            const confirmModal = document.getElementById('confirmModal');
+
+            if (event.target === editModal) {
+                closeEditModal();
+            }
+            if (event.target === confirmModal) {
+                closeConfirmModal();
+            }
         }
     </script>
 </body>
