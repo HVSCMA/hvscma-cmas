@@ -1,0 +1,705 @@
+/* Club Work Hours Volunteer Management System Styles */
+:root {
+    --primary-color: #1e40af;
+    --secondary-color: #0ea5e9;
+    --accent-color: #06b6d4;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --dark-color: #1f2937;
+    --light-color: #f9fafb;
+    --border-color: #e5e7eb;
+    --text-color: #374151;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 10px 25px rgba(30, 64, 175, 0.2);
+}
+
+.header-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.event-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0.95;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+}
+
+/* Verification Status */
+.verification-status {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--success-color);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    z-index: 1000;
+    display: none;
+}
+
+.verification-status.show {
+    display: block;
+}
+
+/* Card Styles */
+.info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-color);
+}
+
+.info-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.info-card h2 i {
+    margin-right: 0.5rem;
+    color: var(--secondary-color);
+}
+
+/* Event Details */
+.event-details {
+    display: grid;
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+}
+
+.detail-item strong {
+    min-width: 100px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Volunteers Display */
+.current-volunteers {
+    margin-bottom: 2rem;
+}
+
+.volunteers-intro {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.volunteers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.task-group {
+    background: var(--light-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.task-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.task-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.task-progress {
+    background: var(--border-color);
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.task-progress-bar {
+    background: linear-gradient(90deg, var(--success-color), var(--accent-color));
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.volunteer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.volunteer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.volunteer-name {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.volunteer-contact {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.remove-volunteer {
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.remove-volunteer:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* Form Styles */
+.signup-form-section {
+    margin-bottom: 2rem;
+}
+
+.member-verification-notice {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.member-verification-notice i {
+    color: var(--warning-color);
+}
+
+.signup-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group label i {
+    color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+/* Button Styles */
+.submit-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+}
+
+.add-btn, .export-btn, .print-btn, .email-btn {
+    background: var(--success-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.add-btn:hover, .export-btn:hover, .print-btn:hover, .email-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.success-icon {
+    color: var(--success-color);
+    font-size: 4rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.error-icon, .warning-icon {
+    color: var(--danger-color);
+    font-size: 4rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.gate-icon, .task-icon {
+    color: var(--primary-color);
+    font-size: 3rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.modal-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.modal-btn:hover {
+    background: #1e3a8a;
+    transform: translateY(-1px);
+}
+
+.cancel-btn {
+    background: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db !important;
+}
+
+.delete-btn {
+    background: var(--danger-color) !important;
+}
+
+.delete-btn:hover {
+    background: #dc2626 !important;
+}
+
+.verify-btn {
+    background: var(--success-color) !important;
+}
+
+.verify-btn:hover {
+    background: #059669 !important;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Gate Code Form */
+.gate-code-form {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.gate-code-form input {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.gate-code-error {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.gate-code-error.show {
+    display: block;
+}
+
+/* Admin Styles */
+.access-form {
+    background: white;
+    border-radius: 15px;
+    padding: 3rem;
+    margin: 3rem auto;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.access-icon {
+    color: var(--primary-color);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.access-form h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.access-form input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.access-error {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    display: none;
+    margin-bottom: 1rem;
+}
+
+.access-error.show {
+    display: block;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Task Management */
+.task-controls {
+    margin-bottom: 1.5rem;
+}
+
+.tasks-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.task-item {
+    background: var(--light-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-info h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.task-info p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.task-stats {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-task, .delete-task {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.edit-task {
+    background: var(--warning-color);
+    color: white;
+}
+
+.delete-task {
+    background: var(--danger-color);
+    color: white;
+}
+
+/* Footer Styles */
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.club-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.admin-link {
+    margin-top: 1rem;
+}
+
+.discrete-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.discrete-link:hover {
+    opacity: 1;
+}
+
+/* Loading Animation */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color);
+}
+
+.loading i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .event-title {
+        font-size: 1.4rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 1.5rem;
+    }
+
+    .verification-status {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header, .footer, .modal, .verification-status {
+        display: none !important;
+    }
+
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+
+    .info-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+}
