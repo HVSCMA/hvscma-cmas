@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Work Hours - Volunteer Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Member Verification Status -->
+    <div id="verification-status" class="verification-status">
+        <i class="fas fa-check-circle"></i>
+        Club Member Verified
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-tools header-icon"></i>
+                <h1>Club Work Hours</h1>
+                <h2 class="event-title" id="event-title">Spring Cleanup & Maintenance</h2>
+                <p class="subtitle">Volunteer Signup & Current Participants</p>
+            </div>
+        </header>
+
+        <!-- Event Overview -->
+        <section class="event-overview">
+            <div class="info-card">
+                <h2><i class="fas fa-calendar-alt"></i> Event Overview</h2>
+                <div class="event-details" id="event-details">
+                    <div class="detail-item">
+                        <strong>Date:</strong> <span id="event-date">Saturday, April 15, 2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Time:</strong> <span id="event-time">9:00 AM - 4:00 PM</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Purpose:</strong> <span id="event-description">Help maintain our beautiful club facilities with landscaping, cleaning, and general maintenance tasks. Every helping hand makes a difference!</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Volunteers Display -->
+        <section class="current-volunteers">
+            <h2><i class="fas fa-users"></i> Current Volunteers</h2>
+            <p class="volunteers-intro">See who's already committed and what roles still need help!</p>
+            <div id="volunteers-container">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Loading current volunteers...
+                </div>
+            </div>
+        </section>
+
+        <!-- Task Requirements -->
+        <section class="task-requirements">
+            <div class="info-card">
+                <h2><i class="fas fa-tasks"></i> Volunteer Opportunities</h2>
+                <div id="tasks-container">
+                    <!-- Tasks will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup Form -->
+        <section class="signup-form-section">
+            <h2><i class="fas fa-hand-paper"></i> Join Our Team</h2>
+            <div class="member-verification-notice">
+                <i class="fas fa-shield-alt"></i>
+                <strong>Club Members:</strong> Please use gate code to verify membership.
+            </div>
+            <form id="signup-form" class="signup-form">
+                <div class="form-group">
+                    <label for="volunteer_name">
+                        <i class="fas fa-user"></i>
+                        Your Name *
+                    </label>
+                    <input type="text" id="volunteer_name" name="volunteer_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i>
+                        Email Address *
+                    </label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">
+                        <i class="fas fa-phone"></i>
+                        Phone Number (optional)
+                    </label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="task_role">
+                        <i class="fas fa-tasks"></i>
+                        Choose Your Task *
+                    </label>
+                    <select id="task_role" name="task_role" required>
+                        <option value="">Select a task...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">
+                        <i class="fas fa-comment"></i>
+                        Notes (optional)
+                    </label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Any special requests or availability notes..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check"></i>
+                    Count Me In!
+                </button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Thank you for volunteering! 🔧</p>
+            <p class="club-name">Hudson Valley Yacht Club</p>
+            <p class="contact-info">Questions? Contact the event organizer</p>
+
+            <!-- Discrete Admin Link -->
+            <div class="admin-link">
+                <a href="admin.html" class="discrete-link">Event Setup</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3>Thank You!</h3>
+            <p>You've successfully signed up! We'll send you details closer to the event date.</p>
+            <button onclick="closeModal()" class="modal-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-exclamation-triangle error-icon"></i>
+            <h3>Signup Error</h3>
+            <p id="error-message">There was an error with your signup. Please try again.</p>
+            <button onclick="closeErrorModal()" class="modal-btn">Try Again</button>
+        </div>
+    </div>
+
+    <!-- Gate Code Verification Modal -->
+    <div id="gate-code-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-key gate-icon"></i>
+            <h3>Club Member Verification</h3>
+            <p>Please enter the club gate code to continue:</p>
+            <div class="gate-code-form">
+                <input type="password" id="gate-code-input" placeholder="Enter gate code..." maxlength="4" autocomplete="off">
+                <div class="gate-code-error" id="gate-code-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Incorrect gate code. Please try again.
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button onclick="closeGateCodeModal()" class="modal-btn cancel-btn">Cancel</button>
+                <button onclick="verifyGateCode()" class="modal-btn verify-btn">Verify</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-trash-alt delete-icon"></i>
+            <h3>Remove Volunteer?</h3>
+            <p>Are you sure you want to remove this volunteer signup?</p>
+            <div class="delete-volunteer-info">
+                <strong id="delete-volunteer-name"></strong><br>
+                <span id="delete-volunteer-role"></span>
+            </div>
+            <div class="modal-buttons">
+                <button onclick="closeDeleteModal()" class="modal-btn cancel-btn">Cancel</button>
+                <button onclick="confirmDelete()" class="modal-btn delete-btn">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
