@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Management | Hidden Harbor Yacht Club</title>
+    <title>Admin Panel | Hidden Harbor Yacht Club Volunteers</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #0ea5e9;
+            --accent-blue: #06b6d4;
+            --dark-blue: #1e3a8a;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,807 +29,738 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            background: linear-gradient(135deg, var(--background) 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
             min-height: 100vh;
-            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue), var(--accent-blue));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 1rem;
         }
 
-        .header {
+        .login-form {
+            max-width: 400px;
+            margin: 4rem auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
             text-align: center;
-            margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .header i {
-            font-size: 3rem;
-            color: #1e40af;
-            margin-bottom: 15px;
+        .login-form h2 {
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            color: #1e40af;
-            margin-bottom: 10px;
-            font-weight: 700;
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
         }
 
-        .header h2 {
-            font-size: 1.5rem;
-            color: #0ea5e9;
-            margin-bottom: 10px;
-            font-weight: 600;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
         }
 
-        .main-content {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .login-section {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .login-section h3 {
-            color: #1e40af;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .login-section input {
-            width: 300px;
-            max-width: 100%;
-            padding: 12px;
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
             border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-size: 1rem;
-            margin: 15px 0;
-            text-align: center;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
         }
 
-        .login-section input:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: #0ea5e9;
+            border-color: var(--primary-blue);
         }
 
-        .btn {
-            background: linear-gradient(135deg, #1e40af, #0ea5e9);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin: 10px;
+            width: 100%;
         }
 
-        .btn:hover {
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
         }
 
         .btn-secondary {
-            background: #64748b;
+            background: var(--text-light);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 0.25rem;
         }
 
         .btn-danger {
-            background: #dc2626;
+            background: var(--error);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
         }
 
-        .error-message {
-            color: #dc2626;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        .admin-dashboard {
+        .admin-panel {
             display: none;
+            padding: 2rem 0;
         }
 
         .tabs {
             display: flex;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #e2e8f0;
-            gap: 0;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .tab {
-            background: none;
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: transparent;
             border: none;
-            padding: 15px 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #64748b;
+            border-radius: 8px;
+            font-weight: 500;
             cursor: pointer;
-            border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
         }
 
         .tab.active {
-            color: #1e40af;
-            border-bottom-color: #1e40af;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
         }
 
         .tab-content {
             display: none;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         .tab-content.active {
             display: block;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .event-list {
+            margin-top: 2rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #0ea5e9;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .task-list {
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 15px;
+        .event-item {
             background: #f8fafc;
-        }
-
-        .task-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
-            background: white;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .task-item input {
-            flex: 1;
-            border: 1px solid #e2e8f0;
-            padding: 8px;
-            border-radius: 4px;
-        }
-
-        .task-item button {
-            background: #dc2626;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .event-card {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
+            padding: 1.5rem;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-blue);
         }
 
-        .event-card h4 {
-            color: #1e40af;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+        .event-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
         }
 
-        .event-meta {
-            color: #666;
-            margin-bottom: 15px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+        .event-item p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
         }
 
         .volunteer-list {
-            margin-top: 15px;
+            margin-top: 1rem;
         }
 
         .volunteer-item {
             background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 10px;
-            margin-bottom: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .footer {
+        .task-section {
+            background: #f1f5f9;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .error-message {
+            color: var(--error);
             text-align: center;
-            color: white;
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 1rem;
         }
 
-        .footer a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer a:hover {
-            opacity: 1;
+        .success-message {
+            color: var(--success);
+            background: #f0fdf4;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
             .tabs {
                 flex-direction: column;
             }
 
-            .event-meta {
+            .tab {
+                margin-bottom: 0.5rem;
+            }
+
+            .volunteer-item {
                 flex-direction: column;
-                gap: 10px;
+                align-items: flex-start;
+                gap: 0.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <i class="fas fa-anchor"></i>
-            <h1>Hidden Harbor Yacht Club</h1>
-            <h2>Event Management</h2>
-            <p>Configure Events & Manage Volunteers</p>
-        </header>
-
-        <!-- Login Section -->
-        <div id="login-section" class="main-content">
-            <div class="login-section">
-                <i class="fas fa-key" style="font-size: 2rem; color: #1e40af; margin-bottom: 15px;"></i>
-                <h3>Organizer Access Required</h3>
-                <p style="color: #666; margin-bottom: 20px;">Enter the organizer password to continue:</p>
-                <input type="password" id="admin-password" placeholder="Enter password..." maxlength="4">
-                <div id="login-error" class="error-message" style="display: none;">
-                    Incorrect password. Please try again.
-                </div>
-                <div>
-                    <button onclick="verifyAdminPassword()" class="btn">
-                        <i class="fas fa-sign-in-alt"></i> Access Admin Panel
-                    </button>
-                </div>
-                <div style="margin-top: 20px;">
-                    <a href="index.html" style="color: #0ea5e9; text-decoration: none;">
-                        ← Back to Volunteer Signup
-                    </a>
-                </div>
-            </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-anchor" style="margin-right: 0.5rem;"></i>Hidden Harbor Yacht Club</h1>
+            <p>Volunteer Management - Admin Panel</p>
         </div>
+    </header>
 
-        <!-- Admin Dashboard -->
-        <div id="admin-dashboard" class="admin-dashboard">
-            <div class="main-content">
-                <!-- Tabs -->
-                <div class="tabs">
-                    <button class="tab active" onclick="showTab('create-event')">
-                        <i class="fas fa-plus-circle"></i> Create Event
-                    </button>
-                    <button class="tab" onclick="showTab('manage-events')">
-                        <i class="fas fa-list"></i> Manage Events
-                    </button>
-                    <button class="tab" onclick="showTab('volunteers')">
-                        <i class="fas fa-users"></i> View Volunteers
-                    </button>
-                </div>
+    <!-- Login Form -->
+    <div id="login-section" class="login-form">
+        <h2><i class="fas fa-lock"></i> Admin Access</h2>
+        <p style="color: var(--text-light); margin-bottom: 2rem;">Enter the admin password to continue</p>
 
-                <!-- Create Event Tab -->
-                <div id="create-event" class="tab-content active">
-                    <h3 style="color: #1e40af; margin-bottom: 20px;">
-                        <i class="fas fa-calendar-plus"></i> Create New Event
-                    </h3>
-                    <form id="create-event-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="event-name">Event Name *</label>
-                                <input type="text" id="event-name" required placeholder="e.g., Lobster Bake 2025">
-                            </div>
-                            <div class="form-group">
-                                <label for="event-slug">URL Slug *</label>
-                                <input type="text" id="event-slug" required placeholder="e.g., lobster-bake-2025">
-                                <small style="color: #666; font-size: 0.9rem;">This will create the URL: hvscma.com/<span id="slug-preview">your-event</span>/</small>
-                            </div>
-                        </div>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="admin-password">Password</label>
+                <input type="password" id="admin-password" required placeholder="Enter admin password">
+            </div>
+            <button type="submit" class="btn-primary">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+        </form>
 
-                        <div class="form-group">
-                            <label for="event-image">Event Image URL (optional)</label>
-                            <input type="url" id="event-image" placeholder="https://example.com/event-image.jpg">
-                            <small style="color: #666; font-size: 0.9rem;">Image will be displayed at the top of the signup page</small>
-                        </div>
+        <div id="login-error" class="error-message" style="display: none;"></div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="event-date">Event Date *</label>
-                                <input type="date" id="event-date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="start-time">Start Time *</label>
-                                <input type="time" id="start-time" required>
-                            </div>
-                        </div>
+        <div style="margin-top: 2rem;">
+            <a href="/volunteer/" style="color: var(--primary-blue); text-decoration: none;">
+                ← Back to Volunteer Events
+            </a>
+        </div>
+    </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="end-time">End Time *</label>
-                                <input type="time" id="end-time" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="organizer-email">Organizer Email *</label>
-                                <input type="email" id="organizer-email" required placeholder="organizer@hhyc.com">
-                            </div>
-                        </div>
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="admin-panel">
+        <div class="container">
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('events')">
+                    <i class="fas fa-calendar-alt"></i> Events
+                </button>
+                <button class="tab" onclick="showTab('create')">
+                    <i class="fas fa-plus"></i> Create Event
+                </button>
+                <button class="tab" onclick="showTab('volunteers')">
+                    <i class="fas fa-users"></i> Volunteers
+                </button>
+            </div>
 
-                        <div class="form-group">
-                            <label for="event-description">Event Description *</label>
-                            <textarea id="event-description" rows="4" required placeholder="Describe the event and what volunteers will be doing..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Volunteer Tasks *</label>
-                            <div class="task-list">
-                                <div id="task-container">
-                                    <div class="task-item">
-                                        <input type="text" placeholder="Task name (e.g., Set up tables)" class="task-name" required>
-                                        <input type="number" placeholder="# needed" class="task-count" min="1" max="50" required style="width: 100px;">
-                                        <button type="button" onclick="removeTask(this)">Remove</button>
-                                    </div>
-                                </div>
-                                <button type="button" onclick="addTask()" class="btn btn-secondary">
-                                    <i class="fas fa-plus"></i> Add Task
-                                </button>
-                            </div>
-                        </div>
-
-                        <div style="text-align: center; margin-top: 30px;">
-                            <button type="submit" class="btn">
-                                <i class="fas fa-save"></i> Create Event
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Manage Events Tab -->
-                <div id="manage-events" class="tab-content">
-                    <h3 style="color: #1e40af; margin-bottom: 20px;">
-                        <i class="fas fa-cog"></i> Manage Events
-                    </h3>
-                    <div id="events-list">
-                        <!-- Events will be loaded here -->
-                    </div>
-                </div>
-
-                <!-- Volunteers Tab -->
-                <div id="volunteers" class="tab-content">
-                    <h3 style="color: #1e40af; margin-bottom: 20px;">
-                        <i class="fas fa-users"></i> All Volunteers
-                    </h3>
-                    <div id="volunteers-list">
-                        <!-- Volunteer information will be loaded here -->
+            <!-- Events Tab -->
+            <div id="events-tab" class="tab-content active">
+                <h2>Manage Events</h2>
+                <div id="events-list">
+                    <div style="text-align: center; color: var(--text-light); padding: 2rem;">
+                        Loading events...
                     </div>
                 </div>
             </div>
 
-            <!-- Footer -->
-            <footer class="footer">
-                <p>Event Management System ⚓</p>
-                <p><strong>Hidden Harbor Yacht Club</strong></p>
-                <p><a href="index.html">← Back to Volunteer Signup</a></p>
-                <p><a href="#" onclick="logout()" style="color: #fca5a5;">Logout</a></p>
-            </footer>
+            <!-- Create Event Tab -->
+            <div id="create-tab" class="tab-content">
+                <h2>Create New Event</h2>
+                <form id="create-event-form">
+                    <div class="form-group">
+                        <label for="event-name">Event Name *</label>
+                        <input type="text" id="event-name" required placeholder="e.g., Lobster Bake 2025">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-slug">URL Slug *</label>
+                        <input type="text" id="event-slug" required placeholder="e.g., lobster-bake-2025">
+                        <small style="color: var(--text-light);">This creates the URL: hvscma.com/volunteer/[slug]/</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-date">Event Date *</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="start-time">Start Time *</label>
+                            <input type="time" id="start-time" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="end-time">End Time *</label>
+                            <input type="time" id="end-time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-description">Description *</label>
+                        <textarea id="event-description" required rows="3" placeholder="Describe the event and encourage participation"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event-image">Event Image URL (Optional)</label>
+                        <input type="url" id="event-image" placeholder="https://example.com/image.jpg">
+                        <small style="color: var(--text-light);">Image will display at the top of the event page</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organizer-email">Organizer Email</label>
+                        <input type="email" id="organizer-email" placeholder="organizer@hiddenharboryc.com">
+                    </div>
+
+                    <h3 style="margin: 2rem 0 1rem 0;">Volunteer Tasks</h3>
+                    <div id="tasks-container">
+                        <div class="task-section">
+                            <div class="form-group">
+                                <label>Task Name</label>
+                                <input type="text" class="task-name" placeholder="e.g., Set up tables and chairs">
+                            </div>
+                            <div class="form-group">
+                                <label>Volunteers Needed</label>
+                                <input type="number" class="task-count" min="1" value="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="add-task" class="btn-secondary">
+                        <i class="fas fa-plus"></i> Add Another Task
+                    </button>
+
+                    <div style="margin-top: 2rem;">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Create Event
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Volunteers Tab -->
+            <div id="volunteers-tab" class="tab-content">
+                <h2>Volunteer Management</h2>
+                <div id="volunteers-list">
+                    <div style="text-align: center; color: var(--text-light); padding: 2rem;">
+                        Loading volunteers...
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        const ADMIN_PASSWORD = '7591';
-        let currentEvents = [];
+        class AdminSystem {
+            constructor() {
+                this.events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+                this.volunteers = JSON.parse(localStorage.getItem('hhyc_volunteers') || '[]');
+                this.isLoggedIn = sessionStorage.getItem('hhyc_admin_logged_in') === 'true';
 
-        // Initialize admin panel
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Hidden Harbor Yacht Club Admin Panel initialized');
+                this.init();
+            }
 
-            // Auto-focus password field
-            document.getElementById('admin-password').focus();
-
-            // Handle Enter key for login
-            document.getElementById('admin-password').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    verifyAdminPassword();
+            init() {
+                if (this.isLoggedIn) {
+                    this.showAdminPanel();
+                } else {
+                    this.showLoginForm();
                 }
-            });
 
-            // Update slug preview when event name changes
-            document.getElementById('event-name').addEventListener('input', function() {
-                const slug = this.value.toLowerCase()
-                    .replace(/[^a-z0-9\s-]/g, '')
-                    .replace(/\s+/g, '-')
-                    .replace(/-+/g, '-')
-                    .trim();
-                document.getElementById('event-slug').value = slug;
-                document.getElementById('slug-preview').textContent = slug || 'your-event';
-            });
+                this.attachEventListeners();
+            }
 
-            // Initialize form submission
-            document.getElementById('create-event-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                createEvent();
-            });
-        });
+            showLoginForm() {
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('admin-panel').style.display = 'none';
+            }
 
-        // Verify admin password
-        function verifyAdminPassword() {
-            const input = document.getElementById('admin-password');
-            const error = document.getElementById('login-error');
-
-            if (input.value === ADMIN_PASSWORD) {
+            showAdminPanel() {
                 document.getElementById('login-section').style.display = 'none';
-                document.getElementById('admin-dashboard').style.display = 'block';
-                loadEvents();
-                loadVolunteers();
-            } else {
-                error.style.display = 'block';
-                input.value = '';
-                input.focus();
+                document.getElementById('admin-panel').style.display = 'block';
+                this.loadEventsList();
+                this.loadVolunteersList();
+            }
+
+            attachEventListeners() {
+                // Login form
+                document.getElementById('login-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleLogin();
+                });
+
+                // Create event form
+                document.getElementById('create-event-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleCreateEvent();
+                });
+
+                // Add task button
+                document.getElementById('add-task').addEventListener('click', () => {
+                    this.addTaskField();
+                });
+
+                // Auto-generate slug from event name
+                document.getElementById('event-name').addEventListener('input', (e) => {
+                    const slug = e.target.value.toLowerCase()
+                        .replace(/[^a-z0-9\s-]/g, '')
+                        .replace(/\s+/g, '-')
+                        .replace(/-+/g, '-')
+                        .trim();
+                    document.getElementById('event-slug').value = slug;
+                });
+            }
+
+            handleLogin() {
+                const password = document.getElementById('admin-password').value;
+                const errorDiv = document.getElementById('login-error');
+
+                if (password === '7591') {
+                    sessionStorage.setItem('hhyc_admin_logged_in', 'true');
+                    this.isLoggedIn = true;
+                    this.showAdminPanel();
+                    errorDiv.style.display = 'none';
+                } else {
+                    errorDiv.textContent = 'Invalid password. Please try again.';
+                    errorDiv.style.display = 'block';
+                }
+            }
+
+            addTaskField() {
+                const container = document.getElementById('tasks-container');
+                const taskSection = document.createElement('div');
+                taskSection.className = 'task-section';
+                taskSection.innerHTML = `
+                    <div class="form-group">
+                        <label>Task Name</label>
+                        <input type="text" class="task-name" placeholder="e.g., Serve food">
+                    </div>
+                    <div class="form-group">
+                        <label>Volunteers Needed</label>
+                        <input type="number" class="task-count" min="1" value="1">
+                    </div>
+                    <button type="button" class="btn-danger" onclick="this.parentElement.remove()">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                `;
+                container.appendChild(taskSection);
+            }
+
+            handleCreateEvent() {
+                const name = document.getElementById('event-name').value;
+                const slug = document.getElementById('event-slug').value;
+                const date = document.getElementById('event-date').value;
+                const startTime = document.getElementById('start-time').value;
+                const endTime = document.getElementById('end-time').value;
+                const description = document.getElementById('event-description').value;
+                const imageUrl = document.getElementById('event-image').value;
+                const organizerEmail = document.getElementById('organizer-email').value;
+
+                // Collect tasks
+                const taskNames = document.querySelectorAll('.task-name');
+                const taskCounts = document.querySelectorAll('.task-count');
+                const tasks = [];
+
+                for (let i = 0; i < taskNames.length; i++) {
+                    const taskName = taskNames[i].value.trim();
+                    const taskCount = parseInt(taskCounts[i].value);
+
+                    if (taskName && taskCount > 0) {
+                        tasks.push({
+                            id: Date.now() + i,
+                            name: taskName,
+                            needed: taskCount,
+                            volunteers: []
+                        });
+                    }
+                }
+
+                if (tasks.length === 0) {
+                    alert('Please add at least one volunteer task.');
+                    return;
+                }
+
+                // Check if slug already exists
+                if (this.events.find(e => e.id === slug)) {
+                    alert('An event with this URL slug already exists. Please choose a different slug.');
+                    return;
+                }
+
+                // Create event object
+                const event = {
+                    id: slug,
+                    name,
+                    date,
+                    startTime,
+                    endTime,
+                    description,
+                    imageUrl: imageUrl || '',
+                    organizerEmail: organizerEmail || 'events@hiddenharboryc.com',
+                    tasks,
+                    createdAt: new Date().toISOString()
+                };
+
+                // Add to events array
+                this.events.push(event);
+                this.saveEvents();
+
+                // Show success message
+                alert(`Event "${name}" created successfully! It will be available at: hvscma.com/volunteer/${slug}/`);
+
+                // Reset form
+                document.getElementById('create-event-form').reset();
+                document.getElementById('tasks-container').innerHTML = `
+                    <div class="task-section">
+                        <div class="form-group">
+                            <label>Task Name</label>
+                            <input type="text" class="task-name" placeholder="e.g., Set up tables and chairs">
+                        </div>
+                        <div class="form-group">
+                            <label>Volunteers Needed</label>
+                            <input type="number" class="task-count" min="1" value="1">
+                        </div>
+                    </div>
+                `;
+
+                // Refresh events list
+                this.loadEventsList();
+                showTab('events');
+            }
+
+            loadEventsList() {
+                const container = document.getElementById('events-list');
+
+                if (this.events.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; color: var(--text-light); padding: 2rem;">
+                            <i class="fas fa-calendar-plus" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3>No Events Created</h3>
+                            <p>Create your first volunteer event to get started!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '';
+                this.events.forEach(event => {
+                    const totalNeeded = event.tasks.reduce((sum, task) => sum + task.needed, 0);
+                    const totalVolunteers = event.tasks.reduce((sum, task) => sum + task.volunteers.length, 0);
+                    const eventDate = new Date(event.date).toLocaleDateString();
+
+                    html += `
+                        <div class="event-item">
+                            <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <h4>${event.name}</h4>
+                                    <p><i class="fas fa-calendar"></i> ${eventDate} • ${event.startTime} - ${event.endTime}</p>
+                                    <p><i class="fas fa-link"></i> hvscma.com/volunteer/${event.id}/</p>
+                                    <p><i class="fas fa-users"></i> ${totalVolunteers}/${totalNeeded} volunteers signed up</p>
+                                </div>
+                                <button class="btn-danger" onclick="adminSystem.deleteEvent('${event.id}')">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+
+                            <div class="volunteer-list">
+                                <h5>Tasks & Volunteers:</h5>
+                                ${event.tasks.map(task => `
+                                    <div class="task-item">
+                                        <span><strong>${task.name}</strong> (${task.volunteers.length}/${task.needed})</span>
+                                        <div>
+                                            ${task.volunteers.map(v => `
+                                                <span style="background: #e0f2fe; padding: 0.25rem 0.5rem; margin: 0.125rem; border-radius: 4px; font-size: 0.875rem;">
+                                                    ${v.name}
+                                                </span>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = html;
+            }
+
+            loadVolunteersList() {
+                const container = document.getElementById('volunteers-list');
+
+                if (this.volunteers.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; color: var(--text-light); padding: 2rem;">
+                            <i class="fas fa-users" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3>No Volunteers Yet</h3>
+                            <p>Volunteers will appear here once they sign up for events.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '<div class="volunteer-list">';
+                this.volunteers.forEach(volunteer => {
+                    const event = this.events.find(e => e.id === volunteer.eventId);
+                    const task = event ? event.tasks.find(t => t.id === volunteer.taskId) : null;
+
+                    html += `
+                        <div class="volunteer-item">
+                            <div>
+                                <strong>${volunteer.name}</strong><br>
+                                <small style="color: var(--text-light);">
+                                    ${volunteer.email} ${volunteer.phone ? `• ${volunteer.phone}` : ''}<br>
+                                    ${event ? event.name : 'Unknown Event'} - ${task ? task.name : 'Unknown Task'}<br>
+                                    Signed up: ${new Date(volunteer.signupDate).toLocaleDateString()}
+                                </small>
+                            </div>
+                            <button class="btn-danger" onclick="adminSystem.removeVolunteer('${volunteer.id}')">
+                                <i class="fas fa-user-times"></i> Remove
+                            </button>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+
+                container.innerHTML = html;
+            }
+
+            deleteEvent(eventId) {
+                if (confirm('Are you sure you want to delete this event? This will also remove all volunteer signups for this event.')) {
+                    // Remove event
+                    this.events = this.events.filter(e => e.id !== eventId);
+
+                    // Remove associated volunteers
+                    this.volunteers = this.volunteers.filter(v => v.eventId !== eventId);
+
+                    this.saveEvents();
+                    this.saveVolunteers();
+                    this.loadEventsList();
+                    this.loadVolunteersList();
+                }
+            }
+
+            removeVolunteer(volunteerId) {
+                if (confirm('Are you sure you want to remove this volunteer?')) {
+                    const volunteer = this.volunteers.find(v => v.id == volunteerId);
+                    if (volunteer) {
+                        // Remove from volunteers array
+                        this.volunteers = this.volunteers.filter(v => v.id != volunteerId);
+
+                        // Remove from event task
+                        const event = this.events.find(e => e.id === volunteer.eventId);
+                        if (event) {
+                            const task = event.tasks.find(t => t.id === volunteer.taskId);
+                            if (task) {
+                                task.volunteers = task.volunteers.filter(v => v.id != volunteerId);
+                            }
+                        }
+
+                        this.saveEvents();
+                        this.saveVolunteers();
+                        this.loadEventsList();
+                        this.loadVolunteersList();
+                    }
+                }
+            }
+
+            saveEvents() {
+                localStorage.setItem('hhyc_events', JSON.stringify(this.events));
+            }
+
+            saveVolunteers() {
+                localStorage.setItem('hhyc_volunteers', JSON.stringify(this.volunteers));
             }
         }
 
-        // Logout function
-        function logout() {
-            document.getElementById('admin-dashboard').style.display = 'none';
-            document.getElementById('login-section').style.display = 'block';
-            document.getElementById('admin-password').value = '';
-            document.getElementById('login-error').style.display = 'none';
-        }
-
-        // Show tab
+        // Tab functionality
         function showTab(tabName) {
             // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
             });
 
-            // Remove active from all tabs
+            // Remove active class from all tabs
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
 
             // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
 
-            // Add active to clicked tab
+            // Add active class to selected tab
             event.target.classList.add('active');
-
-            // Reload data based on tab
-            if (tabName === 'manage-events') {
-                loadEvents();
-            } else if (tabName === 'volunteers') {
-                loadVolunteers();
-            }
         }
 
-        // Add task to form
-        function addTask() {
-            const container = document.getElementById('task-container');
-            const taskItem = document.createElement('div');
-            taskItem.className = 'task-item';
-            taskItem.innerHTML = `
-                <input type="text" placeholder="Task name (e.g., Set up tables)" class="task-name" required>
-                <input type="number" placeholder="# needed" class="task-count" min="1" max="50" required style="width: 100px;">
-                <button type="button" onclick="removeTask(this)">Remove</button>
-            `;
-            container.appendChild(taskItem);
-        }
-
-        // Remove task from form
-        function removeTask(button) {
-            button.parentNode.remove();
-        }
-
-        // Create new event
-        function createEvent() {
-            const eventName = document.getElementById('event-name').value;
-            const eventSlug = document.getElementById('event-slug').value;
-            const eventImage = document.getElementById('event-image').value;
-            const eventDate = document.getElementById('event-date').value;
-            const startTime = document.getElementById('start-time').value;
-            const endTime = document.getElementById('end-time').value;
-            const organizerEmail = document.getElementById('organizer-email').value;
-            const eventDescription = document.getElementById('event-description').value;
-
-            // Validate required fields
-            if (!eventName || !eventSlug || !eventDate || !startTime || !endTime || !organizerEmail || !eventDescription) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Collect tasks
-            const taskItems = document.querySelectorAll('.task-item');
-            const tasks = [];
-
-            taskItems.forEach((item, index) => {
-                const taskName = item.querySelector('.task-name').value;
-                const taskCount = parseInt(item.querySelector('.task-count').value);
-
-                if (taskName && taskCount) {
-                    tasks.push({
-                        id: index + 1,
-                        name: taskName,
-                        needed: taskCount,
-                        volunteers: []
-                    });
-                }
-            });
-
-            if (tasks.length === 0) {
-                alert('Please add at least one volunteer task.');
-                return;
-            }
-
-            // Check for duplicate slug
-            const events = getStoredEvents();
-            if (events.find(e => e.eventSlug === eventSlug)) {
-                alert('An event with this URL slug already exists. Please choose a different slug.');
-                return;
-            }
-
-            // Create event object
-            const newEvent = {
-                eventSlug: eventSlug,
-                eventName: eventName,
-                eventDate: eventDate,
-                startTime: startTime,
-                endTime: endTime,
-                description: eventDescription,
-                imageUrl: eventImage,
-                tasks: tasks,
-                organizerEmail: organizerEmail,
-                created: new Date().toISOString()
-            };
-
-            // Save event
-            events.push(newEvent);
-            saveEvents(events);
-
-            // Generate event page HTML file
-            generateEventPageFile(newEvent);
-
-            // Clear form
-            document.getElementById('create-event-form').reset();
-            document.getElementById('slug-preview').textContent = 'your-event';
-
-            // Remove extra task items
-            const taskContainer = document.getElementById('task-container');
-            const taskItems = taskContainer.querySelectorAll('.task-item');
-            for (let i = 1; i < taskItems.length; i++) {
-                taskItems[i].remove();
-            }
-
-            alert(`Event "${eventName}" created successfully! The signup page is now available at: hvscma.com/${eventSlug}/`);
-
-            // Switch to manage events tab
-            showTab('manage-events');
-        }
-
-        // Generate individual event page HTML file
-        function generateEventPageFile(event) {
-            // This function would ideally create the actual HTML file
-            // For now, we'll simulate the process and inform GitHub about the new file
-            console.log(`Generated event page for: ${event.eventSlug}`);
-
-            // In a real implementation, this would use GitHub API to create:
-            // /${event.eventSlug}/index.html
-        }
-
-        // Load events for management
-        function loadEvents() {
-            const events = getStoredEvents();
-            const container = document.getElementById('events-list');
-
-            if (events.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: #666;">
-                        <i class="fas fa-calendar-plus" style="font-size: 3rem; margin-bottom: 15px; color: #cbd5e1;"></i>
-                        <h3>No Events Created</h3>
-                        <p>Create your first event using the "Create Event" tab.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = events.map(event => {
-                const totalNeeded = event.tasks.reduce((sum, task) => sum + task.needed, 0);
-                const totalVolunteers = event.tasks.reduce((sum, task) => sum + task.volunteers.length, 0);
-
-                return `
-                    <div class="event-card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                            <h4>${event.eventName}</h4>
-                            <button onclick="deleteEvent('${event.eventSlug}')" class="btn btn-danger" style="padding: 8px 12px; font-size: 0.9rem;">
-                                <i class="fas fa-trash"></i> Delete
-                            </button>
-                        </div>
-                        <div class="event-meta">
-                            <span><i class="fas fa-calendar"></i> ${new Date(event.eventDate).toLocaleDateString()}</span>
-                            <span><i class="fas fa-clock"></i> ${event.startTime} - ${event.endTime}</span>
-                            <span><i class="fas fa-users"></i> ${totalVolunteers}/${totalNeeded} volunteers</span>
-                            <span><i class="fas fa-link"></i> <a href="/${event.eventSlug}/" target="_blank" style="color: #0ea5e9;">hvscma.com/${event.eventSlug}/</a></span>
-                        </div>
-                        <p style="color: #666; margin-bottom: 15px;">${event.description}</p>
-                        <div style="background: #f1f5f9; padding: 15px; border-radius: 8px;">
-                            <h5 style="color: #1e40af; margin-bottom: 10px;">Tasks:</h5>
-                            ${event.tasks.map(task => `
-                                <div style="margin-bottom: 8px;">
-                                    <strong>${task.name}</strong> - ${task.volunteers.length}/${task.needed} volunteers
-                                    <div style="background: #e2e8f0; border-radius: 4px; height: 6px; margin-top: 4px;">
-                                        <div style="background: #0ea5e9; height: 100%; width: ${task.needed > 0 ? (task.volunteers.length / task.needed) * 100 : 0}%; border-radius: 4px;"></div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Load volunteers
-        function loadVolunteers() {
-            const events = getStoredEvents();
-            const container = document.getElementById('volunteers-list');
-
-            let allVolunteers = [];
-            events.forEach(event => {
-                event.tasks.forEach(task => {
-                    task.volunteers.forEach(volunteer => {
-                        allVolunteers.push({
-                            ...volunteer,
-                            eventName: event.eventName,
-                            taskName: task.name,
-                            eventSlug: event.eventSlug
-                        });
-                    });
-                });
-            });
-
-            if (allVolunteers.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: #666;">
-                        <i class="fas fa-users" style="font-size: 3rem; margin-bottom: 15px; color: #cbd5e1;"></i>
-                        <h3>No Volunteers Yet</h3>
-                        <p>Volunteers will appear here once they sign up for events.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            // Group volunteers by event
-            const volunteersByEvent = {};
-            allVolunteers.forEach(volunteer => {
-                if (!volunteersByEvent[volunteer.eventName]) {
-                    volunteersByEvent[volunteer.eventName] = [];
-                }
-                volunteersByEvent[volunteer.eventName].push(volunteer);
-            });
-
-            container.innerHTML = Object.keys(volunteersByEvent).map(eventName => {
-                const eventVolunteers = volunteersByEvent[eventName];
-                return `
-                    <div class="event-card">
-                        <h4>${eventName}</h4>
-                        <div class="volunteer-list">
-                            ${eventVolunteers.map(volunteer => `
-                                <div class="volunteer-item">
-                                    <div>
-                                        <strong>${volunteer.name}</strong> - ${volunteer.taskName}<br>
-                                        <small style="color: #666;">
-                                            ${volunteer.email}${volunteer.phone ? ` • ${volunteer.phone}` : ''}
-                                            ${volunteer.notes ? ` • ${volunteer.notes}` : ''}
-                                        </small>
-                                    </div>
-                                    <button onclick="removeVolunteer('${volunteer.eventSlug}', ${volunteer.id})" class="btn btn-danger" style="padding: 6px 10px; font-size: 0.8rem;">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Delete event
-        function deleteEvent(eventSlug) {
-            if (!confirm('Are you sure you want to delete this event? This action cannot be undone.')) {
-                return;
-            }
-
-            const events = getStoredEvents();
-            const filteredEvents = events.filter(e => e.eventSlug !== eventSlug);
-            saveEvents(filteredEvents);
-
-            alert('Event deleted successfully.');
-            loadEvents();
-        }
-
-        // Remove volunteer
-        function removeVolunteer(eventSlug, volunteerId) {
-            if (!confirm('Are you sure you want to remove this volunteer?')) {
-                return;
-            }
-
-            const events = getStoredEvents();
-            const eventIndex = events.findIndex(e => e.eventSlug === eventSlug);
-
-            if (eventIndex !== -1) {
-                events[eventIndex].tasks.forEach(task => {
-                    task.volunteers = task.volunteers.filter(v => v.id !== volunteerId);
-                });
-
-                saveEvents(events);
-                alert('Volunteer removed successfully.');
-                loadVolunteers();
-            }
-        }
-
-        // Storage functions
-        function getStoredEvents() {
-            const stored = localStorage.getItem('hhyc_events');
-            return stored ? JSON.parse(stored) : [];
-        }
-
-        function saveEvents(events) {
-            localStorage.setItem('hhyc_events', JSON.stringify(events));
-        }
+        // Initialize admin system
+        let adminSystem;
+        document.addEventListener('DOMContentLoaded', () => {
+            adminSystem = new AdminSystem();
+        });
     </script>
 </body>
 </html>
