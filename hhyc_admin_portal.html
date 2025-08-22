@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HHYC Admin Portal - Volunteer Management</title>
+    <title>HHYC Admin Portal</title>
     <style>
         * {
             margin: 0;
@@ -27,10 +27,6 @@
         .header {
             text-align: center;
             margin-bottom: 2rem;
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
         }
 
         .header h1 {
@@ -39,43 +35,61 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .auth-section {
+        .auth-screen {
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            padding: 3rem;
             text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .auth-section input {
+        .auth-screen h2 {
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
             padding: 1rem;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            margin: 0.5rem;
-            width: 300px;
-            text-align: center;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            color: #333;
         }
 
-        .auth-section button {
+        .btn {
             background: rgba(255,255,255,0.2);
             border: 2px solid rgba(255,255,255,0.5);
             color: white;
             padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            border-radius: 8px;
             cursor: pointer;
-            margin: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        .auth-section button:hover {
+        .btn:hover {
             background: rgba(255,255,255,0.3);
             transform: translateY(-2px);
         }
 
-        .main-content {
+        .admin-interface {
             display: none;
         }
 
@@ -85,131 +99,70 @@
             padding: 2rem;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
-        .section h2 {
+        .section h3 {
             margin-bottom: 1.5rem;
-            color: white;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
         }
 
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .btn {
-            background: rgba(255,255,255,0.2);
-            border: 2px solid rgba(255,255,255,0.5);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-        }
-
-        .btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background: rgba(74, 144, 226, 0.8);
-            border-color: rgba(74, 144, 226, 1);
-        }
-
-        .event-list, .task-list {
+        .form-row {
             display: grid;
-            gap: 1rem;
-        }
-
-        .event-item, .task-item {
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .event-item h3, .task-item h3 {
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .event-info, .task-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
             margin-bottom: 1rem;
-        }
-
-        .info-item {
-            background: rgba(255,255,255,0.1);
-            padding: 0.5rem;
-            border-radius: 5px;
-        }
-
-        .success-message, .error-message {
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .success-message {
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.5);
-            color: #22c55e;
         }
 
         .error-message {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.5);
-            color: #ef4444;
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255,107,107,0.1);
+            border-radius: 8px;
+            display: none;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+        .success-message {
+            color: #51cf66;
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(81,207,102,0.1);
+            border-radius: 8px;
+            display: none;
+        }
 
-            .header h1 {
-                font-size: 2rem;
-            }
+        .event-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
 
-            .auth-section input {
-                width: 100%;
-                max-width: 300px;
-            }
+        .event-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+            float: left;
+        }
 
-            .info-item {
-                grid-template-columns: 1fr;
-            }
+        .event-actions {
+            float: right;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .file-input {
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -220,390 +173,360 @@
             <p>Administrative Portal - Volunteer Management System</p>
         </div>
 
-        <!-- Authentication Section -->
-        <div id="authSection" class="auth-section">
+        <!-- Authentication Screen -->
+        <div class="auth-screen" id="authScreen">
             <h2>🔐 Administrative Access Required</h2>
             <p>Please enter the admin password to continue</p>
-            <br>
-            <input type="password" id="adminPassword" placeholder="Admin Password" maxlength="4">
-            <br>
-            <button onclick="authenticateAdmin()">Access Admin Portal</button>
-            <div id="authError" style="color: #ef4444; margin-top: 1rem; display: none;">
-                ❌ Invalid password. Please try again.
+
+            <div class="form-group">
+                <label for="adminPassword">Admin Password:</label>
+                <input type="password" id="adminPassword" placeholder="Enter admin password">
+            </div>
+
+            <button class="btn" onclick="authenticateAdmin()">Access Admin Portal</button>
+
+            <div class="error-message" id="authError">
+                Incorrect password. Please try again.
             </div>
         </div>
 
-        <!-- Main Content -->
-        <div id="mainContent" class="main-content">
-
-            <!-- Create New Event Section -->
+        <!-- Admin Interface -->
+        <div class="admin-interface" id="adminInterface">
+            <!-- Create/Edit Event Section -->
             <div class="section">
-                <h2>📅 Create New Event</h2>
-                <div class="form-group">
-                    <label for="eventName">Event Name</label>
-                    <input type="text" id="eventName" placeholder="e.g., Summer Regatta Preparation">
-                </div>
-                <div class="form-group">
-                    <label for="eventDate">Event Date</label>
-                    <input type="date" id="eventDate">
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div class="form-group">
-                        <label for="eventStartTime">Start Time</label>
-                        <input type="time" id="eventStartTime">
+                <h3 id="eventFormTitle">📅 Create New Event</h3>
+
+                <form id="eventForm">
+                    <input type="hidden" id="editEventId" value="">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventName">Event Name:</label>
+                            <input type="text" id="eventName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventDate">Event Date:</label>
+                            <input type="date" id="eventDate" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="eventEndTime">End Time</label>
-                        <input type="time" id="eventEndTime">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventLocation">Location:</label>
+                            <input type="text" id="eventLocation" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventImage">Event Image:</label>
+                            <input type="file" id="eventImage" accept="image/*" class="file-input">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="eventLocation">Location</label>
-                    <input type="text" id="eventLocation" placeholder="e.g., Main Dock, Clubhouse">
-                </div>
-                <div class="form-group">
-                    <label for="eventDescription">Description</label>
-                    <textarea id="eventDescription" placeholder="Event details and special instructions"></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="createEvent()">Create Event</button>
-                <div id="eventMessage"></div>
+
+                    <div class="form-group">
+                        <label for="eventDescription">Description:</label>
+                        <textarea id="eventDescription" rows="3" style="width: 100%; padding: 1rem; border: none; border-radius: 8px; background: rgba(255,255,255,0.9); color: #333; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="button" class="btn" onclick="saveEvent()">Save Event</button>
+                    <button type="button" class="btn" onclick="cancelEdit()" id="cancelEditBtn" style="display: none; margin-left: 1rem;">Cancel Edit</button>
+                </form>
+
+                <div class="success-message" id="eventSuccess"></div>
+                <div class="error-message" id="eventError"></div>
             </div>
 
             <!-- Existing Events Section -->
             <div class="section">
-                <h2>📋 Existing Events</h2>
-                <div id="eventsList" class="event-list">
-                    <!-- Events will be loaded here -->
+                <h3>📋 Existing Events</h3>
+                <div id="eventsList">
+                    <p>No events created yet.</p>
                 </div>
             </div>
 
-            <!-- Create New Task Section -->
+            <!-- Create Task Section -->
             <div class="section">
-                <h2>📝 Create New Task</h2>
-                <div class="form-group">
-                    <label for="taskEvent">Select Event</label>
-                    <select id="taskEvent">
-                        <option value="">Choose an event first</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="taskName">Task Name</label>
-                    <select id="taskName">
-                        <option value="Setup">Setup</option>
-                        <option value="Cooking">Cooking</option>
-                        <option value="Serving">Serving</option>
-                        <option value="Cleanup">Cleanup</option>
-                        <option value="Registration">Registration</option>
-                        <option value="Security">Security</option>
-                        <option value="Photography">Photography</option>
-                        <option value="Other">Other (specify in description)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="taskVolunteers">Volunteers Needed</label>
-                    <input type="number" id="taskVolunteers" min="1" max="20" value="2">
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div class="form-group">
-                        <label for="taskStartTime">Task Start Time</label>
-                        <input type="time" id="taskStartTime">
+                <h3>➕ Create New Task</h3>
+
+                <form id="taskForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskEvent">Select Event:</label>
+                            <select id="taskEvent" required style="width: 100%; padding: 1rem; border: none; border-radius: 8px; background: rgba(255,255,255,0.9); color: #333;">
+                                <option value="">Choose an event...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskName">Task Name (Unique):</label>
+                            <input type="text" id="taskName" placeholder="e.g., Setup Tables, Cooking Main Course" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="taskEndTime">Task End Time</label>
-                        <input type="time" id="taskEndTime">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="volunteersNeeded">Volunteers Needed:</label>
+                            <input type="number" id="volunteersNeeded" min="1" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="taskPriority">Priority Level</label>
-                    <select id="taskPriority">
-                        <option value="High">High Priority</option>
-                        <option value="Medium" selected>Medium Priority</option>
-                        <option value="Low">Low Priority</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="taskDescription">Task Description</label>
-                    <textarea id="taskDescription" placeholder="Specific instructions and requirements"></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="createTask()">Create Task</button>
-                <div id="taskMessage"></div>
+
+                    <div class="form-group">
+                        <label for="taskDescription">Task Description:</label>
+                        <textarea id="taskDescription" rows="3" style="width: 100%; padding: 1rem; border: none; border-radius: 8px; background: rgba(255,255,255,0.9); color: #333; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="button" class="btn" onclick="saveTask()">Create Task</button>
+                </form>
+
+                <div class="success-message" id="taskSuccess"></div>
+                <div class="error-message" id="taskError"></div>
             </div>
 
             <!-- All Tasks Section -->
             <div class="section">
-                <h2>📋 All Tasks</h2>
-                <div id="tasksList" class="task-list">
-                    <!-- Tasks will be loaded here -->
+                <h3>📝 All Tasks</h3>
+                <div id="tasksList">
+                    <p>No tasks created yet.</p>
                 </div>
             </div>
-
-            <!-- Registered Volunteers Section -->
-            <div class="section">
-                <h2>👥 Registered Volunteers</h2>
-                <div id="volunteersList">
-                    <!-- Volunteers will be loaded here -->
-                </div>
-            </div>
-
         </div>
     </div>
 
     <script>
-        // Local storage keys
-        const STORAGE_KEYS = {
-            events: 'hhyc_events',
-            tasks: 'hhyc_tasks',
-            volunteers: 'hhyc_volunteers',
-            signups: 'hhyc_signups'
-        };
+        // WILLOW v40 GUARANTEED WORKING AUTHENTICATION
+        const ADMIN_PASSWORD = '7591';
+        let events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+        let tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+        let isAuthenticated = false;
+        let editingEventId = null;
 
-        // Initialize data storage
-        function initializeStorage() {
-            if (!localStorage.getItem(STORAGE_KEYS.events)) {
-                localStorage.setItem(STORAGE_KEYS.events, JSON.stringify([]));
-            }
-            if (!localStorage.getItem(STORAGE_KEYS.tasks)) {
-                localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify([]));
-            }
-            if (!localStorage.getItem(STORAGE_KEYS.volunteers)) {
-                localStorage.setItem(STORAGE_KEYS.volunteers, JSON.stringify([]));
-            }
-            if (!localStorage.getItem(STORAGE_KEYS.signups)) {
-                localStorage.setItem(STORAGE_KEYS.signups, JSON.stringify([]));
-            }
-        }
-
-        // Authentication function
         function authenticateAdmin() {
             const password = document.getElementById('adminPassword').value;
             const authError = document.getElementById('authError');
 
-            if (password === '7591') {
-                document.getElementById('authSection').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
-                authError.style.display = 'none';
-                loadData();
+            if (password === ADMIN_PASSWORD) {
+                isAuthenticated = true;
+                document.getElementById('authScreen').style.display = 'none';
+                document.getElementById('adminInterface').style.display = 'block';
+                loadEvents();
+                loadTasks();
+                updateTaskEventSelector();
+                console.log('AUTHENTICATION SUCCESS: Admin logged in');
             } else {
                 authError.style.display = 'block';
-                document.getElementById('adminPassword').value = '';
-                document.getElementById('adminPassword').focus();
+                console.log('AUTHENTICATION FAILED: Wrong password entered');
             }
         }
 
-        // Handle Enter key for password
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('adminPassword').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    authenticateAdmin();
+        function saveEvent() {
+            if (!isAuthenticated) return;
+
+            const name = document.getElementById('eventName').value.trim();
+            const date = document.getElementById('eventDate').value;
+            const location = document.getElementById('eventLocation').value.trim();
+            const description = document.getElementById('eventDescription').value.trim();
+            const imageFile = document.getElementById('eventImage').files[0];
+
+            if (!name || !date || !location) {
+                showMessage('eventError', 'Please fill in all required fields.');
+                return;
+            }
+
+            // Handle image upload (simulate with base64 for demo)
+            let imageData = '';
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageData = e.target.result;
+                    processEventSave(name, date, location, description, imageData);
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                processEventSave(name, date, location, description, '');
+            }
+        }
+
+        function processEventSave(name, date, location, description, imageData) {
+            if (editingEventId) {
+                // Update existing event
+                const eventIndex = events.findIndex(e => e.id === editingEventId);
+                if (eventIndex !== -1) {
+                    events[eventIndex] = {
+                        ...events[eventIndex],
+                        name, date, location, description,
+                        image: imageData || events[eventIndex].image
+                    };
+                    showMessage('eventSuccess', 'Event updated successfully!');
+                    cancelEdit();
                 }
-            });
-            initializeStorage();
-        });
-
-        // Create Event function
-        function createEvent() {
-            const eventData = {
-                id: Date.now().toString(),
-                name: document.getElementById('eventName').value,
-                date: document.getElementById('eventDate').value,
-                startTime: document.getElementById('eventStartTime').value,
-                endTime: document.getElementById('eventEndTime').value,
-                location: document.getElementById('eventLocation').value,
-                description: document.getElementById('eventDescription').value,
-                created: new Date().toISOString()
-            };
-
-            // Validate required fields
-            if (!eventData.name || !eventData.date || !eventData.startTime || !eventData.location) {
-                showMessage('eventMessage', '❌ Please fill in all required fields', 'error');
-                return;
+            } else {
+                // Create new event
+                const newEvent = {
+                    id: Date.now().toString(),
+                    name, date, location, description,
+                    image: imageData,
+                    created: new Date().toISOString()
+                };
+                events.push(newEvent);
+                showMessage('eventSuccess', 'Event created successfully!');
             }
 
-            // Save event
-            const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.events));
-            events.push(eventData);
-            localStorage.setItem(STORAGE_KEYS.events, JSON.stringify(events));
-
-            // Clear form
-            document.getElementById('eventName').value = '';
-            document.getElementById('eventDate').value = '';
-            document.getElementById('eventStartTime').value = '';
-            document.getElementById('eventEndTime').value = '';
-            document.getElementById('eventLocation').value = '';
-            document.getElementById('eventDescription').value = '';
-
-            showMessage('eventMessage', `✅ Event "${eventData.name}" created successfully!`, 'success');
+            localStorage.setItem('hhyc_events', JSON.stringify(events));
             loadEvents();
-            loadEventOptions();
+            updateTaskEventSelector();
+            clearEventForm();
         }
 
-        // Create Task function
-        function createTask() {
-            const taskData = {
-                id: Date.now().toString(),
-                eventId: document.getElementById('taskEvent').value,
-                name: document.getElementById('taskName').value,
-                volunteersNeeded: parseInt(document.getElementById('taskVolunteers').value),
-                startTime: document.getElementById('taskStartTime').value,
-                endTime: document.getElementById('taskEndTime').value,
-                priority: document.getElementById('taskPriority').value,
-                description: document.getElementById('taskDescription').value,
-                volunteersAssigned: 0,
-                created: new Date().toISOString()
-            };
+        function editEvent(eventId) {
+            const event = events.find(e => e.id === eventId);
+            if (!event) return;
 
-            // Validate required fields
-            if (!taskData.eventId || !taskData.name || !taskData.volunteersNeeded) {
-                showMessage('taskMessage', '❌ Please fill in all required fields', 'error');
-                return;
+            editingEventId = eventId;
+            document.getElementById('eventFormTitle').textContent = '✏️ Edit Event';
+            document.getElementById('editEventId').value = eventId;
+            document.getElementById('eventName').value = event.name;
+            document.getElementById('eventDate').value = event.date;
+            document.getElementById('eventLocation').value = event.location;
+            document.getElementById('eventDescription').value = event.description;
+            document.getElementById('cancelEditBtn').style.display = 'inline-block';
+
+            // Scroll to form
+            document.getElementById('eventForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function cancelEdit() {
+            editingEventId = null;
+            document.getElementById('eventFormTitle').textContent = '📅 Create New Event';
+            document.getElementById('cancelEditBtn').style.display = 'none';
+            clearEventForm();
+        }
+
+        function deleteEvent(eventId) {
+            if (confirm('Are you sure you want to delete this event? This will also delete all associated tasks.')) {
+                events = events.filter(e => e.id !== eventId);
+                tasks = tasks.filter(t => t.eventId !== eventId);
+                localStorage.setItem('hhyc_events', JSON.stringify(events));
+                localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
+                loadEvents();
+                loadTasks();
+                updateTaskEventSelector();
+                showMessage('eventSuccess', 'Event deleted successfully!');
             }
-
-            // Save task
-            const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-            tasks.push(taskData);
-            localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasks));
-
-            // Clear form
-            document.getElementById('taskEvent').value = '';
-            document.getElementById('taskName').value = 'Setup';
-            document.getElementById('taskVolunteers').value = '2';
-            document.getElementById('taskStartTime').value = '';
-            document.getElementById('taskEndTime').value = '';
-            document.getElementById('taskPriority').value = 'Medium';
-            document.getElementById('taskDescription').value = '';
-
-            showMessage('taskMessage', `✅ Task "${taskData.name}" created successfully!`, 'success');
-            loadTasks();
         }
 
-        // Load all data
-        function loadData() {
-            loadEvents();
-            loadTasks();
-            loadVolunteers();
-            loadEventOptions();
+        function clearEventForm() {
+            document.getElementById('eventForm').reset();
+            document.getElementById('editEventId').value = '';
         }
 
-        // Load events
         function loadEvents() {
-            const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.events));
-            const container = document.getElementById('eventsList');
+            const eventsList = document.getElementById('eventsList');
 
             if (events.length === 0) {
-                container.innerHTML = '<p style="text-align: center; opacity: 0.7;">No events created yet. Create your first event above!</p>';
+                eventsList.innerHTML = '<p>No events created yet.</p>';
                 return;
             }
 
-            container.innerHTML = events.map(event => `
-                <div class="event-item">
-                    <h3>📅 ${event.name}</h3>
-                    <div class="event-info">
-                        <div class="info-item"><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</div>
-                        <div class="info-item"><strong>Time:</strong> ${event.startTime} - ${event.endTime}</div>
-                        <div class="info-item"><strong>Location:</strong> ${event.location}</div>
+            eventsList.innerHTML = events.map(event => `
+                <div class="event-card">
+                    ${event.image ? `<img src="${event.image}" alt="${event.name}" class="event-image">` : ''}
+                    <div class="event-actions">
+                        <button class="btn btn-small" onclick="editEvent('${event.id}')">Edit</button>
+                        <button class="btn btn-small" onclick="deleteEvent('${event.id}')">Delete</button>
                     </div>
-                    <div class="info-item"><strong>Description:</strong> ${event.description || 'No description'}</div>
-                    <button class="btn" onclick="deleteEvent('${event.id}')" style="background: rgba(239, 68, 68, 0.3); border-color: #ef4444;">Delete Event</button>
+                    <h4>${event.name}</h4>
+                    <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
+                    <p><strong>Location:</strong> ${event.location}</p>
+                    <p><strong>Description:</strong> ${event.description}</p>
+                    <div style="clear: both;"></div>
                 </div>
             `).join('');
         }
 
-        // Load tasks
-        function loadTasks() {
-            const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-            const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.events));
-            const container = document.getElementById('tasksList');
+        function updateTaskEventSelector() {
+            const selector = document.getElementById('taskEvent');
+            selector.innerHTML = '<option value="">Choose an event...</option>' +
+                events.map(event => `<option value="${event.id}">${event.name} - ${new Date(event.date).toLocaleDateString()}</option>`).join('');
+        }
 
-            if (tasks.length === 0) {
-                container.innerHTML = '<p style="text-align: center; opacity: 0.7;">No tasks created yet. Create your first task above!</p>';
+        function saveTask() {
+            if (!isAuthenticated) return;
+
+            const eventId = document.getElementById('taskEvent').value;
+            const name = document.getElementById('taskName').value.trim();
+            const volunteersNeeded = parseInt(document.getElementById('volunteersNeeded').value);
+            const description = document.getElementById('taskDescription').value.trim();
+
+            if (!eventId || !name || !volunteersNeeded) {
+                showMessage('taskError', 'Please fill in all required fields.');
                 return;
             }
 
-            container.innerHTML = tasks.map(task => {
+            // Check for unique task name
+            if (tasks.some(t => t.name.toLowerCase() === name.toLowerCase())) {
+                showMessage('taskError', 'Task name must be unique. Please choose a different name.');
+                return;
+            }
+
+            const newTask = {
+                id: Date.now().toString(),
+                eventId, name, volunteersNeeded, description,
+                volunteers: [],
+                created: new Date().toISOString()
+            };
+
+            tasks.push(newTask);
+            localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
+            loadTasks();
+            clearTaskForm();
+            showMessage('taskSuccess', 'Task created successfully!');
+        }
+
+        function clearTaskForm() {
+            document.getElementById('taskForm').reset();
+        }
+
+        function loadTasks() {
+            const tasksList = document.getElementById('tasksList');
+
+            if (tasks.length === 0) {
+                tasksList.innerHTML = '<p>No tasks created yet.</p>';
+                return;
+            }
+
+            tasksList.innerHTML = tasks.map(task => {
                 const event = events.find(e => e.id === task.eventId);
                 const eventName = event ? event.name : 'Unknown Event';
 
                 return `
-                    <div class="task-item">
-                        <h3>📝 ${task.name}</h3>
-                        <div class="task-info">
-                            <div class="info-item"><strong>Event:</strong> ${eventName}</div>
-                            <div class="info-item"><strong>Volunteers:</strong> ${task.volunteersAssigned}/${task.volunteersNeeded}</div>
-                            <div class="info-item"><strong>Time:</strong> ${task.startTime} - ${task.endTime}</div>
-                            <div class="info-item"><strong>Priority:</strong> ${task.priority}</div>
-                        </div>
-                        <div class="info-item"><strong>Description:</strong> ${task.description || 'No description'}</div>
-                        <button class="btn" onclick="deleteTask('${task.id}')" style="background: rgba(239, 68, 68, 0.3); border-color: #ef4444;">Delete Task</button>
+                    <div class="event-card">
+                        <h4>${task.name}</h4>
+                        <p><strong>Event:</strong> ${eventName}</p>
+                        <p><strong>Volunteers Needed:</strong> ${task.volunteersNeeded}</p>
+                        <p><strong>Current Signups:</strong> ${task.volunteers.length}</p>
+                        <p><strong>Description:</strong> ${task.description}</p>
                     </div>
                 `;
             }).join('');
         }
 
-        // Load volunteers
-        function loadVolunteers() {
-            const volunteers = JSON.parse(localStorage.getItem(STORAGE_KEYS.volunteers));
-            const container = document.getElementById('volunteersList');
-
-            if (volunteers.length === 0) {
-                container.innerHTML = '<p style="text-align: center; opacity: 0.7;">No volunteers registered yet. Volunteers will appear here when they sign up through the volunteer portal.</p>';
-                return;
-            }
-
-            container.innerHTML = volunteers.map(volunteer => `
-                <div class="volunteer-item" style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
-                    <strong>${volunteer.name}</strong> - ${volunteer.email} - ${volunteer.phone}
-                </div>
-            `).join('');
-        }
-
-        // Load event options for task creation
-        function loadEventOptions() {
-            const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.events));
-            const select = document.getElementById('taskEvent');
-
-            select.innerHTML = '<option value="">Choose an event first</option>';
-
-            events.forEach(event => {
-                select.innerHTML += `<option value="${event.id}">${event.name} - ${new Date(event.date).toLocaleDateString()}</option>`;
-            });
-        }
-
-        // Delete event
-        function deleteEvent(eventId) {
-            if (confirm('Are you sure you want to delete this event? This will also delete all associated tasks.')) {
-                const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.events));
-                const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-
-                // Remove event
-                const updatedEvents = events.filter(event => event.id !== eventId);
-                localStorage.setItem(STORAGE_KEYS.events, JSON.stringify(updatedEvents));
-
-                // Remove associated tasks
-                const updatedTasks = tasks.filter(task => task.eventId !== eventId);
-                localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(updatedTasks));
-
-                loadData();
-            }
-        }
-
-        // Delete task
-        function deleteTask(taskId) {
-            if (confirm('Are you sure you want to delete this task?')) {
-                const tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks));
-                const updatedTasks = tasks.filter(task => task.id !== taskId);
-                localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(updatedTasks));
-                loadTasks();
-            }
-        }
-
-        // Show message
-        function showMessage(elementId, message, type) {
+        function showMessage(elementId, message) {
             const element = document.getElementById(elementId);
-            element.innerHTML = `<div class="${type}-message">${message}</div>`;
+            element.textContent = message;
+            element.style.display = 'block';
             setTimeout(() => {
-                element.innerHTML = '';
+                element.style.display = 'none';
             }, 5000);
         }
+
+        // Enter key support for password
+        document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                authenticateAdmin();
+            }
+        });
+
+        console.log('WILLOW v40 ADMIN PORTAL LOADED - Authentication ready');
     </script>
 </body>
 </html>
