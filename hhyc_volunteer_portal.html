@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HHYC Volunteer Portal - Sign Up</title>
+    <title>HHYC Volunteer Portal - Sign Up for Events</title>
     <style>
         * {
             margin: 0;
@@ -16,362 +15,242 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            color: white;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            padding: 2rem;
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
             text-align: center;
+            margin-bottom: 2rem;
         }
 
         .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .auth-section {
-            padding: 40px;
-            text-align: center;
-            background: white;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
-        .main-content {
-            padding: 40px;
-            background: white;
+        .volunteer-content {
             display: none;
         }
 
-        .auth-form {
-            max-width: 400px;
-            margin: 0 auto;
+        .volunteer-content.authenticated {
+            display: block;
         }
 
         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 1.5rem;
         }
 
-        label {
+        .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
             color: #333;
         }
 
-        input[type="password"], 
-        input[type="text"], 
-        input[type="email"], 
-        input[type="tel"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
         .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
         }
 
-        .btn-primary:hover {
+        .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .btn-success {
-            background: #28a745;
-            color: white;
+            background: linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%);
         }
 
-        .btn-success:hover {
-            background: #218838;
-            transform: translateY(-1px);
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
         }
 
-        .btn-secondary {
-            background: #6c757d;
-            color: white;
+        .volunteer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .btn-secondary:hover {
-            background: #5a6268;
+        .volunteer-panel {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .volunteer-panel h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .events-list {
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .event-card {
-            border: 2px solid #e1e5e9;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .event-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        .event-card h4 {
+            margin-bottom: 0.5rem;
+            color: #fff;
         }
 
-        .event-header {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 20px;
-            border-bottom: 1px solid #e1e5e9;
-        }
-
-        .event-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-
-        .event-meta {
-            display: flex;
-            gap: 20px;
+        .event-card p {
             font-size: 0.9rem;
-            color: #6c757d;
-            flex-wrap: wrap;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
         }
 
-        .tasks-container {
-            padding: 20px;
+        .tasks-grid {
+            display: grid;
+            gap: 0.5rem;
+            margin-top: 1rem;
         }
 
         .task-item {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #667eea;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .task-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-
-        .task-description {
-            color: #6c757d;
-            margin-bottom: 10px;
-        }
-
-        .task-meta {
+        .task-header {
             display: flex;
-            gap: 15px;
-            font-size: 0.85rem;
-            color: #6c757d;
-            margin-bottom: 15px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
         }
 
-        .status-badge {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+        .task-name {
             font-weight: 600;
-            text-transform: uppercase;
+            font-size: 1.1rem;
         }
 
-        .status-open {
-            background: #d1ecf1;
-            color: #0c5460;
-        }
-
-        .status-full {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .volunteer-roster {
-            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-
-        .roster-title {
+        .task-priority {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
             font-weight: 600;
-            color: #495057;
-            margin-bottom: 10px;
+        }
+
+        .priority-high {
+            background: rgba(255, 107, 107, 0.3);
+            border: 1px solid rgba(255, 107, 107, 0.5);
+        }
+
+        .priority-medium {
+            background: rgba(255, 193, 7, 0.3);
+            border: 1px solid rgba(255, 193, 7, 0.5);
+        }
+
+        .priority-low {
+            background: rgba(40, 167, 69, 0.3);
+            border: 1px solid rgba(40, 167, 69, 0.5);
+        }
+
+        .task-details {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .volunteer-spots {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .spots-info {
             font-size: 0.9rem;
         }
 
+        .working-with {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .working-with-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #54a0ff;
+        }
+
         .volunteer-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .volunteer-tag {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .capacity-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 10px 0;
-        }
-
-        .capacity-bar {
-            flex: 1;
-            background: #e9ecef;
-            border-radius: 10px;
-            height: 8px;
-            overflow: hidden;
-        }
-
-        .capacity-fill {
-            height: 100%;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            transition: width 0.3s ease;
-        }
-
-        .capacity-full .capacity-fill {
-            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
-        }
-
-        .signup-section {
-            border-top: 2px solid #e1e5e9;
-            padding-top: 15px;
-            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
         .alert {
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-left: 4px solid;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
 
         .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border-color: #28a745;
+            background: rgba(46, 213, 115, 0.2);
+            border: 1px solid rgba(46, 213, 115, 0.4);
         }
 
         .alert-error {
-            background: #f8d7da;
-            color: #721c24;
-            border-color: #dc3545;
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
         }
 
-        .alert-info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border-color: #17a2b8;
+        .hidden {
+            display: none;
         }
 
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #6c757d;
-        }
-
-        .loading::after {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .col {
-            flex: 1;
-        }
-
-        .signup-form {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
-
-        .signup-form h4 {
-            color: #495057;
-            margin-bottom: 15px;
+        .registration-form {
+            margin-top: 2rem;
         }
 
         @media (max-width: 768px) {
-            .container {
-                margin: 0;
-                border-radius: 0;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .event-meta {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .row {
-                flex-direction: column;
-                gap: 10px;
+            .volunteer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -379,164 +258,367 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>⚓ HHYC Volunteer Portal</h1>
+            <h1>👥 HHYC Volunteer Portal</h1>
             <p>Hidden Harbor Yacht Club - Join Our Community Events</p>
         </div>
 
         <!-- Authentication Section -->
-        <div id="authSection" class="auth-section">
-            <h2>Volunteer Access</h2>
-            <p>Please enter the gate code to view available volunteer opportunities</p>
-
-            <form class="auth-form" onsubmit="authenticateVolunteer(event)">
-                <div class="form-group">
-                    <label for="gateCode">Gate Code</label>
-                    <input type="password" id="gateCode" required placeholder="Enter volunteer gate code">
-                </div>
-                <button type="submit" class="btn btn-primary">Access Volunteer Portal</button>
-            </form>
-
-            <div id="authError" class="alert alert-error" style="display: none;">
-                Invalid gate code. Please contact the club for assistance.
+        <div class="auth-section" id="authSection">
+            <h2>🔓 Volunteer Access</h2>
+            <p>Please enter the volunteer gate code to access available opportunities</p>
+            <div class="form-group">
+                <label for="gateCode">Volunteer Gate Code</label>
+                <input type="password" id="gateCode" placeholder="Enter gate code">
+            </div>
+            <button class="btn" onclick="authenticateVolunteer()">Access Volunteer Portal</button>
+            <div id="authError" class="alert alert-error hidden">
+                Invalid gate code. Please check with HHYC administration.
             </div>
         </div>
 
-        <!-- Main Volunteer Content -->
-        <div id="mainContent" class="main-content">
-            <div class="alert alert-info">
-                <strong>Welcome to HHYC Volunteer Portal!</strong><br>
-                Choose from the available tasks below and sign up to help our community. 
-                You'll see who else is volunteering so you can coordinate with fellow members.
+        <!-- Volunteer Content -->
+        <div class="volunteer-content" id="volunteerContent">
+            <div id="statusAlert" class="alert alert-success hidden">
+                Status messages will appear here
             </div>
 
-            <div id="eventsContainer" class="loading">
-                Loading volunteer opportunities...
+            <!-- Registration Section -->
+            <div class="volunteer-panel registration-form" id="registrationSection">
+                <h3>👋 Welcome! Please register to sign up for events</h3>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="volunteerName">Full Name</label>
+                        <input type="text" id="volunteerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="volunteerEmail">Email Address</label>
+                        <input type="email" id="volunteerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="volunteerPhone">Phone Number</label>
+                        <input type="tel" id="volunteerPhone" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Register & Continue</button>
+                </form>
             </div>
-        </div>
-    </div>
 
-    <!-- Signup Modal/Form (Initially Hidden) -->
-    <div id="signupModal" style="display: none;">
-        <div class="signup-form">
-            <h4>Sign Up for Task</h4>
-            <div id="selectedTaskInfo"></div>
-
-            <form onsubmit="submitSignup(event)">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" required placeholder="Your first name">
-                        </div>
+            <!-- Events and Signup Section -->
+            <div class="volunteer-grid" id="eventsSection" style="display: none;">
+                <!-- Available Events Panel -->
+                <div class="volunteer-panel">
+                    <h3>📅 Available Events & Tasks</h3>
+                    <div class="events-list" id="eventsList">
+                        <p>Loading volunteer opportunities...</p>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" required placeholder="Your last name">
-                        </div>
+                    <button class="btn" onclick="loadAvailableEvents()">Refresh Events</button>
+                </div>
+
+                <!-- My Signups Panel -->
+                <div class="volunteer-panel">
+                    <h3>📋 My Event Signups</h3>
+                    <div class="events-list" id="mySignupsList">
+                        <p>You haven't signed up for any events yet.</p>
                     </div>
+                    <button class="btn" onclick="loadMySignups()">Refresh My Signups</button>
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" required placeholder="your@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="(845) 555-1234">
-                </div>
-
-                <div class="form-group">
-                    <label for="membershipStatus">Membership Status</label>
-                    <select id="membershipStatus">
-                        <option value="Full Member">Full Member</option>
-                        <option value="Associate">Associate Member</option>
-                        <option value="Guest">Guest</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">Notes or Special Requests</label>
-                    <textarea id="notes" rows="3" placeholder="Any special requirements, arrival time, etc."></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-success">Confirm Signup</button>
-                <button type="button" class="btn btn-secondary" onclick="cancelSignup()">Cancel</button>
-            </form>
+            </div>
         </div>
     </div>
 
     <script>
-        // Volunteer Authentication System
-        let isAuthenticated = false;
+        // Configuration
+        const VOLUNTEER_GATE_CODE = '1957';
+        const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE'; // To be updated with actual Apps Script URL
 
-        function checkAuth() {
-            // Check if already authenticated
-            if (sessionStorage.getItem('hhyc_volunteer_auth') === 'true') {
-                isAuthenticated = true;
-                showMainContent();
-                return;
-            }
-            showAuthPrompt();
-        }
+        let currentVolunteer = null;
 
-        function showAuthPrompt() {
-            const authSection = document.getElementById('auth-section');
-            const mainContent = document.getElementById('main-content');
-            if (authSection && mainContent) {
-                authSection.style.display = 'block';
-                mainContent.style.display = 'none';
-            }
-        }
+        // Authentication System
+        function authenticateVolunteer() {
+            const gateCode = document.getElementById('gateCode').value;
+            const authError = document.getElementById('authError');
+            const authSection = document.getElementById('authSection');
+            const volunteerContent = document.getElementById('volunteerContent');
 
-        function showMainContent() {
-            const authSection = document.getElementById('auth-section');
-            const mainContent = document.getElementById('main-content');
-            if (authSection && mainContent) {
+            if (gateCode === VOLUNTEER_GATE_CODE) {
                 authSection.style.display = 'none';
-                mainContent.style.display = 'block';
-            }
-            isAuthenticated = true;
-        }
-
-        function handleVolunteerAuth() {
-            const gateCode = document.getElementById('gate-code').value;
-            const errorMsg = document.getElementById('error-message');
-
-            if (gateCode === '1957') {
-                sessionStorage.setItem('hhyc_volunteer_auth', 'true');
-                showMainContent();
-                if (errorMsg) errorMsg.style.display = 'none';
+                volunteerContent.classList.add('authenticated');
+                showAlert('Access granted! Welcome to the HHYC Volunteer Portal.', 'success');
+                checkVolunteerRegistration();
             } else {
-                if (errorMsg) {
-                    errorMsg.textContent = 'Invalid gate code. Please try again.';
-                    errorMsg.style.display = 'block';
-                }
-                document.getElementById('gate-code').value = '';
+                authError.classList.remove('hidden');
+                document.getElementById('gateCode').value = '';
+                setTimeout(() => {
+                    authError.classList.add('hidden');
+                }, 3000);
             }
         }
 
-        function logout() {
-            sessionStorage.removeItem('hhyc_volunteer_auth');
-            isAuthenticated = false;
-            showAuthPrompt();
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAuth();
-
-            // Add enter key support for gate code field
-            const gateCodeField = document.getElementById('gate-code');
-            if (gateCodeField) {
-                gateCodeField.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        handleVolunteerAuth();
-                    }
-                });
+        // Allow Enter key for authentication
+        document.getElementById('gateCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                authenticateVolunteer();
             }
         });
-</script>
+
+        // Registration System
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            registerVolunteer();
+        });
+
+        function checkVolunteerRegistration() {
+            // Check if volunteer is already registered (simplified for demo)
+            const savedVolunteer = localStorage.getItem('current_volunteer');
+            if (savedVolunteer) {
+                currentVolunteer = JSON.parse(savedVolunteer);
+                showEventsSection();
+            } else {
+                showRegistrationSection();
+            }
+        }
+
+        function registerVolunteer() {
+            const volunteerData = {
+                name: document.getElementById('volunteerName').value,
+                email: document.getElementById('volunteerEmail').value,
+                phone: document.getElementById('volunteerPhone').value,
+                id: generateId(),
+                joined: new Date().toISOString(),
+                signups: []
+            };
+
+            // Save volunteer data
+            let volunteers = JSON.parse(localStorage.getItem('hhyc_volunteers') || '[]');
+            volunteers.push(volunteerData);
+            localStorage.setItem('hhyc_volunteers', JSON.stringify(volunteers));
+
+            // Set current volunteer
+            currentVolunteer = volunteerData;
+            localStorage.setItem('current_volunteer', JSON.stringify(volunteerData));
+
+            showAlert(`Welcome ${volunteerData.name}! You're now registered.`, 'success');
+            showEventsSection();
+        }
+
+        function showRegistrationSection() {
+            document.getElementById('registrationSection').style.display = 'block';
+            document.getElementById('eventsSection').style.display = 'none';
+        }
+
+        function showEventsSection() {
+            document.getElementById('registrationSection').style.display = 'none';
+            document.getElementById('eventsSection').style.display = 'grid';
+            loadAvailableEvents();
+            loadMySignups();
+        }
+
+        // Event and Task Loading
+        function loadAvailableEvents() {
+            const events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+            const tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+            const eventsList = document.getElementById('eventsList');
+
+            if (events.length === 0) {
+                eventsList.innerHTML = '<p>No events available at this time. Check back soon!</p>';
+                return;
+            }
+
+            eventsList.innerHTML = events.map(event => {
+                const eventTasks = tasks.filter(task => task.eventId === event.id);
+
+                return `
+                    <div class="event-card">
+                        <h4>${event.name}</h4>
+                        <p><strong>📅 Date:</strong> ${event.date}</p>
+                        <p><strong>⏰ Time:</strong> ${event.startTime} - ${event.endTime}</p>
+                        <p><strong>📍 Location:</strong> ${event.location}</p>
+                        <p><strong>📝 Description:</strong> ${event.description}</p>
+
+                        ${eventTasks.length > 0 ? `
+                            <div class="tasks-grid">
+                                ${eventTasks.map(task => createTaskCard(task, event)).join('')}
+                            </div>
+                        ` : '<p>No tasks available for this event.</p>'}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function createTaskCard(task, event) {
+            const isSignedUp = currentVolunteer && task.volunteers.some(v => v.id === currentVolunteer.id);
+            const spotsLeft = task.volunteersNeeded - task.volunteers.length;
+            const isFull = spotsLeft <= 0;
+
+            return `
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-name">${task.name}</span>
+                        <span class="task-priority priority-${task.priority.toLowerCase()}">${task.priority}</span>
+                    </div>
+                    <div class="task-details">
+                        <strong>⏰ Time:</strong> ${task.startTime} - ${task.endTime}<br>
+                        <strong>📝 Description:</strong> ${task.description || 'No description provided'}
+                    </div>
+                    <div class="volunteer-spots">
+                        <span class="spots-info">
+                            <strong>Volunteers:</strong> ${task.volunteers.length}/${task.volunteersNeeded} 
+                            ${spotsLeft > 0 ? `(${spotsLeft} spots left)` : '(FULL)'}
+                        </span>
+                        ${isSignedUp ? 
+                            `<button class="btn btn-danger" onclick="unsignupFromTask('${task.id}')">Cancel Signup</button>` :
+                            isFull ? 
+                                `<button class="btn" disabled>Full</button>` :
+                                `<button class="btn btn-success" onclick="signupForTask('${task.id}', '${event.name}')">Sign Up</button>`
+                        }
+                    </div>
+                    ${task.volunteers.length > 0 ? `
+                        <div class="working-with">
+                            <div class="working-with-title">👥 Working with:</div>
+                            <div class="volunteer-list">
+                                ${task.volunteers.map(v => v.name).join(', ')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Signup Functions
+        function signupForTask(taskId, eventName) {
+            if (!currentVolunteer) {
+                showAlert('Please register first before signing up for tasks.', 'error');
+                return;
+            }
+
+            let tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+            const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+            if (taskIndex === -1) {
+                showAlert('Task not found.', 'error');
+                return;
+            }
+
+            const task = tasks[taskIndex];
+
+            // Check if already signed up
+            if (task.volunteers.some(v => v.id === currentVolunteer.id)) {
+                showAlert('You are already signed up for this task.', 'error');
+                return;
+            }
+
+            // Check if task is full
+            if (task.volunteers.length >= task.volunteersNeeded) {
+                showAlert('This task is already full.', 'error');
+                return;
+            }
+
+            // Add volunteer to task
+            task.volunteers.push({
+                id: currentVolunteer.id,
+                name: currentVolunteer.name,
+                email: currentVolunteer.email,
+                phone: currentVolunteer.phone,
+                signupDate: new Date().toISOString()
+            });
+
+            // Update tasks storage
+            tasks[taskIndex] = task;
+            localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
+
+            // Update current volunteer's signups
+            currentVolunteer.signups.push({
+                taskId: taskId,
+                taskName: task.name,
+                eventName: eventName,
+                signupDate: new Date().toISOString()
+            });
+            localStorage.setItem('current_volunteer', JSON.stringify(currentVolunteer));
+
+            showAlert(`Successfully signed up for "${task.name}" in ${eventName}!`, 'success');
+            loadAvailableEvents();
+            loadMySignups();
+        }
+
+        function unsignupFromTask(taskId) {
+            if (!currentVolunteer) return;
+
+            if (confirm('Are you sure you want to cancel your signup for this task?')) {
+                let tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+                const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+                if (taskIndex !== -1) {
+                    const task = tasks[taskIndex];
+
+                    // Remove volunteer from task
+                    task.volunteers = task.volunteers.filter(v => v.id !== currentVolunteer.id);
+                    tasks[taskIndex] = task;
+                    localStorage.setItem('hhyc_tasks', JSON.stringify(tasks));
+
+                    // Remove from current volunteer's signups
+                    currentVolunteer.signups = currentVolunteer.signups.filter(s => s.taskId !== taskId);
+                    localStorage.setItem('current_volunteer', JSON.stringify(currentVolunteer));
+
+                    showAlert('Successfully cancelled your signup.', 'success');
+                    loadAvailableEvents();
+                    loadMySignups();
+                }
+            }
+        }
+
+        function loadMySignups() {
+            const mySignupsList = document.getElementById('mySignupsList');
+
+            if (!currentVolunteer || currentVolunteer.signups.length === 0) {
+                mySignupsList.innerHTML = '<p>You haven't signed up for any events yet.</p>';
+                return;
+            }
+
+            const tasks = JSON.parse(localStorage.getItem('hhyc_tasks') || '[]');
+            const events = JSON.parse(localStorage.getItem('hhyc_events') || '[]');
+
+            mySignupsList.innerHTML = currentVolunteer.signups.map(signup => {
+                const task = tasks.find(t => t.id === signup.taskId);
+                const event = events.find(e => e.id === task?.eventId);
+
+                if (!task || !event) return '<p>Event or task no longer available</p>';
+
+                return `
+                    <div class="event-card">
+                        <h4>${task.name}</h4>
+                        <p><strong>Event:</strong> ${event.name}</p>
+                        <p><strong>Date:</strong> ${event.date}</p>
+                        <p><strong>Time:</strong> ${task.startTime} - ${task.endTime}</p>
+                        <p><strong>Location:</strong> ${event.location}</p>
+                        <p><strong>Signed up:</strong> ${new Date(signup.signupDate).toLocaleDateString()}</p>
+                        ${task.volunteers.length > 1 ? `
+                            <div class="working-with">
+                                <div class="working-with-title">👥 Working with:</div>
+                                <div class="volunteer-list">
+                                    ${task.volunteers.filter(v => v.id !== currentVolunteer.id).map(v => v.name).join(', ')}
+                                </div>
+                            </div>
+                        ` : '<p><em>You'll be the first volunteer for this task!</em></p>'}
+                        <button class="btn btn-danger" onclick="unsignupFromTask('${task.id}')">Cancel Signup</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Utility Functions
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        function showAlert(message, type) {
+            const alert = document.getElementById('statusAlert');
+            alert.textContent = message;
+            alert.className = `alert alert-${type}`;
+            alert.classList.remove('hidden');
+
+            setTimeout(() => {
+                alert.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
 </body>
 </html>
