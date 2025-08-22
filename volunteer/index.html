@@ -19,254 +19,164 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
+            padding: 30px;
             text-align: center;
-            padding: 30px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
         }
 
         .header p {
             font-size: 1.2em;
             opacity: 0.9;
-            position: relative;
-            z-index: 1;
         }
 
         .main-content {
-            padding: 40px;
+            padding: 30px;
         }
 
-        .event-selection {
+        .auth-section {
+            text-align: center;
             margin-bottom: 30px;
         }
 
-        .event-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .gate-code-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gate-code-input input {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        .access-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .access-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .events-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
         .event-card {
-            background: white;
-            border: 2px solid #e0e7ff;
+            background: #f8f9fa;
             border-radius: 12px;
-            padding: 20px;
-            cursor: pointer;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #2a5298;
         }
 
         .event-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-            border-color: #3b82f6;
-        }
-
-        .event-card.selected {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
 
         .event-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #1e40af;
-            margin-bottom: 8px;
-        }
-
-        .event-date {
-            color: #64748b;
-            font-size: 0.95em;
+            font-size: 1.4em;
+            color: #1e3c72;
             margin-bottom: 10px;
-        }
-
-        .event-description {
-            color: #475569;
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-
-        .event-image {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .gate-code-section, .signup-form {
-            display: none;
-            margin-top: 30px;
-            padding: 30px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
             font-weight: 600;
-            color: #374151;
         }
 
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-            background: white;
+        .event-details {
+            color: #666;
+            margin-bottom: 15px;
         }
 
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        button {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .success-message {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
-        }
-
-        .error-message {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+        .event-details p {
+            margin-bottom: 5px;
         }
 
         .volunteer-list {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .volunteer-list h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
         }
 
         .volunteer-item {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-left: 4px solid #3b82f6;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .volunteer-info {
-            flex-grow: 1;
+        .volunteer-item:last-child {
+            border-bottom: none;
         }
 
-        .volunteer-name {
-            font-weight: 600;
-            color: #1e40af;
-            margin-bottom: 4px;
-        }
-
-        .volunteer-details {
-            color: #64748b;
-            font-size: 0.9em;
-        }
-
-        .delete-volunteer-btn {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        .signup-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.9em;
-            font-weight: 600;
+            font-size: 14px;
             transition: all 0.3s ease;
-            margin-left: 10px;
         }
 
-        .delete-volunteer-btn:hover {
+        .signup-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
         }
 
         .modal {
@@ -277,91 +187,93 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0,0,0,0.5);
         }
 
         .modal-content {
             background-color: white;
             margin: 10% auto;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 12px;
             width: 90%;
             max-width: 500px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .modal h3 {
-            color: #1e40af;
-            margin-bottom: 15px;
-            font-size: 1.3em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 80px;
         }
 
         .modal-buttons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: flex-end;
-            margin-top: 20px;
         }
 
         .btn-cancel {
-            background: #6b7280;
+            background: #6c757d;
             color: white;
-            padding: 10px 20px;
             border: none;
+            padding: 10px 20px;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
         }
 
-        .btn-confirm {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        .btn-submit {
+            background: #28a745;
             color: white;
-            padding: 10px 20px;
             border: none;
+            padding: 10px 20px;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
         }
 
-        .admin-link {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 100;
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
         }
 
-        .admin-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 10px;
-            }
-
             .header h1 {
                 font-size: 2em;
             }
@@ -370,20 +282,12 @@
                 padding: 20px;
             }
 
-            .event-grid {
+            .events-grid {
                 grid-template-columns: 1fr;
             }
 
-            .volunteer-item {
+            .gate-code-input {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .modal-content {
-                width: 95%;
-                margin: 5% auto;
-                padding: 20px;
             }
         }
     </style>
@@ -391,313 +295,295 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>⚓ Hidden Harbor Yacht Club</h1>
-            <p>Member Work Hour Volunteer System</p>
+            <h1>🛥️ Hidden Harbor Yacht Club</h1>
+            <p>Volunteer Work Hours Sign-Up System</p>
         </div>
 
         <div class="main-content">
-            <div class="event-selection">
-                <h2>🎯 Select a Work Event to Join</h2>
-                <p style="margin-bottom: 20px; color: #64748b;">Choose from our upcoming work events and help keep our yacht club in top condition!</p>
-                <div class="event-grid" id="eventGrid">
-                    <!-- Events will be populated here -->
+            <div class="auth-section" id="authSection">
+                <h2>Enter Gate Code to Continue</h2>
+                <div class="gate-code-input">
+                    <input type="password" id="gateCodeInput" placeholder="Enter gate code..." maxlength="10">
+                    <button class="access-btn" onclick="checkGateCode()">🚪 Access Events</button>
                 </div>
+                <div id="authMessage"></div>
             </div>
 
-            <div class="gate-code-section" id="gateCodeSection">
-                <h3>🔐 Member Verification</h3>
-                <p style="margin-bottom: 20px; color: #64748b;">Please enter the member gate code to continue with your volunteer signup.</p>
-                <div class="form-group">
-                    <label for="gateCode">Gate Code:</label>
-                    <input type="password" id="gateCode" placeholder="Enter gate code">
+            <div class="events-section" id="eventsSection">
+                <h2>Available Work Hour Events</h2>
+                <div class="events-grid" id="eventsGrid">
+                    <!-- Events will be loaded here -->
                 </div>
-                <button onclick="verifyGateCode()">Verify & Continue</button>
             </div>
+        </div>
+    </div>
 
-            <div class="signup-form" id="signupForm">
-                <h3>📝 Volunteer Signup</h3>
-                <p style="margin-bottom: 20px; color: #64748b;">Thank you for volunteering! Please fill out your information below.</p>
-
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <h3>Sign Up for Event</h3>
+            <form id="signupForm">
                 <div class="form-group">
                     <label for="volunteerName">Your Name:</label>
-                    <input type="text" id="volunteerName" required placeholder="Enter your full name">
+                    <input type="text" id="volunteerName" required>
                 </div>
-
                 <div class="form-group">
                     <label for="volunteerEmail">Email Address:</label>
-                    <input type="email" id="volunteerEmail" required placeholder="Enter your email address">
+                    <input type="email" id="volunteerEmail" required>
                 </div>
-
                 <div class="form-group">
                     <label for="volunteerPhone">Phone Number:</label>
-                    <input type="tel" id="volunteerPhone" placeholder="Enter your phone number">
+                    <input type="tel" id="volunteerPhone">
                 </div>
-
                 <div class="form-group">
-                    <label for="volunteerNotes">Special Notes or Requests:</label>
-                    <textarea id="volunteerNotes" placeholder="Any special requirements, skills you can offer, or questions..."></textarea>
+                    <label for="volunteerNotes">Additional Notes (Optional):</label>
+                    <textarea id="volunteerNotes" placeholder="Any special skills, availability notes, etc..."></textarea>
                 </div>
-
-                <button onclick="submitVolunteerSignup()">🎉 Sign Me Up!</button>
-            </div>
-
-            <div class="volunteer-list" id="volunteerList" style="display: none;">
-                <h3>👥 Current Volunteers</h3>
-                <div id="volunteerItems">
-                    <!-- Volunteer items will be populated here -->
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeSignupModal()">Cancel</button>
+                    <button type="submit" class="btn-submit">Sign Me Up!</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
-    <!-- Delete Confirmation Modal -->
-    <div id="deleteModal" class="modal">
-        <div class="modal-content">
-            <h3>🚨 Confirm Volunteer Removal</h3>
-            <p id="deleteMessage"></p>
-            <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
-                <button class="btn-confirm" onclick="confirmDelete1()">Yes, Remove</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Second Confirmation Modal -->
+    <!-- Confirmation Modal -->
     <div id="confirmModal" class="modal">
         <div class="modal-content">
-            <h3>⚠️ Final Confirmation</h3>
-            <p>Are you absolutely sure you want to remove this volunteer signup? This action cannot be undone.</p>
+            <h3>Confirm Removal</h3>
+            <p id="confirmMessage"></p>
             <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeConfirmModal()">No, Keep It</button>
-                <button class="btn-confirm" onclick="confirmDelete2()">Yes, Permanently Remove</button>
+                <button type="button" class="btn-cancel" onclick="closeConfirmModal()">Cancel</button>
+                <button type="button" class="btn-submit" onclick="confirmRemoval()">Yes, Remove Me</button>
             </div>
         </div>
     </div>
 
-    <a href="admin.html" class="admin-link">⚙️ Admin</a>
-
     <script>
-        let selectedEvent = null;
-        let currentDeleteAction = null;
+        let currentEvents = [];
+        let currentEventId = null;
+        let removalData = null;
 
+        // Gate code authentication
+        function checkGateCode() {
+            const code = document.getElementById('gateCodeInput').value;
+            if (code === '1957') {
+                document.getElementById('authSection').style.display = 'none';
+                document.getElementById('eventsSection').style.display = 'block';
+                document.getElementById('eventsGrid').style.display = 'grid';
+                loadEvents();
+                showMessage('Access granted! Welcome to the volunteer system.', 'success');
+            } else {
+                showMessage('Invalid gate code. Please try again.', 'error');
+                document.getElementById('gateCodeInput').value = '';
+            }
+        }
+
+        // Allow Enter key for gate code
+        document.getElementById('gateCodeInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkGateCode();
+            }
+        });
+
+        // Load events from localStorage
         function loadEvents() {
             const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
-            const eventGrid = document.getElementById('eventGrid');
+            currentEvents = events;
+            displayEvents(events);
+        }
 
+        // Display events in grid
+        function displayEvents(events) {
+            const grid = document.getElementById('eventsGrid');
             if (events.length === 0) {
-                eventGrid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #64748b;">
-                        <h3>No Events Currently Available</h3>
-                        <p>Check back soon for upcoming work events!</p>
-                    </div>
-                `;
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;"><h3>No events available</h3><p>Check back later for volunteer opportunities!</p></div>';
                 return;
             }
 
-            eventGrid.innerHTML = events.map(event => `
-                <div class="event-card" onclick="selectEvent('${event.id}')">
-                    ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.title}" class="event-image" onerror="this.style.display='none'">` : ''}
+            grid.innerHTML = events.map(event => `
+                <div class="event-card">
+                    ${event.imageUrl ? `<img src="${event.imageUrl}" alt="${event.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">` : ''}
                     <div class="event-title">${event.title}</div>
-                    <div class="event-date">📅 ${event.date} at ${event.time}</div>
-                    <div class="event-description">${event.description}</div>
-                    <div style="margin-top: 10px; font-size: 0.8em; color: #3b82f6;">
-                        👥 ${getVolunteerCount(event.id)} volunteers signed up
+                    <div class="event-details">
+                        <p><strong>📅 Date:</strong> ${event.date}</p>
+                        <p><strong>⏰ Time:</strong> ${event.time}</p>
+                        <p><strong>📍 Location:</strong> ${event.location}</p>
+                        <p><strong>👥 Needed:</strong> ${event.volunteersNeeded} volunteers</p>
+                        <p><strong>ℹ️ Description:</strong> ${event.description}</p>
                     </div>
+
+                    <div class="volunteer-list">
+                        <h4>Current Volunteers (${event.volunteers.length}/${event.volunteersNeeded}):</h4>
+                        ${event.volunteers.length === 0 ? 
+                            '<p style="color: #666; font-style: italic;">No volunteers yet - be the first!</p>' :
+                            event.volunteers.map((volunteer, index) => `
+                                <div class="volunteer-item">
+                                    <div>
+                                        <strong>${volunteer.name}</strong>
+                                        ${volunteer.phone ? ` • ${volunteer.phone}` : ''}
+                                        ${volunteer.notes ? `<br><small style="color: #666;">${volunteer.notes}</small>` : ''}
+                                    </div>
+                                    <button class="delete-btn" onclick="showRemovalConfirm('${event.id}', ${index}, '${volunteer.name}')">Remove</button>
+                                </div>
+                            `).join('')
+                        }
+                    </div>
+
+                    ${event.volunteers.length < event.volunteersNeeded ? 
+                        `<button class="signup-btn" onclick="openSignupModal('${event.id}')">🙋‍♀️ Sign Me Up!</button>` :
+                        '<div style="text-align: center; padding: 10px; background: #f0f0f0; border-radius: 6px; color: #666;">Event is full - thank you!</div>'
+                    }
                 </div>
             `).join('');
         }
 
-        function getVolunteerCount(eventId) {
-            const volunteers = JSON.parse(localStorage.getItem(`volunteers_${eventId}`) || '[]');
-            return volunteers.length;
+        // Open signup modal
+        function openSignupModal(eventId) {
+            currentEventId = eventId;
+            document.getElementById('signupModal').style.display = 'block';
         }
 
-        function selectEvent(eventId) {
-            selectedEvent = eventId;
-
-            // Update visual selection
-            document.querySelectorAll('.event-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            event.target.closest('.event-card').classList.add('selected');
-
-            // Show gate code section
-            document.getElementById('gateCodeSection').style.display = 'block';
-            document.getElementById('signupForm').style.display = 'none';
-            document.getElementById('volunteerList').style.display = 'none';
-
-            // Clear previous inputs
-            document.getElementById('gateCode').value = '';
+        // Close signup modal
+        function closeSignupModal() {
+            document.getElementById('signupModal').style.display = 'none';
+            document.getElementById('signupForm').reset();
+            currentEventId = null;
         }
 
-        function verifyGateCode() {
-            const gateCode = document.getElementById('gateCode').value;
-            const messageDiv = document.getElementById('gateCodeSection');
+        // Handle signup form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-            if (gateCode === '1957') {
-                document.getElementById('gateCodeSection').style.display = 'none';
-                document.getElementById('signupForm').style.display = 'block';
-                loadVolunteers();
-            } else {
-                // Show error message
-                let existingError = messageDiv.querySelector('.error-message');
-                if (existingError) {
-                    existingError.remove();
-                }
-
-                const errorMsg = document.createElement('div');
-                errorMsg.className = 'error-message';
-                errorMsg.textContent = '❌ Invalid gate code. Please try again.';
-                messageDiv.appendChild(errorMsg);
-            }
-        }
-
-        function submitVolunteerSignup() {
             const name = document.getElementById('volunteerName').value.trim();
             const email = document.getElementById('volunteerEmail').value.trim();
             const phone = document.getElementById('volunteerPhone').value.trim();
             const notes = document.getElementById('volunteerNotes').value.trim();
 
             if (!name || !email) {
-                alert('Please fill in your name and email address.');
+                showMessage('Please fill in all required fields.', 'error');
                 return;
             }
 
-            // Get existing volunteers
-            const volunteers = JSON.parse(localStorage.getItem(`volunteers_${selectedEvent}`) || '[]');
+            // Find the event and add volunteer
+            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
+            const eventIndex = events.findIndex(e => e.id === currentEventId);
 
-            // Check for duplicate email
-            if (volunteers.some(v => v.email === email)) {
-                alert('This email address is already registered for this event.');
-                return;
+            if (eventIndex !== -1) {
+                const event = events[eventIndex];
+
+                // Check if already signed up
+                const alreadySignedUp = event.volunteers.some(v => 
+                    v.email.toLowerCase() === email.toLowerCase()
+                );
+
+                if (alreadySignedUp) {
+                    showMessage('You are already signed up for this event!', 'error');
+                    return;
+                }
+
+                // Add volunteer
+                event.volunteers.push({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    notes: notes,
+                    signupDate: new Date().toISOString()
+                });
+
+                // Save back to localStorage
+                localStorage.setItem('volunteerEvents', JSON.stringify(events));
+
+                // Close modal and refresh display
+                closeSignupModal();
+                loadEvents();
+                showMessage(`Thank you ${name}! You've been signed up successfully.`, 'success');
             }
+        });
 
-            // Add new volunteer
-            const volunteer = {
-                id: Date.now().toString(),
-                name,
-                email,
-                phone,
-                notes,
-                signupTime: new Date().toISOString()
-            };
-
-            volunteers.push(volunteer);
-            localStorage.setItem(`volunteers_${selectedEvent}`, JSON.stringify(volunteers));
-
-            // Show success message
-            const successMsg = document.createElement('div');
-            successMsg.className = 'success-message';
-            successMsg.innerHTML = `
-                🎉 Thank you for volunteering, ${name}!<br>
-                You'll receive a confirmation email with event details shortly.
-            `;
-            document.getElementById('signupForm').appendChild(successMsg);
-
-            // Clear form
-            document.getElementById('volunteerName').value = '';
-            document.getElementById('volunteerEmail').value = '';
-            document.getElementById('volunteerPhone').value = '';
-            document.getElementById('volunteerNotes').value = '';
-
-            // Refresh volunteer list
-            loadVolunteers();
-
-            // Update event grid to show new count
-            loadEvents();
-        }
-
-        function loadVolunteers() {
-            if (!selectedEvent) return;
-
-            const volunteers = JSON.parse(localStorage.getItem(`volunteers_${selectedEvent}`) || '[]');
-            const volunteerList = document.getElementById('volunteerList');
-            const volunteerItems = document.getElementById('volunteerItems');
-
-            if (volunteers.length === 0) {
-                volunteerList.style.display = 'none';
-                return;
-            }
-
-            volunteerList.style.display = 'block';
-            volunteerItems.innerHTML = volunteers.map(volunteer => `
-                <div class="volunteer-item">
-                    <div class="volunteer-info">
-                        <div class="volunteer-name">${volunteer.name}</div>
-                        <div class="volunteer-details">
-                            📧 ${volunteer.email}
-                            ${volunteer.phone ? ` | 📱 ${volunteer.phone}` : ''}
-                            ${volunteer.notes ? ` | 📝 ${volunteer.notes}` : ''}
-                        </div>
-                    </div>
-                    <button class="delete-volunteer-btn" onclick="deleteVolunteerSignup('${volunteer.id}', '${volunteer.name}', '${volunteer.email}')">
-                        🗑️ Remove
-                    </button>
-                </div>
-            `).join('');
-        }
-
-        function deleteVolunteerSignup(volunteerId, volunteerName, volunteerEmail) {
-            currentDeleteAction = { volunteerId, volunteerName, volunteerEmail };
-            document.getElementById('deleteMessage').innerHTML = `
-                Are you sure you want to remove <strong>${volunteerName}</strong> (${volunteerEmail}) from this event?
-            `;
-            document.getElementById('deleteModal').style.display = 'block';
-        }
-
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').style.display = 'none';
-            currentDeleteAction = null;
-        }
-
-        function closeConfirmModal() {
-            document.getElementById('confirmModal').style.display = 'none';
-            currentDeleteAction = null;
-        }
-
-        function confirmDelete1() {
-            document.getElementById('deleteModal').style.display = 'none';
+        // Show removal confirmation
+        function showRemovalConfirm(eventId, volunteerIndex, volunteerName) {
+            removalData = { eventId, volunteerIndex };
+            document.getElementById('confirmMessage').textContent = 
+                `Are you sure you want to remove "${volunteerName}" from this event?`;
             document.getElementById('confirmModal').style.display = 'block';
         }
 
-        function confirmDelete2() {
-            if (!currentDeleteAction || !selectedEvent) return;
+        // Close confirmation modal
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+            removalData = null;
+        }
 
-            const volunteers = JSON.parse(localStorage.getItem(`volunteers_${selectedEvent}`) || '[]');
-            const updatedVolunteers = volunteers.filter(v => v.id !== currentDeleteAction.volunteerId);
-            localStorage.setItem(`volunteers_${selectedEvent}`, JSON.stringify(updatedVolunteers));
+        // Confirm removal
+        function confirmRemoval() {
+            if (!removalData) return;
 
-            // Close modal and refresh
-            closeConfirmModal();
-            loadVolunteers();
-            loadEvents(); // Update volunteer count
+            const events = JSON.parse(localStorage.getItem('volunteerEvents') || '[]');
+            const eventIndex = events.findIndex(e => e.id === removalData.eventId);
 
-            // Show success message
-            const successMsg = document.createElement('div');
-            successMsg.className = 'success-message';
-            successMsg.textContent = `✅ Volunteer ${currentDeleteAction.volunteerName} has been removed from the event.`;
-            document.getElementById('volunteerList').appendChild(successMsg);
+            if (eventIndex !== -1 && events[eventIndex].volunteers[removalData.volunteerIndex]) {
+                const volunteerName = events[eventIndex].volunteers[removalData.volunteerIndex].name;
+                events[eventIndex].volunteers.splice(removalData.volunteerIndex, 1);
+                localStorage.setItem('volunteerEvents', JSON.stringify(events));
 
+                closeConfirmModal();
+                loadEvents();
+                showMessage(`${volunteerName} has been removed from the event.`, 'success');
+            }
+        }
+
+        // Show message function
+        function showMessage(text, type) {
+            // Remove existing messages
+            const existingMessages = document.querySelectorAll('.message');
+            existingMessages.forEach(msg => msg.remove());
+
+            // Create new message
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+
+            // Insert after auth section or at top of events section
+            const authSection = document.getElementById('authSection');
+            const eventsSection = document.getElementById('eventsSection');
+
+            if (authSection.style.display !== 'none') {
+                authSection.appendChild(message);
+            } else {
+                eventsSection.insertBefore(message, eventsSection.firstChild);
+            }
+
+            // Auto-remove after 5 seconds
             setTimeout(() => {
-                const msg = document.querySelector('.success-message');
-                if (msg) msg.remove();
-            }, 3000);
+                if (message.parentNode) {
+                    message.remove();
+                }
+            }, 5000);
         }
 
         // Close modals when clicking outside
         window.onclick = function(event) {
-            const deleteModal = document.getElementById('deleteModal');
+            const signupModal = document.getElementById('signupModal');
             const confirmModal = document.getElementById('confirmModal');
-            if (event.target === deleteModal) {
-                closeDeleteModal();
+
+            if (event.target === signupModal) {
+                closeSignupModal();
             }
             if (event.target === confirmModal) {
                 closeConfirmModal();
             }
         }
 
-        // Load events on page load
-        document.addEventListener('DOMContentLoaded', loadEvents);
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if there's a specific event ID in URL hash
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                // Store the event ID to focus on after authentication
+                sessionStorage.setItem('focusEventId', hash);
+            }
+        });
     </script>
 </body>
 </html>
