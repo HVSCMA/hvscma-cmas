@@ -3,542 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{property_address}} - Comprehensive Market Analysis</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>HHYC Volunteer Management System</title>
     <style>
         body {
-            background-image: url('https://maps.googleapis.com/maps/api/staticmap?center={{property_address}}&zoom=15&size=1200x800&maptype=satellite&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .content-overlay {
-            background: rgba(255, 255, 255, 0.95);
+        .container {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
-        .satellite-overlay {
-            background: rgba(0, 0, 0, 0.1);
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        .comparable-card {
-            background: rgba(255, 255, 255, 0.98);
-            border-left: 4px solid #1e4d72;
-        }
-        .value-highlight {
-            background: linear-gradient(135deg, #1e4d72 0%, #2563eb 100%);
-            color: white;
-        }
-        .audio-player {
-            background: rgba(30, 77, 114, 0.1);
-            border: 2px solid #1e4d72;
-            border-radius: 12px;
-            padding: 20px;
-        }
-        @media (max-width: 375px) {
-            .mobile-optimized {
-                padding: 10px;
-                font-size: 14px;
-            }
-        }
+        .admin { border-color: #ff6b6b; }
+        .volunteer { border-color: #4ecdc4; }
+        .setup { border-color: #45b7d1; }
     </style>
 </head>
-<body class="font-sans">
-    <div class="satellite-overlay min-h-screen">
-        <div class="content-overlay min-h-screen">
-            <!-- Header Section -->
-            <div class="bg-gradient-to-r from-blue-900 to-blue-800 text-white p-8 mobile-optimized">
-                <div class="max-w-6xl mx-auto">
-                    <div class="flex items-center justify-between mb-6">
-                        <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/47286fb9-33ee-457e-94ff-15088900701a/4c725b6b-4f11-4a0f-8e8c-a265b2e3e7e8?se=2025-07-13T20%3A32%3A00Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22united_real_estate_hudson_valley_edge_final_logo.png%22&sig=NO9NBszwlw%2BjSBgBK3Ks9FECWMe4TJ/aj7kNocYVGZ4%3D" alt="United Real Estate" class="h-16">
-                        <div class="text-right">
-                            <h1 class="text-3xl font-bold">Comprehensive Market Analysis</h1>
-                            <p class="text-xl">{{property_address}}</p>
-                            <p class="text-lg">{{city_state}} {{zip_code}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Audio Narration Section -->
-            <div class="max-w-6xl mx-auto p-6 mobile-optimized">
-                <div class="audio-player mb-8">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-4">
-                        <i class="fas fa-volume-up mr-2"></i>Professional Market Analysis Narration
-                    </h2>
-                    <audio controls class="w-full" preload="metadata">
-                        <source src="{{narration_audio_url}}" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                    <p class="text-gray-600 mt-2">Listen to Glenn Fitzgerald's comprehensive market analysis ({{narration_duration}})</p>
-                    <p class="text-sm text-gray-500 mt-1">Comprehensive review of your property's market position and value drivers</p>
-                </div>
-
-                <!-- Market Performance Metrics -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                    <div class="value-highlight p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold">${{current_market_value}}</h3>
-                        <p class="text-lg">Current Market Value</p>
-                        <p class="text-sm opacity-75">Based on {{total_properties_analyzed}} properties analyzed</p>
-                    </div>
-                    <div class="value-highlight p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold">{{annual_appreciation_rate}}%</h3>
-                        <p class="text-lg">Annual Appreciation</p>
-                        <p class="text-sm opacity-75">{{appreciation_period}} average in your area</p>
-                    </div>
-                    <div class="value-highlight p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold">{{average_days_on_market}}</h3>
-                        <p class="text-lg">Days on Market</p>
-                        <p class="text-sm opacity-75">Average for {{market_area}} area</p>
-                    </div>
-                    <div class="value-highlight p-6 rounded-lg text-center">
-                        <h3 class="text-4xl font-bold">${{price_per_sq_ft}}</h3>
-                        <p class="text-lg">Price per Sq Ft</p>
-                        <p class="text-sm opacity-75">Based on comparable analysis</p>
-                    </div>
-                </div>
-
-                <!-- Property Location with Google Maps -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-4">
-                        <i class="fas fa-map-marker-alt mr-2"></i>Property Location
-                    </h2>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">{{property_address}}</h3>
-                            <p class="text-gray-600 mb-2">{{city_state}} {{zip_code}}</p>
-                            <p class="text-blue-600 font-semibold">{{neighborhood_name}} Neighborhood</p>
-                            <div class="mt-4">
-                                <p class="text-sm text-gray-500">Property Details:</p>
-                                <ul class="mt-2 space-y-1 text-sm">
-                                    <li><strong>Square Footage:</strong> {{property_sq_ft}} sq ft</li>
-                                    <li><strong>Bedrooms:</strong> {{property_bedrooms}}</li>
-                                    <li><strong>Bathrooms:</strong> {{property_bathrooms}}</li>
-                                    <li><strong>Lot Size:</strong> {{property_lot_size}} acres</li>
-                                    <li><strong>Year Built:</strong> {{property_year_built}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <img src="https://maps.googleapis.com/maps/api/staticmap?center={{property_address}}&zoom=16&size=400x300&maptype=roadmap&markers=color:red%7C{{property_address}}&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" alt="Property Location" class="w-full rounded-lg shadow-md">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Detailed Comparable Analysis -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-4">
-                        <i class="fas fa-chart-line mr-2"></i>Detailed Comparable Analysis
-                    </h2>
-                    <p class="text-gray-600 mb-6">Comprehensive analysis of {{detailed_comparables_count}} most relevant properties from our study of {{total_properties_analyzed}} total properties. Each comparable includes detailed similarities, differences, and value adjustments.</p>
-
-                    <!-- Primary Comparable #1 -->
-                    <div class="comparable-card p-6 mb-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-blue-900">Primary Comparable #1</h3>
-                                <p class="text-lg font-semibold">{{comparable_1_address}}</p>
-                                <p class="text-gray-600">{{comparable_1_distance}} miles • Sold {{comparable_1_sale_date}} • {{comparable_1_days_on_market}} days on market</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-2xl font-bold text-blue-900">${{comparable_1_sale_price}}</p>
-                                <p class="text-lg text-green-600 font-semibold">Adjusted: ${{comparable_1_adjusted_value}}</p>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <h4 class="font-semibold text-blue-900 mb-2">Property Details</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_1_sq_ft}} sq ft</li>
-                                    <li>{{comparable_1_bedrooms}} bed / {{comparable_1_bathrooms}} bath</li>
-                                    <li>Built {{comparable_1_year_built}}</li>
-                                    <li>{{comparable_1_lot_size}} acres</li>
-                                    <li>{{comparable_1_garage}}</li>
-                                    <li>{{comparable_1_basement}}</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-green-600 mb-2">Key Similarities</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_1_similarity_1}}</li>
-                                    <li>{{comparable_1_similarity_2}}</li>
-                                    <li>{{comparable_1_similarity_3}}</li>
-                                    <li>{{comparable_1_similarity_4}}</li>
-                                    <li>{{comparable_1_similarity_5}}</li>
-                                    <li>{{comparable_1_similarity_6}}</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-orange-600 mb-2">Key Differences</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_1_difference_1}}</li>
-                                    <li>{{comparable_1_difference_2}}</li>
-                                    <li>{{comparable_1_difference_3}}</li>
-                                    <li>{{comparable_1_difference_4}}</li>
-                                    <li>{{comparable_1_difference_5}}</li>
-                                    <li>{{comparable_1_difference_6}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-4 p-4 bg-gray-50 rounded-lg">
-                            <p class="text-sm"><strong>Analysis:</strong> {{comparable_1_analysis}}</p>
-                        </div>
-                    </div>
-
-                    <!-- Primary Comparable #2 -->
-                    <div class="comparable-card p-6 mb-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-blue-900">Distant Exact Match #2</h3>
-                                <p class="text-lg font-semibold">{{comparable_2_address}}</p>
-                                <p class="text-gray-600">{{comparable_2_distance}} miles • Sold {{comparable_2_sale_date}} • {{comparable_2_days_on_market}} days on market</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-2xl font-bold text-blue-900">${{comparable_2_sale_price}}</p>
-                                <p class="text-lg text-green-600 font-semibold">Adjusted: ${{comparable_2_adjusted_value}}</p>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <h4 class="font-semibold text-blue-900 mb-2">Property Details</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_2_sq_ft}} sq ft</li>
-                                    <li>{{comparable_2_bedrooms}} bed / {{comparable_2_bathrooms}} bath</li>
-                                    <li>Built {{comparable_2_year_built}}</li>
-                                    <li>{{comparable_2_lot_size}} acres</li>
-                                    <li>{{comparable_2_garage}}</li>
-                                    <li>{{comparable_2_basement}}</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-green-600 mb-2">Key Similarities</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_2_similarity_1}}</li>
-                                    <li>{{comparable_2_similarity_2}}</li>
-                                    <li>{{comparable_2_similarity_3}}</li>
-                                    <li>{{comparable_2_similarity_4}}</li>
-                                    <li>{{comparable_2_similarity_5}}</li>
-                                    <li>{{comparable_2_similarity_6}}</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-orange-600 mb-2">Key Differences</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_2_difference_1}}</li>
-                                    <li>{{comparable_2_difference_2}}</li>
-                                    <li>{{comparable_2_difference_3}}</li>
-                                    <li>{{comparable_2_difference_4}}</li>
-                                    <li>{{comparable_2_difference_5}}</li>
-                                    <li>{{comparable_2_difference_6}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-4 p-4 bg-gray-50 rounded-lg">
-                            <p class="text-sm"><strong>Analysis:</strong> {{comparable_2_analysis}}</p>
-                        </div>
-                    </div>
-
-                    <!-- Primary Comparable #3 -->
-                    <div class="comparable-card p-6 mb-6 rounded-lg">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-blue-900">Local Market Validation #3</h3>
-                                <p class="text-lg font-semibold">{{comparable_3_address}}</p>
-                                <p class="text-gray-600">{{comparable_3_distance}} miles • Sold {{comparable_3_sale_date}} • {{comparable_3_days_on_market}} days on market</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-2xl font-bold text-blue-900">${{comparable_3_sale_price}}</p>
-                                <p class="text-lg text-green-600 font-semibold">Adjusted: ${{comparable_3_adjusted_value}}</p>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <h4 class="font-semibold text-blue-900 mb-2">Property Details</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_3_sq_ft}} sq ft</li>
-                                    <li>{{comparable_3_bedrooms}} bed / {{comparable_3_bathrooms}} bath</li>
-                                    <li>Built {{comparable_3_year_built}}</li>
-                                    <li>{{comparable_3_lot_size}} acres</li>
-                                    <li>{{comparable_3_garage}}</li>
-                                    <li>{{comparable_3_basement}}</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-green-600 mb-2">Key Similarities</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_3_similarity_1}}</li>
-                                    <li>{{comparable_3_similarity_2}}</li>
-                                    <li>{{comparable_3_similarity_3}}</li>
-                                    <li>{{comparable_3_similarity_4}}</li>
-                                    <li>{{comparable_3_similarity_5}}</li>
-                                    <li>{{comparable_3_similarity_6}}</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-orange-600 mb-2">Key Differences</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>{{comparable_3_difference_1}}</li>
-                                    <li>{{comparable_3_difference_2}}</li>
-                                    <li>{{comparable_3_difference_3}}</li>
-                                    <li>{{comparable_3_difference_4}}</li>
-                                    <li>{{comparable_3_difference_5}}</li>
-                                    <li>{{comparable_3_difference_6}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-4 p-4 bg-gray-50 rounded-lg">
-                            <p class="text-sm"><strong>Analysis:</strong> {{comparable_3_analysis}}</p>
-                        </div>
-                    </div>
-
-                    <!-- Additional Supporting Comparables (4-12) -->
-                    <div class="bg-gray-50 rounded-lg p-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">Additional Supporting Comparables (4-12)</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_4_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_4_sale_price}} → ${{comparable_4_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_4_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_5_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_5_sale_price}} → ${{comparable_5_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_5_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_6_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_6_sale_price}} → ${{comparable_6_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_6_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_7_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_7_sale_price}} → ${{comparable_7_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_7_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_8_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_8_sale_price}} → ${{comparable_8_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_8_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_9_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_9_sale_price}} → ${{comparable_9_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_9_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_10_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_10_sale_price}} → ${{comparable_10_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_10_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_11_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_11_sale_price}} → ${{comparable_11_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_11_adjustment_reason}}</p>
-                            </div>
-                            <div class="border-l-4 border-blue-500 pl-4">
-                                <h4 class="font-semibold">{{comparable_12_address}}</h4>
-                                <p class="text-sm text-gray-600">${{comparable_12_sale_price}} → ${{comparable_12_adjusted_value}} adjusted</p>
-                                <p class="text-xs text-gray-500">{{comparable_12_adjustment_reason}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comparable Value Analysis Chart -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-4">
-                        <i class="fas fa-chart-bar mr-2"></i>Comparable Value Analysis
-                    </h2>
-                    <div style="height: 400px;">
-                        <canvas id="valueChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Neighborhood Analysis -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-4">
-                        <i class="fas fa-home mr-2"></i>Neighborhood Analysis - {{neighborhood_name}}
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h3 class="text-xl font-semibold text-blue-900 mb-3">Area Highlights</h3>
-                            <ul class="space-y-2 text-sm">
-                                <li><i class="fas fa-graduation-cap text-blue-600 mr-2"></i>{{school_district}}</li>
-                                <li><i class="fas fa-briefcase text-blue-600 mr-2"></i>{{employment_access}}</li>
-                                <li><i class="fas fa-tree text-blue-600 mr-2"></i>{{neighborhood_character}}</li>
-                                <li><i class="fas fa-shield-alt text-blue-600 mr-2"></i>{{safety_rating}}</li>
-                                <li><i class="fas fa-water text-blue-600 mr-2"></i>{{recreation_access}}</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-blue-900 mb-3">Market Indicators</h3>
-                            <div class="space-y-3">
-                                <div class="flex justify-between">
-                                    <span>Inventory Levels</span>
-                                    <span class="font-semibold text-{{inventory_status_color}}-600">{{inventory_status}}</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Price Trend</span>
-                                    <span class="font-semibold text-{{price_trend_color}}-600">{{price_trend}}</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Buyer Demand</span>
-                                    <span class="font-semibold text-{{buyer_demand_color}}-600">{{buyer_demand}}</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Market Activity</span>
-                                    <span class="font-semibold text-{{market_activity_color}}-600">{{market_activity}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Professional Market Recommendations -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-4">
-                        <i class="fas fa-lightbulb mr-2"></i>Professional Market Recommendations
-                    </h2>
-                    
-                    <div class="mb-6">
-                        <h3 class="text-xl font-semibold text-blue-900 mb-3">Strategic Market Positioning</h3>
-                        <p class="text-gray-700 mb-4">{{strategic_positioning_summary}}</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-green-50 p-4 rounded-lg">
-                                <h4 class="font-semibold text-green-800 mb-2">If Considering Selling</h4>
-                                <ul class="text-sm space-y-1 text-green-700">
-                                    <li>• Optimal listing range: ${{optimal_listing_min}} - ${{optimal_listing_max}}</li>
-                                    <li>• Expected market time: {{expected_market_time}} days</li>
-                                    <li>• {{staging_recommendation}}</li>
-                                    <li>• {{key_selling_points}}</li>
-                                </ul>
-                            </div>
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-semibold text-blue-800 mb-2">Market Timing Considerations</h4>
-                                <ul class="text-sm space-y-1 text-blue-700">
-                                    <li>• {{timing_factor_1}}</li>
-                                    <li>• {{timing_factor_2}}</li>
-                                    <li>• {{timing_factor_3}}</li>
-                                    <li>• {{timing_factor_4}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ready to Discuss Section -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                    <h2 class="text-2xl font-bold text-blue-900 mb-6 text-center">
-                        <i class="fas fa-handshake mr-2"></i>Ready to Discuss Your Property's Value?
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="text-center">
-                            <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/47286fb9-33ee-457e-94ff-15088900701a/2aea9470-c52e-40f1-95ff-2b31ff7797d6?se=2025-07-12T20%3A13%3A42Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22glenn_fitzgerald_professional_headshot.jpg%22&sig=a9Q5bTHDFcVvKAnwGSdxnlbBQQ1hxN2mpEP22%2BtBVn0%3D" alt="Glenn Fitzgerald" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                            <h3 class="text-xl font-bold text-blue-900">Glenn Fitzgerald</h3>
-                            <p class="text-gray-600">Associate Broker</p>
-                            <p class="text-blue-600 font-semibold">22 Years Experience</p>
-                        </div>
-                        <div class="text-center">
-                            <img src="https://gensparkstorageprodwest.blob.core.windows.net/web-drive/47286fb9-33ee-457e-94ff-15088900701a/9ba69cec-105c-4325-a94d-6c6a8437899c?se=2025-07-13T20%3A32%3A00Z&sp=r&sv=2025-05-05&sr=b&rscd=attachment%3B%20filename%3D%22justin_phillips_official_professional_photo.jpg%22&sig=fpFbpQMbnoFmdzON3z7MKPk98Z5QJjLXCFdj4E61hm8%3D" alt="Justin Phillips" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
-                            <h3 class="text-xl font-bold text-blue-900">Justin Phillips</h3>
-                            <p class="text-gray-600">Managing Broker</p>
-                            <p class="text-blue-600 font-semibold">22 Years Experience</p>
-                        </div>
-                    </div>
-                    
-                    <div class="text-center mt-8">
-                        <h4 class="text-lg font-semibold text-blue-900 mb-2">United Real Estate Hudson Valley Edge</h4>
-                        <p class="text-gray-600">1097 State Route 55, Suite 9</p>
-                        <p class="text-gray-600">Lagrangeville, NY 12540</p>
-                        <div class="flex justify-center space-x-6 mt-4">
-                            <a href="tel:{{agent_phone}}" class="text-blue-600 hover:text-blue-800">
-                                <i class="fas fa-phone mr-2"></i>{{agent_phone}}
-                            </a>
-                            <a href="/cdn-cgi/l/email-protection#6318180204060d173c060e020a0f1e1e" class="text-blue-600 hover:text-blue-800">
-                                <i class="fas fa-envelope mr-2"></i>{{agent_email}}
-                            </a>
-                        </div>
-                        <p class="text-gray-500 text-sm mt-4">Professionals who truly have your best interests in mind when it comes to home value</p>
-                    </div>
-                </div>
-            </div>
+<body>
+    <div class="container">
+        <div class="logo">⚓ HHYC</div>
+        <div class="subtitle">Hidden Harbor Yacht Club<br>Volunteer Management System</div>
+        <div class="buttons">
+            <a href="hhyc_admin_portal.html" class="btn admin">🔧 Admin Portal</a>
+            <a href="hhyc_volunteer_portal.html" class="btn volunteer">👥 Volunteer Portal</a>
+            <a href="HHYC_SETUP_GUIDE.md" class="btn setup">📋 Setup Guide</a>
         </div>
     </div>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Value Analysis Chart
-        const ctx = document.getElementById('valueChart').getContext('2d');
-        const valueChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['{{comparable_1_address}}', '{{comparable_2_address}}', '{{comparable_3_address}}', '{{comparable_4_address}}', '{{comparable_5_address}}', '{{comparable_6_address}}', 'Your Property'],
-                datasets: [{
-                    label: 'Sale Price',
-                    data: [{{comparable_1_sale_price}}, {{comparable_2_sale_price}}, {{comparable_3_sale_price}}, {{comparable_4_sale_price}}, {{comparable_5_sale_price}}, {{comparable_6_sale_price}}, {{current_market_value}}],
-                    backgroundColor: 'rgba(30, 77, 114, 0.6)',
-                    borderColor: 'rgba(30, 77, 114, 1)',
-                    borderWidth: 1
-                }, {
-                    label: 'Adjusted Value',
-                    data: [{{comparable_1_adjusted_value}}, {{comparable_2_adjusted_value}}, {{comparable_3_adjusted_value}}, {{comparable_4_adjusted_value}}, {{comparable_5_adjusted_value}}, {{comparable_6_adjusted_value}}, {{current_market_value}}],
-                    backgroundColor: 'rgba(34, 197, 94, 0.6)',
-                    borderColor: 'rgba(34, 197, 94, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        ticks: {
-                            callback: function(value) {
-                                return '$' + value.toLocaleString();
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top'
-                    }
-                }
-            }
-        });
-
-        // Mobile optimization
-        if (window.innerWidth <= 375) {
-            document.querySelectorAll('.mobile-optimized').forEach(el => {
-                el.style.padding = '10px';
-                el.style.fontSize = '14px';
-            });
-        }
-
-        // Audio player enhancements
-        const audioPlayer = document.querySelector('audio');
-        if (audioPlayer) {
-            audioPlayer.addEventListener('loadedmetadata', function() {
-                console.log('Audio loaded: ' + this.duration + ' seconds');
-            });
-        }
-    </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95eb9412ba8743aa","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
 </body>
 </html>
-    <script id="html_badge_script1">
-        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDimhQeQH99uf9ShcTPMtUXEyfMXwv%2Brqq5fm3tIvUTG%2BM0YMixjzB5ysCIL14RHPASYosnuQRPDw7Q7zzwLy4iZm7UnyJ3GcyDEzZ9dZqs%2F4qWXbdo99cV7KvquOgcIztUlYNdfCSb%2Baw5FpXYMFKFqLR2armjCZjaNhLR1b54wFshsN0i2yn9cvOwfya5Yh1ccZO9NHWgatHOGkhpic%2FWUUwrYywzUZfZ82c2%2B03dhslEJzTwtDVZQ5PFFT9q8adytPBxsdl7FEpXk0g2L9CV5j5n7xO21kMPU6mFgitH6Zd74LcZ3%2FDJNZobVP0ajH%2F8j44huvomFitCoJMXti7w9AvpvpugEcV4VWfv0HMKwMlCJZr8EkVaoTiiotNTMCd%2B%2BpxksO5ex8PjPr5jsqNRVHWO0ZdLm8eMW0uLtaiU9N7kVk6C7CWtEyf3J4iMeRZwgxdYxNVYwll%2FgJHVA5kICr0zqxGHwcg3nJERe%2FURROn%2FKWlhs%2F7yTQpEUVsbOA2bv7n8c4Ec%2BxYHay9jIVjxPAAoWtz%2Bj3rAt%2ByEP7rMwl";
-        window.__genspark_locale = "en-US";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDimhQeQH99uf9ShcTPMtUXEyfMXwv+rqq5fm3tIvUTG+M0YMixjzB5ysCIL14RHPASYosnuQRPDw7Q7zzwLy4iZm7UnyJ3GcyDEzZ9dZqs/4qWXbdo99cV7KvquOgcIztUlYNdfCSb+aw5FpXYMFKFqLR2armjCZjaNhLR1b54wFshsN0i2yn9cvOwfya5Yh1ccZO9NHWgatHOGkhpic/WUUwrYywzUZfZ82c2+03dhslEJzTwtDVZQ5PFFT9q8adytPBxsdl7FEpXk0g2L9CV5j5n7xO21kMPU6mFgitH6Zd74LcZ3/DJNZobVP0ajH/8j44huvomFitCoJMXti7w9AvpvpugEcV4VWfv0HMKwMlCJZr8EkVaoTiiotNTMCd++pxksO5ex8PjPr5jsqNRVHWO0ZdLm8eMW0uLtaiU9N7kVk6C7CWtEyf3J4iMeRZwgxdYxNVYwll/gJHVA5kICr0zqxGHwcg3nJERe/URROn/KWlhs/7yTQpEUVsbOA2bv7n8c4Ec+xYHay9jIVjxPAAoWtz+j3rAt+yEP7rMwl";
-    </script>
-    
-    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
-    
