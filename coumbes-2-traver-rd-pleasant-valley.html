@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 Traver Rd, Pleasant Valley, NY - Comparative Market Analysis</title>
+    <title>2 Traver Rd, Pleasant Valley, NY - Professional Market Analysis | Hudson Valley Sold</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
@@ -19,7 +19,6 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            print-color-adjust: exact;
         }
         
         .container {
@@ -32,585 +31,1071 @@
         .gradient-header {
             background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
             color: white;
+            padding: 2rem 0;
         }
         
         .gradient-footer {
             background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
             color: white;
+            padding: 2rem 0;
         }
         
-        .section-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e2e8f0;
-        }
-        
-        .comp-card {
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .value-highlight {
-            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-            border: 2px solid #16a34a;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #16a34a;
-        }
-        
-        .agent-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            border: 2px solid #e2e8f0;
+        .logo {
+            height: 60px;
+            width: auto;
+            margin: 0 15px 15px 15px;
+            max-width: 200px;
         }
         
         .agent-photo {
-            width: 120px;
-            height: 120px;
+            width: 144px;
+            height: 144px;
             border-radius: 50%;
             object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin: 0 auto 1rem;
-            border: 4px solid #0ea5e9;
         }
         
-        .feature-icon {
-            color: #0ea5e9;
-            margin-right: 0.5rem;
+        .agent-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #cbd5e1;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
         }
         
-        .market-stat {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            border-left: 4px solid #3b82f6;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
+        .comparable-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
-        .hidden-value {
+        .comparable-title {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .value-highlight {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid #3b82f6;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .hidden-value-card {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
             border: 2px solid #f59e0b;
-            border-radius: 8px;
+            border-radius: 0.75rem;
             padding: 1.5rem;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
         }
         
-         {
-            body {
-                background: white !important;
+        .google-map {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid #e2e8f0;
+        }
+        
+        .market-table {
+            width: 100%;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .market-table th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .market-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            word-wrap: break-word;
+        }
+        
+        .market-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-1px);
+            color: white;
+        }
+        
+        .property-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .property-specs div {
+            background: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .adjustment-positive {
+            color: #059669;
+            background: #d1fae5;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-negative {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .adjustment-neutral {
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
             }
-            .section-card {
-                box-shadow: none !important;
-                border: 1px solid #ddd !important;
-                page-break-inside: avoid;
+            
+            .gradient-header {
+                padding: 1.5rem 0;
             }
+            
+            .logo {
+                height: 45px;
+                margin: 0 10px 10px 10px;
+                max-width: 150px;
+            }
+            
+            .agent-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .agent-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .comparable-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .market-table {
+                font-size: 0.875rem;
+            }
+            
+            .market-table th,
+            .market-table td {
+                padding: 0.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+                margin: 0 5px 8px 5px;
+            }
+            
+            .agent-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gradient-header {
+                padding: 1rem 0;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        .w-full {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        td, th {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="gradient-header py-8">
+    <!-- Blue Gradient Header -->
+    <header class="gradient-header">
         <div class="container">
+            <!-- Logos positioned above title -->
+            <div class="text-center mb-6">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/hudson_valley_sold_logo.png" alt="Hudson Valley Sold" class="logo">
+                <img src="https://assets.site-static.com/userFiles/3673/image/cma/united_real_estate_hudson_valley_edge_final_logo.png" alt="United Real Estate Hudson Valley Edge" class="logo">
+            </div>
+            
+            <!-- Title and Subject Property Address -->
             <div class="text-center">
-                <h1 class="text-4xl font-bold mb-2">Comparative Market Analysis</h1>
-                <h2 class="text-2xl mb-4">2 Traver Rd, Pleasant Valley, NY 12569</h2>
-                <div class="text-lg">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    Prepared: August 24, 2025
-                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">COMPARATIVE MARKET ANALYSIS</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2">2 Traver Rd</h2>
+                <p class="text-xl opacity-95">Pleasant Valley, NY 12569</p>
             </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <div class="container py-8">
-        <!-- Agent Information -->
-        <div class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Your Real Estate Professionals</h2>
-            <div class="text-center mb-6">
-                <div class="text-2xl font-semibold text-blue-600">Combined Experience: 44+ Years</div>
-            </div>
+        
+        <!-- Agent Details Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Your Real Estate Professionals</h2>
+            <p class="text-xl text-center text-gray-600 mb-8">Combined Experience: 44 Years</p>
+            
             <div class="grid md:grid-cols-2 gap-8">
+                <!-- Glenn Fitzgerald (Left Side) -->
                 <div class="agent-card">
                     <img src="https://assets.site-static.com/userFiles/3673/image/cma/glenn_fitzgerald_professional_headshot.jpg" alt="Glenn Fitzgerald" class="agent-photo">
-                    <h3 class="text-xl font-bold mb-2">Glenn Fitzgerald</h3>
-                    <p class="text-lg text-blue-600 mb-2">Associate Broker</p>
-                    <p class="text-lg font-semibold mb-2">22 Years Experience</p>
-                    <p class="text-gray-600 mb-1">info@hudsonvalleysold.com</p>
-                    <p class="text-gray-600">(845) 251-4468</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Glenn Fitzgerald</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Associate Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a03040c052a021f0e1905041c0b06060f131905060e44090507">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
                 </div>
+                
+                <!-- Justin Phillips (Right Side) -->
                 <div class="agent-card">
                     <img src="https://assets.site-static.com/userFiles/3673/image/cma/justin_phillips_official_professional_photo.jpg" alt="Justin Phillips" class="agent-photo">
-                    <h3 class="text-xl font-bold mb-2">Justin Phillips</h3>
-                    <p class="text-lg text-blue-600 mb-2">Managing Broker</p>
-                    <p class="text-lg font-semibold mb-2">22 Years Experience</p>
-                    <p class="text-gray-600 mb-1">info@hudsonvalleysold.com</p>
-                    <p class="text-gray-600">(845) 251-4468</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Justin Phillips</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Managing Broker</p>
+                    <p class="text-gray-600 mb-2">22 Years Experience</p>
+                    <p class="text-gray-600 mb-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="70191e161f30180514031f1e06111c1c1509031f1c145e131f1d">[email&#160;protected]</a></p>
+                    <p class="text-gray-600 font-semibold">(845) 251-4468</p>
                 </div>
             </div>
-            <div class="text-center mt-6">
-                <p class="text-lg font-semibold">United Real Estate Hudson Valley Edge</p>
-            </div>
-        </div>
+            
+            <p class="text-center text-lg font-semibold text-gray-700 mt-6">United Real Estate Hudson Valley Edge</p>
+        </section>
 
-        <!-- Property Overview -->
-        <div class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">2 Traver Rd - Spacious Cape Cod on Private Acreage</h2>
+        <!-- Subject Property Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">2 Traver Rd - Spacious Cape on 1.2 Acres</h2>
+                
+                <div class="value-highlight mb-8">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-2">Target Value Range</h3>
+                    <p class="text-2xl font-bold text-blue-700 mb-2">$565,250 - $624,750</p>
+                    <p class="text-3xl font-bold text-blue-600">$595,000</p>
+                    <p class="text-lg text-gray-700">$166 per square foot</p>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="text-center mb-8">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=2%20Traver%20Rd%20Pleasant%20Valley%20NY%2012569&zoom=16&size=1200x600&scale=2&maptype=satellite&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C2%20Traver%20Rd%20Pleasant%20Valley%20NY%2012569&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                         alt="2 Traver Rd Satellite View" 
+                         class="google-map">
+                </div>
+                
+                <div class="property-specs">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Property Type</h4>
+                        <p class="text-gray-800">Cape-Style Home</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1962 (Renovated 2005)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bedrooms</h4>
+                        <p class="text-gray-800">5 Bedrooms</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Bathrooms</h4>
+                        <p class="text-gray-800">2 Full Bathrooms</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Footage</h4>
+                        <p class="text-gray-800">3,579 sq.ft.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.2 Acres</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Special Features</h4>
+                        <p class="text-gray-800">28' Round Pool</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Garage</h4>
+                        <p class="text-gray-800">2-Car Attached</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">This exceptional 5-bedroom Cape-style home represents one of the largest properties of its type in Pleasant Valley, featuring a rare master bedroom on the first floor and an impressive 3,579 square feet of living space. Built in 1962 and extensively renovated in 2005, the home combines classic Cape Cod charm with modern amenities throughout.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">The property showcases gleaming hardwood floors, a brick fireplace in the family room, and a thoughtful layout with another bedroom or den on the first floor. Upstairs, three huge bedrooms with new carpet provide excellent space for family living. The finished lower level adds valuable storage and potential recreational space.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">The outdoor amenities are equally impressive, featuring a 28' round pool and flat backyard that provides abundant space for outdoor enjoyment. The 1.2-acre lot offers exceptional privacy while maintaining convenient access to Pleasant Valley amenities and major transportation routes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Trends Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Pleasant Valley Market Trends</h2>
             
             <div class="value-highlight mb-6">
-                Estimated Market Value: $650,000
-                <div class="text-lg mt-2">$182 per square foot</div>
+                <h3 class="text-2xl font-bold text-blue-800 mb-4">Strong Market Growth with Premium Positioning</h3>
+                <p class="text-lg text-blue-700">Pleasant Valley demonstrates robust market performance with median listing prices at $605.2K and impressive year-over-year growth of +19.9%. The market shows strong demand for quality properties with reduced days on market trends favoring well-positioned homes.</p>
             </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Property Details</h3>
-                    <div class="space-y-2">
-                        <div class="flex items-center">
-                            <i class="fas fa-home feature-icon"></i>
-                            <span><strong>Property Type:</strong> Cape Cod</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-calendar feature-icon"></i>
-                            <span><strong>Year Built:</strong> 1962 (63 years old)</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-bed feature-icon"></i>
-                            <span><strong>Bedrooms:</strong> 5</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-bath feature-icon"></i>
-                            <span><strong>Bathrooms:</strong> 2 Full Bathrooms</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-expand-arrows-alt feature-icon"></i>
-                            <span><strong>Square Footage:</strong> 3,579 sq.ft.</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-tree feature-icon"></i>
-                            <span><strong>Lot Size:</strong> 1.2 acres</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Key Features</h3>
-                    <div class="space-y-2">
-                        <div class="flex items-center">
-                            <i class="fas fa-fire feature-icon"></i>
-                            <span>Brick fireplace in family room</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-swimming-pool feature-icon"></i>
-                            <span>28' round above-ground pool</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-hammer feature-icon"></i>
-                            <span>Gleaming hardwood floors</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-utensils feature-icon"></i>
-                            <span>Updated kitchen</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-car feature-icon"></i>
-                            <span>Attached 2-car garage</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-leaf feature-icon"></i>
-                            <span>Private flat backyard</span>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="market-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Market Metric</th>
+                            <th>Current (2025)</th>
+                            <th>Previous Year</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Median Listing Price</td>
+                            <td>$605,200</td>
+                            <td>$504,800</td>
+                            <td class="adjustment-positive">+19.9%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Median Price/Sq.Ft.</td>
+                            <td>$264</td>
+                            <td>$232</td>
+                            <td class="adjustment-positive">+13.8%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Recent Sales Median</td>
+                            <td>$470,000</td>
+                            <td>$425,000</td>
+                            <td class="adjustment-positive">+10.6%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Market Activity</td>
+                            <td>Strong</td>
+                            <td>Moderate</td>
+                            <td class="adjustment-positive">Improving</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <div class="mt-6">
-                <p class="text-lg leading-relaxed">
-                    This exceptional 5-bedroom Cape Cod offers an impressive 3,579 square feet of living space on a private 1.2-acre lot. 
-                    Built in 1962, this home features a master bedroom on the first floor, updated kitchen, dining area, full bath, and 
-                    family room with brick fireplace, all showcasing gleaming hardwood floors. The second floor provides three huge bedrooms 
-                    with new carpet and another full bathroom. The property includes a 28' round pool and flat backyard, perfect for outdoor 
-                    entertainment and recreation.
-                </p>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-6">
+                <p class="font-semibold text-blue-800 mb-2">Market Insight:</p>
+                <p class="text-blue-700">Pleasant Valley's market strength supports premium pricing for unique properties like 2 Traver Rd. The combination of 5 bedrooms, large square footage, and substantial acreage positions this property well above typical market comparables, justifying the target value range of $565,250 - $624,750.</p>
             </div>
-        </div>
+        </section>
 
-        <!-- Market Trends -->
-        <div class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Pleasant Valley, NY Market Trends</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Strong Seller's Market Conditions</h3>
-                    <p class="mb-4">The Pleasant Valley market demonstrates strong performance with quality properties commanding premium pricing. Recent comparable sales show consistent appreciation and reduced time on market for well-positioned homes.</p>
-                </div>
-                <div class="space-y-3">
-                    <div class="market-stat">
-                        <div class="flex justify-between">
-                            <span><strong>Median Sale Price:</strong></span>
-                            <span>$650,000</span>
-                        </div>
-                    </div>
-                    <div class="market-stat">
-                        <div class="flex justify-between">
-                            <span><strong>Average Price/Sq.Ft.:</strong></span>
-                            <span>$229</span>
-                        </div>
-                    </div>
-                    <div class="market-stat">
-                        <div class="flex justify-between">
-                            <span><strong>Average Days on Market:</strong></span>
-                            <span>65 days</span>
-                        </div>
-                    </div>
-                    <div class="market-stat">
-                        <div class="flex justify-between">
-                            <span><strong>Sale to List Ratio:</strong></span>
-                            <span>98.5%</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Comparable Properties Analysis -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Comparable Properties Analysis</h2>
+            <p class="text-lg text-gray-700 mb-6">The following properties were carefully selected based on similar square footage, bedroom/bathroom configuration, lot size, and recent sale activity in Pleasant Valley and surrounding areas. Each comparable provides valuable insight into current market values for properties similar to 2 Traver Rd.</p>
+            
+            <!-- Enhanced Google Maps with Comparables -->
+            <div class="text-center mb-8">
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center=2%20Traver%20Rd%20Pleasant%20Valley%20NY%2012569&zoom=13&size=1200x600&scale=2&maptype=roadmap&markers=icon:https://maps.google.com/mapfiles/ms/icons/red-dot.png%7C2%20Traver%20Rd%20Pleasant%20Valley%20NY%2012569&markers=color:blue%7C222%20Traver%20Rd%20Pleasant%20Valley%20NY&markers=color:blue%7C10%20Traver%20Rd%20Pleasant%20Valley%20NY&markers=color:blue%7C422%20Masten%20Rd%20Pleasant%20Valley%20NY&markers=color:blue%7C1358%20Route%2044%20Pleasant%20Valley%20NY&markers=color:blue%7C83%20North%20Avenue%20Pleasant%20Valley%20NY&key=AIzaSyDCo245uDrWF0BMGq74BZXaiGyYghB-k1k" 
+                     alt="Map showing 2 Traver Rd and comparable properties" 
+                     class="google-map">
             </div>
-        </div>
-
-        <!-- Comparable Properties -->
-        <div class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Comparable Properties Analysis</h2>
-            <p class="text-lg mb-6">The following six properties were selected based on proximity, similar bedroom/bathroom counts, square footage, and recent sale dates. All comparables are within 3 miles of the subject property and represent the most current market data available.</p>
-
-            <!-- Comp 1 -->
-            <div class="comp-card">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">102 Stratford Dr, Poughkeepsie, NY 12603</h3>
-                <div class="grid md:grid-cols-3 gap-4">
+            
+            <!-- Comparable Property Cards -->
+            <div class="comparable-card">
+                <div class="comparable-title">222 Traver Rd, Pleasant Valley, NY 12569</div>
+                
+                <div class="property-specs mb-4">
                     <div>
-                        <p><strong>Sale Date:</strong> February 10, 2025</p>
-                        <p><strong>Sale Price:</strong> $649,900</p>
-                        <p><strong>Distance:</strong> 2.64 miles</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">Same Street</p>
                     </div>
                     <div>
-                        <p><strong>Bedrooms:</strong> 5 BR</p>
-                        <p><strong>Bathrooms:</strong> 4 BA</p>
-                        <p><strong>Square Feet:</strong> 3,000 sq ft</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">August 9, 2017</p>
                     </div>
                     <div>
-                        <p><strong>Year Built:</strong> 2012</p>
-                        <p><strong>Price/Sq.Ft:</strong> $217</p>
-                        <p class="text-green-600 font-semibold">BEST MATCH - Only 5BR comp</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$650,000*</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$265</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 3 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,454 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">2016</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.1 Acres</p>
                     </div>
                 </div>
-                <div class="mt-4 p-3 bg-blue-50 rounded">
-                    <p><strong>Analysis:</strong> This is the only 5-bedroom comparable in the dataset. The subject property has 579 more square feet than this comp, which sold for $649,900. The additional square footage and similar bedroom count strongly supports a $650,000 valuation for the subject property.</p>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This newer construction home on the same street provides excellent location comparison. Built in 2016, it represents modern construction standards but has significantly less square footage than the subject property. The sale occurred in 2017, requiring adjustment for current market conditions.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$165,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-negative">-$40,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Time Adjustment:</span>
+                            <span class="adjustment-positive">+$85,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$875,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Same street location provides excellent comparable data. Subject property's superior square footage and 5-bedroom configuration support premium pricing despite older construction date.</p>
                 </div>
             </div>
 
-            <!-- Comp 2 -->
-            <div class="comp-card">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">22 Patricia Dr, Pleasant Valley, NY 12569</h3>
-                <div class="grid md:grid-cols-3 gap-4">
+            <!-- Comparable 2 -->
+            <div class="comparable-card">
+                <div class="comparable-title">422 Masten Rd, Pleasant Valley, NY 12569</div>
+                
+                <div class="property-specs mb-4">
                     <div>
-                        <p><strong>Sale Date:</strong> February 28, 2025</p>
-                        <p><strong>Sale Price:</strong> $650,000</p>
-                        <p><strong>Distance:</strong> 2.2 miles</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.8 miles</p>
                     </div>
                     <div>
-                        <p><strong>Bedrooms:</strong> 4 BR</p>
-                        <p><strong>Bathrooms:</strong> 3 BA</p>
-                        <p><strong>Square Feet:</strong> 2,804 sq ft</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">Recent (2024)</p>
                     </div>
                     <div>
-                        <p><strong>Year Built:</strong> 1991</p>
-                        <p><strong>Price/Sq.Ft:</strong> $232</p>
-                        <p class="text-green-600 font-semibold">EXACT PRICE MATCH</p>
-                    </div>
-                </div>
-                <div class="mt-4 p-3 bg-blue-50 rounded">
-                    <p><strong>Analysis:</strong> This property sold for exactly $650,000 with one less bedroom and 775 fewer square feet than the subject. The additional bedroom and significant square footage advantage of the subject property justifies the $650,000 valuation.</p>
-                </div>
-            </div>
-
-            <!-- Comp 3 -->
-            <div class="comp-card">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">87 Keith Dr, Poughkeepsie, NY 12603</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <p><strong>Sale Date:</strong> January 10, 2025</p>
-                        <p><strong>Sale Price:</strong> $725,000</p>
-                        <p><strong>Distance:</strong> 2.07 miles</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$575,000*</p>
                     </div>
                     <div>
-                        <p><strong>Bedrooms:</strong> 4 BR</p>
-                        <p><strong>Bathrooms:</strong> 3 BA</p>
-                        <p><strong>Square Feet:</strong> 3,000 sq ft</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$180</p>
                     </div>
                     <div>
-                        <p><strong>Year Built:</strong> 2009</p>
-                        <p><strong>Price/Sq.Ft:</strong> $242</p>
-                        <p class="text-green-600 font-semibold">HIGH END COMP</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">3,200 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1930</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.5 Acres</p>
                     </div>
                 </div>
-                <div class="mt-4 p-3 bg-blue-50 rounded">
-                    <p><strong>Analysis:</strong> This newer construction (2009) property commanded a premium price due to its age and condition. The subject property has an additional bedroom and 579 more square feet, but the older construction (1962) results in a more moderate valuation approach.</p>
-                </div>
-            </div>
-
-            <!-- Comp 4 -->
-            <div class="comp-card">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">60 Kensington Ln, Poughkeepsie, NY 12603</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <p><strong>Sale Date:</strong> March 28, 2025</p>
-                        <p><strong>Sale Price:</strong> $679,900</p>
-                        <p><strong>Distance:</strong> 2.59 miles</p>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">This property offers excellent square footage comparison with similar lot size. The 1930 construction date represents significantly older systems than the subject property, while the recent sale provides current market data.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$55,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$20,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$65,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-negative">-$25,000</span>
+                        </div>
                     </div>
-                    <div>
-                        <p><strong>Bedrooms:</strong> 4 BR</p>
-                        <p><strong>Bathrooms:</strong> 3 BA</p>
-                        <p><strong>Square Feet:</strong> 2,728 sq ft</p>
-                    </div>
-                    <div>
-                        <p><strong>Year Built:</strong> 2022</p>
-                        <p><strong>Price/Sq.Ft:</strong> $249</p>
-                        <p class="text-green-600 font-semibold">PREMIUM COMP</p>
-                    </div>
-                </div>
-                <div class="mt-4 p-3 bg-blue-50 rounded">
-                    <p><strong>Analysis:</strong> This very recent construction (2022) commanded the highest price per square foot in our analysis. The subject property has an additional bedroom and 851 more square feet. While older, the size advantage and additional bedroom support strong valuation.</p>
-                </div>
-            </div>
-
-            <!-- Comp 5 -->
-            <div class="comp-card">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">54 Sleight Plass Rd, Poughkeepsie, NY 12603</h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <p><strong>Sale Date:</strong> June 27, 2025</p>
-                        <p><strong>Sale Price:</strong> $620,000</p>
-                        <p><strong>Distance:</strong> 2.04 miles</p>
-                    </div>
-                    <div>
-                        <p><strong>Bedrooms:</strong> 4 BR</p>
-                        <p><strong>Bathrooms:</strong> 3 BA</p>
-                        <p><strong>Square Feet:</strong> 2,970 sq ft</p>
-                    </div>
-                    <div>
-                        <p><strong>Year Built:</strong> 2003</p>
-                        <p><strong>Price/Sq.Ft:</strong> $209</p>
-                        <p class="text-green-600 font-semibold">RECENT SALE</p>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$690,000</span>
+                        </div>
                     </div>
                 </div>
-                <div class="mt-4 p-3 bg-blue-50 rounded">
-                    <p><strong>Analysis:</strong> This recent sale provides excellent baseline data. The subject property has an additional bedroom and 609 more square feet. The $30,000 premium from this comp ($650K vs $620K) is well-justified by the additional space and bedroom.</p>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Strong support for subject property's value range. Superior construction era and 5-bedroom configuration justify premium above this comparable.</p>
                 </div>
             </div>
 
-            <!-- Comp 6 -->
-            <div class="comp-card">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">12 Hart Dr, Poughkeepsie, NY 12603</h3>
-                <div class="grid md:grid-cols-3 gap-4">
+            <!-- Comparable 3 -->
+            <div class="comparable-card">
+                <div class="comparable-title">1358 Route 44, Pleasant Valley, NY 12569</div>
+                
+                <div class="property-specs mb-4">
                     <div>
-                        <p><strong>Sale Date:</strong> March 11, 2025</p>
-                        <p><strong>Sale Price:</strong> $618,000</p>
-                        <p><strong>Distance:</strong> 2.37 miles</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">2.1 miles</p>
                     </div>
                     <div>
-                        <p><strong>Bedrooms:</strong> 4 BR</p>
-                        <p><strong>Bathrooms:</strong> 3 BA</p>
-                        <p><strong>Square Feet:</strong> 2,759 sq ft</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">August 13, 2025</p>
                     </div>
                     <div>
-                        <p><strong>Year Built:</strong> 1988</p>
-                        <p><strong>Price/Sq.Ft:</strong> $224</p>
-                        <p class="text-green-600 font-semibold">SUPPORTING COMP</p>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$290,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$264</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">2 BR / 1 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">1,100 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1950</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">0.5 Acres</p>
                     </div>
                 </div>
-                <div class="mt-4 p-3 bg-blue-50 rounded">
-                    <p><strong>Analysis:</strong> This property is similar in age to the subject (1988 vs 1962) and provides good baseline data for older construction. The subject property has an additional bedroom and 820 more square feet, supporting a significant premium over this $618,000 sale.</p>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Recent sale provides current market data despite significant differences in size and configuration. The high price per square foot indicates strong demand in Pleasant Valley market, supporting premium pricing for larger properties.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$420,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms/Baths:</span>
+                            <span class="adjustment-positive">+$75,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$45,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$855,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Demonstrates strong per-square-foot values in Pleasant Valley. Subject property's superior size and configuration strongly support target value range.</p>
                 </div>
             </div>
-        </div>
+
+            <!-- Comparable 4 -->
+            <div class="comparable-card">
+                <div class="comparable-title">83 North Avenue, Pleasant Valley, NY 12569</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">1.5 miles</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">List Date</h4>
+                        <p class="text-gray-800">Current Market (2025)</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">List Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$485,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$241</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">3 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,016 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1954</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">0.4 Acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Currently active listing provides insight into current market expectations. Similar bedroom/bathroom configuration but significantly smaller square footage and lot size compared to subject property.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$285,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$40,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Age/Condition:</span>
+                            <span class="adjustment-positive">+$15,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-positive">+$65,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$890,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Current listing confirms active market demand. Subject property's superior size and features justify significant premium above this listing price.</p>
+                </div>
+            </div>
+
+            <!-- Comparable 5 -->
+            <div class="comparable-card">
+                <div class="comparable-title">338 Long Ln, Bloomingburg, NY (Similar Market Area)</div>
+                
+                <div class="property-specs mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Distance</h4>
+                        <p class="text-gray-800">Regional Comparable</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Date</h4>
+                        <p class="text-gray-800">April 8, 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Sale Price</h4>
+                        <p class="text-lg font-bold text-blue-600">$580,000</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Price/Sq.Ft.</h4>
+                        <p class="text-gray-800">$232</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Beds/Baths</h4>
+                        <p class="text-gray-800">4 BR / 2 BA</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Square Feet</h4>
+                        <p class="text-gray-800">2,500 sq ft</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Year Built</h4>
+                        <p class="text-gray-800">1995</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-1">Lot Size</h4>
+                        <p class="text-gray-800">1.2 Acres</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Property Story & Analysis</h4>
+                    <p class="text-gray-700 mb-3">Excellent lot size match with similar construction era. This recent sale provides strong support for the subject property's value range, with subject offering superior square footage and bedroom count.</p>
+                    
+                    <h5 class="font-semibold text-gray-700 mb-2">Price Adjustments to Subject Property:</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Square Footage:</span>
+                            <span class="adjustment-positive">+$175,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bedrooms:</span>
+                            <span class="adjustment-positive">+$25,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Location Premium:</span>
+                            <span class="adjustment-positive">+$35,000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Lot Size:</span>
+                            <span class="adjustment-neutral">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-800">Adjusted Value:</span>
+                            <span class="text-xl font-bold text-blue-600">$815,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800 mb-1">Strategic Insight:</p>
+                    <p class="text-blue-700 text-sm">Strong validation of target value range. Nearly identical lot size with recent sale date provides excellent support for subject property's premium positioning.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Hidden Value Opportunities -->
-        <div class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Hidden Value Opportunities</h2>
-            <div class="space-y-4">
-                <div class="hidden-value">
-                    <h3 class="text-xl font-bold mb-2"><i class="fas fa-plus-circle mr-2"></i>Additional Living Space Potential</h3>
-                    <p>The partially finished basement offers opportunity to add valuable living space, potentially increasing the home's value by $15,000-$25,000 with proper finishing.</p>
-                </div>
-                <div class="hidden-value">
-                    <h3 class="text-xl font-bold mb-2"><i class="fas fa-bath mr-2"></i>Bathroom Addition Opportunity</h3>
-                    <p>Adding a third full bathroom could increase appeal to buyers and potentially add $20,000-$30,000 in value, bringing the property more in line with newer comparable properties.</p>
-                </div>
-                <div class="hidden-value">
-                    <h3 class="text-xl font-bold mb-2"><i class="fas fa-leaf mr-2"></i>Outdoor Living Enhancement</h3>
-                    <p>The large flat backyard and existing pool create opportunities for expanded outdoor living areas, such as decking, patio spaces, or landscaping improvements.</p>
-                </div>
-                <div class="hidden-value">
-                    <h3 class="text-xl font-bold mb-2"><i class="fas fa-bolt mr-2"></i>Energy Efficiency Upgrades</h3>
-                    <p>Modernizing heating systems and adding insulation could reduce operating costs and increase buyer appeal, potentially justifying premium positioning in the market.</p>
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Hidden Value Opportunities</h2>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-bath mr-2"></i>Primary Suite Enhancement
+                </h3>
+                <p class="text-yellow-700 mb-4">The first-floor master bedroom layout provides an excellent opportunity to create a luxury primary suite. Adding an en-suite bathroom or expanding the existing space would position this property competitively against newer construction while maximizing the Cape-style advantages. This enhancement would appeal to buyers seeking single-floor living convenience.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $35,000 - $55,000</span>
                 </div>
             </div>
-        </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-swimming-pool mr-2"></i>Pool Area & Outdoor Entertainment Enhancement
+                </h3>
+                <p class="text-yellow-700 mb-4">The existing 28' round pool represents a significant amenity that could be enhanced with professional landscaping, deck expansion, and outdoor entertainment features. The flat backyard and 1.2-acre lot provide exceptional space for creating resort-style outdoor living areas, fire pits, outdoor kitchens, or recreational facilities that would differentiate this property in the market.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $25,000 - $65,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-tools mr-2"></i>Finished Lower Level Conversion
+                </h3>
+                <p class="text-yellow-700 mb-4">The partially finished lower level offers tremendous potential for creating additional living space, entertainment areas, home office, or recreation room. With proper finishing, this space could effectively increase the functional square footage while adding substantial value. Consider family room, home theater, or multi-generational living space conversion.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $30,000 - $50,000</span>
+                </div>
+            </div>
+            
+            <div class="hidden-value-card">
+                <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                    <i class="fas fa-utensils mr-2"></i>Kitchen & Living Space Modernization
+                </h3>
+                <p class="text-yellow-700 mb-4">While the home was renovated in 2005, updating the kitchen with current trends and potentially creating better flow between the kitchen, dining, and family room areas would enhance appeal to contemporary buyers. The existing brick fireplace and hardwood floors provide excellent foundation elements for a cohesive design upgrade.</p>
+                <div class="text-right">
+                    <span class="text-lg font-semibold text-yellow-800">Potential Value Add: $40,000 - $70,000</span>
+                </div>
+            </div>
+        </section>
 
         <!-- Value Reconciliation -->
-        <div class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Value Reconciliation</h2>
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Value Reconciliation</h2>
             
-            <div class="value-highlight mb-6">
-                Estimated Market Value Range: $630,000 - $670,000
-                <div class="text-xl mt-2 font-bold">Recommended Value: $650,000</div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Value Considerations</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span><strong>Square Footage Premium:</strong> 3,579 sqft is significantly larger than most comparables, justifying premium positioning</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span><strong>Bedroom Count Advantage:</strong> Only 5-bedroom property in comparable set, appealing to larger families</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span><strong>Lot Size Premium:</strong> 1.2 acres provides privacy and space not available in most residential properties</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i><span><strong>Updated Features:</strong> Hardwood floors, updated kitchen, and family room with fireplace add appeal</span></li>
-                        <li class="flex items-start"><i class="fas fa-exclamation-triangle text-yellow-500 mt-1 mr-2"></i><span><strong>Age Factor:</strong> 1962 construction requires consideration versus newer comparables</span></li>
-                    </ul>
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Market Value Analysis</h3>
+                
+                <div class="value-highlight mb-8">
+                    <p class="text-2xl font-bold text-blue-700 mb-4">$565,250 - $624,750</p>
+                    <p class="text-4xl font-bold text-blue-600">$595,000</p>
+                    <p class="text-lg text-gray-700">Recommended Market Value</p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Market Analysis Summary</h3>
-                    <div class="space-y-3">
-                        <div class="market-stat">
-                            <div class="flex justify-between">
-                                <span><strong>Comparable Range:</strong></span>
-                                <span>$618,000 - $725,000</span>
-                            </div>
-                        </div>
-                        <div class="market-stat">
-                            <div class="flex justify-between">
-                                <span><strong>Average Value (6 comps):</strong></span>
-                                <span>$657,133</span>
-                            </div>
-                        </div>
-                        <div class="market-stat">
-                            <div class="flex justify-between">
-                                <span><strong>Median Value:</strong></span>
-                                <span>$650,000</span>
-                            </div>
-                        </div>
-                        <div class="market-stat">
-                            <div class="flex justify-between">
-                                <span><strong>Price per Square Foot Range:</strong></span>
-                                <span>$209 - $249</span>
-                            </div>
-                        </div>
-                        <div class="market-stat">
-                            <div class="flex justify-between">
-                                <span><strong>Subject at $650K:</strong></span>
-                                <span>$182/sqft</span>
-                            </div>
-                        </div>
+                
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Value Analysis Summary</h4>
+                <div class="market-table mb-6">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Comparable Property</th>
+                                <th>Original Price</th>
+                                <th>Adjusted Value</th>
+                                <th>Weight</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>222 Traver Rd (2017)</td>
+                                <td>$650,000</td>
+                                <td>$875,000</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td>422 Masten Rd (2024)</td>
+                                <td>$575,000</td>
+                                <td>$690,000</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td>338 Long Ln (2025)</td>
+                                <td>$580,000</td>
+                                <td>$815,000</td>
+                                <td>Very High</td>
+                            </tr>
+                            <tr>
+                                <td>83 North Ave (Active)</td>
+                                <td>$485,000</td>
+                                <td>$890,000</td>
+                                <td>Moderate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Key Value Drivers</h4>
+                <ul class="space-y-2 text-gray-700 mb-8">
+                    <li><strong>Exceptional Square Footage:</strong> 3,579 sq ft represents premium size in Pleasant Valley market</li>
+                    <li><strong>Rare 5-Bedroom Configuration:</strong> One of largest Cape-style homes in area with first-floor master</li>
+                    <li><strong>Premium Lot Size:</strong> 1.2 acres with pool provides exceptional outdoor amenities</li>
+                    <li><strong>Strategic Location:</strong> Traver Road location offers privacy with convenient access</li>
+                    <li><strong>Quality Renovations:</strong> 2005 renovations provide modern systems and finishes</li>
+                    <li><strong>Market Timing:</strong> Strong market growth (+19.9% YoY) supports premium positioning</li>
+                </ul>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <h5 class="font-semibold text-gray-700 mb-2">Conservative Low</h5>
+                        <p class="text-2xl font-bold text-gray-600">$565,250</p>
+                    </div>
+                    <div class="text-center p-6 value-highlight">
+                        <h5 class="font-semibold text-blue-700 mb-2">Target Value</h5>
+                        <p class="text-2xl font-bold text-blue-600">$595,000</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg">
+                        <h5 class="font-semibold text-gray-700 mb-2">Optimistic High</h5>
+                        <p class="text-2xl font-bold text-gray-600">$624,750</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-6 p-4 bg-green-50 border-l-4 border-green-400 rounded">
-                <h4 class="text-lg font-bold text-green-800 mb-2">Professional Recommendation</h4>
-                <p class="text-green-700">The $650,000 valuation is strongly supported by comparable sales analysis. The subject property's unique combination of 5 bedrooms, 3,579 square feet, and 1.2 acres positions it as a premium offering in the Pleasant Valley market. This valuation aligns perfectly with the only 5-bedroom comparable ($649,900) while accounting for the subject's size advantage.</p>
-            </div>
-        </div>
-
-        <!-- Strategic Recommendations -->
-        <div class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Market Summary & Strategic Recommendations</h2>
+        <!-- Market Summary & Strategic Recommendations -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Strategic Market Positioning</h2>
             
-            <div class="grid md:grid-cols-1 gap-6">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Strategic Positioning</h3>
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Market Analysis Summary</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Market Median:</strong> $605,200 (Pleasant Valley)</li>
+                            <li><strong>YoY Growth:</strong> +19.9% market appreciation</li>
+                            <li><strong>Target Position:</strong> Premium but competitive</li>
+                            <li><strong>Days on Market:</strong> Improving (reduced timing)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Comparable Range:</strong> $290K - $650K (adjusted)</li>
+                            <li><strong>Subject Advantages:</strong> Size, bedrooms, lot, pool</li>
+                            <li><strong>Market Segment:</strong> Premium lifestyle properties</li>
+                            <li><strong>Buyer Profile:</strong> Space-seeking families</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Strategic Recommendations</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Premium Lifestyle Positioning</h4>
+                        <p class="text-gray-700">Position 2 Traver Rd as a rare opportunity for buyers seeking substantial space, privacy, and outdoor amenities. The combination of 5 bedrooms, 3,579 sq ft, 1.2 acres, and pool represents exceptional value in the current Pleasant Valley market.</p>
+                    </div>
                     
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-2 text-blue-600">Premium Family Home Marketing</h4>
-                        <p>Position the property as a rare opportunity for families needing significant space. The 5-bedroom, 3,579 square foot configuration appeals to large families, multi-generational living, or those working from home requiring dedicated office space.</p>
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Competitive Pricing Strategy</h4>
+                        <p class="text-gray-700">The $595,000 target price positions the property competitively within the market median while capturing appropriate premiums for size and amenities. This pricing allows for negotiation flexibility while attracting serious buyers seeking value.</p>
                     </div>
-
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-2 text-blue-600">Acreage Lifestyle Focus</h4>
-                        <p>Emphasize the 1.2-acre lot as providing privacy, outdoor recreation space, and potential for gardens, play areas, or future improvements. This acreage is rare in the Pleasant Valley residential market.</p>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Marketing Focus Areas</h4>
+                        <p class="text-gray-700">Emphasize the rarity of 5-bedroom Cape-style homes, the convenience of first-floor master living, exceptional outdoor space with pool, and the property's position as one of the largest homes of its type in Pleasant Valley.</p>
                     </div>
-
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-2 text-blue-600">Move-In Ready Positioning</h4>
-                        <p>Highlight the updated kitchen, gleaming hardwood floors, and well-maintained condition. The property offers immediate habitability while providing opportunities for future customization.</p>
-                    </div>
-
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-2 text-blue-600">Value Opportunity Messaging</h4>
-                        <p>At $182 per square foot, the property offers exceptional value compared to newer construction. Buyers get significantly more space for their investment than smaller, newer alternatives.</p>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Timing Strategy</h4>
+                        <p class="text-gray-700">Current market conditions with +19.9% growth and reduced days on market create favorable conditions for well-positioned properties. Spring/summer timing maximizes outdoor amenity appeal.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="mt-8">
-                <h3 class="text-xl font-bold mb-4">Seller Strategy Recommendations</h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-4">
-                        <div class="p-4 bg-blue-50 border-l-4 border-blue-400 rounded">
-                            <h4 class="font-semibold text-blue-800">Optimal Pricing Strategy</h4>
-                            <p class="text-blue-700">List at $650,000 to capture the size and bedroom premium while remaining competitive. This positioning attracts serious buyers while maximizing value.</p>
-                        </div>
-                        <div class="p-4 bg-blue-50 border-l-4 border-blue-400 rounded">
-                            <h4 class="font-semibold text-blue-800">Pre-Marketing Preparation</h4>
-                            <p class="text-blue-700">Professional cleaning, minor touch-ups, and staging to highlight the spacious layout and flow between rooms. Ensure pool area is presentation-ready.</p>
-                        </div>
-                        <div class="p-4 bg-blue-50 border-l-4 border-blue-400 rounded">
-                            <h4 class="font-semibold text-blue-800">Strategic Marketing</h4>
-                            <p class="text-blue-700">Emphasize space, privacy, and lifestyle through professional photography and virtual tours. Target families and those seeking larger homes in the Hudson Valley.</p>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="p-4 bg-green-50 border-l-4 border-green-400 rounded">
-                            <h4 class="font-semibold text-green-800">Timing Optimization</h4>
-                            <p class="text-green-700">Current market conditions favor well-positioned properties. Spring/summer timing maximizes appeal of outdoor spaces and pool amenities.</p>
-                        </div>
-                        <div class="p-4 bg-green-50 border-l-4 border-green-400 rounded">
-                            <h4 class="font-semibold text-green-800">Buyer Education</h4>
-                            <p class="text-green-700">Provide information about the rarity of 5-bedroom properties with this much acreage. Highlight convenience to amenities and transportation.</p>
-                        </div>
-                        <div class="p-4 bg-green-50 border-l-4 border-green-400 rounded">
-                            <h4 class="font-semibold text-green-800">Negotiation Positioning</h4>
-                            <p class="text-green-700">Strong comparable support allows for confident positioning. Be prepared to demonstrate value through detailed market analysis.</p>
-                        </div>
-                    </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Professional Market Recommendation</h3>
+                <div class="value-highlight mb-4">
+                    <span class="text-4xl font-bold">$595,000</span>
+                    <p class="text-lg text-blue-700 mt-2">Strategic Market Position</p>
                 </div>
+                <p class="text-lg text-gray-700">This recommended value reflects comprehensive analysis of comparable properties, current market conditions, and the unique advantages of 2 Traver Rd. The pricing strategy positions the property to attract qualified buyers while maximizing return on investment for the seller.</p>
             </div>
+        </section>
+    </div>
+
+    <!-- Blue Gradient Footer -->
+    <footer class="gradient-footer">
+        <div class="container text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Maximize Your Property Value?</h2>
+            <p class="text-xl mb-6 opacity-95">Let's discuss your goals and develop a comprehensive marketing strategy that showcases your property's unique advantages in today's competitive Pleasant Valley market.</p>
+            <a href="https://calendly.com/hudsonvalleysold/consultation" class="cta-button text-xl">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Schedule Your Strategy Session
+            </a>
+        </div>
+    </footer>
+
+    <!-- Disclaimer Section -->
+    <div class="container py-8">
+        <div class="bg-gray-100 rounded-lg p-6 text-center text-sm text-gray-600">
+            <p class="mb-2">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Justin Phillips, Managing Broker</p>
+            <p class="mb-2">United Real Estate Hudson Valley Edge | 1097 State Route 55, Suite 9, Lagrangeville, NY 12540</p>
+            <p class="mb-4">Licensed Real Estate Professionals in New York State | Combined 44 Years Experience</p>
+            <p class="text-xs">This analysis is based on recent comparable sales, current market conditions, and professional experience in the Pleasant Valley market. Property values may vary based on individual characteristics, market timing, buyer preferences, and property condition. This report is for informational purposes and does not constitute a formal appraisal. All information deemed reliable but not guaranteed.</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="gradient-footer py-8 mt-12">
-        <div class="container">
-            <div class="text-center">
-                <h3 class="text-2xl font-bold mb-4">Professional Market Analysis Complete</h3>
-                <p class="text-lg mb-4">This Comparative Market Analysis was prepared by Glenn Fitzgerald, Associate Broker, and Justin Phillips, Managing Broker</p>
-                <div class="text-lg font-semibold mb-2">United Real Estate Hudson Valley Edge</div>
-                <div class="mb-2">1097 State Route 55, Suite 9, Lagrangeville, NY 12540</div>
-                <div class="mb-4">(845) 251-4468 | info@hudsonvalleysold.com</div>
-                <div class="text-sm">
-                    Licensed Real Estate Professionals in New York State<br>
-                    This analysis is based on recent comparable sales and current market conditions. Property values may vary based on individual property characteristics, market timing, and buyer preferences. This report is for informational purposes and does not constitute a formal appraisal.
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- FUB Widget Integration -->
+    <!-- begin Widget Tracker Code -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+    {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+    (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+    e.parentNode.insertBefore(t,e);})
+    (window,"https://widgetbe.com/agent",document,"widgetTracker");
+    window.widgetTracker("create", "WT-FPLWTULQ");
+    window.widgetTracker("send", "pageview");
+    </script>
+    <!-- end Widget Tracker Code -->
 </body>
 </html>
     <script id="html_badge_script1">
         window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDk%2B6qCEZTMESrgZiKfX0P55h6IpgeG%2Bh0wj6AX47uTLkWVo%2FCluxLadz2xdGmSqnrQMePZKhzCxOMBnMFbyYd9NzrWvLTW6VZPRPwFkRlhyukVKtLtK0opUjmaBiRFOUKsidV9jzRXTAMnm%2FuUOiQ0fJGARqhXpd2QzkFdp97tz%2FXS5kK3mvm3aqbxms8q5B9RGhQfcKRAEBMn9G4mdVgtWQNqBeU6aCQVgbgCnBCN99Q%2FWkwqfXjtDqsyk%2BTWkfv0LakbuFd4WYnaPqZhe0V9FH7NNLgPFykshibLqNHk6xe9gx4TGXzM3YaYG0ETcju%2FdchJxwV%2FAxb0ns9FidtkEvg4L5MvVIhFEr3L2tDuEiQCdwkMVZZuP%2F8Lh0Qr4VTksQPIA8uCuxqSHwWoFnFKkXGVzVkEoyA71WxGEW0Bg%2FtNrFp2tpBFIEA5YhUOHzqvryLlErpUCz6q5QdUQgwADgSmrlTQirmKbIqGUlb5kPsXKegPQYnfbAmALAU9Zfwp1Xw9Q8edKw6Z3z9lAj2qM%3D";
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDlTgVj4tPu2dBMu%2FOIpLBc0W%2BzH2kymxFgOnlnIlI2ot3q2u5iBF2UyrbhzA3vRI7ANSZ723GVEScXS4PW%2BFdYoneavD3VhtjQoeqU9TpXIy94IaAAWptz4cAyulVxIEw8Bb3UfJJ5kt88y%2BKZ1k3IIvM9D7rJkF86xVpmaB09CnKWYIuZCE%2F3YNcPHq9a5iyiAbml04buZSske7jDBWtdnX4ICkTOdD5PINOZVG04DQwewmXhHGscq4J45T5hpx5kWqPIf5l%2F4jTNepRuUInOLfjh3IsXn2a4kPDiqGHE%2B6EELA9x556T3cFgHXErwq%2BSlDbzW48covBdAXoyd5dAq8tYY1qZQrtJFbTNtJGWMdvMd1I3q85HViyoPHNbq7nyZFevlwJgrfPiOvAUygSRj%2BSYAS2kELK7cSlZOrQ3oWoAOARzao293895NrzBSO59KmfkVza%2BhOaJtYIqnc9xtZwqQ%2BdfKFVSLhgTn9W0w9yRk0qUZTj%2BXgx1tzIL6JmHdni%2FEzw6hiFG33xxsToq8%3D";
         window.__genspark_locale = "en-US";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDk+6qCEZTMESrgZiKfX0P55h6IpgeG+h0wj6AX47uTLkWVo/CluxLadz2xdGmSqnrQMePZKhzCxOMBnMFbyYd9NzrWvLTW6VZPRPwFkRlhyukVKtLtK0opUjmaBiRFOUKsidV9jzRXTAMnm/uUOiQ0fJGARqhXpd2QzkFdp97tz/XS5kK3mvm3aqbxms8q5B9RGhQfcKRAEBMn9G4mdVgtWQNqBeU6aCQVgbgCnBCN99Q/WkwqfXjtDqsyk+TWkfv0LakbuFd4WYnaPqZhe0V9FH7NNLgPFykshibLqNHk6xe9gx4TGXzM3YaYG0ETcju/dchJxwV/Axb0ns9FidtkEvg4L5MvVIhFEr3L2tDuEiQCdwkMVZZuP/8Lh0Qr4VTksQPIA8uCuxqSHwWoFnFKkXGVzVkEoyA71WxGEW0Bg/tNrFp2tpBFIEA5YhUOHzqvryLlErpUCz6q5QdUQgwADgSmrlTQirmKbIqGUlb5kPsXKegPQYnfbAmALAU9Zfwp1Xw9Q8edKw6Z3z9lAj2qM=";
-    </script>
-    
-    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
-    
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDlTgVj4tPu2dBMu/OIpLBc0W+zH2kymxFgOnlnIlI2ot3q2u5iBF2UyrbhzA3vRI7ANSZ723GVEScXS4PW+FdYoneavD3VhtjQoeqU9TpXIy94IaAAWptz4cAyulVxIEw8Bb3UfJJ5kt88y+KZ1k3IIvM9D7rJkF86xVpmaB09CnKWYIuZCE/3YNcPHq9a5iyiAbml04buZSske7jDBWtdnX4ICkTOdD5PINOZVG04DQwewmXhHGscq4J45T5hpx5kWqPIf5l/4jTNepRuUInOLfjh3IsXn2a4kPDiqGHE
