@@ -1,0 +1,13 @@
+{
+  "property_address": "123 Test Street, Validation City, VC 12345",
+  "client_info": {
+    "name": "WILLOW v41 Validation Client",
+    "email": "validation@willow.test"
+  },
+  "market_analysis": {
+    "estimated_value": 450000,
+    "market_trend": "stable",
+    "validation_timestamp": "2025-09-07T21:03:22.235338",
+    "generated_by": "WILLOW_v41_VALIDATION_TEST"
+  }
+}
