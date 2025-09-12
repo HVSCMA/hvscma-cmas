@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WILLOW-HVSCMA Coordination Schema",
+  "type": "object",
+  "version": "1.0.0",
+  "description": "Data schema for cross-system coordination between WILLOW v41.5 and HVSCMA-CMAS",
+  "definitions": {
+    "sync_request": {
+      "type": "object",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_system": {
+          "type": "string",
+          "enum": [
+            "willow",
+            "hvscma_cmas"
+          ]
+        },
+        "target_system": {
+          "type": "string",
+          "enum": [
+            "willow",
+            "hvscma_cmas"
+          ]
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "data_sync",
+            "command_sync",
+            "status_update",
+            "health_check"
+          ]
+        },
+        "payload": {
+          "type": "object"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ],
+          "default": "medium"
+        }
+      },
+      "required": [
+        "request_id",
+        "timestamp",
+        "source_system",
+        "target_system",
+        "operation"
+      ]
+    },
+    "sync_response": {
+      "type": "object",
+      "properties": {
+        "request_id": {
+          "type": "string"
+        },
+        "response_id": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "success",
+            "error",
+            "partial",
+            "pending"
+          ]
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        },
+        "execution_time_ms": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "request_id",
+        "response_id",
+        "timestamp",
+        "status"
+      ]
+    },
+    "system_status": {
+      "type": "object",
+      "properties": {
+        "system_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "online",
+            "offline",
+            "degraded",
+            "maintenance"
+          ]
+        },
+        "last_heartbeat": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "version": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "cpu_usage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "memory_usage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "active_connections": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "requests_per_minute": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      },
+      "required": [
+        "system_id",
+        "status",
+        "last_heartbeat",
+        "version"
+      ]
+    }
+  },
+  "properties": {
+    "message_type": {
+      "type": "string",
+      "enum": [
+        "sync_request",
+        "sync_response",
+        "system_status"
+      ]
+    },
+    "data": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/sync_request"
+        },
+        {
+          "$ref": "#/definitions/sync_response"
+        },
+        {
+          "$ref": "#/definitions/system_status"
+        }
+      ]
+    }
+  },
+  "required": [
+    "message_type",
+    "data"
+  ]
+}
