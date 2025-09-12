@@ -1,0 +1,40 @@
+{
+  "system": {
+    "name": "WILLOW_SYNC",
+    "version": "41.5",
+    "deployment_date": "2025-09-12 19:52:55 UTC",
+    "repository": "HVSCMA/hvscma-cmas",
+    "sync_path": "/sync/"
+  },
+  "coordination": {
+    "sync_intervals": {
+      "real_time": "immediate",
+      "batch_processing": "hourly",
+      "report_generation": "daily",
+      "system_validation": "continuous"
+    },
+    "priority_levels": {
+      "critical": [
+        "system_alerts",
+        "validation_failures"
+      ],
+      "high": [
+        "data_sync",
+        "report_requests"
+      ],
+      "medium": [
+        "template_updates",
+        "monitoring"
+      ],
+      "low": [
+        "maintenance",
+        "cleanup"
+      ]
+    }
+  },
+  "endpoints": {
+    "github_api": "https://api.github.com",
+    "sync_webhook": "https://hooks.github.com/willow-sync",
+    "monitoring_dashboard": "https://monitor.hvscma.com/willow"
+  }
+}
