@@ -1,0 +1,102 @@
+{
+  "timestamp": "2025-09-12T19:57:49.168331",
+  "validation_type": "deployment_validation",
+  "results": {
+    "file_validation": {
+      "sync/willow_v415_master_prompt.md": {
+        "exists": true,
+        "size_bytes": 5237,
+        "sha": "7ce40fc4b84c59ec3730dd5d04036ccd4182f3eb",
+        "status": "\u2713"
+      },
+      "sync/coordination/willow_config.json": {
+        "exists": true,
+        "size_bytes": 904,
+        "sha": "cf300e161426799fb6c735985250fda1f7cb244b",
+        "status": "\u2713"
+      },
+      "sync/schemas/validation_schemas.json": {
+        "exists": true,
+        "size_bytes": 2208,
+        "sha": "9a362f35a08adf40296cf5cd5d2328ebeed297a2",
+        "status": "\u2713"
+      },
+      "sync/automation/willow_sync_controller.py": {
+        "exists": true,
+        "size_bytes": 4015,
+        "sha": "8d6a07a4b7666aaf37c4086b0934d2ab5b4375e3",
+        "status": "\u2713"
+      },
+      "sync/automation/deploy.sh": {
+        "exists": true,
+        "size_bytes": 1717,
+        "sha": "10efc415b3b7e57346007334240c8d9d4bde479e",
+        "status": "\u2713"
+      },
+      "sync/monitoring/willow_monitor.py": {
+        "exists": true,
+        "size_bytes": 8041,
+        "sha": "d9eb0ac3b2f80ed9376ef9c13d00c303f3758493",
+        "status": "\u2713"
+      },
+      "sync/templates/gmail_templates.json": {
+        "exists": true,
+        "size_bytes": 3357,
+        "sha": "cd1e2b015c520caafbddfccf52fe16d6303e1880",
+        "status": "\u2713"
+      },
+      "sync/validation/qa_protocols.json": {
+        "exists": true,
+        "size_bytes": 6072,
+        "sha": "43f88fdc0521aa23f2cc570c6e306d52a7bb32d7",
+        "status": "\u2713"
+      },
+      "sync/production_integration_package.json": {
+        "exists": true,
+        "size_bytes": 1954,
+        "sha": "2d9c17116d83b726335a5b676e495f529cf5a75e",
+        "status": "\u2713"
+      }
+    },
+    "directory_validation": {
+      "sync/coordination": {
+        "exists": true,
+        "file_count": 9,
+        "status": "\u2713"
+      },
+      "sync/schemas": {
+        "exists": true,
+        "file_count": 2,
+        "status": "\u2713"
+      },
+      "sync/automation": {
+        "exists": true,
+        "file_count": 6,
+        "status": "\u2713"
+      },
+      "sync/monitoring": {
+        "exists": true,
+        "file_count": 5,
+        "status": "\u2713"
+      },
+      "sync/templates": {
+        "exists": true,
+        "file_count": 11,
+        "status": "\u2713"
+      },
+      "sync/validation": {
+        "exists": true,
+        "file_count": 3,
+        "status": "\u2713"
+      }
+    },
+    "summary": {
+      "overall_status": "SUCCESS",
+      "file_success_rate": 100.0,
+      "directory_success_rate": 100.0,
+      "total_files_deployed": 9,
+      "total_directories_created": 6,
+      "deployment_complete": true
+    }
+  }
+}
