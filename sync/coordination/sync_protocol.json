@@ -1,0 +1,64 @@
+{
+  "protocol_version": "1.0.0",
+  "deployment_date": "2025-09-12 18:40:32 UTC",
+  "systems": {
+    "willow": {
+      "version": "v41.5",
+      "endpoint": "https://willow.hvscma.org/api/sync",
+      "authentication": "bearer_token",
+      "capabilities": [
+        "real_time_sync",
+        "batch_operations",
+        "error_recovery",
+        "monitoring_hooks"
+      ]
+    },
+    "hvscma_cmas": {
+      "repository": "HVSCMA/hvscma-cmas",
+      "branch": "main",
+      "sync_path": "/sync/",
+      "capabilities": [
+        "github_api_integration",
+        "automated_deployment",
+        "version_control",
+        "collaborative_workflows"
+      ]
+    }
+  },
+  "sync_operations": {
+    "data_sync": {
+      "frequency": "real_time",
+      "conflict_resolution": "last_writer_wins",
+      "validation": "schema_based",
+      "retry_policy": {
+        "max_attempts": 3,
+        "backoff": "exponential",
+        "timeout": 30
+      }
+    },
+    "command_sync": {
+      "mode": "immediate",
+      "verification": "checksum_based",
+      "rollback": "automatic_on_error"
+    }
+  },
+  "coordination_rules": {
+    "cross_system_commands": [
+      "SYNC_REQUEST",
+      "STATUS_UPDATE",
+      "ERROR_REPORT",
+      "HEALTH_CHECK",
+      "DEPLOYMENT_TRIGGER"
+    ],
+    "notification_channels": [
+      "gmail_integration",
+      "github_webhooks",
+      "real_time_monitoring"
+    ],
+    "security": {
+      "authentication_required": true,
+      "encryption": "TLS_1.3",
+      "audit_logging": true
+    }
+  }
+}
