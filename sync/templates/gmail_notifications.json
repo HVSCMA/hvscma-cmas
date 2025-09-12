@@ -1,0 +1,115 @@
+{
+  "notification_system": "gmail_coordination",
+  "version": "1.0.0",
+  "deployment_date": "2025-09-12 18:44:26 UTC",
+  "description": "Gmail-based coordination and notification system for WILLOW sync operations",
+  "configuration": {
+    "smtp_settings": {
+      "server": "smtp.gmail.com",
+      "port": 587,
+      "security": "STARTTLS",
+      "authentication": "oauth2_required"
+    },
+    "imap_settings": {
+      "server": "imap.gmail.com",
+      "port": 993,
+      "security": "SSL_TLS",
+      "authentication": "oauth2_required"
+    },
+    "notification_frequency": {
+      "status_updates": "hourly",
+      "error_alerts": "immediate",
+      "health_reports": "daily",
+      "sync_confirmations": "immediate"
+    }
+  },
+  "email_templates": {
+    "sync_success": {
+      "subject": "[WILLOW-SYNC] Synchronization Completed Successfully - {timestamp}",
+      "body_template": "\nWILLOW Sync System - Operation Completed Successfully\n\nSynchronization Details:\n- Operation ID: {operation_id}\n- Source System: {source_system}\n- Target System: {target_system}\n- Sync Type: {sync_type}\n- Records Processed: {records_count}\n- Execution Time: {execution_time_ms}ms\n- Completion Time: {timestamp}\n\nStatus: SUCCESS \u2705\nData Integrity: VERIFIED\nRollback Required: NO\n\nNext Sync: {next_sync_time}\n\n---\nWILLOW Sync System v41.5\nAutomated notification - do not reply\nRepository: HVSCMA/hvscma-cmas/sync/\n            ",
+      "priority": "normal",
+      "recipients": [
+        "system_admin",
+        "sync_monitors"
+      ]
+    },
+    "sync_error": {
+      "subject": "[WILLOW-SYNC] \u274c CRITICAL - Synchronization Failed - {timestamp}",
+      "body_template": "\n\ud83d\udea8 WILLOW Sync System - SYNCHRONIZATION FAILURE \ud83d\udea8\n\nERROR DETAILS:\n- Operation ID: {operation_id}\n- Source System: {source_system}\n- Target System: {target_system}\n- Error Type: {error_type}\n- Error Message: {error_message}\n- Failure Time: {timestamp}\n- Retry Attempt: {retry_count} of {max_retries}\n\nIMPACT ASSESSMENT:\n- Data Loss Risk: {data_loss_risk}\n- System Availability: {system_availability}\n- Recovery Action: {recovery_action}\n\nIMMEDIATE ACTIONS REQUIRED:\n1. Review error logs in monitoring dashboard\n2. Verify system connectivity and authentication\n3. Check for data conflicts or schema changes\n4. Execute manual recovery if automated recovery fails\n\nRecovery Status: {recovery_status}\nNext Recovery Attempt: {next_retry_time}\n\n---\nCRITICAL ALERT - Immediate attention required\nWILLOW Sync System v41.5\nRepository: HVSCMA/hvscma-cmas/sync/\n            ",
+      "priority": "urgent",
+      "recipients": [
+        "system_admin",
+        "on_call_engineer",
+        "sync_monitors"
+      ]
+    },
+    "system_status": {
+      "subject": "[WILLOW-SYNC] System Health Report - {date}",
+      "body_template": "\nWILLOW Sync System - Daily Health Report\n\nSYSTEM OVERVIEW:\n- Report Date: {date}\n- Overall Status: {system_status}\n- Health Score: {health_score}/100\n- Uptime: {uptime_hours} hours\n\nPERFORMANCE METRICS (24 hours):\n- Total Sync Operations: {total_syncs}\n- Successful Operations: {successful_syncs} ({success_rate}%)\n- Failed Operations: {failed_syncs}\n- Average Response Time: {avg_response_time}ms\n- Peak CPU Usage: {peak_cpu}%\n- Peak Memory Usage: {peak_memory}%\n\nSYNC ACTIVITY:\n- Data Syncs: {data_sync_count}\n- Command Syncs: {command_sync_count}\n- Status Updates: {status_update_count}\n- Health Checks: {health_check_count}\n\nISSUES & ALERTS:\n{issues_summary}\n\nRECOMMENDATIONS:\n{recommendations}\n\n---\nAutomated Health Report\nWILLOW Sync System v41.5\nRepository: HVSCMA/hvscma-cmas/sync/\n            ",
+      "priority": "normal",
+      "recipients": [
+        "system_admin",
+        "sync_monitors"
+      ]
+    },
+    "deployment_notification": {
+      "subject": "[WILLOW-SYNC] \ud83d\ude80 System Deployment Completed - {deployment_version}",
+      "body_template": "\n\ud83d\ude80 WILLOW Sync System - Deployment Notification\n\nDEPLOYMENT DETAILS:\n- Version: {deployment_version}\n- Deployment Date: {deployment_date}\n- Environment: {environment}\n- Components Updated: {components_list}\n- Deployment Status: {deployment_status}\n\nVALIDATION RESULTS:\n- Connectivity Tests: {connectivity_status}\n- Schema Validation: {schema_status}\n- Integration Tests: {integration_status}\n- Performance Tests: {performance_status}\n\nPOST-DEPLOYMENT STATUS:\n- System Health: {system_health}\n- Sync Operations: {sync_status}\n- Monitoring: {monitoring_status}\n- Error Recovery: {recovery_status}\n\nNEXT STEPS:\n1. Monitor system performance for first 24 hours\n2. Validate sync operations in production environment\n3. Review monitoring alerts and performance metrics\n4. Confirm cross-system coordination functionality\n\n---\nDeployment Complete - System Ready for Production\nWILLOW Sync System v41.5\nRepository: HVSCMA/hvscma-cmas/sync/\n            ",
+      "priority": "high",
+      "recipients": [
+        "system_admin",
+        "deployment_team",
+        "sync_monitors"
+      ]
+    },
+    "emergency_halt": {
+      "subject": "[WILLOW-SYNC] \ud83d\udea8 EMERGENCY SYSTEM HALT - Immediate Action Required",
+      "body_template": "\n\ud83d\udea8\ud83d\udea8\ud83d\udea8 EMERGENCY SYSTEM HALT ACTIVATED \ud83d\udea8\ud83d\udea8\ud83d\udea8\n\nCRITICAL SYSTEM EVENT:\n- Halt Reason: {halt_reason}\n- Triggered By: {triggered_by}\n- Halt Time: {halt_timestamp}\n- System State: HALTED\n\nCURRENT STATUS:\n- All sync operations: STOPPED\n- Data integrity: {data_integrity_status}\n- System state: PRESERVED\n- Recovery mode: {recovery_mode}\n\nIMMEDIATE ACTIONS REQUIRED:\n1. Do NOT attempt to restart sync operations\n2. Investigate root cause of emergency halt\n3. Verify system integrity and data consistency\n4. Contact system administrator immediately\n5. Review system logs and monitoring data\n\nCONTACT INFORMATION:\n- Primary: System Administrator\n- Backup: On-call Engineer\n- Emergency: {emergency_contact}\n\nSystem will remain in halt state until manual intervention.\n\n---\nEMERGENCY ALERT - CRITICAL ATTENTION REQUIRED\nWILLOW Sync System v41.5\nRepository: HVSCMA/hvscma-cmas/sync/\n            ",
+      "priority": "critical",
+      "recipients": [
+        "system_admin",
+        "on_call_engineer",
+        "emergency_contacts"
+      ]
+    }
+  },
+  "recipient_groups": {
+    "system_admin": [
+      "admin@hvscma.org"
+    ],
+    "sync_monitors": [
+      "sync-team@hvscma.org",
+      "monitoring@hvscma.org"
+    ],
+    "deployment_team": [
+      "deploy@hvscma.org"
+    ],
+    "on_call_engineer": [
+      "oncall@hvscma.org"
+    ],
+    "emergency_contacts": [
+      "emergency@hvscma.org",
+      "admin@hvscma.org"
+    ]
+  },
+  "automation_rules": {
+    "retry_failed_notifications": true,
+    "max_retry_attempts": 3,
+    "retry_delay_minutes": 5,
+    "batch_non_urgent": true,
+    "batch_window_minutes": 30,
+    "rate_limiting": {
+      "max_emails_per_hour": 50,
+      "max_urgent_emails_per_hour": 20
+    }
+  },
+  "security": {
+    "oauth2_scopes": [
+      "https://www.googleapis.com/auth/gmail.send",
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ],
+    "encryption": "TLS_1.3",
+    "audit_logging": true,
+    "content_sanitization": true
+  }
+}
