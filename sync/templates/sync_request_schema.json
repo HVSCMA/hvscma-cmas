@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HVSCMA Sync Request Schema",
+  "type": "object",
+  "properties": {
+    "sync_id": {
+      "type": "string",
+      "description": "Unique identifier for sync request",
+      "pattern": "^sync_[a-zA-Z0-9]{8,}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Request timestamp in ISO 8601 format"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "github",
+            "local",
+            "external"
+          ],
+          "description": "Source type for sync operation"
+        },
+        "repository": {
+          "type": "string",
+          "description": "Source repository identifier"
+        },
+        "branch": {
+          "type": "string",
+          "description": "Source branch name",
+          "default": "main"
+        },
+        "path": {
+          "type": "string",
+          "description": "Source path for sync operation"
+        }
+      },
+      "required": [
+        "type",
+        "repository"
+      ]
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "github",
+            "netlify",
+            "local"
+          ],
+          "description": "Target deployment type"
+        },
+        "repository": {
+          "type": "string",
+          "description": "Target repository identifier"
+        },
+        "branch": {
+          "type": "string",
+          "description": "Target branch name",
+          "default": "main"
+        },
+        "path": {
+          "type": "string",
+          "description": "Target path for deployment"
+        }
+      },
+      "required": [
+        "type",
+        "repository"
+      ]
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "create",
+              "update",
+              "delete",
+              "sync"
+            ],
+            "description": "Operation to perform"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Files affected by operation"
+          },
+          "options": {
+            "type": "object",
+            "description": "Additional operation options"
+          }
+        },
+        "required": [
+          "action",
+          "files"
+        ]
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium",
+      "description": "Sync request priority"
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether validation is required"
+        },
+        "schemas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Validation schemas to apply"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "requestor": {
+          "type": "string",
+          "description": "User or system making request"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of sync"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tags for categorization"
+        }
+      }
+    }
+  },
+  "required": [
+    "sync_id",
+    "timestamp",
+    "source",
+    "target",
+    "operations"
+  ],
+  "additionalProperties": false
+}
