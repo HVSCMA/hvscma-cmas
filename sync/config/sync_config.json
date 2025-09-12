@@ -1,0 +1,49 @@
+{
+  "system": {
+    "name": "WILLOW Sync System",
+    "version": "1.0",
+    "deployment_date": "2025-09-12T19:26:46.482051",
+    "environment": "production"
+  },
+  "email": {
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "username": "",
+    "password": "",
+    "templates_path": "templates/"
+  },
+  "sync_intervals": {
+    "agent_heartbeat": 30,
+    "data_sync": 300,
+    "health_check": 60,
+    "report_generation": 86400
+  },
+  "monitoring": {
+    "log_level": "INFO",
+    "log_path": "logs/",
+    "max_log_size": "10MB",
+    "retention_days": 30,
+    "enable_metrics": true
+  },
+  "integrations": {
+    "github_enabled": true,
+    "github_repo": "HVSCMA/hvscma-cmas",
+    "email_enabled": true,
+    "webhook_enabled": false,
+    "webhook_url": ""
+  },
+  "security": {
+    "require_agent_authentication": true,
+    "max_concurrent_agents": 50,
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 100
+    }
+  },
+  "performance": {
+    "max_message_size": 1048576,
+    "timeout_seconds": 30,
+    "retry_attempts": 3,
+    "batch_processing": true
+  }
+}
