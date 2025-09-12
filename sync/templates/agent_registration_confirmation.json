@@ -1,0 +1,13 @@
+{
+  "template_id": "agent_registration_confirmation",
+  "subject_template": "WILLOW Sync: Agent {agent_id} Registration Confirmed",
+  "body_template": "\nDear Administrator,\n\nAgent registration has been successfully completed:\n\nAgent Details:\n- Agent ID: {agent_id}\n- Agent Type: {agent_type}\n- Registration Time: {registration_time}\n- Capabilities: {capabilities}\n- Status: Active\n\nThe agent is now participating in the WILLOW sync coordination system.\n\nBest regards,\nWILLOW Sync System\n        ",
+  "variables": [
+    "agent_id",
+    "agent_type",
+    "registration_time",
+    "capabilities"
+  ],
+  "recipient_type": "admin",
+  "priority": "normal"
+}
