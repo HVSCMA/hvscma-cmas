@@ -1,0 +1,88 @@
+{
+  "api_configuration": {
+    "base_url": "https://api.github.com",
+    "repository": "HVSCMA/hvscma-cmas",
+    "sync_path": "sync",
+    "authentication": {
+      "method": "personal_access_token",
+      "header": "Authorization: token {GITHUB_TOKEN}",
+      "permissions_required": [
+        "repo",
+        "contents:write",
+        "metadata:read"
+      ]
+    }
+  },
+  "file_operations": {
+    "upload_sync_request": {
+      "description": "Upload sync request JSON to GitHub /sync/requests/",
+      "endpoint": "PUT /repos/{owner}/{repo}/contents/{path}",
+      "function_name": "upload_sync_request",
+      "parameters": {
+        "sync_request": "Dict containing sync request data",
+        "github_token": "Personal access token with repo permissions"
+      },
+      "implementation": "\ndef upload_sync_request(sync_request: Dict, github_token: str) -> Dict:\n    import json\n    import base64\n    import requests\n\n    # Generate file path\n    sync_id = sync_request['sync_id']\n    file_path = f'sync/requests/{sync_id}.json'\n\n    # Prepare content\n    content = json.dumps(sync_request, indent=2)\n    encoded_content = base64.b64encode(content.encode()).decode()\n\n    # GitHub API request\n    url = f'https://api.github.com/repos/HVSCMA/hvscma-cmas/contents/{file_path}'\n    headers = {\n        'Authorization': f'token {github_token}',\n        'Accept': 'application/vnd.github.v3+json'\n    }\n\n    payload = {\n        'message': f'\ud83d\udd04 New sync request: {sync_request.get(\"property_address\", \"Unknown\")}',\n        'content': encoded_content,\n        'branch': 'main'\n    }\n\n    response = requests.put(url, headers=headers, json=payload)\n\n    return {\n        'success': response.status_code == 201,\n        'status_code': response.status_code,\n        'file_path': file_path,\n        'download_url': response.json().get('content', {}).get('download_url') if response.status_code == 201 else None,\n        'error': response.text if response.status_code != 201 else None\n    }\n",
+      "error_handling": [
+        "Rate limit exceeded (403) \u2192 Exponential backoff retry",
+        "File already exists (422) \u2192 Generate new UUID and retry",
+        "Authentication failed (401) \u2192 Log error and notify user",
+        "Network timeout \u2192 Retry up to 3 times"
+      ]
+    },
+    "download_sync_request": {
+      "description": "Download sync request from GitHub /sync/requests/",
+      "endpoint": "GET /repos/{owner}/{repo}/contents/{path}",
+      "function_name": "download_sync_request",
+      "parameters": {
+        "sync_id": "UUID of sync request to download",
+        "github_token": "Personal access token"
+      },
+      "implementation": "\ndef download_sync_request(sync_id: str, github_token: str) -> Dict:\n    import json\n    import base64\n    import requests\n\n    # Build file path\n    file_path = f'sync/requests/{sync_id}.json'\n\n    # GitHub API request\n    url = f'https://api.github.com/repos/HVSCMA/hvscma-cmas/contents/{file_path}'\n    headers = {\n        'Authorization': f'token {github_token}',\n        'Accept': 'application/vnd.github.v3+json'\n    }\n\n    response = requests.get(url, headers=headers)\n\n    if response.status_code == 200:\n        file_data = response.json()\n        content = base64.b64decode(file_data['content']).decode()\n        sync_request = json.loads(content)\n\n        return {\n            'success': True,\n            'sync_request': sync_request,\n            'file_sha': file_data['sha'],  # Needed for updates/moves\n            'file_path': file_path\n        }\n    else:\n        return {\n            'success': False,\n            'status_code': response.status_code,\n            'error': response.text\n        }\n",
+      "error_handling": [
+        "File not found (404) \u2192 Return structured not found response",
+        "Authentication failed (401) \u2192 Log and retry with fresh token",
+        "Malformed JSON \u2192 Log parsing error and move to /failed/"
+      ]
+    },
+    "move_sync_file": {
+      "description": "Move sync file between directories (requests \u2192 processing \u2192 completed)",
+      "function_name": "move_sync_file",
+      "parameters": {
+        "sync_id": "UUID of sync request",
+        "from_directory": "Source directory (requests|processing|failed)",
+        "to_directory": "Target directory (processing|completed|failed)",
+        "github_token": "Personal access token",
+        "update_content": "Optional updated sync request data"
+      },
+      "implementation": "\ndef move_sync_file(sync_id: str, from_dir: str, to_dir: str, github_token: str, update_content: Dict = None) -> Dict:\n    import json\n    import base64\n    import requests\n\n    # File paths\n    old_path = f'sync/{from_dir}/{sync_id}.json'\n    new_path = f'sync/{to_dir}/{sync_id}.json'\n\n    headers = {\n        'Authorization': f'token {github_token}',\n        'Accept': 'application/vnd.github.v3+json'\n    }\n\n    # Get existing file\n    get_url = f'https://api.github.com/repos/HVSCMA/hvscma-cmas/contents/{old_path}'\n    get_response = requests.get(get_url, headers=headers)\n\n    if get_response.status_code != 200:\n        return {'success': False, 'error': 'Source file not found'}\n\n    file_data = get_response.json()\n\n    # Prepare content (use updated content if provided)\n    if update_content:\n        content = json.dumps(update_content, indent=2)\n    else:\n        content = base64.b64decode(file_data['content']).decode()\n\n    encoded_content = base64.b64encode(content.encode()).decode()\n\n    # Create new file\n    put_url = f'https://api.github.com/repos/HVSCMA/hvscma-cmas/contents/{new_path}'\n    put_payload = {\n        'message': f'\ud83d\udd04 Move sync {sync_id}: {from_dir} \u2192 {to_dir}',\n        'content': encoded_content,\n        'branch': 'main'\n    }\n\n    put_response = requests.put(put_url, headers=headers, json=put_payload)\n\n    if put_response.status_code == 201:\n        # Delete old file\n        delete_payload = {\n            'message': f'\ud83d\uddd1\ufe0f Remove old sync file: {old_path}',\n            'sha': file_data['sha'],\n            'branch': 'main'\n        }\n\n        delete_response = requests.delete(get_url, headers=headers, json=delete_payload)\n\n        return {\n            'success': delete_response.status_code == 200,\n            'old_path': old_path,\n            'new_path': new_path,\n            'created': put_response.status_code == 201,\n            'deleted': delete_response.status_code == 200\n        }\n\n    return {'success': False, 'error': 'Failed to create new file'}\n",
+      "error_handling": [
+        "Concurrent modification \u2192 Retry with fresh SHA",
+        "Target file exists \u2192 Generate timestamped filename",
+        "Delete failure after create \u2192 Log warning, continue"
+      ]
+    },
+    "list_sync_files": {
+      "description": "List all files in a sync directory",
+      "function_name": "list_sync_files",
+      "parameters": {
+        "directory": "Directory to list (requests|processing|completed|failed|status)",
+        "github_token": "Personal access token"
+      },
+      "implementation": "\ndef list_sync_files(directory: str, github_token: str) -> Dict:\n    import requests\n\n    # GitHub API request\n    url = f'https://api.github.com/repos/HVSCMA/hvscma-cmas/contents/sync/{directory}'\n    headers = {\n        'Authorization': f'token {github_token}',\n        'Accept': 'application/vnd.github.v3+json'\n    }\n\n    response = requests.get(url, headers=headers)\n\n    if response.status_code == 200:\n        files = response.json()\n        sync_files = [\n            {\n                'name': f['name'],\n                'sync_id': f['name'].replace('.json', ''),\n                'size': f['size'],\n                'download_url': f['download_url'],\n                'sha': f['sha']\n            }\n            for f in files if f['name'].endswith('.json')\n        ]\n\n        return {\n            'success': True,\n            'files': sync_files,\n            'count': len(sync_files)\n        }\n    else:\n        return {\n            'success': False,\n            'status_code': response.status_code,\n            'error': response.text\n        }\n",
+      "error_handling": [
+        "Directory not found (404) \u2192 Return empty list",
+        "Large directory \u2192 Implement pagination",
+        "Rate limit \u2192 Implement exponential backoff"
+      ]
+    }
+  },
+  "monitoring_functions": {
+    "poll_new_requests": {
+      "description": "Poll for new sync requests (production WILLOW)",
+      "function_name": "poll_new_requests",
+      "implementation": "\ndef poll_new_requests(github_token: str, last_check_time: str = None) -> Dict:\n    import requests\n    from datetime import datetime\n\n    # List files in requests directory\n    result = list_sync_files('requests', github_token)\n\n    if not result['success']:\n        return result\n\n    new_requests = []\n\n    for file_info in result['files']:\n        # Download and validate each request\n        sync_id = file_info['sync_id']\n        download_result = download_sync_request(sync_id, github_token)\n\n        if download_result['success']:\n            sync_request = download_result['sync_request']\n\n            # Check if request is newer than last check\n            request_time = sync_request.get('created_at', '')\n            if not last_check_time or request_time > last_check_time:\n                new_requests.append({\n                    'sync_id': sync_id,\n                    'sync_request': sync_request,\n                    'file_sha': download_result['file_sha']\n                })\n\n    return {\n        'success': True,\n        'new_requests': new_requests,\n        'count': len(new_requests)\n    }\n",
+      "automation": "Called every 60 seconds by production WILLOW monitor"
+    }
+  }
+}
