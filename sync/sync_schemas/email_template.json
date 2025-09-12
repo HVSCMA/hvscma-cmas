@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Email Template Schema",
+  "type": "object",
+  "properties": {
+    "template_id": {
+      "type": "string"
+    },
+    "subject_template": {
+      "type": "string"
+    },
+    "body_template": {
+      "type": "string"
+    },
+    "variables": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recipient_type": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user",
+        "agent",
+        "system"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high"
+      ]
+    }
+  },
+  "required": [
+    "template_id",
+    "subject_template",
+    "body_template"
+  ]
+}
