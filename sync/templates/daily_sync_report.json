@@ -1,0 +1,22 @@
+{
+  "template_id": "daily_sync_report",
+  "subject_template": "WILLOW Daily Sync Report - {date}",
+  "body_template": "\nDaily WILLOW Sync System Report\n\nDate: {date}\nReport Period: {report_period}\n\nSystem Statistics:\n- Total Active Agents: {active_agents}\n- Sync Operations: {sync_operations}\n- Data Transferred: {data_transferred}\n- System Uptime: {uptime}\n- Success Rate: {success_rate}%\n\nAgent Activity:\n{agent_activity}\n\nPerformance Metrics:\n- Average Response Time: {avg_response_time}ms\n- Peak Concurrent Agents: {peak_agents}\n- Error Count: {error_count}\n\nSystem Health: {health_status}\n\nNext scheduled maintenance: {next_maintenance}\n\nWILLOW Sync System\n        ",
+  "variables": [
+    "date",
+    "report_period",
+    "active_agents",
+    "sync_operations",
+    "data_transferred",
+    "uptime",
+    "success_rate",
+    "agent_activity",
+    "avg_response_time",
+    "peak_agents",
+    "error_count",
+    "health_status",
+    "next_maintenance"
+  ],
+  "recipient_type": "admin",
+  "priority": "low"
+}
