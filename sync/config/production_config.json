@@ -1,0 +1,15 @@
+{
+  "environment": "production",
+  "version": "v41.5",
+  "sync_enabled": true,
+  "endpoints": {
+    "github_api": "https://api.github.com",
+    "fub_api": "https://api.followupboss.com/v1",
+    "hvscma_base": "https://hvscma.com"
+  },
+  "deployment_settings": {
+    "auto_deploy": true,
+    "notify_on_sync": true,
+    "validation_enabled": true
+  }
+}
