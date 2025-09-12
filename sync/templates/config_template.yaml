@@ -1,0 +1,50 @@
+# HVSCMA Sync System Configuration Template
+# Copy this file and customize for your deployment
+
+# GitHub Configuration
+github:
+  token: "YOUR_GITHUB_TOKEN_HERE"
+  organization: "HVSCMA"
+  default_repository: "hvscma-cmas"
+  default_branch: "main"
+
+# Netlify Configuration  
+netlify:
+  site_id: "YOUR_NETLIFY_SITE_ID"
+  auth_token: "YOUR_NETLIFY_TOKEN"
+  build_command: "npm run build"
+  publish_directory: "dist"
+
+# Sync Settings
+sync:
+  max_retries: 3
+  timeout_seconds: 300
+  batch_size: 50
+  validation_required: true
+  backup_enabled: true
+
+# Monitoring
+monitoring:
+  health_check_interval: 60
+  metrics_enabled: true
+  alert_webhooks: []
+  log_level: "INFO"
+
+# Security
+security:
+  rate_limit: 100
+  ip_whitelist: []
+  require_authentication: true
+
+# File Processing
+files:
+  max_file_size_mb: 100
+  allowed_extensions: [".html", ".js", ".css", ".json", ".md", ".txt"]
+  exclude_patterns: ["node_modules/", ".git/", "*.tmp"]
+
+# Deployment
+deployment:
+  auto_deploy: true
+  staging_enabled: true
+  rollback_enabled: true
+  notifications: true
