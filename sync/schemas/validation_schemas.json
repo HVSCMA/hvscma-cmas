@@ -1,0 +1,105 @@
+{
+  "data_validation_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "WILLOW Sync Data Validation",
+    "type": "object",
+    "properties": {
+      "sync_request": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "request_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]+$"
+          },
+          "priority": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "operation": {
+            "enum": [
+              "create",
+              "update",
+              "delete",
+              "sync",
+              "validate"
+            ]
+          },
+          "data_type": {
+            "enum": [
+              "cma_report",
+              "property_data",
+              "market_analysis",
+              "template",
+              "configuration"
+            ]
+          },
+          "payload": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "timestamp",
+          "request_id",
+          "priority",
+          "operation",
+          "data_type"
+        ]
+      }
+    }
+  },
+  "cma_report_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "CMA Report Schema",
+    "type": "object",
+    "properties": {
+      "report_id": {
+        "type": "string"
+      },
+      "property_address": {
+        "type": "string"
+      },
+      "report_type": {
+        "enum": [
+          "standard",
+          "detailed",
+          "comparative"
+        ]
+      },
+      "generated_date": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "market_data": {
+        "type": "object"
+      },
+      "comparables": {
+        "type": "array"
+      },
+      "valuation": {
+        "type": "object"
+      },
+      "status": {
+        "enum": [
+          "draft",
+          "pending",
+          "completed",
+          "archived"
+        ]
+      }
+    },
+    "required": [
+      "report_id",
+      "property_address",
+      "report_type",
+      "generated_date"
+    ]
+  }
+}
