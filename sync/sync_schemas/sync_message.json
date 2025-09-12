@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sync Message Schema",
+  "type": "object",
+  "properties": {
+    "message_id": {
+      "type": "string"
+    },
+    "from_agent": {
+      "type": "string"
+    },
+    "to_agents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "message_type": {
+      "type": "string",
+      "enum": [
+        "data",
+        "command",
+        "status",
+        "heartbeat"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "normal",
+        "high",
+        "critical"
+      ]
+    }
+  },
+  "required": [
+    "message_id",
+    "from_agent",
+    "message_type",
+    "payload",
+    "timestamp"
+  ]
+}
