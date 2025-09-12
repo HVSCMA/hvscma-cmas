@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "client_data": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "property_address": {
+          "type": "string"
+        }
+      }
+    },
+    "sync_type": {
+      "type": "string",
+      "enum": [
+        "fub_contact",
+        "cma_generation",
+        "deployment"
+      ]
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  }
+}
