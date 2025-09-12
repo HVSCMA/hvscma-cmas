@@ -1,0 +1,88 @@
+{
+  "environment": "sandbox",
+  "deployment_date": "2025-09-12 18:42:17 UTC",
+  "description": "Safe testing environment for WILLOW-HVSCMA sync validation",
+  "configuration": {
+    "sync_frequency": "5_minutes",
+    "monitoring_level": "standard",
+    "error_recovery": "manual_intervention_required",
+    "data_isolation": true,
+    "production_isolation": true
+  },
+  "commands": {
+    "SANDBOX_INIT": {
+      "description": "Initialize sandbox sync environment",
+      "endpoint": "/sync/sandbox/initialize",
+      "method": "POST",
+      "parameters": {
+        "environment": "sandbox",
+        "isolation_mode": "full",
+        "test_mode": true
+      }
+    },
+    "TEST_SYNC": {
+      "description": "Execute test synchronization sequence",
+      "endpoint": "/sync/sandbox/test",
+      "method": "POST",
+      "parameters": {
+        "sync_type": "test_data",
+        "validate_only": true,
+        "rollback_on_completion": true
+      }
+    },
+    "VALIDATE_SCHEMA": {
+      "description": "Validate data schema compatibility",
+      "endpoint": "/sync/sandbox/validate",
+      "method": "POST",
+      "parameters": {
+        "schema_version": "1.0.0",
+        "test_data": "sample_sync_request"
+      }
+    },
+    "SANDBOX_STATUS": {
+      "description": "Get sandbox environment status",
+      "endpoint": "/sync/sandbox/status",
+      "method": "GET",
+      "response_format": "json"
+    },
+    "RESET_SANDBOX": {
+      "description": "Reset sandbox to clean state",
+      "endpoint": "/sync/sandbox/reset",
+      "method": "DELETE",
+      "confirmation_required": true
+    }
+  },
+  "test_scenarios": [
+    {
+      "name": "basic_connectivity",
+      "description": "Test basic connection between systems",
+      "steps": [
+        "SANDBOX_INIT",
+        "TEST_SYNC",
+        "SANDBOX_STATUS"
+      ]
+    },
+    {
+      "name": "schema_validation",
+      "description": "Validate all data schemas",
+      "steps": [
+        "VALIDATE_SCHEMA"
+      ]
+    },
+    {
+      "name": "error_handling",
+      "description": "Test error recovery mechanisms",
+      "steps": [
+        "TEST_SYNC with invalid data",
+        "check error logs",
+        "RESET_SANDBOX"
+      ]
+    }
+  ],
+  "safety_measures": {
+    "no_production_access": true,
+    "isolated_data_store": true,
+    "automatic_cleanup": "24_hours",
+    "audit_logging": true
+  }
+}
