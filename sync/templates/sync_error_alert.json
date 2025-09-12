@@ -1,0 +1,16 @@
+{
+  "template_id": "sync_error_alert",
+  "subject_template": "CRITICAL: WILLOW Sync Error - {error_type}",
+  "body_template": "\nCRITICAL ALERT: Sync System Error\n\nError Details:\n- Error Type: {error_type}\n- Timestamp: {timestamp}\n- Affected Agent(s): {affected_agents}\n- Error Message: {error_message}\n- Severity: {severity}\n\nImmediate Action Required:\n{action_required}\n\nSystem Status: {system_status}\n\nPlease investigate immediately.\n\nWILLOW Sync Monitoring System\n        ",
+  "variables": [
+    "error_type",
+    "timestamp",
+    "affected_agents",
+    "error_message",
+    "severity",
+    "action_required",
+    "system_status"
+  ],
+  "recipient_type": "admin",
+  "priority": "high"
+}
