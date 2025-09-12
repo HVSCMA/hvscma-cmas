@@ -1,0 +1,65 @@
+{
+  "configuration": {
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "use_tls": true,
+    "authentication": "oauth2"
+  },
+  "templates": {
+    "cma_report_notification": {
+      "subject": "CMA Report Generated - {{property_address}}",
+      "body": "Dear {{client_name}},\n\nYour Comparative Market Analysis (CMA) report for {{property_address}} has been generated and is ready for review.\n\nReport Details:\n- Property Address: {{property_address}}\n- Report Type: {{report_type}}\n- Generated Date: {{generated_date}}\n- Report ID: {{report_id}}\n\nThe report includes:\n\u2713 Market analysis and comparable properties\n\u2713 Property valuation estimates\n\u2713 Market trends and insights\n\u2713 Professional recommendations\n\nYou can access your report through the secure client portal or contact us for assistance.\n\nBest regards,\nHVSCMA Team\n\n---\nThis email was generated automatically by WILLOW Sync System v41.5\nReport synchronized to GitHub: {{github_sync_status}}\n",
+      "metadata": {
+        "template_type": "cma_notification",
+        "required_fields": [
+          "client_name",
+          "property_address",
+          "report_type",
+          "generated_date",
+          "report_id",
+          "github_sync_status"
+        ],
+        "priority": "high",
+        "auto_send": false
+      }
+    },
+    "sync_status_alert": {
+      "subject": "WILLOW Sync Alert - {{alert_type}}",
+      "body": "WILLOW Sync System Alert\n\nAlert Type: {{alert_type}}\nTimestamp: {{timestamp}}\nSystem Status: {{system_status}}\n\nAlert Details:\n{{alert_details}}\n\nSystem Metrics:\n- CPU Usage: {{cpu_usage}}%\n- Memory Usage: {{memory_usage}}%\n- Sync Health: {{sync_health}}\n\n{{#if recommendations}}\nRecommendations:\n{{#each recommendations}}\n- {{this}}\n{{/each}}\n{{/if}}\n\nPlease review system logs and take appropriate action if necessary.\n\nWILLOW Sync System v41.5\nRepository: HVSCMA/hvscma-cmas\n",
+      "metadata": {
+        "template_type": "system_alert",
+        "required_fields": [
+          "alert_type",
+          "timestamp",
+          "system_status",
+          "alert_details"
+        ],
+        "priority": "critical",
+        "auto_send": true
+      }
+    },
+    "deployment_notification": {
+      "subject": "WILLOW System Deployment Complete",
+      "body": "WILLOW Deployment Notification\n\nDeployment Status: {{deployment_status}}\nVersion: {{version}}\nTimestamp: {{timestamp}}\n\nDeployed Components:\n{{#each deployed_components}}\n\u2713 {{this}}\n{{/each}}\n\nSystem Status:\n- GitHub Repository: {{github_status}}\n- Sync Operations: {{sync_status}}\n- Monitoring: {{monitoring_status}}\n- Validation: {{validation_status}}\n\n{{#if deployment_notes}}\nDeployment Notes:\n{{deployment_notes}}\n{{/if}}\n\nThe WILLOW automated sync system is now operational and ready for production use.\n\nHVSCMA Operations Team\n",
+      "metadata": {
+        "template_type": "deployment_notification",
+        "required_fields": [
+          "deployment_status",
+          "version",
+          "timestamp",
+          "deployed_components"
+        ],
+        "priority": "medium",
+        "auto_send": false
+      }
+    }
+  },
+  "automation_rules": {
+    "auto_send_alerts": true,
+    "batch_notifications": true,
+    "rate_limiting": {
+      "max_per_hour": 50,
+      "max_per_day": 200
+    }
+  }
+}
