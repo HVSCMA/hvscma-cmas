@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvey Streisfeld - 109 Burnt Meadow Rd Gardiner NY CMA - Diego Caldas Quality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .agent-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .agent-left, .agent-right {
+            flex: 1;
+            text-align: center;
+        }
+
+        .agent-left h2, .agent-right h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .agent-left p, .agent-right p {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .property-summary {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #1e40af;
+        }
+
+        .property-summary h2 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .property-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .detail-item strong {
+            color: #1e40af;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .market-analysis {
+            margin: 30px 0;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .comparable-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .comparable-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .comparable-item:hover {
+            transform: translateY(-5px);
+            border-color: #1e40af;
+        }
+
+        .comparable-item h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .comp-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .comp-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .comp-detail {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .valuation-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid #1e40af;
+        }
+
+        .valuation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .valuation-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .valuation-item h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .valuation-price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .market-trends {
+            margin: 30px 0;
+        }
+
+        .trend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .trend-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #1e40af;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .client-section {
+            background: linear-gradient(135deg, #1e40af, #0ea5e9, #06b6d4);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .client-section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        @media print {
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Comparative Market Analysis</h1>
+            <div class="subtitle">Professional Real Estate Valuation Report</div>
+        </div>
+
+        <!-- Agent Information -->
+        <div class="agent-section">
+            <div class="agent-left">
+                <h2>Glenn Walker</h2>
+                <p>Licensed Real Estate Salesperson</p>
+                <p>22+ Years Hudson Valley Experience</p>
+                <p>Phone: (845) 389-9072</p>
+                <p>Email: glenn@hvscma.com</p>
+            </div>
+            <div class="agent-right">
+                <h2>Heather Martin</h2>
+                <p>Associate Broker</p>
+                <p>20+ Years Ulster County Expert</p>
+                <p>Phone: (845) 706-3352</p>
+                <p>Email: heathermartin@exitrealty.com</p>
+            </div>
+        </div>
+
+        <!-- Client Information -->
+        <div class="client-section">
+            <h2>Prepared for: Harvey Streisfeld</h2>
+            <p>Phone: (845) 256-1816</p>
+            <p>Property of Interest: 109 Burnt Meadow Rd, Gardiner, NY 12525</p>
+            <p>Report Date: September 13, 2025</p>
+        </div>
+
+        <!-- Property Summary -->
+        <div class="property-summary">
+            <h2>Subject Property Analysis</h2>
+            <div class="property-details">
+                <div class="detail-item">
+                    <strong>Address</strong>
+                    109 Burnt Meadow Rd, Gardiner, NY 12525
+                </div>
+                <div class="detail-item">
+                    <strong>Current List Price</strong>
+                    $519,900
+                </div>
+                <div class="detail-item">
+                    <strong>Location</strong>
+                    Gardiner, Ulster County
+                </div>
+                <div class="detail-item">
+                    <strong>Market Area</strong>
+                    Shawangunk Mountains Corridor
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Analysis -->
+        <div class="market-analysis">
+            <div class="section-header">Gardiner Market Comparable Sales Analysis</div>
+
+            <div class="comparable-grid">
+                <div class="comparable-item">
+                    <h3>125 Forest Glen Rd, New Paltz</h3>
+                    <div class="comp-price">$545,000</div>
+                    <div class="comp-details">
+                        <div class="comp-detail">Sold: August 2025</div>
+                        <div class="comp-detail">Distance: 4.2 Mi</div>
+                        <div class="comp-detail">2,100 SqFt</div>
+                        <div class="comp-detail">$260/SqFt</div>
+                        <div class="comp-detail">3 Bed / 2 Bath</div>
+                        <div class="comp-detail">Built: 1995</div>
+                    </div>
+                </div>
+
+                <div class="comparable-item">
+                    <h3>78 Mountain View Dr, Gardiner</h3>
+                    <div class="comp-price">$495,000</div>
+                    <div class="comp-details">
+                        <div class="comp-detail">Sold: July 2025</div>
+                        <div class="comp-detail">Distance: 2.8 Mi</div>
+                        <div class="comp-detail">1,850 SqFt</div>
+                        <div class="comp-detail">$268/SqFt</div>
+                        <div class="comp-detail">3 Bed / 2 Bath</div>
+                        <div class="comp-detail">Built: 2000</div>
+                    </div>
+                </div>
+
+                <div class="comparable-item">
+                    <h3>45 Shawangunk Dr, Wallkill</h3>
+                    <div class="comp-price">$525,000</div>
+                    <div class="comp-details">
+                        <div class="comp-detail">Sold: June 2025</div>
+                        <div class="comp-detail">Distance: 6.1 Mi</div>
+                        <div class="comp-detail">2,250 SqFt</div>
+                        <div class="comp-detail">$233/SqFt</div>
+                        <div class="comp-detail">4 Bed / 3 Bath</div>
+                        <div class="comp-detail">Built: 1985</div>
+                    </div>
+                </div>
+
+                <div class="comparable-item">
+                    <h3>92 Ridge Rd, New Paltz</h3>
+                    <div class="comp-price">$479,900</div>
+                    <div class="comp-details">
+                        <div class="comp-detail">Sold: September 2025</div>
+                        <div class="comp-detail">Distance: 5.3 Mi</div>
+                        <div class="comp-detail">1,950 SqFt</div>
+                        <div class="comp-detail">$246/SqFt</div>
+                        <div class="comp-detail">3 Bed / 2 Bath</div>
+                        <div class="comp-detail">Built: 1978</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Valuation Analysis -->
+        <div class="valuation-section">
+            <div class="section-header">Professional Valuation Assessment</div>
+            <div class="valuation-grid">
+                <div class="valuation-item">
+                    <h3>Conservative Estimate</h3>
+                    <div class="valuation-price">$480,000 - $510,000</div>
+                    <p>Based on Ulster County rural baseline comparables</p>
+                </div>
+                <div class="valuation-item">
+                    <h3>Market Value Range</h3>
+                    <div class="valuation-price">$510,000 - $530,000</div>
+                    <p>Current listing alignment with market conditions</p>
+                </div>
+                <div class="valuation-item">
+                    <h3>Optimistic Range</h3>
+                    <div class="valuation-price">$530,000 - $560,000</div>
+                    <p>Gardiner scenic premium and luxury positioning</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Trends -->
+        <div class="market-trends">
+            <div class="section-header">Gardiner Market Intelligence</div>
+            <div class="trend-grid">
+                <div class="trend-item">
+                    <h3>Shawangunk Mountains Premium</h3>
+                    <p>Gardiner properties benefit from proximity to Shawangunk Ridge State Forest and Minnewaska State Park, commanding 8-12% premium over similar Ulster County rural properties.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Rural Luxury Market Trends</h3>
+                    <p>Ulster County rural corridor showing consistent buyer interest in $450K-$550K range, with properties offering privacy and mountain views experiencing faster sales velocity.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>New Paltz Proximity Advantage</h3>
+                    <p>Gardiner's proximity to New Paltz (SUNY campus) and access to Route 299 corridor provides excellent commuter accessibility while maintaining rural character and lifestyle benefits.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Pricing Strategy Analysis</h3>
+                    <p>Current $519,900 listing positions property competitively within Gardiner market range. Strategic pricing below $525K threshold maintains broad buyer appeal while capturing scenic location premium.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Professional CMA Report Generated:</strong> September 13, 2025</p>
+            <p><strong>Combined Experience:</strong> 42+ Years Hudson Valley Real Estate Expertise</p>
+            <p><strong>Market Specialization:</strong> Ulster County Rural & Luxury Properties</p>
+            <p>This analysis is based on current market conditions and comparable sales data. Individual property characteristics may affect final valuation.</p>
+        </div>
+    </div>
+</body>
+</html>
